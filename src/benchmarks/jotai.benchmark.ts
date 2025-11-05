@@ -2,15 +2,9 @@
  * Jotai benchmark implementation
  */
 
-import { atom, useAtom } from 'jotai';
-import { createStore } from 'jotai';
-<<<<<<< HEAD
+import { atom, createStore } from 'jotai';
 import { StateOperations, BenchmarkScenario } from '../types/index.js';
-import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '../utils/benchmark-utils';
-=======
-import { StateOperations, BenchmarkScenario } from '@/types';
-import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '@/utils/benchmark-utils';
->>>>>>> 41d07ac20024e9e456eea52acdb0cfa3cb6b53ee
+import { runBenchmark, generateTestData, STANDARD_SCENARIOS } from '../utils/benchmark-utils.js';
 
 // Define atoms
 const itemsAtom = atom<any[]>([]);

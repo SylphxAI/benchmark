@@ -4,15 +4,14 @@
   "description": "Comprehensive TypeScript benchmark for all state management libraries",
   "type": "module",
   "scripts": {
-    "benchmark": "tsx src/benchmark-all.ts",
+    "benchmark": "tsx src/benchmark-professional.ts",
+    "benchmark:legacy": "tsx src/benchmark-all.ts",
     "benchmark:redux": "tsx src/benchmarks/redux.benchmark.ts",
     "benchmark:zustand": "tsx src/benchmarks/zustand.benchmark.ts",
     "benchmark:jotai": "tsx src/benchmarks/jotai.benchmark.ts",
     "benchmark:mobx": "tsx src/benchmarks/mobx.benchmark.ts",
     "benchmark:recoil": "tsx src/benchmarks/recoil.benchmark.ts",
     "benchmark:valtio": "tsx src/benchmarks/valtio.benchmark.ts",
-    "benchmark:zen": "tsx src/benchmarks/zen.benchmark.ts",
-    "benchmark:compare": "tsx src/benchmark-all.ts",
     "report": "tsx src/generate-report.ts",
     "clean": "rm -rf reports && mkdir -p reports"
   },
