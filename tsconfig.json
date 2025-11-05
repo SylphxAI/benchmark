@@ -23,9 +23,6 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
-<<<<<<< HEAD
-    "rootDir": "./src"
-=======
     "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
@@ -34,7 +31,6 @@
       "@/utils/*": ["src/utils/*"],
       "@/types/*": ["src/types/*"]
     }
->>>>>>> 41d07ac20024e9e456eea52acdb0cfa3cb6b53ee
   },
   "include": [
     "src/**/*"

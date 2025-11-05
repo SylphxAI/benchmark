@@ -4,7 +4,9 @@
   "description": "Professional state management benchmark suite using tinybench",
   "type": "module",
   "scripts": {
-    "benchmark": "tsx src/benchmark.ts",
+    "benchmark": "bun src/benchmark.ts",
+    "benchmark:simple": "bun src/benchmark-simple.ts",
+    "benchmark:comprehensive": "bun src/benchmark.ts",
     "clean": "rm -rf reports && mkdir -p reports"
   },
   "dependencies": {
