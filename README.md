@@ -1,243 +1,130 @@
-# Benchmark Hub 🏆
+# JavaScript Library Benchmarks 🏆
 
-**Automated, professional performance benchmarks for JavaScript/TypeScript libraries.**
+Professional performance benchmarks for popular JavaScript libraries, automatically updated by GitHub Actions.
 
-<p align="center">
-  <strong>🤖 Fully Automated</strong> •
-  <strong>📊 Always Up-to-Date</strong> •
-  <strong>🔄 Daily Checks</strong> •
-  <strong>📈 Historical Tracking</strong>
-</p>
+## 📊 Benchmark Categories
 
----
+### [State Management](./benchmarks/state-management/)
+Compare performance of popular state management libraries:
+- **Libraries:** Zustand, Jotai, MobX, Redux Toolkit, Valtio, Preact Signals, Solid Signals, Recoil, @sylphx/zen
+- **Tests:** Simple updates, computed values, nested updates, array operations, async operations, batch updates, and more
+- **Status:** ✅ Active
 
-## 🎯 What is This?
+### [Immutability](./benchmarks/immutability/)
+Compare performance of immutability helper libraries:
+- **Libraries:** Immer, Mutative, Immutable.js, Immutability Helper, Seamless Immutable, @sylphx/craft
+- **Tests:** Simple updates, nested updates, array operations, deep nesting, large arrays, multiple updates
+- **Status:** ✅ Active
 
-A **zero-maintenance benchmark system** that automatically:
-- ✅ Checks for library updates **daily**
-- ✅ Runs benchmarks **only when needed** (new versions or test changes)
-- ✅ Generates professional reports with **version tracking**
-- ✅ Commits results automatically via **GitHub Actions**
+### [Router](./benchmarks/router/)
+Compare performance of React routing libraries:
+- **Libraries:** React Router, TanStack Router, Wouter, @sylphx/zen-router
+- **Tests:** Route matching, navigation, parameter parsing, nested routes
+- **Status:** 🚧 In Development
 
-**No manual work required.** Set it and forget it. 🚀
+## 🚀 Key Features
 
----
+- **Automated Updates**: Daily checks for library version updates
+- **Smart Execution**: Benchmarks only run when libraries update or tests change
+- **Bundle Size Tracking**: Automatic tracking of minified + gzipped sizes via Bundlephobia API
+- **Comprehensive Testing**: Multiple test scenarios for real-world usage patterns
+- **Professional Reports**: Detailed READMEs with performance insights and comparisons
 
-## 📂 Available Benchmarks
+## 📋 Benchmark Methodology
 
-| Category | Description | Libraries | Status | Last Updated |
-|----------|-------------|-----------|--------|--------------|
-| **[State Management](./benchmarks/state-management/)** | Redux, Zustand, Jotai, MobX, Valtio, Preact Signals, Solid Signals, Zen | 8 libraries | ✅ Active | Auto-updated |
-| **Immutability Libraries** | Immer, Craft.js, Native JS | Coming Soon | 🚧 Planned | - |
-| **HTTP Clients** | Axios, Fetch API, Got, Undici | Coming Soon | 📋 Planned | - |
-| **Date Libraries** | Day.js, date-fns, Luxon, Moment | Coming Soon | 📋 Planned | - |
+Each benchmark suite uses:
+- **Framework:** Vitest Bench for accurate performance measurement
+- **Runs:** 3 complete runs averaged for statistical accuracy
+- **Environment:** Node.js v20+, standardized hardware
+- **Metrics:** Operations/sec, variance, mean time, p99, sample count
 
----
+## 🏗️ Project Structure
 
-## 🚀 How It Works
-
-### Automated Daily Workflow
-
-```mermaid
-graph LR
-    A[GitHub Actions<br/>Daily Trigger] --> B{Check Versions}
-    B -->|Updates Found| C[Install Latest]
-    B -->|No Updates| D[Skip & Exit]
-    C --> E[Run Benchmarks<br/>3 iterations]
-    E --> F[Generate README]
-    F --> G[Commit Results]
-    G --> H[Push to Repo]
+```
+benchmark/
+├── benchmarks/
+│   ├── state-management/    # State management libraries
+│   ├── immutability/         # Immutability helpers
+│   └── router/               # React routing libraries
+├── scripts/
+│   ├── check-versions.ts     # Shared version checker
+│   └── generate-readme.ts    # Shared README generator
+└── .github/workflows/        # GitHub Actions automation
 ```
 
-### Smart Update Detection
+## 📦 Running Benchmarks Locally
 
-The system **only runs benchmarks** when:
-1. **📦 Library has new version** - Detects npm updates automatically
-2. **📝 Test files modified** - Tracks file hashes to detect changes
-3. **🔧 Manual trigger** - Can be triggered manually via GitHub Actions
-
-If nothing changed → **Benchmark is skipped** → Zero waste of CI resources ⚡
-
----
-
-## 📊 Example: State Management Benchmarks
-
-Latest results from our **State Management Benchmark**:
-
-| Library | Version | Simple Increment | Loading Toggle | Status |
-|---------|---------|------------------|----------------|--------|
-| **Solid Signals** | `v1.9.10` | 35.7M ops/sec | 28.5M ops/sec | ✅ |
-| **Preact Signals** | `v2.3.2` | 34.6M ops/sec | 27.0M ops/sec | ✅ |
-| **Zen** | `v1.0.0` | 34.2M ops/sec | **32.5M ops/sec** 🥇 | ✅ |
-| **MobX** | `v6.15.0` | 5.5M ops/sec | 6.8M ops/sec | ✅ |
-| **Valtio** | `v1.13.2` | 4.8M ops/sec | 7.2M ops/sec | ✅ |
-| **Jotai** | `v2.15.1` | 1.7M ops/sec | 2.0M ops/sec | ✅ |
-| **Redux Toolkit** | `v2.10.1` | 887K ops/sec | 1.0M ops/sec | ✅ |
-| **Zustand** | `v4.5.7` | 369K ops/sec | 382K ops/sec | ✅ |
-
-👉 **[View Full State Management Benchmark](./benchmarks/state-management/)**
-
----
-
-## 🔧 Adding New Benchmarks
-
-Want to add a new benchmark category? Easy!
-
-### 1. Create Category Structure
-
+### Run All Categories
 ```bash
-mkdir -p benchmarks/your-category
-cd benchmarks/your-category
-
-# Copy template files
-cp -r ../state-management/package.json .
-cp -r ../state-management/tsconfig.json .
-cp -r ../state-management/vitest.config.ts .
-
-# Create source directory
-mkdir -p src
-```
-
-### 2. Write Your Benchmarks
-
-```typescript
-// src/benchmark.bench.ts
-import { bench, describe } from 'vitest';
-
-describe('Your Test Category', () => {
-  bench('Library A', () => {
-    // Your test code
-  });
-
-  bench('Library B', () => {
-    // Your test code
-  });
-});
-```
-
-### 3. Create GitHub Actions Workflow
-
-```yaml
-# .github/workflows/your-category.yml
-name: Your Category Benchmark
-
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Daily at midnight
-  workflow_dispatch:
-
-jobs:
-  # ... copy from state-management.yml
-```
-
-### 4. Initialize Version Tracking
-
-```bash
-# Create versions.json
-cat > versions.json << 'EOF'
-{
-  "lastChecked": "",
-  "lastBenchmarkRun": "",
-  "testFilesHash": "",
-  "libraries": {
-    "your-library": {
-      "current": "1.0.0",
-      "latest": "1.0.0",
-      "lastUpdated": ""
-    }
-  }
-}
-EOF
-```
-
-### 5. Done! 🎉
-
-The benchmark will now:
-- ✅ Run daily automatically
-- ✅ Check for updates
-- ✅ Generate README reports
-- ✅ Commit results
-
----
-
-## 📈 Why This Approach?
-
-### Traditional Benchmarks (Manual)
-- ❌ Quickly become outdated
-- ❌ Require manual updates
-- ❌ No version tracking
-- ❌ One-time snapshots
-
-### Our Automated System
-- ✅ **Always up-to-date** - Checks daily
-- ✅ **Zero maintenance** - Fully automated
-- ✅ **Version tracking** - Every result includes versions
-- ✅ **Historical data** - All results saved
-- ✅ **Resource efficient** - Only runs when needed
-- ✅ **Professional reports** - Auto-generated README
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Add New Benchmarks** - Propose new library categories
-2. **Improve Tests** - Suggest better test scenarios
-3. **Fix Issues** - Report bugs or problems
-4. **Documentation** - Help improve guides
-
-### Development Setup
-
-```bash
-# Clone repository
-git clone https://github.com/sylphxltd/benchmark-state-management.git
-cd benchmark-state-management
-
 # Install dependencies
 npm install
 
-# Run version check
-npm run check-versions
+# Run state management benchmarks
+cd benchmarks/state-management
+npm install
+npm run benchmark
 
-# Generate README
-npm run generate-readme
+# Run immutability benchmarks
+cd ../immutability
+npm install
+npm run benchmark
+
+# Run router benchmarks
+cd ../router
+npm install
+npm run benchmark
 ```
 
----
+### Generate Reports
+```bash
+# From project root
+npx tsx scripts/generate-readme.ts benchmarks/state-management
+npx tsx scripts/generate-readme.ts benchmarks/immutability
+npx tsx scripts/generate-readme.ts benchmarks/router
+```
 
-## 📊 Benchmark Methodology
+## 🔄 Automation
 
-All benchmarks follow these principles:
+Benchmarks automatically update when:
+- ✅ A library releases a new version
+- ✅ Test files are modified
+- ✅ Manual workflow trigger
 
-1. **Statistical Significance** - Multiple iterations until confidence achieved
-2. **Real-world Scenarios** - Tests mirror actual usage patterns
-3. **Fair Comparison** - Identical conditions for all libraries
-4. **Version Tracking** - Every result tagged with library versions
-5. **Automated** - No manual intervention or bias
+Each category has its own GitHub Actions workflow that:
+1. Checks for version updates daily
+2. Fetches package sizes from Bundlephobia
+3. Runs benchmarks if updates are detected
+4. Generates updated README with results
+5. Commits and pushes changes
 
----
+## 📈 Results Overview
+
+Each category README includes:
+- **Benchmark Information**: Last run date, environment details
+- **Library Versions**: Current versions with last update dates
+- **Bundle Size Comparison**: Minified + gzipped sizes ranked
+- **Top Performers**: Quick overview of category winners
+- **Detailed Results**: Complete performance data with insights
+
+## 🤝 Contributing
+
+Want to add a new benchmark category or library?
+
+1. Create a new directory under `benchmarks/`
+2. Add `package.json`, `library-metadata.json`, and `versions.json`
+3. Create benchmark tests in `src/`
+4. Add GitHub Actions workflow in `.github/workflows/`
+5. Run initial benchmarks and generate README
+6. Submit a pull request
 
 ## 📄 License
 
-MIT License - see [LICENSE](./LICENSE) file for details.
+MIT
+
+## 🙏 Credits
+
+Developed and maintained by [Sylph](https://github.com/sylphxltd)
 
 ---
 
-## 🙏 Acknowledgments
-
-- **Vitest** - Professional benchmarking framework
-- **GitHub Actions** - Free CI/CD automation
-- **All library authors** - For building amazing tools
-- **Open source community** - For making this possible
-
----
-
-<p align="center">
-  <strong>⭐ Star this repo if you find it useful!</strong><br/>
-  <sub>Made with ❤️ by the Sylph team</sub>
-</p>
-
----
-
-*Last updated: Auto-generated by GitHub Actions • [View Workflow](./.github/workflows/state-management.yml)*
+*Automated benchmarks running daily to help you make informed library choices* ⚡

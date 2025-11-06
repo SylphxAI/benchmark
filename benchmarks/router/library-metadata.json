@@ -1,0 +1,18 @@
+{
+  "react-router-dom": {
+    "github": "https://github.com/remix-run/react-router",
+    "displayName": "React Router"
+  },
+  "@tanstack/react-router": {
+    "github": "https://github.com/TanStack/router",
+    "displayName": "TanStack Router"
+  },
+  "wouter": {
+    "github": "https://github.com/molefrog/wouter",
+    "displayName": "Wouter"
+  },
+  "@sylphx/zen-router": {
+    "github": "https://github.com/sylphxltd/zen-router",
+    "displayName": "Zen Router"
+  }
+}
