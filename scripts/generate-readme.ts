@@ -57,11 +57,37 @@ function formatNumber(num: number): string {
   return num.toFixed(2);
 }
 
-function getMedal(index: number): string {
-  if (index === 0) return '🥇';
-  if (index === 1) return '🥈';
-  if (index === 2) return '🥉';
-  return '📍';
+function getMedalForRank(rank: number): string {
+  if (rank === 1) return '🥇';
+  if (rank === 2) return '🥈';
+  if (rank === 3) return '🥉';
+  return '';
+}
+
+/**
+ * Assign ranks considering ties (same value = same rank)
+ * Automatically detects if sorted ascending or descending
+ */
+function assignRanksWithTies<T>(items: T[], getValue: (item: T) => number): number[] {
+  if (items.length === 0) return [];
+
+  const ranks: number[] = [];
+  let currentRank = 1;
+
+  for (let i = 0; i < items.length; i++) {
+    if (i > 0) {
+      const current = getValue(items[i]);
+      const previous = getValue(items[i - 1]);
+
+      // Detect change in value (works for both ascending and descending)
+      if (Math.abs(current - previous) > 0.001) { // Use small epsilon for floating point comparison
+        currentRank = i + 1;
+      }
+    }
+    ranks.push(currentRank);
+  }
+
+  return ranks;
 }
 
 function loadLibraryMetadata(benchmarkDir: string): LibraryMetadata {
@@ -96,18 +122,20 @@ function generateASCIIChart(results: BenchmarkResult[], maxBarLength: number = 4
 
   const sorted = [...results].sort((a, b) => b.hz - a.hz);
   const maxHz = sorted[0].hz;
+  const ranks = assignRanksWithTies(sorted, r => r.hz);
 
   let chart = '```\n';
   sorted.forEach((result, index) => {
     const barLength = Math.round((result.hz / maxHz) * maxBarLength);
     const bar = '█'.repeat(barLength);
     const opsDisplay = formatNumber(result.hz);
-    const medal = getMedal(index);
+    const medal = getMedalForRank(ranks[index]);
 
     // Truncate name if too long
     const name = result.name.length > 20 ? result.name.substring(0, 17) + '...' : result.name;
 
-    chart += `${medal} ${name.padEnd(20)} ${bar} ${opsDisplay}\n`;
+    const prefix = medal ? `${medal} ` : '   ';
+    chart += `${prefix}${name.padEnd(20)} ${bar} ${opsDisplay}\n`;
   });
   chart += '```\n';
 
@@ -254,15 +282,16 @@ function generateReadme(benchmarkDir: string) {
 
   if (libsWithSize.length > 0) {
     const smallest = libsWithSize[0][1].size!.gzip;
+    const ranks = assignRanksWithTies(libsWithSize, ([_, info]) => info.size!.gzip);
 
     libsWithSize.forEach(([name, info], index) => {
-      const medal = getMedal(index);
+      const medal = getMedalForRank(ranks[index]);
       const gzipKB = (info.size!.gzip / 1024).toFixed(2);
       const minifiedKB = (info.size!.minified / 1024).toFixed(2);
       const relative = (info.size!.gzip / smallest).toFixed(2);
-      const relativeText = index === 0 ? 'Baseline' : `${relative}x`;
+      const relativeText = ranks[index] === 1 ? 'Baseline' : `${relative}x`;
 
-      readme += `| ${medal} | **${getLibraryLink(name, metadata)}** | `;
+      readme += `| ${medal || ranks[index].toString()} | **${getLibraryLink(name, metadata)}** | `;
       readme += `${gzipKB}KB | ${minifiedKB}KB | ${relativeText} |\n`;
     });
 
@@ -288,10 +317,12 @@ function generateReadme(benchmarkDir: string) {
   readme += '|------|---------|-------|----------|\n';
 
   const topPerformanceScore = rankings.performance[0]?.score || 100;
+  const perfRanks = assignRanksWithTies(rankings.performance, lib => lib.score);
+
   rankings.performance.forEach((lib, index) => {
-    const medal = getMedal(index);
-    const relative = index === 0 ? 'Baseline' : `${((lib.score / topPerformanceScore) * 100).toFixed(1)}%`;
-    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.score.toFixed(1)}/100 | ${relative} |\n`;
+    const medal = getMedalForRank(perfRanks[index]);
+    const relative = perfRanks[index] === 1 ? 'Baseline' : `${((lib.score / topPerformanceScore) * 100).toFixed(1)}%`;
+    readme += `| ${medal || perfRanks[index].toString()} | **${formatLibraryName(lib.name, metadata)}** | ${lib.score.toFixed(1)}/100 | ${relative} |\n`;
   });
   readme += '\n';
   readme += '> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.\n\n';
@@ -302,14 +333,16 @@ function generateReadme(benchmarkDir: string) {
   readme += '| Rank | Library | Size (gzip) | Score | Rating |\n';
   readme += '|------|---------|-------------|-------|--------|\n';
 
+  const sizeRanks = assignRanksWithTies(rankings.size, lib => lib.score);
+
   rankings.size.forEach((lib, index) => {
-    const medal = getMedal(index);
+    const medal = getMedalForRank(sizeRanks[index]);
     let rating = 'Poor';
     if (lib.score >= 90) rating = 'Excellent';
     else if (lib.score >= 75) rating = 'Good';
     else if (lib.score >= 50) rating = 'Average';
 
-    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.sizeKB.toFixed(2)}KB | ${lib.score}/100 | ${rating} |\n`;
+    readme += `| ${medal || sizeRanks[index].toString()} | **${formatLibraryName(lib.name, metadata)}** | ${lib.sizeKB.toFixed(2)}KB | ${lib.score}/100 | ${rating} |\n`;
   });
   readme += '\n';
   readme += '> 📦 **Scale:** ≤2KB=100, 5KB=90, 10KB=75, 20KB=50. Logarithmic scoring reflects real-world impact.\n\n';
@@ -320,9 +353,11 @@ function generateReadme(benchmarkDir: string) {
   readme += '| Rank | Library | Supported | Coverage |\n';
   readme += '|------|---------|-----------|----------|\n';
 
+  const coverageRanks = assignRanksWithTies(rankings.coverage, lib => lib.percentage);
+
   rankings.coverage.forEach((lib, index) => {
-    const medal = getMedal(index);
-    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.supported}/${lib.total} | ${lib.percentage}% |\n`;
+    const medal = getMedalForRank(coverageRanks[index]);
+    readme += `| ${medal || coverageRanks[index].toString()} | **${formatLibraryName(lib.name, metadata)}** | ${lib.supported}/${lib.total} | ${lib.percentage}% |\n`;
   });
   readme += '\n';
   readme += '> 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.\n\n';
@@ -358,13 +393,14 @@ function generateReadme(benchmarkDir: string) {
 
     // Sort by performance
     const sorted = [...results].sort((a, b) => b.hz - a.hz);
+    const detailRanks = assignRanksWithTies(sorted, r => r.hz);
 
     readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
     readme += '|------|---------|---------|----------|------|-----|--------|\n';
 
     sorted.forEach((result, index) => {
-      const medal = getMedal(index);
-      readme += `| ${medal} | **${formatLibraryName(result.name, metadata)}** | `;
+      const medal = getMedalForRank(detailRanks[index]);
+      readme += `| ${medal || detailRanks[index].toString()} | **${formatLibraryName(result.name, metadata)}** | `;
       readme += `${formatNumber(result.hz)} | `;
       readme += `±${result.rme.toFixed(2)}% | `;
       readme += `${(result.mean * 1000).toFixed(4)}ms | `;
