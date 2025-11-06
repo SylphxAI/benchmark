@@ -35,72 +35,58 @@ Smaller bundle sizes mean faster initial load times and better user experience.
 
 **Size Insight:** immutability-helper is the most lightweight at 1.65KB (gzip), while immutable is 10.73x larger at 17.74KB (gzip).
 
-## 🏆 Top Performers
+## 🚀 Performance Rankings
 
-Quick overview of category winners (libraries only):
+Based on geometric mean across all supported tests (excludes extreme values):
 
-| Category | 🥇 Winner | Ops/sec | Runner-up |
-|----------|-----------|---------|----------|
-| **JSON Patches - Generate** | [Craft](https://github.com/sylphxltd/craft) | 887.10K | [Immer](https://github.com/immerjs/immer) (429.22K) |
-| **JSON Patches - Apply** | [Craft](https://github.com/sylphxltd/craft) | 4.05M | [Immer](https://github.com/immerjs/immer) (488.61K) |
-| **JSON Patches - Roundtrip** | [Craft](https://github.com/sylphxltd/craft) | 679.38K | [Immer](https://github.com/immerjs/immer) (227.67K) |
-| **Map - Set Operation** | [Craft](https://github.com/sylphxltd/craft) | 2.69M | [Mutative](https://github.com/unadlib/mutative) (1.43M) |
-| **Map - Update Nested Value** | [Craft](https://github.com/sylphxltd/craft) | 3.71M | [Mutative](https://github.com/unadlib/mutative) (1.26M) |
-| **Set - Add Operation** | [Craft](https://github.com/sylphxltd/craft) | 2.79M | [Mutative](https://github.com/unadlib/mutative) (1.27M) |
-| **Set - Delete Operation** | [Craft](https://github.com/sylphxltd/craft) | 2.71M | [Mutative](https://github.com/unadlib/mutative) (1.30M) |
-| **Map - Large (100 items)** | [Craft](https://github.com/sylphxltd/craft) | 392.99K | [Mutative](https://github.com/unadlib/mutative) (329.44K) |
-| **Set - Large (100 items)** | [Craft](https://github.com/sylphxltd/craft) | 1.49M | [Mutative](https://github.com/unadlib/mutative) (205.21K) |
-| **Undo/Redo - Inverse Patches** | [Craft](https://github.com/sylphxltd/craft) | 625.84K | [Immer](https://github.com/immerjs/immer) (211.93K) |
-| **Simple Object Update** | [Craft](https://github.com/sylphxltd/craft) | 4.24M | [Immutable.js](https://github.com/immutable-js/immutable-js) (3.68M) |
-| **Nested Object Update** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 1.53M | [Craft](https://github.com/sylphxltd/craft) (1.26M) |
-| **Array Push** | [Immutable.js](https://github.com/immutable-js/immutable-js) | 5.24M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (4.70M) |
-| **Array Remove** | [Immutable.js](https://github.com/immutable-js/immutable-js) | 2.31M | [Immutability Helper](https://github.com/kolodny/immutability-helper) (1.73M) |
-| **Array Update** | [Craft](https://github.com/sylphxltd/craft) | 1.36M | [Mutative](https://github.com/unadlib/mutative) (1.31M) |
-| **Deep Nested Update (5 levels)** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 844.26K | [Craft](https://github.com/sylphxltd/craft) (641.50K) |
-| **Large Array Update (1000 items)** | [Mutative](https://github.com/unadlib/mutative) | 1.02M | [Immer](https://github.com/immerjs/immer) (73.90K) |
-| **Multiple Updates (3 changes)** | [Immutability Helper](https://github.com/kolodny/immutability-helper) | 814.99K | [Craft](https://github.com/sylphxltd/craft) (676.70K) |
+| Rank | Library | Score | Relative |
+|------|---------|-------|----------|
+| 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 72.0/100 | Baseline |
+| 🥈 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 52.7/100 | 73.2% |
+| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 51.1/100 | 71.0% |
+| 📍 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 31.5/100 | 43.8% |
+| 📍 | **[Immer](https://github.com/immerjs/immer)** | 23.8/100 | 33.1% |
+| 📍 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 3.6/100 | 5.0% |
+
+> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
+
+## 📦 Bundle Size Rankings
+
+Smaller is better. Scores use logarithmic scale (like Lighthouse):
+
+| Rank | Library | Size (gzip) | Score | Rating |
+|------|---------|-------------|-------|--------|
+| 🥇 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 1.65KB | 100/100 | Excellent |
+| 🥈 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 2.71KB | 93/100 | Excellent |
+| 🥉 | **[Craft](https://github.com/sylphxltd/craft)** | 2.76KB | 93/100 | Excellent |
+| 📍 | **[Immer](https://github.com/immerjs/immer)** | 4.70KB | 81/100 | Good |
+| 📍 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 17.74KB | 53/100 | Average |
+
+> 📦 **Scale:** ≤2KB=100, 5KB=90, 10KB=75, 20KB=50. Logarithmic scoring reflects real-world impact.
+
+## 🎯 Feature Coverage Rankings
+
+Percentage of benchmark tests supported:
+
+| Rank | Library | Supported | Coverage |
+|------|---------|-----------|----------|
+| 🥇 | **[Immer](https://github.com/immerjs/immer)** | 18/18 | 100% |
+| 🥈 | **[Craft](https://github.com/sylphxltd/craft)** | 18/18 | 100% |
+| 🥉 | **[Mutative](https://github.com/unadlib/mutative)** | 14/18 | 78% |
+| 📍 | **[Immutable.js](https://github.com/immutable-js/immutable-js)** | 8/18 | 44% |
+| 📍 | **[Immutability Helper](https://github.com/kolodny/immutability-helper)** | 8/18 | 44% |
+| 📍 | **[Seamless Immutable](https://github.com/rtfeldman/seamless-immutable)** | 8/18 | 44% |
+
+> 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.
 
 ## 📜 Historical Results
 
-Track performance changes over time:
-
-| Date | Results | Notes |
-|------|---------|-------|
-| 2025-11-06 | [View Results](./results/2025-11-06.json) | Benchmark run |
-| 2025-11-05 | [View Results](./results/2025-11-05.json) | Benchmark run |
-| 2025-11-04 | [View Results](./results/2025-11-04.json) | Benchmark run |
-| 2025-11-03 | [View Results](./results/2025-11-03.json) | Benchmark run |
-
-> 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.
-
-### 📈 Performance Trends
-
-Visual representation of performance over time:
-
-**Array Push**
-
-![Array Push](./charts/array-push.svg)
-
-**Array Remove**
-
-![Array Remove](./charts/array-remove.svg)
-
-**Array Update**
-
-![Array Update](./charts/array-update.svg)
-
-<details>
-<summary>View 2 more trend charts</summary>
-
-**Nested Object Update**
-
-![Nested Object Update](./charts/nested-object-update.svg)
-
-**Simple Object Update**
-
-![Simple Object Update](./charts/simple-object-update.svg)
-
-</details>
+| Date | Results |
+|------|---------|
+| 2025-11-06 | [View Results](./results/2025-11-06.json) |
+| 2025-11-05 | [View Results](./results/2025-11-05.json) |
+| 2025-11-04 | [View Results](./results/2025-11-04.json) |
+| 2025-11-03 | [View Results](./results/2025-11-03.json) |
 
 ## 📊 Detailed Results
 
@@ -488,4 +474,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-06T20:24:38.600Z*
+*Last generated: 2025-11-06T21:34:47.738Z*

@@ -6,6 +6,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { calculateRankings } from './calculate-rankings.js';
 
 interface VersionTracker {
   lastChecked: string;
@@ -276,67 +277,70 @@ function generateReadme(benchmarkDir: string) {
     readme += `while ${largest_lib[0]} is ${sizeRatio}x larger at ${(largest_lib[1].size!.gzip / 1024).toFixed(2)}KB (gzip).\n\n`;
   }
 
-  // Top performers summary (libraries only, exclude Native implementations)
-  readme += '## 🏆 Top Performers\n\n';
-  readme += 'Quick overview of category winners (libraries only):\n\n';
-  readme += '| Category | 🥇 Winner | Ops/sec | Runner-up |\n';
-  readme += '|----------|-----------|---------|----------|\n';
-
+  // Calculate comprehensive rankings
   const excludeList = metadata._config?.excludeFromCharts || [];
-  for (const [category, results] of groupedResults.entries()) {
-    const libraryResults = results.filter(r => !excludeList.includes(r.name));
-    const sorted = [...libraryResults].sort((a, b) => b.hz - a.hz);
-    if (sorted.length >= 2) {
-      const winner = sorted[0];
-      const runnerUp = sorted[1];
-      readme += `| **${category}** | ${formatLibraryName(winner.name, metadata)} | ${formatNumber(winner.hz)} | ${formatLibraryName(runnerUp.name, metadata)} (${formatNumber(runnerUp.hz)}) |\n`;
-    }
-  }
-  readme += '\n';
+  const rankings = calculateRankings(resultsDir, versionsPath, join(benchmarkDir, 'library-metadata.json'), excludeList);
 
-  // Historical results
+  // Performance Rankings
+  readme += '## 🚀 Performance Rankings\n\n';
+  readme += 'Based on geometric mean across all supported tests (excludes extreme values):\n\n';
+  readme += '| Rank | Library | Score | Relative |\n';
+  readme += '|------|---------|-------|----------|\n';
+
+  const topPerformanceScore = rankings.performance[0]?.score || 100;
+  rankings.performance.forEach((lib, index) => {
+    const medal = getMedal(index);
+    const relative = index === 0 ? 'Baseline' : `${((lib.score / topPerformanceScore) * 100).toFixed(1)}%`;
+    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.score.toFixed(1)}/100 | ${relative} |\n`;
+  });
+  readme += '\n';
+  readme += '> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.\n\n';
+
+  // Bundle Size Rankings
+  readme += '## 📦 Bundle Size Rankings\n\n';
+  readme += 'Smaller is better. Scores use logarithmic scale (like Lighthouse):\n\n';
+  readme += '| Rank | Library | Size (gzip) | Score | Rating |\n';
+  readme += '|------|---------|-------------|-------|--------|\n';
+
+  rankings.size.forEach((lib, index) => {
+    const medal = getMedal(index);
+    let rating = 'Poor';
+    if (lib.score >= 90) rating = 'Excellent';
+    else if (lib.score >= 75) rating = 'Good';
+    else if (lib.score >= 50) rating = 'Average';
+
+    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.sizeKB.toFixed(2)}KB | ${lib.score}/100 | ${rating} |\n`;
+  });
+  readme += '\n';
+  readme += '> 📦 **Scale:** ≤2KB=100, 5KB=90, 10KB=75, 20KB=50. Logarithmic scoring reflects real-world impact.\n\n';
+
+  // Feature Coverage Rankings
+  readme += '## 🎯 Feature Coverage Rankings\n\n';
+  readme += 'Percentage of benchmark tests supported:\n\n';
+  readme += '| Rank | Library | Supported | Coverage |\n';
+  readme += '|------|---------|-----------|----------|\n';
+
+  rankings.coverage.forEach((lib, index) => {
+    const medal = getMedal(index);
+    readme += `| ${medal} | **${formatLibraryName(lib.name, metadata)}** | ${lib.supported}/${lib.total} | ${lib.percentage}% |\n`;
+  });
+  readme += '\n';
+  readme += '> 🎯 **Note:** Higher coverage means more features, but evaluate based on your specific needs.\n\n';
+
+  // Historical results (simplified - no trend charts)
   const historicalFiles = getHistoricalResults(benchmarkDir);
   if (historicalFiles.length > 0) {
     readme += '## 📜 Historical Results\n\n';
-    readme += 'Track performance changes over time:\n\n';
-    readme += '| Date | Results | Notes |\n';
-    readme += '|------|---------|-------|\n';
+    readme += '| Date | Results |\n';
+    readme += '|------|---------|\n';
 
     historicalFiles.forEach(file => {
       const date = file.replace('.json', '');
       const resultLink = `[View Results](./results/${file})`;
-      readme += `| ${date} | ${resultLink} | Benchmark run |\n`;
+      readme += `| ${date} | ${resultLink} |\n`;
     });
 
     readme += '\n';
-    readme += '> 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.\n\n';
-
-    // Check if charts exist
-    const chartsDir = join(benchmarkDir, 'charts');
-    if (existsSync(chartsDir)) {
-      const charts = readdirSync(chartsDir).filter(f => f.endsWith('.svg'));
-      if (charts.length > 0) {
-        readme += '### 📈 Performance Trends\n\n';
-        readme += 'Visual representation of performance over time:\n\n';
-
-        // Show first 3 charts inline
-        charts.slice(0, 3).forEach(chart => {
-          const chartName = chart.replace('.svg', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-          readme += `**${chartName}**\n\n`;
-          readme += `![${chartName}](./charts/${chart})\n\n`;
-        });
-
-        if (charts.length > 3) {
-          readme += `<details>\n<summary>View ${charts.length - 3} more trend charts</summary>\n\n`;
-          charts.slice(3).forEach(chart => {
-            const chartName = chart.replace('.svg', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-            readme += `**${chartName}**\n\n`;
-            readme += `![${chartName}](./charts/${chart})\n\n`;
-          });
-          readme += `</details>\n\n`;
-        }
-      }
-    }
   }
 
   // Detailed results for each category
