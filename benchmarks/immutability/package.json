@@ -8,10 +8,11 @@
     "clean": "rm -rf results && mkdir -p results"
   },
   "dependencies": {
+    "@sylphx/craft": "^1.2.1",
     "immer": "^10.1.1",
-    "mutative": "^1.1.1",
-    "immutable": "^4.3.7",
     "immutability-helper": "^3.1.1",
+    "immutable": "^4.3.7",
+    "mutative": "^1.1.1",
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {

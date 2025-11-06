@@ -9,6 +9,7 @@ import { create } from 'mutative';
 import { Map as ImmutableMap, List as ImmutableList, fromJS } from 'immutable';
 import update from 'immutability-helper';
 import Seamless from 'seamless-immutable';
+import { craft } from '@sylphx/craft';
 
 // Test data
 const simpleObject = { count: 0, name: 'test', value: 100 };
@@ -38,6 +39,12 @@ describe('Simple Object Update', () => {
 
   bench('Mutative', () => {
     const result = create(simpleObject, draft => {
+      draft.count += 1;
+    });
+  });
+
+  bench('Sylph Craft', () => {
+    const result = craft(simpleObject, draft => {
       draft.count += 1;
     });
   });
@@ -75,6 +82,12 @@ describe('Nested Object Update', () => {
 
   bench('Mutative', () => {
     const result = create(nestedObject, draft => {
+      draft.user.profile.age += 1;
+    });
+  });
+
+  bench('Sylph Craft', () => {
+    const result = craft(nestedObject, draft => {
       draft.user.profile.age += 1;
     });
   });
@@ -131,6 +144,12 @@ describe('Array Push', () => {
     });
   });
 
+  bench('Sylph Craft', () => {
+    const result = craft(arr, draft => {
+      draft.push(6);
+    });
+  });
+
   bench('Immutable.js', () => {
     const list = ImmutableList(arr);
     const result = list.push(6);
@@ -170,6 +189,12 @@ describe('Array Remove', () => {
     });
   });
 
+  bench('Sylph Craft', () => {
+    const result = craft(arr, draft => {
+      draft.splice(2, 1);
+    });
+  });
+
   bench('Immutable.js', () => {
     const list = ImmutableList(arr);
     const result = list.delete(2);
@@ -205,6 +230,12 @@ describe('Array Update', () => {
 
   bench('Mutative', () => {
     const result = create(arr, draft => {
+      draft[1].value = 25;
+    });
+  });
+
+  bench('Sylph Craft', () => {
+    const result = craft(arr, draft => {
       draft[1].value = 25;
     });
   });
@@ -260,6 +291,12 @@ describe('Deep Nested Update (5 levels)', () => {
 
   bench('Mutative', () => {
     const result = create(deepObject, draft => {
+      draft.level1.level2.level3.level4.level5.value += 1;
+    });
+  });
+
+  bench('Sylph Craft', () => {
+    const result = craft(deepObject, draft => {
       draft.level1.level2.level3.level4.level5.value += 1;
     });
   });
@@ -333,6 +370,12 @@ describe('Large Array Update (1000 items)', () => {
     });
   });
 
+  bench('Sylph Craft', () => {
+    const result = craft(largeArray, draft => {
+      draft[500].value += 1;
+    });
+  });
+
   bench('Immutable.js', () => {
     const list = fromJS(largeArray);
     const result = list.setIn([500, 'value'], list.getIn([500, 'value']) + 1);
@@ -372,6 +415,14 @@ describe('Multiple Updates (3 changes)', () => {
 
   bench('Mutative', () => {
     const result = create(nestedObject, draft => {
+      draft.user.profile.name = 'Jane';
+      draft.user.profile.age = 25;
+      draft.user.profile.address.city = 'San Francisco';
+    });
+  });
+
+  bench('Sylph Craft', () => {
+    const result = craft(nestedObject, draft => {
       draft.user.profile.name = 'Jane';
       draft.user.profile.age = 25;
       draft.user.profile.address.city = 'San Francisco';
