@@ -31,10 +31,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: 'benchmarks/state-management/package-lock.json'
 
-      - name: Install dependencies
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install benchmark dependencies
         working-directory: benchmarks/state-management
         run: npm ci
 
@@ -66,14 +67,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: 'benchmarks/state-management/package-lock.json'
 
       - name: Download versions file
         uses: actions/download-artifact@v4
         with:
           name: versions
           path: benchmarks/state-management/
+
+      - name: Install root dependencies
+        run: npm ci
 
       - name: Update library versions
         if: needs.check-updates.outputs.updated_libs != '[]'
@@ -88,7 +90,7 @@ jobs:
             npm install "$lib@latest"
           done
 
-      - name: Install dependencies
+      - name: Install benchmark dependencies
         working-directory: benchmarks/state-management
         run: npm ci
 
