@@ -268,18 +268,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download all results
+      - name: Download state-management results
+        if: needs.plan.outputs.state-management == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/download-artifact@v4
         with:
-          pattern: results-*
-          path: benchmarks/
+          name: results-state-management
+          path: benchmarks/state-management/
+
+      - name: Download immutability results
+        if: needs.plan.outputs.immutability == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/download-artifact@v4
+        with:
+          name: results-immutability
+          path: benchmarks/immutability/
+
+      - name: Download router results
+        if: needs.plan.outputs.router == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/download-artifact@v4
+        with:
+          name: results-router
+          path: benchmarks/router/
 
       - name: Commit and push results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Add all benchmark results
+          # Add all benchmark results (including READMEs, results, versions.json)
           git add benchmarks/
 
           # Create commit message
@@ -287,13 +302,13 @@ jobs:
 
           # List updated categories
           UPDATED=""
-          if [ -d "benchmarks/results-state-management" ]; then
+          if [ -f "benchmarks/state-management/README.md" ]; then
             UPDATED="$UPDATED\n- State Management"
           fi
-          if [ -d "benchmarks/results-immutability" ]; then
+          if [ -f "benchmarks/immutability/README.md" ]; then
             UPDATED="$UPDATED\n- Immutability"
           fi
-          if [ -d "benchmarks/results-router" ]; then
+          if [ -f "benchmarks/router/README.md" ]; then
             UPDATED="$UPDATED\n- Router"
           fi
 
