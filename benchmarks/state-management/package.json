@@ -4,7 +4,7 @@
   "description": "Professional state management benchmark suite using Vitest Bench",
   "type": "module",
   "scripts": {
-    "benchmark": "vitest bench",
+    "benchmark": "vitest bench --run --outputJson=results/latest.json",
     "clean": "rm -rf results && mkdir -p results"
   },
   "dependencies": {

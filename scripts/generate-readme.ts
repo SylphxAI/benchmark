@@ -51,36 +51,51 @@ function getMedal(index: number): string {
 }
 
 function parseResultsFromLatestRun(resultsDir: string): Map<string, BenchmarkResult[]> | null {
-  // Get latest result file
+  // Get latest.json file from vitest bench --outputJson
   if (!existsSync(resultsDir)) {
     console.error('❌ Results directory not found:', resultsDir);
     return null;
   }
 
-  const files = readdirSync(resultsDir)
-    .filter(f => f.startsWith('benchmark-') && f.endsWith('.json'))
-    .sort()
-    .reverse();
-
-  if (files.length === 0) {
-    console.error('❌ No benchmark results found');
+  const latestFile = join(resultsDir, 'latest.json');
+  if (!existsSync(latestFile)) {
+    console.error('❌ No benchmark results found at:', latestFile);
     return null;
   }
 
-  const latestFile = join(resultsDir, files[0]);
-  console.log(`📊 Using latest results: ${files[0]}`);
+  console.log(`📊 Using latest results: latest.json`);
 
-  const results = JSON.parse(readFileSync(latestFile, 'utf-8'));
+  const data = JSON.parse(readFileSync(latestFile, 'utf-8'));
 
-  // Group by test category
+  // Parse Vitest JSON format: { files: [ { groups: [ { fullName, benchmarks: [...] } ] } ] }
   const grouped = new Map<string, BenchmarkResult[]>();
 
-  for (const result of results.benchmarks || []) {
-    const category = result.group || 'Other';
-    if (!grouped.has(category)) {
-      grouped.set(category, []);
+  for (const file of data.files || []) {
+    for (const group of file.groups || []) {
+      // Extract category from fullName (e.g., "src/benchmark.bench.ts > Simple Increment" -> "Simple Increment")
+      const fullName = group.fullName || 'Other';
+      const category = fullName.split(' > ').pop() || 'Other';
+
+      if (!grouped.has(category)) {
+        grouped.set(category, []);
+      }
+
+      for (const benchmark of group.benchmarks || []) {
+        grouped.get(category)!.push({
+          name: benchmark.name,
+          hz: benchmark.hz,
+          rme: benchmark.rme,
+          min: benchmark.min,
+          max: benchmark.max,
+          mean: benchmark.mean,
+          p75: benchmark.p75,
+          p99: benchmark.p99,
+          p995: benchmark.p995,
+          p999: benchmark.p999,
+          samples: benchmark.sampleCount || 0,
+        });
+      }
     }
-    grouped.get(category)!.push(result);
   }
 
   return grouped;
