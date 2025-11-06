@@ -112,7 +112,7 @@ jobs:
       - name: Update versions.json with benchmark timestamp
         run: |
           cd benchmarks/state-management
-          jq '.lastBenchmarkRun = now | todate' versions.json > versions.tmp.json
+          jq '.lastBenchmarkRun = (now | todate)' versions.json > versions.tmp.json
           mv versions.tmp.json versions.json
 
       - name: Commit and push results
