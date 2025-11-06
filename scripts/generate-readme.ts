@@ -34,11 +34,17 @@ interface BenchmarkResult {
   samples: number;
 }
 
+interface BenchmarkConfig {
+  excludeFromCharts: string[];
+  excludeFromComparison: string[];
+}
+
 interface LibraryMetadata {
+  _config?: BenchmarkConfig;
   [packageName: string]: {
     github: string;
     displayName: string;
-  };
+  } | BenchmarkConfig;
 }
 
 function formatNumber(num: number): string {
@@ -329,9 +335,11 @@ function generateReadme(benchmarkDir: string) {
   for (const [category, results] of groupedResults.entries()) {
     readme += `### ${category}\n\n`;
 
-    // Add ASCII performance chart
+    // Add ASCII performance chart (exclude benchmarks from config)
     readme += '**Performance Comparison:**\n\n';
-    readme += generateASCIIChart(results);
+    const excludeList = metadata._config?.excludeFromCharts || [];
+    const libraryResults = results.filter(r => !excludeList.includes(r.name));
+    readme += generateASCIIChart(libraryResults);
     readme += '\n';
 
     // Sort by performance

@@ -24,7 +24,16 @@ function loadHistoricalResults(benchmarkDir) {
   });
 }
 
-function extractCategories(historical) {
+function loadConfig(benchmarkDir) {
+  const metadataPath = join(benchmarkDir, 'library-metadata.json');
+  if (existsSync(metadataPath)) {
+    const metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
+    return metadata._config || { excludeFromCharts: [], excludeFromComparison: [] };
+  }
+  return { excludeFromCharts: [], excludeFromComparison: [] };
+}
+
+function extractCategories(historical, excludeList) {
   if (historical.length === 0) return [];
 
   const categories = new Map();
@@ -44,7 +53,10 @@ function extractCategories(historical) {
         }
 
         benchmarks.forEach(bench => {
-          categories.get(category).add(bench.name);
+          // Skip benchmarks in exclude list (configured in library-metadata.json)
+          if (!excludeList.includes(bench.name)) {
+            categories.get(category).add(bench.name);
+          }
         });
       });
     });
@@ -204,6 +216,9 @@ if (!benchmarkDir) {
 
 console.log('📈 Generating performance trend charts...');
 
+const config = loadConfig(benchmarkDir);
+console.log(`   Config: excluding ${config.excludeFromCharts.length} benchmarks from charts`);
+
 const historical = loadHistoricalResults(benchmarkDir);
 
 if (historical.length < 2) {
@@ -214,7 +229,7 @@ if (historical.length < 2) {
 
 console.log(`   Found ${historical.length} historical results`);
 
-const categories = extractCategories(historical);
+const categories = extractCategories(historical, config.excludeFromCharts);
 
 if (categories.length === 0) {
   console.log('⚠️  No categories with multiple libraries found');

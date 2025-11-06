@@ -43,7 +43,7 @@ describe('Simple Object Update', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(simpleObject, draft => {
       draft.count += 1;
     });
@@ -86,7 +86,7 @@ describe('Nested Object Update', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(nestedObject, draft => {
       draft.user.profile.age += 1;
     });
@@ -144,7 +144,7 @@ describe('Array Push', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(arr, draft => {
       draft.push(6);
     });
@@ -189,7 +189,7 @@ describe('Array Remove', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(arr, draft => {
       draft.splice(2, 1);
     });
@@ -234,7 +234,7 @@ describe('Array Update', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(arr, draft => {
       draft[1].value = 25;
     });
@@ -295,7 +295,7 @@ describe('Deep Nested Update (5 levels)', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(deepObject, draft => {
       draft.level1.level2.level3.level4.level5.value += 1;
     });
@@ -370,7 +370,7 @@ describe('Large Array Update (1000 items)', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(largeArray, draft => {
       draft[500].value += 1;
     });
@@ -421,7 +421,7 @@ describe('Multiple Updates (3 changes)', () => {
     });
   });
 
-  bench('Sylph Craft', () => {
+  bench('Craft', () => {
     const result = craft(nestedObject, draft => {
       draft.user.profile.name = 'Jane';
       draft.user.profile.age = 25;

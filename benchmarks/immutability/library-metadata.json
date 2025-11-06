@@ -1,4 +1,8 @@
 {
+  "_config": {
+    "excludeFromCharts": ["Native Spread", "Native Map", "Native Filter"],
+    "excludeFromComparison": []
+  },
   "immer": {
     "github": "https://github.com/immerjs/immer",
     "displayName": "Immer"
@@ -21,6 +25,6 @@
   },
   "@sylphx/craft": {
     "github": "https://github.com/sylphxltd/craft",
-    "displayName": "Sylph Craft"
+    "displayName": "Craft"
   }
 }
