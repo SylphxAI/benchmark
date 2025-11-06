@@ -1,0 +1,89 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="white"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">
+    Array Push - Performance Trend
+  </text>
+
+  <!-- Grid lines -->
+  <line x1="60" y1="60" x2="740" y2="60" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="65" text-anchor="end" font-size="12" fill="#6b7280">
+    41.1M
+  </text>
+  <line x1="60" y1="116" x2="740" y2="116" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="121" text-anchor="end" font-size="12" fill="#6b7280">
+    32.9M
+  </text>
+  <line x1="60" y1="172" x2="740" y2="172" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="177" text-anchor="end" font-size="12" fill="#6b7280">
+    24.7M
+  </text>
+  <line x1="60" y1="228" x2="740" y2="228" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="233" text-anchor="end" font-size="12" fill="#6b7280">
+    16.4M
+  </text>
+  <line x1="60" y1="284" x2="740" y2="284" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="289" text-anchor="end" font-size="12" fill="#6b7280">
+    8.2M
+  </text>
+  <line x1="60" y1="340" x2="740" y2="340" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="50" y="345" text-anchor="end" font-size="12" fill="#6b7280">
+    0
+  </text>
+  <text x="60" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 60, 365)">
+    11-03
+  </text>
+  <text x="286.66666666666663" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 286.66666666666663, 365)">
+    11-04
+  </text>
+  <text x="513.3333333333333" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 513.3333333333333, 365)">
+    11-05
+  </text>
+  <text x="740" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 740, 365)">
+    11-06
+  </text>
+  <polyline points="60,333.4989641198932 286.66666666666663,333.4989641198932 513.3333333333333,333.4989641198932 740,333.4989641198932" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="60" cy="333.4989641198932" r="4" fill="#3b82f6"/>
+  <circle cx="286.66666666666663" cy="333.4989641198932" r="4" fill="#3b82f6"/>
+  <circle cx="513.3333333333333" cy="333.4989641198932" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="333.4989641198932" r="4" fill="#3b82f6"/>
+  <polyline points="60,330.6424825142569 286.66666666666663,330.6424825142569 513.3333333333333,330.6424825142569 740,330.6424825142569" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="60" cy="330.6424825142569" r="4" fill="#ef4444"/>
+  <circle cx="286.66666666666663" cy="330.6424825142569" r="4" fill="#ef4444"/>
+  <circle cx="513.3333333333333" cy="330.6424825142569" r="4" fill="#ef4444"/>
+  <circle cx="740" cy="330.6424825142569" r="4" fill="#ef4444"/>
+  <polyline points="60,283.94398440315643 286.66666666666663,283.94398440315643 513.3333333333333,283.94398440315643 740,283.94398440315643" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="60" cy="283.94398440315643" r="4" fill="#10b981"/>
+  <circle cx="286.66666666666663" cy="283.94398440315643" r="4" fill="#10b981"/>
+  <circle cx="513.3333333333333" cy="283.94398440315643" r="4" fill="#10b981"/>
+  <circle cx="740" cy="283.94398440315643" r="4" fill="#10b981"/>
+  <polyline points="60,307.3261422729054 286.66666666666663,307.3261422729054 513.3333333333333,307.3261422729054 740,307.3261422729054" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="60" cy="307.3261422729054" r="4" fill="#f59e0b"/>
+  <circle cx="286.66666666666663" cy="307.3261422729054" r="4" fill="#f59e0b"/>
+  <circle cx="513.3333333333333" cy="307.3261422729054" r="4" fill="#f59e0b"/>
+  <circle cx="740" cy="307.3261422729054" r="4" fill="#f59e0b"/>
+  <polyline points="60,338.84234916465385 286.66666666666663,338.84234916465385 513.3333333333333,338.84234916465385 740,338.84234916465385" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+  <circle cx="60" cy="338.84234916465385" r="4" fill="#8b5cf6"/>
+  <circle cx="286.66666666666663" cy="338.84234916465385" r="4" fill="#8b5cf6"/>
+  <circle cx="513.3333333333333" cy="338.84234916465385" r="4" fill="#8b5cf6"/>
+  <circle cx="740" cy="338.84234916465385" r="4" fill="#8b5cf6"/>
+  <polyline points="60,85.4545454545455 286.66666666666663,85.4545454545455 513.3333333333333,85.4545454545455 740,85.4545454545455" fill="none" stroke="#ec4899" stroke-width="2"/>
+  <circle cx="60" cy="85.4545454545455" r="4" fill="#ec4899"/>
+  <circle cx="286.66666666666663" cy="85.4545454545455" r="4" fill="#ec4899"/>
+  <circle cx="513.3333333333333" cy="85.4545454545455" r="4" fill="#ec4899"/>
+  <circle cx="740" cy="85.4545454545455" r="4" fill="#ec4899"/>
+  <rect x="650" y="42" width="12" height="12" fill="#3b82f6"/>
+  <text x="668" y="53" font-size="12" fill="#374151">Immer</text>
+  <rect x="650" y="62" width="12" height="12" fill="#ef4444"/>
+  <text x="668" y="73" font-size="12" fill="#374151">Mutative</text>
+  <rect x="650" y="82" width="12" height="12" fill="#10b981"/>
+  <text x="668" y="93" font-size="12" fill="#374151">Immutable.js</text>
+  <rect x="650" y="102" width="12" height="12" fill="#f59e0b"/>
+  <text x="668" y="113" font-size="12" fill="#374151">Immutability Helper</text>
+  <rect x="650" y="122" width="12" height="12" fill="#8b5cf6"/>
+  <text x="668" y="133" font-size="12" fill="#374151">Seamless Immutable</text>
+  <rect x="650" y="142" width="12" height="12" fill="#ec4899"/>
+  <text x="668" y="153" font-size="12" fill="#374151">Native Spread</text>
+</svg>

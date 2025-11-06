@@ -84,6 +84,29 @@ function getHistoricalResults(benchmarkDir: string): string[] {
   return files;
 }
 
+function generateASCIIChart(results: BenchmarkResult[], maxBarLength: number = 40): string {
+  if (results.length === 0) return '';
+
+  const sorted = [...results].sort((a, b) => b.hz - a.hz);
+  const maxHz = sorted[0].hz;
+
+  let chart = '```\n';
+  sorted.forEach((result, index) => {
+    const barLength = Math.round((result.hz / maxHz) * maxBarLength);
+    const bar = '█'.repeat(barLength);
+    const opsDisplay = formatNumber(result.hz);
+    const medal = getMedal(index);
+
+    // Truncate name if too long
+    const name = result.name.length > 20 ? result.name.substring(0, 17) + '...' : result.name;
+
+    chart += `${medal} ${name.padEnd(20)} ${bar} ${opsDisplay}\n`;
+  });
+  chart += '```\n';
+
+  return chart;
+}
+
 function formatLibraryName(fullName: string, metadata: LibraryMetadata): string {
   // Handle names with suffixes like "Redux Toolkit - Async Fetch"
   // Extract the library name and add link, keep the suffix
@@ -271,6 +294,33 @@ function generateReadme(benchmarkDir: string) {
 
     readme += '\n';
     readme += '> 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.\n\n';
+
+    // Check if charts exist
+    const chartsDir = join(benchmarkDir, 'charts');
+    if (existsSync(chartsDir)) {
+      const charts = readdirSync(chartsDir).filter(f => f.endsWith('.svg'));
+      if (charts.length > 0) {
+        readme += '### 📈 Performance Trends\n\n';
+        readme += 'Visual representation of performance over time:\n\n';
+
+        // Show first 3 charts inline
+        charts.slice(0, 3).forEach(chart => {
+          const chartName = chart.replace('.svg', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          readme += `**${chartName}**\n\n`;
+          readme += `![${chartName}](./charts/${chart})\n\n`;
+        });
+
+        if (charts.length > 3) {
+          readme += `<details>\n<summary>View ${charts.length - 3} more trend charts</summary>\n\n`;
+          charts.slice(3).forEach(chart => {
+            const chartName = chart.replace('.svg', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            readme += `**${chartName}**\n\n`;
+            readme += `![${chartName}](./charts/${chart})\n\n`;
+          });
+          readme += `</details>\n\n`;
+        }
+      }
+    }
   }
 
   // Detailed results for each category
@@ -278,6 +328,11 @@ function generateReadme(benchmarkDir: string) {
 
   for (const [category, results] of groupedResults.entries()) {
     readme += `### ${category}\n\n`;
+
+    // Add ASCII performance chart
+    readme += '**Performance Comparison:**\n\n';
+    readme += generateASCIIChart(results);
+    readme += '\n';
 
     // Sort by performance
     const sorted = [...results].sort((a, b) => b.hz - a.hz);

@@ -141,6 +141,9 @@ jobs:
         working-directory: benchmarks/state-management
         run: npm run benchmark
 
+      - name: Generate trend charts
+        run: node scripts/generate-trend-charts.cjs benchmarks/state-management || echo "Not enough historical data for charts"
+
       - name: Generate README
         run: npx tsx scripts/generate-readme.ts benchmarks/state-management
 
@@ -189,6 +192,9 @@ jobs:
         working-directory: benchmarks/immutability
         run: npm run benchmark
 
+      - name: Generate trend charts
+        run: node scripts/generate-trend-charts.cjs benchmarks/immutability || echo "Not enough historical data for charts"
+
       - name: Generate README
         run: npx tsx scripts/generate-readme.ts benchmarks/immutability
 
@@ -236,6 +242,10 @@ jobs:
       - name: Run benchmarks
         working-directory: benchmarks/router
         run: npm run benchmark
+        continue-on-error: true  # Router benchmarks are WIP
+
+      - name: Generate trend charts
+        run: node scripts/generate-trend-charts.cjs benchmarks/router || echo "Not enough historical data for charts"
         continue-on-error: true  # Router benchmarks are WIP
 
       - name: Generate README

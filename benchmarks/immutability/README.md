@@ -55,12 +55,55 @@ Track performance changes over time:
 | Date | Results | Notes |
 |------|---------|-------|
 | 2025-11-06 | [View Results](./results/2025-11-06.json) | Benchmark run |
+| 2025-11-05 | [View Results](./results/2025-11-05.json) | Benchmark run |
+| 2025-11-04 | [View Results](./results/2025-11-04.json) | Benchmark run |
+| 2025-11-03 | [View Results](./results/2025-11-03.json) | Benchmark run |
 
 > 💡 **Tip:** Compare historical results to track performance improvements or regressions over time.
+
+### 📈 Performance Trends
+
+Visual representation of performance over time:
+
+**Array Push**
+
+![Array Push](./charts/array-push.svg)
+
+**Array Remove**
+
+![Array Remove](./charts/array-remove.svg)
+
+**Array Update**
+
+![Array Update](./charts/array-update.svg)
+
+<details>
+<summary>View 2 more trend charts</summary>
+
+**Nested Object Update**
+
+![Nested Object Update](./charts/nested-object-update.svg)
+
+**Simple Object Update**
+
+![Simple Object Update](./charts/simple-object-update.svg)
+
+</details>
 
 ## 📊 Detailed Results
 
 ### Simple Object Update
+
+**Performance Comparison:**
+
+```
+🥇 Native Spread        ████████████████████████████████████████ 44.69M
+🥈 Immutable.js         ████ 4.74M
+🥉 Immutability Helper  ███ 3.22M
+📍 Immer                ███ 2.84M
+📍 Mutative             ██ 2.78M
+📍 Seamless Immutable    335.74K
+```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
@@ -75,6 +118,17 @@ Track performance changes over time:
 
 ### Nested Object Update
 
+**Performance Comparison:**
+
+```
+🥇 Native Spread        ████████████████████████████████████████ 36.52M
+🥈 Immutability Helper  ██ 1.55M
+🥉 Mutative             █ 1.22M
+📍 Immer                █ 640.71K
+📍 Immutable.js         █ 634.06K
+📍 Seamless Immutable    107.68K
+```
+
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
 | 🥇 | **Native Spread** | 36.52M | ±0.22% | 0.0274ms | 0.0420ms | 18.26M |
@@ -87,6 +141,17 @@ Track performance changes over time:
 **Key Insight:** Native Spread is **339.13x faster** than Seamless Immutable in this category.
 
 ### Array Push
+
+**Performance Comparison:**
+
+```
+🥇 Native Spread        ████████████████████████████████████████ 37.37M
+🥈 Immutable.js         █████████ 8.23M
+🥉 Immutability Helper  █████ 4.80M
+📍 Mutative             █ 1.37M
+📍 Immer                █ 954.42K
+📍 Seamless Immutable    169.95K
+```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
@@ -101,6 +166,17 @@ Track performance changes over time:
 
 ### Array Remove
 
+**Performance Comparison:**
+
+```
+🥇 Native Filter        ████████████████████████████████████████ 40.39M
+🥈 Immutable.js         ███ 2.90M
+🥉 Immutability Helper  ██ 1.74M
+📍 Mutative             █ 636.18K
+📍 Immer                 437.24K
+📍 Seamless Immutable    169.22K
+```
+
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
 | 🥇 | **Native Filter** | 40.39M | ±0.41% | 0.0248ms | 0.0420ms | 20.20M |
@@ -113,6 +189,17 @@ Track performance changes over time:
 **Key Insight:** Native Filter is **238.70x faster** than Seamless Immutable in this category.
 
 ### Array Update
+
+**Performance Comparison:**
+
+```
+🥇 Native Map           ████████████████████████████████████████ 36.34M
+🥈 Mutative             ██ 1.42M
+🥉 Immutability Helper  █ 1.25M
+📍 Immer                █ 896.58K
+📍 Immutable.js         █ 557.62K
+📍 Seamless Immutable    84.01K
+```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
@@ -127,6 +214,17 @@ Track performance changes over time:
 
 ### Deep Nested Update (5 levels)
 
+**Performance Comparison:**
+
+```
+🥇 Native Spread        ████████████████████████████████████████ 24.62M
+🥈 Immutability Helper  █ 866.71K
+🥉 Mutative             █ 600.99K
+📍 Immutable.js         █ 424.60K
+📍 Immer                 296.00K
+📍 Seamless Immutable    60.86K
+```
+
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
 | 🥇 | **Native Spread** | 24.62M | ±0.09% | 0.0406ms | 0.0840ms | 12.31M |
@@ -140,6 +238,17 @@ Track performance changes over time:
 
 ### Large Array Update (1000 items)
 
+**Performance Comparison:**
+
+```
+🥇 Mutative             ████████████████████████████████████████ 1.12M
+🥈 Native Map           ████████████████████ 564.87K
+🥉 Immer                ███ 77.94K
+📍 Immutability Helper  █ 14.12K
+📍 Immutable.js          2.21K
+📍 Seamless Immutable    710.15
+```
+
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
 | 🥇 | **[Mutative](https://github.com/unadlib/mutative)** | 1.12M | ±0.30% | 0.8930ms | 1.2920ms | 559.88K |
@@ -152,6 +261,17 @@ Track performance changes over time:
 **Key Insight:** Mutative is **1576.80x faster** than Seamless Immutable in this category.
 
 ### Multiple Updates (3 changes)
+
+**Performance Comparison:**
+
+```
+🥇 Native Spread        ████████████████████████████████████████ 32.21M
+🥈 Immutability Helper  █ 847.86K
+🥉 Mutative             █ 571.99K
+📍 Immutable.js         █ 492.00K
+📍 Immer                 383.19K
+📍 Seamless Immutable    53.83K
+```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|--------|
@@ -184,4 +304,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-06T19:25:25.368Z*
+*Last generated: 2025-11-06T19:30:18.307Z*
