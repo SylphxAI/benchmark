@@ -51,8 +51,16 @@ function generateRootReadme(): string {
       displayName: 'Router',
       emoji: '🧭',
       description: 'React routing libraries',
-      status: 'WIP',
+      status: 'Active',
       libraryCount: getLibraryCount('benchmarks/router')
+    },
+    {
+      name: 'css-frameworks',
+      displayName: 'CSS Frameworks',
+      emoji: '🎨',
+      description: 'CSS-in-JS and utility-first CSS frameworks',
+      status: 'Active',
+      libraryCount: getLibraryCount('benchmarks/css-frameworks')
     }
   ];
 
