@@ -4,9 +4,9 @@
   "testFilesHash": "aa260b2e3d4b2f3ffbb4f59a27bdfb48ecb132b58e642f9f715b145303b8f3ff",
   "libraries": {
     "@sylphx/zen": {
-      "current": "1.0.0",
-      "latest": "1.0.0",
-      "lastUpdated": "2024-12-06T15:43:00.000Z",
+      "current": "1.1.1",
+      "latest": "1.1.1",
+      "lastUpdated": "2025-11-07T00:00:00.000Z",
       "size": {
         "gzip": 4198,
         "minified": 14835,
