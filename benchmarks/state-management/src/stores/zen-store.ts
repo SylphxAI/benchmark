@@ -144,9 +144,8 @@ export const zenActions = {
 
   fetchData: (data: any) => runKarma(zenFetchKarma, data),
 
-  // Reactive async karma access - read already computed state
-  getAsyncKarma: () => {
-    const state = getKarmaState(zenFetchKarma);
-    return state.data;
+  // Reactive async karma access - with reactive cache
+  getAsyncKarma: async () => {
+    return await runKarma(zenFetchKarma, get(zenCountStore));
   }
 };

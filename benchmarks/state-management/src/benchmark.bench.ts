@@ -445,7 +445,7 @@ describe('Reactive Async State Access', () => {
     await jotaiActions.getAsyncAtom();
   });
 
-  bench('Zen', () => {
-    zenActions.getAsyncKarma();
+  bench('Zen', async () => {
+    await zenActions.getAsyncKarma();
   });
 });
