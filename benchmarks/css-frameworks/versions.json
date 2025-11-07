@@ -1,0 +1,47 @@
+{
+  "lastChecked": "2025-11-07T05:00:00.000Z",
+  "lastBenchmarkRun": "2025-11-07T05:00:00Z",
+  "testFilesHash": "css-frameworks-initial",
+  "libraries": {
+    "@sylphx/silk": {
+      "current": "0.1.0",
+      "latest": "0.1.0",
+      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "size": {
+        "gzip": 228,
+        "minified": 500,
+        "lastChecked": "2025-11-07T05:00:00.000Z"
+      }
+    },
+    "tailwindcss": {
+      "current": "3.4.15",
+      "latest": "3.4.15",
+      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "size": {
+        "gzip": 4600,
+        "minified": 12000,
+        "lastChecked": "2025-11-07T05:00:00.000Z"
+      }
+    },
+    "@pandacss/dev": {
+      "current": "0.49.1",
+      "latest": "0.49.1",
+      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "size": {
+        "gzip": 5000,
+        "minified": 13000,
+        "lastChecked": "2025-11-07T05:00:00.000Z"
+      }
+    },
+    "unocss": {
+      "current": "0.65.3",
+      "latest": "0.65.3",
+      "lastUpdated": "2025-11-07T05:00:00.000Z",
+      "size": {
+        "gzip": 3500,
+        "minified": 9000,
+        "lastChecked": "2025-11-07T05:00:00.000Z"
+      }
+    }
+  }
+}

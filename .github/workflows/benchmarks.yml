@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        category: [state-management, immutability, router]
+        category: [state-management, immutability, router, css-frameworks]
       fail-fast: false
 
     steps:
@@ -84,6 +84,7 @@ jobs:
       state-management: ${{ steps.determine.outputs.state-management }}
       immutability: ${{ steps.determine.outputs.immutability }}
       router: ${{ steps.determine.outputs.router }}
+      css-frameworks: ${{ steps.determine.outputs.css-frameworks }}
       any-updates: ${{ steps.determine.outputs.any-updates }}
 
     steps:
@@ -100,12 +101,14 @@ jobs:
           STATE_MGMT="false"
           IMMUTABILITY="false"
           ROUTER="false"
+          CSS_FRAMEWORKS="false"
 
           # If manual trigger, run all
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             STATE_MGMT="true"
             IMMUTABILITY="true"
             ROUTER="true"
+            CSS_FRAMEWORKS="true"
             echo "📝 Manual trigger - running all categories"
           else
             # Check each category's status file
@@ -138,14 +141,25 @@ jobs:
                 echo "⏭️  Router - no updates"
               fi
             fi
+
+            if [ -f "/tmp/check-results/css-frameworks.txt" ]; then
+              STATUS=$(cat /tmp/check-results/css-frameworks.txt)
+              if [ "$STATUS" == "true" ]; then
+                CSS_FRAMEWORKS="true"
+                echo "✅ CSS Frameworks has updates"
+              else
+                echo "⏭️  CSS Frameworks - no updates"
+              fi
+            fi
           fi
 
           echo "state-management=$STATE_MGMT" >> $GITHUB_OUTPUT
           echo "immutability=$IMMUTABILITY" >> $GITHUB_OUTPUT
           echo "router=$ROUTER" >> $GITHUB_OUTPUT
+          echo "css-frameworks=$CSS_FRAMEWORKS" >> $GITHUB_OUTPUT
 
           # Set any-updates if any category needs updates
-          if [ "$STATE_MGMT" == "true" ] || [ "$IMMUTABILITY" == "true" ] || [ "$ROUTER" == "true" ]; then
+          if [ "$STATE_MGMT" == "true" ] || [ "$IMMUTABILITY" == "true" ] || [ "$ROUTER" == "true" ] || [ "$CSS_FRAMEWORKS" == "true" ]; then
             echo "any-updates=true" >> $GITHUB_OUTPUT
             echo ""
             echo "📊 Summary: Updates detected, benchmarks will run"
