@@ -1,7 +1,7 @@
 {
-  "lastChecked": "2025-11-06T19:40:52.541Z",
-  "lastBenchmarkRun": "2025-01-01T00:00:00.000Z",
-  "testFilesHash": "261dbaac96bd9d75ef9d38340b1427e065e90483b0b5685334d1e79e3ddd718b",
+  "lastChecked": "2025-11-07T03:53:59.878Z",
+  "lastBenchmarkRun": "2025-11-07T03:55:44Z",
+  "testFilesHash": "e92c80c969cd4574bd8999e71c04c9605ef5814c272cb39d9dc844c396f826b8",
   "libraries": {
     "immer": {
       "current": "10.2.0",
@@ -16,7 +16,12 @@
     "mutative": {
       "current": "1.3.0",
       "latest": "1.3.0",
-      "lastUpdated": "2025-11-06T20:23:04.227Z"
+      "lastUpdated": "2025-11-06T20:23:04.227Z",
+      "size": {
+        "gzip": 7330,
+        "minified": 22794,
+        "lastChecked": "2025-11-07T03:53:59.842Z"
+      }
     },
     "immutable": {
       "current": "5.1.4",
@@ -50,13 +55,16 @@
     },
     "@sylphx/craft": {
       "current": "1.2.1",
-      "latest": "1.2.1",
-      "lastUpdated": "2025-11-06T19:40:47.937Z",
+      "latest": "1.3.0",
+      "lastUpdated": "2025-11-07T03:53:57.625Z",
       "size": {
         "gzip": 2825,
         "minified": 9788,
-        "lastChecked": "2025-11-06T19:40:52.541Z"
-      }
+        "lastChecked": "2025-11-07T03:53:59.878Z"
+      },
+      "incompatible": true,
+      "incompatibleVersion": "1.3.0",
+      "incompatibleReason": "Command failed: npx tsx -e \"import('./src/stores/index.ts').then(() => { console.log('✓ OK'); process.exit(0); }).catch((e) => { console.error('✗', e.message); process.exit(1); })\"\n✗ Cannot find module '/home/runner/work/benchmark/benchmark/benchmarks/immutability/src/stores/index.ts' imported from /home/runner/work/benchmark/benchmark/benchmarks/immutability/[eval]\n"
     }
   }
 }

@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "filepath": "/home/runner/work/benchmark/benchmark/benchmarks/router/src/benchmark.bench.ts",
+      "groups": [
+        {
+          "fullName": "src/benchmark.bench.ts > Router Placeholder",
+          "benchmarks": [
+            {
+              "id": "-891520295_0_0",
+              "name": "Placeholder test",
+              "rank": 1,
+              "rme": 0.09097401529723667,
+              "samples": [],
+              "totalTime": 500.0000000000557,
+              "min": 0.000048999999762600055,
+              "max": 0.030997999999954118,
+              "hz": 18047289.99999799,
+              "period": 0.00005540998122156354,
+              "mean": 0.00005540998122156354,
+              "variance": 5.968711554359238e-9,
+              "sd": 0.00007725743688706763,
+              "sem": 2.571871673096999e-8,
+              "df": 9023644,
+              "critical": 1.96,
+              "moe": 5.040868479270118e-8,
+              "p75": 0.00006000000007588824,
+              "p99": 0.00007000000005064066,
+              "p995": 0.0000809999999091815,
+              "p999": 0.00010999999994965037,
+              "sampleCount": 9023645,
+              "median": 0.000050999999984924216
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
