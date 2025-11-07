@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 /**
  * Single Package Update Script
- * Updates one package at a time and tests it independently
+ * Updates packages incrementally with lightweight validation
+ *
+ * Strategy:
+ * - Update one package at a time
+ * - Validate each update with quick import test (not full benchmarks)
+ * - Rollback if validation fails
+ * - Track which packages were updated for selective benchmarking
+ * - Full benchmarks should be run ONCE after all updates complete
  */
 
 import { readFileSync, writeFileSync, existsSync, copyFileSync } from 'fs';
@@ -60,28 +67,28 @@ function getLibraryDisplayName(packageName: string, benchmarkDir: string): strin
 async function testSinglePackage(packageName: string, benchmarkDir: string): Promise<{ success: boolean; error?: string }> {
   const displayName = getLibraryDisplayName(packageName, benchmarkDir);
 
-  console.log(`\n🧪 Testing ${displayName}...`);
+  console.log(`\n🧪 Validating ${displayName}...`);
 
   try {
-    // Run benchmarks with timeout
-    const output = execSync('npm run benchmark', {
+    // Quick validation: try to import and initialize the stores
+    // This is much faster than running full benchmarks (30s vs 5min)
+    const output = execSync(`npx tsx -e "import('./src/stores/index.ts').then(() => { console.log('✓ OK'); process.exit(0); }).catch((e) => { console.error('✗', e.message); process.exit(1); })"`, {
       cwd: benchmarkDir,
       encoding: 'utf-8',
-      timeout: 300000, // 5 minutes
+      timeout: 30000, // 30 seconds
       stdio: 'pipe'
     });
 
-    // Check if the benchmark completed successfully
-    if (output.includes('Benchmark report written')) {
-      console.log(`   ✅ ${displayName} tests passed`);
+    if (output.includes('✓ OK')) {
+      console.log(`   ✅ ${displayName} validation passed`);
       return { success: true };
     } else {
-      console.log(`   ⚠️  ${displayName} tests incomplete`);
-      return { success: false, error: 'Benchmark did not complete' };
+      console.log(`   ⚠️  ${displayName} validation incomplete`);
+      return { success: false, error: 'Validation did not complete successfully' };
     }
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-    console.log(`   ❌ ${displayName} tests failed: ${errorMsg}`);
+    console.log(`   ❌ ${displayName} validation failed: ${errorMsg}`);
     return { success: false, error: errorMsg };
   }
 }
@@ -196,6 +203,8 @@ async function updateAllPackages(benchmarkDir: string) {
   let updatedCount = 0;
   let failedCount = 0;
   let skippedCount = 0;
+  const updatedPackages: string[] = [];
+  const failedPackages: string[] = [];
 
   // Get packages that need updates
   const packagesToUpdate = Object.entries(versions.libraries)
@@ -204,6 +213,19 @@ async function updateAllPackages(benchmarkDir: string) {
 
   if (packagesToUpdate.length === 0) {
     console.log('\n✨ All packages are already up to date!\n');
+
+    // Output for GitHub Actions
+    if (process.env.GITHUB_OUTPUT) {
+      const output = [
+        `updated_count=0`,
+        `failed_count=0`,
+        `has_updates=false`,
+        `updated_packages=[]`,
+        `failed_packages=[]`
+      ].join('\n');
+      writeFileSync(process.env.GITHUB_OUTPUT, output + '\n', { flag: 'a' });
+    }
+
     return;
   }
 
@@ -215,10 +237,15 @@ async function updateAllPackages(benchmarkDir: string) {
 
     if (success) {
       updatedCount++;
+      updatedPackages.push(packageName);
     } else {
-      const packageInfo = versions.libraries[packageName];
+      // Re-read versions to check if it was marked incompatible
+      const currentVersions: VersionTracker = JSON.parse(readFileSync(versionsPath, 'utf-8'));
+      const packageInfo = currentVersions.libraries[packageName];
+
       if (packageInfo.incompatible) {
         failedCount++;
+        failedPackages.push(packageName);
       } else {
         skippedCount++;
       }
@@ -229,7 +256,13 @@ async function updateAllPackages(benchmarkDir: string) {
   console.log('═'.repeat(60));
   console.log('\n📊 Update Summary:\n');
   console.log(`   ✅ Successfully updated: ${updatedCount}`);
+  if (updatedPackages.length > 0) {
+    console.log(`      ${updatedPackages.join(', ')}`);
+  }
   console.log(`   ❌ Incompatible (rolled back): ${failedCount}`);
+  if (failedPackages.length > 0) {
+    console.log(`      ${failedPackages.join(', ')}`);
+  }
   console.log(`   ⏭️  Skipped (already latest): ${skippedCount}`);
   console.log();
 
@@ -238,7 +271,9 @@ async function updateAllPackages(benchmarkDir: string) {
     const output = [
       `updated_count=${updatedCount}`,
       `failed_count=${failedCount}`,
-      `has_updates=${updatedCount > 0}`
+      `has_updates=${updatedCount > 0}`,
+      `updated_packages=${JSON.stringify(updatedPackages)}`,
+      `failed_packages=${JSON.stringify(failedPackages)}`
     ].join('\n');
 
     writeFileSync(process.env.GITHUB_OUTPUT, output + '\n', { flag: 'a' });
