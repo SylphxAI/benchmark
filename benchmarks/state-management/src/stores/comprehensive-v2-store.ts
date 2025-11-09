@@ -6,7 +6,10 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { create } from 'zustand';
 import { atom } from 'jotai';
-import { makeAutoObservable, runInAction, reaction } from 'mobx';
+import { makeAutoObservable, runInAction, reaction, configure } from 'mobx';
+
+// Disable MobX strict mode for benchmarking
+configure({ enforceActions: 'never' });
 import { proxy, subscribe } from 'valtio';
 import { signal, computed, effect } from '@preact/signals-core';
 import { createSignal, createMemo, createEffect } from 'solid-js';
@@ -86,7 +89,7 @@ const comprehensiveSlice = createSlice({
     history: [],
     loading: false,
     error: null,
-    cache: new Map(),
+    cache: {}, // Use plain object instead of Map for Redux compatibility
     optimisticData: null
   },
   reducers: {
@@ -160,14 +163,22 @@ const comprehensiveSlice = createSlice({
 export const reduxStoreV2 = configureStore({
   reducer: {
     comprehensive: comprehensiveSlice.reducer
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false // Disable serializable check for benchmarking
+    })
 });
 
 export const reduxActionsV2 = {
   // Basic operations
   createStore: () => {
     const store = configureStore({
-      reducer: { comprehensive: comprehensiveSlice.reducer }
+      reducer: { comprehensive: comprehensiveSlice.reducer },
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          serializableCheck: false // Disable serializable check for benchmarking
+        })
     });
     return store;
   },
