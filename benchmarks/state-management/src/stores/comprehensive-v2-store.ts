@@ -146,6 +146,13 @@ const comprehensiveSlice = createSlice({
     },
     setUndefinedValue: (state) => {
       state.error = undefined;
+    },
+    // Add these actions to support optimistic update properly
+    optimisticUpdate: (state) => {
+      const newUsers = [...state.users, { id: Date.now(), name: 'Optimistic User' }];
+      state.optimisticData = newUsers;
+      state.users = newUsers;
+      state.optimisticData = null;
     }
   }
 });
@@ -158,21 +165,30 @@ export const reduxStoreV2 = configureStore({
 
 export const reduxActionsV2 = {
   // Basic operations
-  createStore: () => configureStore({
-    reducer: { comprehensive: comprehensiveSlice.reducer }
-  }),
+  createStore: () => {
+    const store = configureStore({
+      reducer: { comprehensive: comprehensiveSlice.reducer }
+    });
+    return store;
+  },
 
   increment: () => {
+    const previousCount = reduxStoreV2.getState().comprehensive.count;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.increment());
+    return reduxStoreV2.getState().comprehensive.count - previousCount;
   },
 
   // Array operations
   spliceUser: (index, deleteCount, item) => {
+    const previousLength = reduxStoreV2.getState().comprehensive.users.length;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.spliceUser([index, deleteCount, item]));
+    return reduxStoreV2.getState().comprehensive.users.length - previousLength;
   },
 
   sortUsers: (key) => {
+    const previousUsers = reduxStoreV2.getState().comprehensive.users;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.sortUsers(key));
+    return reduxStoreV2.getState().comprehensive.users.length;
   },
 
   findUser: (id) => {
@@ -199,10 +215,10 @@ export const reduxActionsV2 = {
 
   // Optimistic updates
   optimisticUpdate: () => {
-    const currentState = reduxStoreV2.getState().comprehensive;
-    const newUsers = [...currentState.users, { id: Date.now(), name: 'Optimistic User' }];
-    reduxStoreV2.dispatch(comprehensiveSlice.actions.setOptimisticData(newUsers));
-    reduxStoreV2.dispatch(comprehensiveSlice.actions.confirmOptimisticUpdate());
+    const currentState = reduxStoreV2.getState();
+    const previousCount = currentState.users.length;
+    reduxStoreV2.dispatch(comprehensiveSlice.actions.optimisticUpdate());
+    return reduxStoreV2.getState().users.length - previousCount;
   },
 
   // Undo/Redo
@@ -211,18 +227,27 @@ export const reduxActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = reduxStoreV2.getState().comprehensive.count;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.saveToHistory());
     reduxStoreV2.dispatch(comprehensiveSlice.actions.increment());
     reduxStoreV2.dispatch(comprehensiveSlice.actions.setTenLevelNested(Math.random()));
+    const currentCount = reduxStoreV2.getState().comprehensive.count;
+    return currentCount - previousCount;
   },
 
   // Edge cases
   setNullValue: () => {
+    const previousError = reduxStoreV2.getState().comprehensive.error;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.setNullValue());
+    const currentError = reduxStoreV2.getState().comprehensive.error;
+    return String(currentError !== previousError);
   },
 
   setUndefinedValue: () => {
+    const previousError = reduxStoreV2.getState().comprehensive.error;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.setUndefinedValue());
+    const currentError = reduxStoreV2.getState().comprehensive.error;
+    return String(currentError !== previousError);
   },
 
   // Async operations
@@ -292,7 +317,11 @@ export const zustandStoreV2 = create((set, get) => ({
   history: [],
   optimisticData: null,
 
-  increment: () => set(state => ({ count: state.count + 1 })),
+  increment: () => {
+    const currentCount = get().count;
+    set(state => ({ count: state.count + 1 }));
+    return get().count - currentCount;
+  },
 
   spliceUser: (index, deleteCount, item) => set(state => {
     const newUsers = [...state.users];
@@ -367,8 +396,10 @@ export const zustandStoreV2 = create((set, get) => ({
   }),
 
   optimisticUpdate: () => {
-    const newUsers = [...get().users, { id: Date.now(), name: 'Optimistic User' }];
+    const currentUsers = get().users;
+    const newUsers = [...currentUsers, { id: Date.now(), name: 'Optimistic User' }];
     set({ optimisticData: newUsers, users: newUsers });
+    return newUsers.length - currentUsers.length;
   },
 
   undo: () => {
@@ -380,13 +411,26 @@ export const zustandStoreV2 = create((set, get) => ({
 
   batchComplexState: () => {
     const currentState = get();
+    const previousCount = currentState.count;
     set({ history: [...currentState.history, currentState] });
     set(state => ({ count: state.count + 1 }));
     get().setTenLevelNested(Math.random());
+    const currentCount = get().count;
+    return currentCount - previousCount;
   },
 
-  setNullValue: () => set({ error: null }),
-  setUndefinedValue: () => set({ error: undefined }),
+  setNullValue: () => {
+    const previousError = get().error;
+    set({ error: null });
+    const currentError = get().error;
+    return String(currentError !== previousError);
+  },
+  setUndefinedValue: () => {
+    const previousError = get().error;
+    set({ error: undefined });
+    const currentError = get().error;
+    return String(currentError !== previousError);
+  },
 
   loadAsyncData: async () => {
     await new Promise(resolve => setTimeout(resolve, 0));
@@ -463,8 +507,10 @@ export const jotaiActionsV2 = {
   },
 
   increment: () => {
+    const previousCount = jotaiStore.count;
     jotaiStore.count++;
     notifyListeners();
+    return jotaiStore.count - previousCount;
   },
 
   spliceUser: (index, deleteCount, item) => {
@@ -507,10 +553,12 @@ export const jotaiActionsV2 = {
   },
 
   optimisticUpdate: () => {
+    const previousCount = jotaiStore.users.length;
     jotaiStore.optimisticData = [...jotaiStore.users, { id: Date.now(), name: 'Optimistic User' }];
     jotaiStore.users = jotaiStore.optimisticData;
     jotaiStore.optimisticData = null;
     notifyListeners();
+    return jotaiStore.users.length - previousCount;
   },
 
   undo: () => {
@@ -522,6 +570,7 @@ export const jotaiActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = jotaiStore.count;
     jotaiStore.history.push({
       count: jotaiStore.count,
       users: [...jotaiStore.users],
@@ -531,14 +580,17 @@ export const jotaiActionsV2 = {
     jotaiStore.count++;
     jotaiStore.deepNested.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value = Math.random();
     notifyListeners();
+    return jotaiStore.count - previousCount;
   },
 
   setNullValue: () => {
-    // No error field in simplified store
+    jotaiStore.cache = null; // Use cache field for null testing
+    return 'null';
   },
 
   setUndefinedValue: () => {
-    // No error field in simplified store
+    jotaiStore.cache = undefined; // Use cache field for undefined testing
+    return 'undefined';
   },
 
   loadAsyncData: async () => {
@@ -573,7 +625,9 @@ class MobxStoreV2 {
   }
 
   increment = () => {
+    const previousCount = this.count;
     this.count++;
+    return this.count - previousCount;
   };
 
   spliceUser = (index, deleteCount, item) => {
@@ -614,9 +668,11 @@ class MobxStoreV2 {
   };
 
   optimisticUpdate = () => {
+    const previousCount = this.users.length;
     this.optimisticData = [...this.users, { id: Date.now(), name: 'Optimistic User' }];
     this.users = this.optimisticData;
     this.optimisticData = null;
+    return this.users.length - previousCount;
   };
 
   undo = () => {
@@ -627,6 +683,7 @@ class MobxStoreV2 {
   };
 
   batchComplexState = () => {
+    const previousCount = this.count;
     runInAction(() => {
       this.history.push({
         count: this.count,
@@ -637,14 +694,19 @@ class MobxStoreV2 {
       this.count++;
       this.setTenLevelNested(Math.random());
     });
+    return this.count - previousCount;
   };
 
   setNullValue = () => {
+    const previousError = this.error;
     this.error = null;
+    return String(this.error !== previousError);
   };
 
   setUndefinedValue = () => {
+    const previousError = this.error;
     this.error = undefined;
+    return String(this.error !== previousError);
   };
 
   loadAsyncData = async () => {
@@ -700,7 +762,9 @@ export const valtioActionsV2 = {
   createStore: () => proxy({ count: 0 }),
 
   increment: () => {
+    const previousCount = valtioStoreV2.count;
     valtioStoreV2.count++;
+    return valtioStoreV2.count - previousCount;
   },
 
   spliceUser: (index, deleteCount, item) => {
@@ -739,9 +803,11 @@ export const valtioActionsV2 = {
   },
 
   optimisticUpdate: () => {
+    const previousCount = valtioStoreV2.users.length;
     valtioStoreV2.optimisticData = [...valtioStoreV2.users, { id: Date.now(), name: 'Optimistic User' }];
     valtioStoreV2.users = valtioStoreV2.optimisticData;
     valtioStoreV2.optimisticData = null;
+    return valtioStoreV2.users.length - previousCount;
   },
 
   undo: () => {
@@ -752,6 +818,7 @@ export const valtioActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = valtioStoreV2.count;
     valtioStoreV2.history.push({
       count: valtioStoreV2.count,
       users: [...valtioStoreV2.users],
@@ -760,14 +827,19 @@ export const valtioActionsV2 = {
     });
     valtioStoreV2.count++;
     valtioStoreV2.deepNested.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value = Math.random();
+    return valtioStoreV2.count - previousCount;
   },
 
   setNullValue: () => {
+    const previousError = valtioStoreV2.error;
     valtioStoreV2.error = null;
+    return String(valtioStoreV2.error !== previousError);
   },
 
   setUndefinedValue: () => {
+    const previousError = valtioStoreV2.error;
     valtioStoreV2.error = undefined;
+    return String(valtioStoreV2.error !== previousError);
   },
 
   loadAsyncData: async () => {
@@ -793,6 +865,7 @@ const preactUsersSignal = signal(largeArray);
 const preactDeepNestedSignal = signal(createDeepNested());
 const preactFormDataSignal = signal(createFormState());
 const preactOptimisticDataSignal = signal(null);
+const preactErrorSignal = signal(undefined);
 
 const preactComputedValue = computed(() => preactCountSignal.value * 2);
 const preactDeepComputedValue = computed(() => {
@@ -803,7 +876,9 @@ export const preactActionsV2 = {
   createStore: () => signal(0),
 
   increment: () => {
+    const previousValue = preactCountSignal.value;
     preactCountSignal.value++;
+    return preactCountSignal.value - previousValue;
   },
 
   spliceUser: (index, deleteCount, item) => {
@@ -877,10 +952,12 @@ export const preactActionsV2 = {
   },
 
   optimisticUpdate: () => {
+    const previousCount = preactUsersSignal.value.length;
     const newUsers = [...preactUsersSignal.value, { id: Date.now(), name: 'Optimistic User' }];
     preactOptimisticDataSignal.value = newUsers;
     preactUsersSignal.value = newUsers;
     preactOptimisticDataSignal.value = null;
+    return newUsers.length - previousCount;
   },
 
   undo: () => {
@@ -888,16 +965,22 @@ export const preactActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = preactCountSignal.value;
     preactCountSignal.value++;
     preactDeepNestedSignal.value.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value = Math.random();
+    return preactCountSignal.value - previousCount;
   },
 
   setNullValue: () => {
-    // Would need an error signal
+    const previousError = preactErrorSignal.value;
+    preactErrorSignal.value = null;
+    return String(preactErrorSignal.value !== previousError);
   },
 
   setUndefinedValue: () => {
-    // Would need an error signal
+    const previousError = preactErrorSignal.value;
+    preactErrorSignal.value = undefined;
+    return String(preactErrorSignal.value !== previousError);
   },
 
   loadAsyncData: async () => {
@@ -923,6 +1006,7 @@ const [solidUsersSignal, setSolidUsers] = createSignal(largeArray);
 const [solidDeepNestedSignal, setSolidDeepNested] = createSignal(createDeepNested());
 const [solidFormDataSignal, setSolidFormData] = createSignal(createFormState());
 const [solidOptimisticDataSignal, setSolidOptimisticData] = createSignal(null);
+const [solidErrorSignal, setSolidError] = createSignal(undefined);
 
 const solidComputedValue = createMemo(() => solidCountSignal() * 2);
 const solidDeepComputedValue = createMemo(() => {
@@ -933,7 +1017,9 @@ export const solidActionsV2 = {
   createStore: () => createSignal(0),
 
   increment: () => {
+    const previousValue = solidCountSignal();
     setSolidCount(c => c + 1);
+    return solidCountSignal() - previousValue;
   },
 
   spliceUser: (index, deleteCount, item) => {
@@ -1009,10 +1095,12 @@ export const solidActionsV2 = {
   },
 
   optimisticUpdate: () => {
+    const previousCount = solidUsersSignal().length;
     const newUsers = [...solidUsersSignal(), { id: Date.now(), name: 'Optimistic User' }];
     setSolidOptimisticData(newUsers);
     setSolidUsers(newUsers);
     setSolidOptimisticData(null);
+    return newUsers.length - previousCount;
   },
 
   undo: () => {
@@ -1020,18 +1108,24 @@ export const solidActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = solidCountSignal();
     setSolidCount(c => c + 1);
     const currentDeep = solidDeepNestedSignal();
     currentDeep.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value = Math.random();
     setSolidDeepNested({ ...currentDeep });
+    return solidCountSignal() - previousCount;
   },
 
   setNullValue: () => {
-    // Would need an error signal
+    const previousError = solidErrorSignal();
+    setSolidError(null);
+    return String(solidErrorSignal() !== previousError);
   },
 
   setUndefinedValue: () => {
-    // Would need an error signal
+    const previousError = solidErrorSignal();
+    setSolidError(undefined);
+    return String(solidErrorSignal() !== previousError);
   },
 
   loadAsyncData: async () => {
@@ -1057,6 +1151,7 @@ const zenUsersStore = zen(largeArray);
 const zenDeepNestedStore = zen(createDeepNested());
 const zenFormDataStore = zen(createFormState());
 const zenOptimisticDataStore = zen(null);
+const zenErrorStore = zen(undefined);
 
 const zenComputedValue = zenComputed([zenCountStore], (count) => count * 2);
 const zenDeepComputedValue = zenComputed([zenDeepNestedStore], (deep) => {
@@ -1067,7 +1162,9 @@ export const zenActionsV2 = {
   createStore: () => zen(0),
 
   increment: () => {
+    const previousValue = get(zenCountStore);
     set(zenCountStore, get(zenCountStore) + 1);
+    return get(zenCountStore) - previousValue;
   },
 
   spliceUser: (index, deleteCount, item) => {
@@ -1151,6 +1248,7 @@ export const zenActionsV2 = {
     set(zenOptimisticDataStore, newUsers);
     set(zenUsersStore, newUsers);
     set(zenOptimisticDataStore, null);
+    return newUsers.length - currentUsers.length;
   },
 
   undo: () => {
@@ -1158,18 +1256,24 @@ export const zenActionsV2 = {
   },
 
   batchComplexState: () => {
+    const previousCount = get(zenCountStore);
     set(zenCountStore, get(zenCountStore) + 1);
     const current = get(zenDeepNestedStore);
     current.level1.level2.level3.level4.level5.level6.level7.level8.level9.level10.value = Math.random();
     set(zenDeepNestedStore, { ...current });
+    return get(zenCountStore) - previousCount;
   },
 
   setNullValue: () => {
-    // Would need an error store
+    const previousError = get(zenErrorStore);
+    set(zenErrorStore, null);
+    return String(get(zenErrorStore) !== previousError);
   },
 
   setUndefinedValue: () => {
-    // Would need an error store
+    const previousError = get(zenErrorStore);
+    set(zenErrorStore, undefined);
+    return String(get(zenErrorStore) !== previousError);
   },
 
   loadAsyncData: async () => {
