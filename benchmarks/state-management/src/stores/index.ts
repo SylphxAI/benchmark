@@ -11,3 +11,4 @@ export * from './valtio-store';
 export * from './preact-store';
 export * from './solid-store';
 export * from './zen-store';
+export * from './comprehensive-v2-store';
