@@ -13,6 +13,7 @@ Comprehensive performance testing of JavaScript immutability libraries and patte
 - [✨ Feature Comparison](#-feature-comparison)
 - [📜 Historical Results](#-historical-results)
 - [📊 Detailed Results](#-detailed-results)
+  - [📑 Test Categories](#-test-categories)
 - [🚀 Running Benchmarks](#-running-benchmarks)
 - [ℹ️ About](#️-about)
 
@@ -122,7 +123,28 @@ Comparison of core features and capabilities across immutability libraries
 
 ## 📊 Detailed Results
 
-### JSON Patches - Generate
+### 📑 Test Categories
+
+- [JSON Patches - Generate](#json-patches-generate)
+- [JSON Patches - Apply](#json-patches-apply)
+- [JSON Patches - Roundtrip](#json-patches-roundtrip)
+- [Map - Set Operation](#map-set-operation)
+- [Map - Update Nested Value](#map-update-nested-value)
+- [Set - Add Operation](#set-add-operation)
+- [Set - Delete Operation](#set-delete-operation)
+- [Map - Large (100 items)](#map-large-100-items-)
+- [Set - Large (100 items)](#set-large-100-items-)
+- [Undo/Redo - Inverse Patches](#undo-redo-inverse-patches)
+- [Simple Object Update](#simple-object-update)
+- [Nested Object Update](#nested-object-update)
+- [Array Push](#array-push)
+- [Array Remove](#array-remove)
+- [Array Update](#array-update)
+- [Deep Nested Update (5 levels)](#deep-nested-update-5-levels-)
+- [Large Array Update (1000 items)](#large-array-update-1000-items-)
+- [Multiple Updates (3 changes)](#multiple-updates-3-changes-)
+
+### JSON Patches - Generate {#json-patches-generate}
 
 **Performance Comparison:**
 
@@ -136,7 +158,7 @@ Comparison of core features and capabilities across immutability libraries
 | 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 215.28K | ±2.23% | 4.6450ms | 9.4080ms | 107.64K |
 | 🥈 | **[Immer](https://github.com/immerjs/immer)** | 110.72K | ±1.69% | 9.0315ms | 19.7170ms | 55.36K |
 
-### JSON Patches - Apply
+### JSON Patches - Apply {#json-patches-apply}
 
 **Performance Comparison:**
 
@@ -150,7 +172,7 @@ Comparison of core features and capabilities across immutability libraries
 | 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 991.54K | ±0.21% | 1.0085ms | 1.6320ms | 495.77K |
 | 🥈 | **[Immer](https://github.com/immerjs/immer)** | 129.99K | ±1.78% | 7.6929ms | 16.2700ms | 65.00K |
 
-### JSON Patches - Roundtrip
+### JSON Patches - Roundtrip {#json-patches-roundtrip}
 
 **Performance Comparison:**
 
@@ -164,7 +186,7 @@ Comparison of core features and capabilities across immutability libraries
 | 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 171.96K | ±2.17% | 5.8153ms | 11.3810ms | 85.98K |
 | 🥈 | **[Immer](https://github.com/immerjs/immer)** | 60.07K | ±2.08% | 16.6480ms | 30.9680ms | 30.03K |
 
-### Map - Set Operation
+### Map - Set Operation {#map-set-operation}
 
 **Performance Comparison:**
 
@@ -182,7 +204,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **4.23x faster** than Immer in this category.
 
-### Map - Update Nested Value
+### Map - Update Nested Value {#map-update-nested-value}
 
 **Performance Comparison:**
 
@@ -200,7 +222,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **8.24x faster** than Immer in this category.
 
-### Set - Add Operation
+### Set - Add Operation {#set-add-operation}
 
 **Performance Comparison:**
 
@@ -218,7 +240,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **4.97x faster** than Immer in this category.
 
-### Set - Delete Operation
+### Set - Delete Operation {#set-delete-operation}
 
 **Performance Comparison:**
 
@@ -236,7 +258,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **4.54x faster** than Immer in this category.
 
-### Map - Large (100 items)
+### Map - Large (100 items) {#map-large-100-items-}
 
 **Performance Comparison:**
 
@@ -254,7 +276,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **2.28x faster** than Immer in this category.
 
-### Set - Large (100 items)
+### Set - Large (100 items) {#set-large-100-items-}
 
 **Performance Comparison:**
 
@@ -272,7 +294,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Craft is **16.32x faster** than Immer in this category.
 
-### Undo/Redo - Inverse Patches
+### Undo/Redo - Inverse Patches {#undo-redo-inverse-patches}
 
 **Performance Comparison:**
 
@@ -286,7 +308,7 @@ Comparison of core features and capabilities across immutability libraries
 | 🥇 | **[Craft](https://github.com/sylphxltd/craft)** | 224.69K | ±0.67% | 4.4505ms | 5.4410ms | 112.35K |
 | 🥈 | **[Immer](https://github.com/immerjs/immer)** | 69.72K | ±0.66% | 14.3441ms | 27.3110ms | 34.86K |
 
-### Simple Object Update
+### Simple Object Update {#simple-object-update}
 
 **Performance Comparison:**
 
@@ -311,7 +333,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Spread is **112.52x faster** than Seamless Immutable in this category.
 
-### Nested Object Update
+### Nested Object Update {#nested-object-update}
 
 **Performance Comparison:**
 
@@ -336,7 +358,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Spread is **319.36x faster** than Seamless Immutable in this category.
 
-### Array Push
+### Array Push {#array-push}
 
 **Performance Comparison:**
 
@@ -361,7 +383,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Spread is **178.44x faster** than Seamless Immutable in this category.
 
-### Array Remove
+### Array Remove {#array-remove}
 
 **Performance Comparison:**
 
@@ -386,7 +408,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Filter is **193.01x faster** than Seamless Immutable in this category.
 
-### Array Update
+### Array Update {#array-update}
 
 **Performance Comparison:**
 
@@ -411,7 +433,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Map is **344.90x faster** than Seamless Immutable in this category.
 
-### Deep Nested Update (5 levels)
+### Deep Nested Update (5 levels) {#deep-nested-update-5-levels-}
 
 **Performance Comparison:**
 
@@ -436,7 +458,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Native Spread is **390.39x faster** than Seamless Immutable in this category.
 
-### Large Array Update (1000 items)
+### Large Array Update (1000 items) {#large-array-update-1000-items-}
 
 **Performance Comparison:**
 
@@ -461,7 +483,7 @@ Comparison of core features and capabilities across immutability libraries
 
 **Key Insight:** Mutative is **1377.65x faster** than Seamless Immutable in this category.
 
-### Multiple Updates (3 changes)
+### Multiple Updates (3 changes) {#multiple-updates-3-changes-}
 
 **Performance Comparison:**
 
@@ -506,4 +528,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T13:50:38.181Z*
+*Last generated: 2025-11-09T13:52:52.503Z*

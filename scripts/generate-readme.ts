@@ -377,7 +377,14 @@ function generateReadme(benchmarkDir: string) {
   const categoryTitle = getCategoryTitle(categoryName);
   const categoryDescription = getCategoryDescription(categoryName);
 
-  // Generate table of contents
+  // Parse benchmark results
+  const groupedResults = parseResultsFromLatestRun(resultsDir);
+  if (!groupedResults) {
+    console.error('❌ Failed to parse results');
+    return;
+  }
+
+  // Generate table of contents after parsing results
   const tableOfContents =
 `## 📑 Table of Contents
 
@@ -388,18 +395,11 @@ function generateReadme(benchmarkDir: string) {
 - [📦 Bundle Size Rankings](#-bundle-size-rankings)
 - [🎯 Feature Coverage Rankings](#-feature-coverage-rankings)${featureMatrix ? '\n- [✨ Feature Comparison](#-feature-comparison)' : ''}
 - [📜 Historical Results](#-historical-results)
-- [📊 Detailed Results](#-detailed-results)
+- [📊 Detailed Results](#-detailed-results)${groupedResults.size > 1 ? '\n  - [📑 Test Categories](#-test-categories)' : ''}
 - [🚀 Running Benchmarks](#-running-benchmarks)
 - [ℹ️ About](#️-about)
 
 `;
-
-  // Parse benchmark results
-  const groupedResults = parseResultsFromLatestRun(resultsDir);
-  if (!groupedResults) {
-    console.error('❌ Failed to parse results');
-    return;
-  }
 
   // Start building README
   let readme = `# ${categoryTitle}\n\n`;
@@ -564,8 +564,19 @@ function generateReadme(benchmarkDir: string) {
   // Detailed results for each category
   readme += '## 📊 Detailed Results\n\n';
 
+  // Generate table of contents for test categories
+  if (groupedResults.size > 1) {
+    readme += '### 📑 Test Categories\n\n';
+    for (const [category] of groupedResults.entries()) {
+      const anchorName = category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      readme += `- [${category}](#${anchorName})\n`;
+    }
+    readme += '\n';
+  }
+
   for (const [category, results] of groupedResults.entries()) {
-    readme += `### ${category}\n\n`;
+    const anchorName = category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    readme += `### ${category} {#${anchorName}}\n\n`;
 
     // Add ASCII performance chart (exclude benchmarks from config)
     readme += '**Performance Comparison:**\n\n';

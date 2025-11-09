@@ -13,6 +13,7 @@ Performance comparison of JavaScript routing libraries and frameworks.
 - [✨ Feature Comparison](#-feature-comparison)
 - [📜 Historical Results](#-historical-results)
 - [📊 Detailed Results](#-detailed-results)
+  - [📑 Test Categories](#-test-categories)
 - [🚀 Running Benchmarks](#-running-benchmarks)
 - [ℹ️ About](#️-about)
 
@@ -109,7 +110,19 @@ Comparison of core features and capabilities across React router libraries
 
 ## 📊 Detailed Results
 
-### Static Route Matching
+### 📑 Test Categories
+
+- [Static Route Matching](#static-route-matching)
+- [Simple Route Matching](#simple-route-matching)
+- [Dynamic Route Matching (1 param)](#dynamic-route-matching-1-param-)
+- [Nested Dynamic Routes (2 params)](#nested-dynamic-routes-2-params-)
+- [Wildcard Route Matching](#wildcard-route-matching)
+- [Optional Parameter Route (with param)](#optional-parameter-route-with-param-)
+- [Optional Parameter Route (without param)](#optional-parameter-route-without-param-)
+- [Mixed Route Matching (realistic usage)](#mixed-route-matching-realistic-usage-)
+- [Sequential Route Matching (worst case)](#sequential-route-matching-worst-case-)
+
+### Static Route Matching {#static-route-matching}
 
 **Performance Comparison:**
 
@@ -127,7 +140,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **220.98x faster** than React Router in this category.
 
-### Simple Route Matching
+### Simple Route Matching {#simple-route-matching}
 
 **Performance Comparison:**
 
@@ -145,7 +158,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **171.36x faster** than React Router in this category.
 
-### Dynamic Route Matching (1 param)
+### Dynamic Route Matching (1 param) {#dynamic-route-matching-1-param-}
 
 **Performance Comparison:**
 
@@ -163,7 +176,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **61.46x faster** than React Router in this category.
 
-### Nested Dynamic Routes (2 params)
+### Nested Dynamic Routes (2 params) {#nested-dynamic-routes-2-params-}
 
 **Performance Comparison:**
 
@@ -181,7 +194,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **28.20x faster** than React Router in this category.
 
-### Wildcard Route Matching
+### Wildcard Route Matching {#wildcard-route-matching}
 
 **Performance Comparison:**
 
@@ -199,7 +212,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **61.20x faster** than React Router in this category.
 
-### Optional Parameter Route (with param)
+### Optional Parameter Route (with param) {#optional-parameter-route-with-param-}
 
 **Performance Comparison:**
 
@@ -217,7 +230,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **27.53x faster** than React Router in this category.
 
-### Optional Parameter Route (without param)
+### Optional Parameter Route (without param) {#optional-parameter-route-without-param-}
 
 **Performance Comparison:**
 
@@ -235,7 +248,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **41.13x faster** than React Router in this category.
 
-### Mixed Route Matching (realistic usage)
+### Mixed Route Matching (realistic usage) {#mixed-route-matching-realistic-usage-}
 
 **Performance Comparison:**
 
@@ -253,7 +266,7 @@ Comparison of core features and capabilities across React router libraries
 
 **Key Insight:** Zen Router is **68.15x faster** than React Router in this category.
 
-### Sequential Route Matching (worst case)
+### Sequential Route Matching (worst case) {#sequential-route-matching-worst-case-}
 
 **Performance Comparison:**
 
@@ -291,4 +304,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T13:50:38.533Z*
+*Last generated: 2025-11-09T13:52:52.957Z*

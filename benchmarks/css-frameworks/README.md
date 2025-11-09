@@ -13,6 +13,7 @@ Professional performance comparison of CSS-in-JS and utility-first CSS framework
 - [✨ Feature Comparison](#-feature-comparison)
 - [📜 Historical Results](#-historical-results)
 - [📊 Detailed Results](#-detailed-results)
+  - [📑 Test Categories](#-test-categories)
 - [🚀 Running Benchmarks](#-running-benchmarks)
 - [ℹ️ About](#️-about)
 
@@ -114,7 +115,17 @@ Comparison of core features and capabilities across CSS frameworks
 
 ## 📊 Detailed Results
 
-### Apply 100 inline styles
+### 📑 Test Categories
+
+- [Apply 100 inline styles](#apply-100-inline-styles)
+- [Conditional styling (1000 iterations)](#conditional-styling-1000-iterations-)
+- [String concatenation (complex className)](#string-concatenation-complex-classname-)
+- [Theme toggle (dark/light mode)](#theme-toggle-dark-light-mode-)
+- [Responsive breakpoint matching](#responsive-breakpoint-matching)
+- [Cold Build Time (Small App)](#cold-build-time-small-app-)
+- [CSS Output Size (Small App - 10 components)](#css-output-size-small-app-10-components-)
+
+### Apply 100 inline styles {#apply-100-inline-styles}
 
 **Performance Comparison:**
 
@@ -134,7 +145,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** Silk - Apply styles is **1.12x faster** than Tailwind CSS - Apply styles in this category.
 
-### Conditional styling (1000 iterations)
+### Conditional styling (1000 iterations) {#conditional-styling-1000-iterations-}
 
 **Performance Comparison:**
 
@@ -154,7 +165,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** Silk - Conditional styles is **1.01x faster** than Panda CSS - Conditional styles in this category.
 
-### String concatenation (complex className)
+### String concatenation (complex className) {#string-concatenation-complex-classname-}
 
 **Performance Comparison:**
 
@@ -174,7 +185,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** Tailwind CSS - Concat 10 classes is **1.04x faster** than Silk - Concat 10 classes in this category.
 
-### Theme toggle (dark/light mode)
+### Theme toggle (dark/light mode) {#theme-toggle-dark-light-mode-}
 
 **Performance Comparison:**
 
@@ -194,7 +205,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** Panda CSS - Toggle theme 1000x is **1.10x faster** than UnoCSS - Toggle theme 1000x in this category.
 
-### Responsive breakpoint matching
+### Responsive breakpoint matching {#responsive-breakpoint-matching}
 
 **Performance Comparison:**
 
@@ -214,7 +225,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** UnoCSS - Match breakpoint 1000x is **1.10x faster** than Panda CSS - Match breakpoint 1000x in this category.
 
-### Cold Build Time (Small App)
+### Cold Build Time (Small App) {#cold-build-time-small-app-}
 
 **Performance Comparison:**
 
@@ -234,7 +245,7 @@ Comparison of core features and capabilities across CSS frameworks
 
 **Key Insight:** Silk is **3.80x faster** than Panda CSS in this category.
 
-### CSS Output Size (Small App - 10 components)
+### CSS Output Size (Small App - 10 components) {#css-output-size-small-app-10-components-}
 
 **Performance Comparison:**
 
@@ -274,4 +285,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T13:50:37.826Z*
+*Last generated: 2025-11-09T13:52:52.055Z*
