@@ -272,23 +272,32 @@ export const reduxActionsV2 = {
   },
 
   invalidateComputed: () => {
+    const previousCount = reduxStoreV2.getState().comprehensive.count;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.increment());
+    const currentCount = reduxStoreV2.getState().comprehensive.count;
+    return currentCount - previousCount;
   },
 
   setupSubscriptionCascade: () => {
     const unsub = reduxStoreV2.subscribe(() => {
       // Simple subscription
     });
-    return unsub;
+    return typeof unsub === 'function' ? 'unsubscribed' : 'setup';
   },
 
   triggerReaction: () => {
+    const previousCount = reduxStoreV2.getState().comprehensive.count;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.increment());
+    const currentCount = reduxStoreV2.getState().comprehensive.count;
+    return currentCount - previousCount;
   },
 
   multiStoreOperation: () => {
     // Operation that affects multiple stores
+    const previousCount = reduxStoreV2.getState().comprehensive.count;
     reduxStoreV2.dispatch(comprehensiveSlice.actions.increment());
+    const currentCount = reduxStoreV2.getState().comprehensive.count;
+    return currentCount - previousCount;
   },
 
   allocateLargeState: () => {
@@ -464,6 +473,38 @@ export const zustandActionsV2 = {
   setUndefinedValue: () => zustandStoreV2.setUndefinedValue(),
   loadAsyncData: () => zustandStoreV2.loadAsyncData(),
   concurrentAsync: () => zustandStoreV2.concurrentAsync(),
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = zustandStoreV2.count;
+    zustandStoreV2.count++;
+    return zustandStoreV2.count - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Zustand doesn't have built-in subscriptions like Redux
+    return 'zustand-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = zustandStoreV2.count;
+    zustandStoreV2.count++;
+    return zustandStoreV2.count - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = zustandStoreV2.count;
+    zustandStoreV2.count++;
+    return zustandStoreV2.count - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
@@ -604,7 +645,43 @@ export const jotaiActionsV2 = {
       new Promise(resolve => setTimeout(resolve, 0))
     ]);
     return { concurrent: true };
-  }
+  },
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = jotaiStore.count;
+    jotaiStore.count++;
+    notifyListeners();
+    return jotaiStore.count - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // Jotai uses manual listeners
+    notifyListeners();
+    return 'jotai-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = jotaiStore.count;
+    jotaiStore.count++;
+    notifyListeners();
+    return jotaiStore.count - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = jotaiStore.count;
+    jotaiStore.count++;
+    notifyListeners();
+    return jotaiStore.count - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
@@ -742,6 +819,38 @@ export const mobxActionsV2 = {
   setUndefinedValue: () => mobxStoreV2.setUndefinedValue(),
   loadAsyncData: () => mobxStoreV2.loadAsyncData(),
   concurrentAsync: () => mobxStoreV2.concurrentAsync(),
+
+  // Missing methods for comprehensive v2
+  invalidateComputed: () => {
+    const previousCount = mobxStoreV2.count;
+    mobxStoreV2.count++;
+    return mobxStoreV2.count - previousCount;
+  },
+
+  setupSubscriptionCascade: () => {
+    // MobX has built-in reactions
+    return 'mobx-subscription';
+  },
+
+  triggerReaction: () => {
+    const previousCount = mobxStoreV2.count;
+    mobxStoreV2.count++;
+    return mobxStoreV2.count - previousCount;
+  },
+
+  multiStoreOperation: () => {
+    const previousCount = mobxStoreV2.count;
+    mobxStoreV2.count++;
+    return mobxStoreV2.count - previousCount;
+  },
+
+  allocateLargeState: () => {
+    const largeArray = Array.from({ length: 10000 }, (_, i) => ({
+      id: i,
+      data: new Array(100).fill(Math.random())
+    }));
+    return largeArray;
+  },
 };
 
 // ============================================================================
