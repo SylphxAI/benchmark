@@ -1,4 +1,7 @@
-import { makeAutoObservable, runInAction, autorun, computed, observable } from 'mobx';
+import { makeAutoObservable, runInAction, autorun, computed, observable, configure } from 'mobx';
+
+// Disable MobX strict mode for benchmarking
+configure({ enforceActions: 'never' });
 
 export class MobXStore {
   count = 0;
