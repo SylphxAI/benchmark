@@ -196,6 +196,10 @@ jobs:
       - name: Install root dependencies
         run: npm ci
 
+      - name: Install state-management dependencies
+        working-directory: benchmarks/state-management
+        run: npm ci
+
       - name: Update packages incrementally
         id: update
         run: npx tsx scripts/update-single-package.ts benchmarks/state-management
@@ -249,6 +253,10 @@ jobs:
       - name: Install root dependencies
         run: npm ci
 
+      - name: Install immutability dependencies
+        working-directory: benchmarks/immutability
+        run: npm ci
+
       - name: Update packages incrementally
         id: update
         run: npx tsx scripts/update-single-package.ts benchmarks/immutability
@@ -300,6 +308,10 @@ jobs:
           path: benchmarks/router/
 
       - name: Install root dependencies
+        run: npm ci
+
+      - name: Install router dependencies
+        working-directory: benchmarks/router
         run: npm ci
 
       - name: Update packages incrementally
@@ -356,6 +368,10 @@ jobs:
           path: benchmarks/css-frameworks/
 
       - name: Install root dependencies
+        run: npm ci
+
+      - name: Install css-frameworks dependencies
+        working-directory: benchmarks/css-frameworks
         run: npm ci
 
       - name: Update packages incrementally
