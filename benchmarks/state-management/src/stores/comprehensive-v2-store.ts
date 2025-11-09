@@ -10,10 +10,10 @@ import { makeAutoObservable, runInAction, reaction, configure } from 'mobx';
 
 // Disable MobX strict mode for benchmarking
 configure({ enforceActions: 'never' });
-import { proxy, subscribe } from 'valtio';
+import { proxy, subscribe as valtioSubscribe } from 'valtio';
 import { signal, computed, effect } from '@preact/signals-core';
 import { createSignal, createMemo, createEffect } from 'solid-js';
-import { zen, get, set, subscribe, runKarma, computed as zenComputed } from '@sylphx/zen';
+import { zen, get, set, subscribe as zenSubscribe, runKarma, computed as zenComputed } from '@sylphx/zen';
 
 // ============================================================================
 // BASE STATE STRUCTURES
@@ -490,9 +490,12 @@ export const zustandActionsV2 = {
 
   // Missing methods for comprehensive v2
   invalidateComputed: () => {
-    const previousCount = zustandStoreV2.count;
-    zustandStoreV2.count++;
-    return zustandStoreV2.count - previousCount;
+    const previousCount = zustandStoreV2.getState().count;
+    // Call increment method properly
+    const incrementResult = zustandStoreV2.getState().increment;
+    // Trigger increment via store action
+    zustandStoreV2.setState(state => ({ count: state.count + 1 }));
+    return zustandStoreV2.getState().count - previousCount;
   },
 
   setupSubscriptionCascade: () => {
@@ -501,15 +504,17 @@ export const zustandActionsV2 = {
   },
 
   triggerReaction: () => {
-    const previousCount = zustandStoreV2.count;
-    zustandStoreV2.count++;
-    return zustandStoreV2.count - previousCount;
+    const previousCount = zustandStoreV2.getState().count;
+    // Trigger increment via store action
+    zustandStoreV2.setState(state => ({ count: state.count + 1 }));
+    return zustandStoreV2.getState().count - previousCount;
   },
 
   multiStoreOperation: () => {
-    const previousCount = zustandStoreV2.count;
-    zustandStoreV2.count++;
-    return zustandStoreV2.count - previousCount;
+    const previousCount = zustandStoreV2.getState().count;
+    // Trigger increment via store action
+    zustandStoreV2.setState(state => ({ count: state.count + 1 }));
+    return zustandStoreV2.getState().count - previousCount;
   },
 
   allocateLargeState: () => {
