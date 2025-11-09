@@ -41,17 +41,17 @@
   <text x="740" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 740, 365)">
     11-09
   </text>
-  <polyline points="60,338.9383938892814 400,338.92711181359897 740,338.8908645587472" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <circle cx="60" cy="338.9383938892814" r="4" fill="#3b82f6"/>
-  <circle cx="400" cy="338.92711181359897" r="4" fill="#3b82f6"/>
-  <circle cx="740" cy="338.8908645587472" r="4" fill="#3b82f6"/>
-  <polyline points="60,286.6539458485404 400,287.8432385262497 740,285.00246416816276" fill="none" stroke="#ef4444" stroke-width="2"/>
-  <circle cx="60" cy="286.6539458485404" r="4" fill="#ef4444"/>
-  <circle cx="400" cy="287.8432385262497" r="4" fill="#ef4444"/>
-  <circle cx="740" cy="285.00246416816276" r="4" fill="#ef4444"/>
-  <polyline points="60,98.19513983911878 400,87.94572182302042 740,85.45454545454547" fill="none" stroke="#10b981" stroke-width="2"/>
-  <circle cx="60" cy="98.19513983911878" r="4" fill="#10b981"/>
-  <circle cx="400" cy="87.94572182302042" r="4" fill="#10b981"/>
+  <polyline points="60,338.94038623490843 400,338.9291253326103 740,338.91460068823955" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="60" cy="338.94038623490843" r="4" fill="#3b82f6"/>
+  <circle cx="400" cy="338.9291253326103" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="338.91460068823955" r="4" fill="#3b82f6"/>
+  <polyline points="60,286.75406186768873 400,287.94112256684986 740,286.6160169405277" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="60" cy="286.75406186768873" r="4" fill="#ef4444"/>
+  <circle cx="400" cy="287.94112256684986" r="4" fill="#ef4444"/>
+  <circle cx="740" cy="286.6160169405277" r="4" fill="#ef4444"/>
+  <polyline points="60,98.64894172559562 400,88.4187590765114 740,85.45454545454547" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="60" cy="98.64894172559562" r="4" fill="#10b981"/>
+  <circle cx="400" cy="88.4187590765114" r="4" fill="#10b981"/>
   <circle cx="740" cy="85.45454545454547" r="4" fill="#10b981"/>
   <rect x="650" y="42" width="12" height="12" fill="#3b82f6"/>
   <text x="668" y="53" font-size="12" fill="#374151">React Router</text>
