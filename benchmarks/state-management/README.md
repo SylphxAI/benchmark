@@ -20,8 +20,8 @@ Professional performance comparison of JavaScript state management libraries.
 ## 📋 Benchmark Information
 
 - **Last Updated:** November 9, 2025
-- **Last Run:** 2:59:32 PM UTC
-- **Environment:** Node.js v20.19.5, linux x64
+- **Last Run:** 5:14:32 PM UTC
+- **Environment:** Node.js v25.0.0, darwin arm64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
 
@@ -154,35 +154,35 @@ Comparison of core features and capabilities across state management libraries
 - [Memory Allocation](#memory-allocation)
 - [Form State Management](#form-state-management)
 - [Optimistic Update](#optimistic-update)
-- [Undo/Redo Operations](#undo-redo-operations)
+- [Undo/Redo Operations](#undoredo-operations)
 - [Batch State Operations](#batch-state-operations)
 - [Null Value Handling](#null-value-handling)
 - [Undefined Value Handling](#undefined-value-handling)
 - [Async State Loading](#async-state-loading)
 - [Concurrent Async Operations](#concurrent-async-operations)
-- [Read (1000x)](#read-1000x-)
-- [Write (no listeners)](#write-no-listeners-)
-- [Write (1 subscriber)](#write-1-subscriber-)
-- [Write (5 subscribers)](#write-5-subscribers-)
+- [Read (1000x)](#read-1000x)
+- [Write (no listeners)](#write-no-listeners)
+- [Write (1 subscriber)](#write-1-subscriber)
+- [Write (5 subscribers)](#write-5-subscribers)
 - [Computed - Cached Read](#computed-cached-read)
 - [Computed - Update](#computed-update)
-- [Chained Computed (3 levels)](#chained-computed-3-levels-)
-- [Batching (100 updates)](#batching-100-updates-)
-- [Subscribe/Unsubscribe](#subscribe-unsubscribe)
+- [Chained Computed (3 levels)](#chained-computed-3-levels)
+- [Batching (100 updates)](#batching-100-updates)
+- [Subscribe/Unsubscribe](#subscribeunsubscribe)
 - [Computed Access](#computed-access)
 - [Nested Update](#nested-update)
 - [Array Push](#array-push)
 - [Loading State Toggle](#loading-state-toggle)
-- [Multiple Subscriptions (10 subscribers)](#multiple-subscriptions-10-subscribers-)
-- [Batch Updates (3 state changes)](#batch-updates-3-state-changes-)
+- [Multiple Subscriptions (10 subscribers)](#multiple-subscriptions-10-subscribers)
+- [Batch Updates (3 state changes)](#batch-updates-3-state-changes)
 - [Array Filter](#array-filter)
 - [Array Remove](#array-remove)
 - [Array Update](#array-update)
-- [Deep Nested Update (5 levels)](#deep-nested-update-5-levels-)
-- [Large State Update (1000 items)](#large-state-update-1000-items-)
+- [Deep Nested Update (5 levels)](#deep-nested-update-5-levels)
+- [Large State Update (1000 items)](#large-state-update-1000-items)
 - [Reactive Async State Access](#reactive-async-state-access)
 
-### Test Fix {#test-fix}
+### Test Fix
 
 **Performance Comparison:**
 
@@ -210,7 +210,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **65.01x faster** than Zustand in this category.
 
-### Store Creation {#store-creation}
+### Store Creation
 
 **Performance Comparison:**
 
@@ -254,7 +254,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zen is **90748.77x faster** than MobX in this category.
 
-### Simple Increment {#simple-increment}
+### Simple Increment
 
 **Performance Comparison:**
 
@@ -298,7 +298,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **64.15x faster** than Zustand in this category.
 
-### High Frequency Read {#high-frequency-read}
+### High Frequency Read
 
 **Performance Comparison:**
 
@@ -326,7 +326,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **2.38x faster** than MobX in this category.
 
-### Burst Updates {#burst-updates}
+### Burst Updates
 
 **Performance Comparison:**
 
@@ -354,7 +354,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **205.21x faster** than Zustand in this category.
 
-### Array Splice Operations {#array-splice-operations}
+### Array Splice Operations
 
 **Performance Comparison:**
 
@@ -382,7 +382,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **423.66x faster** than Redux Toolkit in this category.
 
-### Large Array Sort {#large-array-sort}
+### Large Array Sort
 
 **Performance Comparison:**
 
@@ -410,7 +410,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **49.54x faster** than Redux Toolkit in this category.
 
-### Array Find Operations {#array-find-operations}
+### Array Find Operations
 
 **Performance Comparison:**
 
@@ -438,7 +438,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **81.60x faster** than MobX in this category.
 
-### Deep Object Creation {#deep-object-creation}
+### Deep Object Creation
 
 **Performance Comparison:**
 
@@ -466,7 +466,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **1.25x faster** than MobX in this category.
 
-### 10-Level Nested Update {#10-level-nested-update}
+### 10-Level Nested Update
 
 **Performance Comparison:**
 
@@ -494,7 +494,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **152.89x faster** than Redux Toolkit in this category.
 
-### Deep Read Access {#deep-read-access}
+### Deep Read Access
 
 **Performance Comparison:**
 
@@ -522,7 +522,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **13.31x faster** than MobX in this category.
 
-### Complex Computed Chain {#complex-computed-chain}
+### Complex Computed Chain
 
 **Performance Comparison:**
 
@@ -550,7 +550,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **1.46x faster** than MobX in this category.
 
-### Computed Invalidation {#computed-invalidation}
+### Computed Invalidation
 
 **Performance Comparison:**
 
@@ -578,7 +578,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **57.29x faster** than Zustand in this category.
 
-### Subscription Cascade {#subscription-cascade}
+### Subscription Cascade
 
 **Performance Comparison:**
 
@@ -606,7 +606,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zustand is **6.72x faster** than Redux Toolkit in this category.
 
-### Reaction Performance {#reaction-performance}
+### Reaction Performance
 
 **Performance Comparison:**
 
@@ -634,7 +634,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **120179.78x faster** than Redux Toolkit in this category.
 
-### Multi-Store Operations {#multi-store-operations}
+### Multi-Store Operations
 
 **Performance Comparison:**
 
@@ -662,7 +662,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **120722.39x faster** than Redux Toolkit in this category.
 
-### Memory Allocation {#memory-allocation}
+### Memory Allocation
 
 **Performance Comparison:**
 
@@ -690,7 +690,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zustand is **2.37x faster** than Valtio in this category.
 
-### Form State Management {#form-state-management}
+### Form State Management
 
 **Performance Comparison:**
 
@@ -718,7 +718,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **51105.35x faster** than Redux Toolkit in this category.
 
-### Optimistic Update {#optimistic-update}
+### Optimistic Update
 
 **Performance Comparison:**
 
@@ -746,7 +746,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Preact Signals is **Infinityx faster** than Redux Toolkit in this category.
 
-### Undo/Redo Operations {#undo-redo-operations}
+### Undo/Redo Operations
 
 **Performance Comparison:**
 
@@ -774,7 +774,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **156366.56x faster** than Redux Toolkit in this category.
 
-### Batch State Operations {#batch-state-operations}
+### Batch State Operations
 
 **Performance Comparison:**
 
@@ -802,7 +802,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Preact Signals is **250429.30x faster** than Redux Toolkit in this category.
 
-### Null Value Handling {#null-value-handling}
+### Null Value Handling
 
 **Performance Comparison:**
 
@@ -830,7 +830,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **120759.00x faster** than Redux Toolkit in this category.
 
-### Undefined Value Handling {#undefined-value-handling}
+### Undefined Value Handling
 
 **Performance Comparison:**
 
@@ -858,7 +858,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Jotai is **119939.53x faster** than Redux Toolkit in this category.
 
-### Async State Loading {#async-state-loading}
+### Async State Loading
 
 **Performance Comparison:**
 
@@ -886,7 +886,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **1.02x faster** than Zustand in this category.
 
-### Concurrent Async Operations {#concurrent-async-operations}
+### Concurrent Async Operations
 
 **Performance Comparison:**
 
@@ -914,7 +914,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Redux Toolkit is **1.01x faster** than Zustand in this category.
 
-### Read (1000x) {#read-1000x-}
+### Read (1000x)
 
 **Performance Comparison:**
 
@@ -942,7 +942,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **724.67x faster** than Jotai in this category.
 
-### Write (no listeners) {#write-no-listeners-}
+### Write (no listeners)
 
 **Performance Comparison:**
 
@@ -970,7 +970,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **62.16x faster** than Zustand in this category.
 
-### Write (1 subscriber) {#write-1-subscriber-}
+### Write (1 subscriber)
 
 **Performance Comparison:**
 
@@ -998,7 +998,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **3855.26x faster** than Valtio in this category.
 
-### Write (5 subscribers) {#write-5-subscribers-}
+### Write (5 subscribers)
 
 **Performance Comparison:**
 
@@ -1026,7 +1026,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **2086.52x faster** than Valtio in this category.
 
-### Computed - Cached Read {#computed-cached-read}
+### Computed - Cached Read
 
 **Performance Comparison:**
 
@@ -1054,7 +1054,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zen is **10.91x faster** than Jotai in this category.
 
-### Computed - Update {#computed-update}
+### Computed - Update
 
 **Performance Comparison:**
 
@@ -1082,7 +1082,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **60.04x faster** than Zustand in this category.
 
-### Chained Computed (3 levels) {#chained-computed-3-levels-}
+### Chained Computed (3 levels)
 
 **Performance Comparison:**
 
@@ -1110,7 +1110,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zen is **21.84x faster** than Jotai in this category.
 
-### Batching (100 updates) {#batching-100-updates-}
+### Batching (100 updates)
 
 **Performance Comparison:**
 
@@ -1138,7 +1138,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **3470.82x faster** than Zustand in this category.
 
-### Subscribe/Unsubscribe {#subscribe-unsubscribe}
+### Subscribe/Unsubscribe
 
 **Performance Comparison:**
 
@@ -1166,7 +1166,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **3411.58x faster** than Valtio in this category.
 
-### Computed Access {#computed-access}
+### Computed Access
 
 **Performance Comparison:**
 
@@ -1194,7 +1194,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Redux Toolkit is **11.01x faster** than Jotai in this category.
 
-### Nested Update {#nested-update}
+### Nested Update
 
 **Performance Comparison:**
 
@@ -1222,7 +1222,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **55.67x faster** than Zustand in this category.
 
-### Array Push {#array-push}
+### Array Push
 
 **Performance Comparison:**
 
@@ -1250,7 +1250,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Valtio is **31.67x faster** than Redux Toolkit in this category.
 
-### Loading State Toggle {#loading-state-toggle}
+### Loading State Toggle
 
 **Performance Comparison:**
 
@@ -1278,7 +1278,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **54.80x faster** than Zustand in this category.
 
-### Multiple Subscriptions (10 subscribers) {#multiple-subscriptions-10-subscribers-}
+### Multiple Subscriptions (10 subscribers)
 
 **Performance Comparison:**
 
@@ -1306,7 +1306,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **394695.87x faster** than Valtio in this category.
 
-### Batch Updates (3 state changes) {#batch-updates-3-state-changes-}
+### Batch Updates (3 state changes)
 
 **Performance Comparison:**
 
@@ -1334,7 +1334,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **47.77x faster** than Zustand in this category.
 
-### Array Filter {#array-filter}
+### Array Filter
 
 **Performance Comparison:**
 
@@ -1362,7 +1362,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zustand is **1490.98x faster** than Valtio in this category.
 
-### Array Remove {#array-remove}
+### Array Remove
 
 **Performance Comparison:**
 
@@ -1390,7 +1390,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zen is **515.39x faster** than MobX in this category.
 
-### Array Update {#array-update}
+### Array Update
 
 **Performance Comparison:**
 
@@ -1418,7 +1418,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Zen is **491.02x faster** than MobX in this category.
 
-### Deep Nested Update (5 levels) {#deep-nested-update-5-levels-}
+### Deep Nested Update (5 levels)
 
 **Performance Comparison:**
 
@@ -1446,7 +1446,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **99.93x faster** than Redux Toolkit in this category.
 
-### Large State Update (1000 items) {#large-state-update-1000-items-}
+### Large State Update (1000 items)
 
 **Performance Comparison:**
 
@@ -1474,7 +1474,7 @@ Comparison of core features and capabilities across state management libraries
 
 **Key Insight:** Solid Signals is **93.97x faster** than Redux Toolkit in this category.
 
-### Reactive Async State Access {#reactive-async-state-access}
+### Reactive Async State Access
 
 **Performance Comparison:**
 
@@ -1508,4 +1508,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-09T17:14:32.558Z*
+*Last generated: 2025-11-09T17:50:47.444Z*
