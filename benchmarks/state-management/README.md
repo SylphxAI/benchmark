@@ -14,14 +14,14 @@ Based on geometric mean across all tests (normalized, fastest = 100):
 
 | Rank | Library | Score | Relative | Tests |
 |------|---------|-------|----------|-------|
-| 🥇 | **Solid Signals** | 98.2/100 | Baseline | 6 |
-| 🥈 | **Jotai** | 80.5/100 | 81.9% | 6 |
-| 🥉 | **Zen** | 71.5/100 | 72.8% | 6 |
-| 4 | **Preact Signals** | 64.9/100 | 66.1% | 6 |
-| 5 | **MobX** | 21.9/100 | 22.3% | 6 |
-| 6 | **Valtio** | 14.6/100 | 14.8% | 6 |
-| 7 | **Redux Toolkit** | 9.0/100 | 9.1% | 6 |
-| 8 | **Zustand** | 4.7/100 | 4.8% | 6 |
+| 🥇 | **Solid Signals** | 97.9/100 | Baseline | 4 |
+| 🥈 | **Jotai** | 72.5/100 | 74.1% | 4 |
+| 🥉 | **Zen** | 60.7/100 | 62.0% | 4 |
+| 4 | **Preact Signals** | 52.4/100 | 53.6% | 4 |
+| 5 | **MobX** | 10.3/100 | 10.6% | 4 |
+| 6 | **Valtio** | 5.6/100 | 5.7% | 4 |
+| 7 | **Redux Toolkit** | 2.7/100 | 2.8% | 4 |
+| 8 | **Zustand** | 1.0/100 | 1.1% | 4 |
 
 > 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
 
@@ -46,14 +46,14 @@ Percentage of benchmark tests each library supports:
 
 | Rank | Library | Supported | Coverage |
 |------|---------|-----------|----------|
-| 🥇 | **Redux Toolkit** | 6/6 | 100% |
-| 🥈 | **Zustand** | 6/6 | 100% |
-| 🥉 | **Jotai** | 6/6 | 100% |
-| 4 | **MobX** | 6/6 | 100% |
-| 5 | **Valtio** | 6/6 | 100% |
-| 6 | **Preact Signals** | 6/6 | 100% |
-| 7 | **Solid Signals** | 6/6 | 100% |
-| 8 | **Zen** | 6/6 | 100% |
+| 🥇 | **Jotai** | 8/8 | 100% |
+| 🥈 | **Redux Toolkit** | 4/8 | 50% |
+| 🥉 | **Zustand** | 4/8 | 50% |
+| 4 | **MobX** | 4/8 | 50% |
+| 5 | **Valtio** | 4/8 | 50% |
+| 6 | **Preact Signals** | 4/8 | 50% |
+| 7 | **Solid Signals** | 4/8 | 50% |
+| 8 | **Zen** | 4/8 | 50% |
 
 > 🎯 **Note:** Higher coverage means the library participates in more test categories.
 
@@ -123,33 +123,28 @@ Percentage of benchmark tests each library supports:
 
 > Run benchmarks: `npm run benchmark:creation`
 
-### ⚡ Async Operations
+### ⚡ Reactive Async
 
 [📊 View Detailed Results →](groups/async/)
 
-**Performance Chart:**
+**⚠️ Feature Completeness Test**
 
-```
-🥇   Zustand            ██████████████████████████████   99.6/100
-🥈   Preact Signals     ██████████████████████████████   99.5/100
-🥉   Zen                ██████████████████████████████   99.3/100
-4.   Valtio             ██████████████████████████████   99.2/100
-5.   Redux Toolkit      ██████████████████████████████   99.2/100
-6.   Jotai              ██████████████████████████████   99.1/100
-7.   Solid Signals      ██████████████████████████████   98.8/100
-8.   MobX               ██████████████████████████████   98.7/100
-```
+This tests advanced capabilities that only select libraries support.
 
-| Rank | Library | Score | Relative | Avg Performance |
-|------|---------|-------|----------|----------------|
-| 🥇 | **Zustand** | 99.6/100 | Baseline | ~886 ops/sec |
-| 🥈 | **Preact Signals** | 99.5/100 | 99.8% | ~884 ops/sec |
-| 🥉 | **Zen** | 99.3/100 | 99.7% | ~883 ops/sec |
-| 4 | **Valtio** | 99.2/100 | 99.6% | ~882 ops/sec |
-| 5 | **Redux Toolkit** | 99.2/100 | 99.5% | ~882 ops/sec |
-| 6 | **Jotai** | 99.1/100 | 99.5% | ~881 ops/sec |
-| 7 | **Solid Signals** | 98.8/100 | 99.2% | ~879 ops/sec |
-| 8 | **MobX** | 98.7/100 | 99.0% | ~877 ops/sec |
+**Support Status:**
+
+| Library | Support |
+|---------|----------|
+| **Jotai** | ✅ Supported |
+| **Zustand** | ❌ Not Supported |
+| **Redux Toolkit** | ❌ Not Supported |
+| **MobX** | ❌ Not Supported |
+| **Valtio** | ❌ Not Supported |
+| **Preact Signals** | ❌ Not Supported |
+| **Solid Signals** | ❌ Not Supported |
+| **Zen** | ❌ Not Supported |
+
+> 📝 See detailed benchmarks for supported libraries in the [full report](groups/async/).
 
 ### 🔧 Complex Operations
 
@@ -182,7 +177,7 @@ Explore detailed performance results for each category:
 | [📖 Read Operations](groups/read/) | Performance of state reading operations across different scales | ✅ Results Available |
 | [✏️ Write Operations](groups/write/) | Performance of state writing and update operations | ✅ Results Available |
 | [🏗️ Store Creation](groups/creation/) | Performance of creating new stores and instances | ⏳ Pending |
-| [⚡ Async Operations](groups/async/) | Performance of asynchronous state operations | ✅ Results Available |
+| [⚡ Reactive Async](groups/async/) | Feature completeness test - reactive async state capabilities | ✅ Results Available |
 | [🔧 Complex Operations](groups/complexity/) | Performance with complex nested state structures | ⏳ Pending |
 | [💾 Memory Operations](groups/memory/) | Memory efficiency and large state operations | ⏳ Pending |
 
@@ -280,4 +275,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T18:42:53.451Z*
+*Last updated: 2025-11-10T18:59:18.406Z*
