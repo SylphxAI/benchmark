@@ -442,9 +442,7 @@ function generateDetailedResults() {
     const crown = i === 0 ? '👑 ' : '';
     section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
-  section += `**Chained Computed** (computed from computed, 2 levels)
-
-`;
+  section += '\n**Chained Computed** (computed from computed, 2 levels)\n\n';
 
   const chainedBenches = extractBenchmarks(results['09-computed-native'], 'Chained Computed -');
   const maxChained = Math.max(...chainedBenches.map(b => b.hz || 0));
@@ -462,9 +460,7 @@ function generateDetailedResults() {
     const crown = i === 0 ? '👑 ' : '';
     section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
-  section += `**Computed Update Performance** (triggering computed recalculation)
-
-`;
+  section += '\n**Computed Update Performance** (triggering computed recalculation)\n\n';
 
   const updateBenches = extractBenchmarks(results['09-computed-native'], 'Computed Updates -');
   const maxUpdate = Math.max(...updateBenches.map(b => b.hz || 0));
@@ -537,9 +533,7 @@ function generateDetailedResults() {
     const crown = i === 0 ? '👑 ' : '';
     section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
-  section += `**Large Batch** (100 updates)
-
-`;
+  section += '\n**Large Batch** (100 updates)\n\n';
 
   const largeBatchBenches = extractBenchmarks(results['11-batching-native'], 'Large Batch -');
   const maxLargeBatch = Math.max(...largeBatchBenches.map(b => b.hz || 0));
@@ -557,9 +551,7 @@ function generateDetailedResults() {
     const crown = i === 0 ? '👑 ' : '';
     section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
-  section += `**Unbatched Updates** (3 fields, no batching)
-
-`;
+  section += '\n**Unbatched Updates** (3 fields, no batching)\n\n';
 
   const unbatchedBenches = extractBenchmarks(results['11-batching-native'], 'Unbatched Updates -');
   const maxUnbatched = Math.max(...unbatchedBenches.map(b => b.hz || 0));
@@ -577,9 +569,7 @@ function generateDetailedResults() {
     const crown = i === 0 ? '👑 ' : '';
     section += `| ${crown}${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
-  section += `**Batch with Subscriptions** (3 fields with observers)
-
-`;
+  section += '\n**Batch with Subscriptions** (3 fields with observers)\n\n';
 
   const batchSubBenches = extractBenchmarks(results['11-batching-native'], 'Batched with Observers -');
   const maxBatchSub = Math.max(...batchSubBenches.map(b => b.hz || 0));

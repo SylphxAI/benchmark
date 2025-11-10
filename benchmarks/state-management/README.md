@@ -222,6 +222,7 @@ Jotai                █ 640K
 | Preact Signals | 22.1M | 0.57x |
 | MobX | 4.0M | 0.11x |
 | Jotai | 640K | 0.02x |
+
 **Chained Computed** (computed from computed, 2 levels)
 
 ```
@@ -239,6 +240,7 @@ Jotai                 394K
 | Preact Signals | 12.1M | 0.32x |
 | MobX | 2.2M | 0.06x |
 | Jotai | 394K | 0.01x |
+
 **Computed Update Performance** (triggering computed recalculation)
 
 ```
@@ -294,6 +296,7 @@ MobX                 ███ 3.3M
 | 👑 Solid Signals | 39.8M | 1.00x (fastest) |
 | Valtio | 4.8M | 0.12x |
 | MobX | 3.3M | 0.08x |
+
 **Large Batch** (100 updates)
 
 ```
@@ -307,6 +310,7 @@ Valtio                68K
 | 👑 Solid Signals | 27.9M | 1.00x (fastest) |
 | MobX | 146K | 0.01x |
 | Valtio | 68K | 0.00x |
+
 **Unbatched Updates** (3 fields, no batching)
 
 ```
@@ -320,6 +324,7 @@ MobX                 ████ 3.8M
 | 👑 Solid Signals | 42.5M | 1.00x (fastest) |
 | Valtio | 4.8M | 0.11x |
 | MobX | 3.8M | 0.09x |
+
 **Batch with Subscriptions** (3 fields with observers)
 
 ```
