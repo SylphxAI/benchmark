@@ -8,9 +8,26 @@ Comprehensive performance testing for client-side state management libraries.
 
 ## 📊 Performance Rankings
 
-### 🏆 Overall Performance
+### 🏆 Comprehensive Performance Score
 
-Based on aggregated results across all test categories:
+Based on geometric mean across all tests (normalized, fastest = 100):
+
+| Rank | Library | Score | Relative | Tests |
+|------|---------|-------|----------|-------|
+| 🥇 | **Solid Signals** | 98.2/100 | Baseline | 6 |
+| 🥈 | **Jotai** | 80.5/100 | 81.9% | 6 |
+| 🥉 | **Zen** | 71.5/100 | 72.8% | 6 |
+| 4 | **Preact Signals** | 64.9/100 | 66.1% | 6 |
+| 5 | **MobX** | 21.9/100 | 22.3% | 6 |
+| 6 | **Valtio** | 14.6/100 | 14.8% | 6 |
+| 7 | **Redux Toolkit** | 9.0/100 | 9.1% | 6 |
+| 8 | **Zustand** | 4.7/100 | 4.8% | 6 |
+
+> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.
+
+### ⚡ Peak Performance
+
+Highest recorded performance by category:
 
 | Rank | Library | Best Category | Peak Performance | Avg Performance |
 |------|---------|--------------|------------------|---------------|
@@ -207,4 +224,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T17:51:47.855Z*
+*Last updated: 2025-11-10T18:35:39.910Z*

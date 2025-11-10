@@ -125,7 +125,57 @@ function generateMainReadme(categoryPath) {
     }
   });
 
-  // Calculate overall rankings
+  // Calculate geometric mean score for each library
+  const geometricMean = (values) => {
+    if (values.length === 0) return 0;
+    const product = values.reduce((a, b) => a * b, 1);
+    return Math.pow(product, 1 / values.length);
+  };
+
+  const libraryScores = {};
+
+  // For each test, normalize scores (fastest = 100)
+  GROUPS.forEach(group => {
+    if (!allResults[group.name]) return;
+
+    const results = allResults[group.name];
+    results.files?.forEach(file => {
+      file.groups?.forEach(g => {
+        // Group benchmarks by test name
+        const byTest = {};
+        g.benchmarks?.forEach(bench => {
+          const testName = bench.name.split(' - ')[0];
+          if (!byTest[testName]) byTest[testName] = [];
+          byTest[testName].push(bench);
+        });
+
+        // For each test, calculate normalized scores
+        Object.values(byTest).forEach(testBenches => {
+          const maxHz = Math.max(...testBenches.map(b => b.hz || 0));
+          if (maxHz === 0) return;
+
+          testBenches.forEach(bench => {
+            if (!libraryScores[bench.library]) {
+              libraryScores[bench.library] = [];
+            }
+            const score = (bench.hz / maxHz) * 100;
+            libraryScores[bench.library].push(score);
+          });
+        });
+      });
+    });
+  });
+
+  // Calculate final scores using geometric mean
+  const comprehensiveRanking = Object.entries(libraryScores)
+    .map(([library, scores]) => ({
+      library,
+      score: geometricMean(scores),
+      testCount: scores.length
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  // Calculate overall rankings (by peak performance)
   const overallRanking = Object.entries(libraryStats)
     .map(([library, stats]) => ({
       library,
@@ -176,9 +226,33 @@ Comprehensive performance testing for client-side state management libraries.
 
 `;
 
-  // Overall Performance Table
+  // Comprehensive Performance Score (using geometric mean)
+  if (comprehensiveRanking.length > 0) {
+    const topScore = comprehensiveRanking[0].score;
+
+    readme += `### 🏆 Comprehensive Performance Score\n\n`;
+    readme += `Based on geometric mean across all tests (normalized, fastest = 100):\n\n`;
+    readme += `| Rank | Library | Score | Relative | Tests |\n`;
+    readme += `|------|---------|-------|----------|-------|\n`;
+
+    comprehensiveRanking.forEach((lib, index) => {
+      const rank = index + 1;
+      const emoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+      const rankDisplay = emoji || rank.toString();
+      const libraryName = formatLibraryName(lib.library);
+      const score = lib.score.toFixed(1);
+      const relative = rank === 1 ? 'Baseline' : `${((lib.score / topScore) * 100).toFixed(1)}%`;
+
+      readme += `| ${rankDisplay} | **${libraryName}** | ${score}/100 | ${relative} | ${lib.testCount} |\n`;
+    });
+    readme += '\n';
+    readme += `> 📊 **Methodology:** Geometric mean prevents extreme values from skewing results. Each test is normalized (fastest = 100) then averaged.\n\n`;
+  }
+
+  // Peak Performance Table
   if (overallRanking.length > 0) {
-    readme += `### 🏆 Overall Performance\n\nBased on aggregated results across all test categories:\n\n`;
+    readme += `### ⚡ Peak Performance\n\n`;
+    readme += `Highest recorded performance by category:\n\n`;
     readme += `| Rank | Library | Best Category | Peak Performance | Avg Performance |\n`;
     readme += `|------|---------|--------------|------------------|---------------|\n`;
 
