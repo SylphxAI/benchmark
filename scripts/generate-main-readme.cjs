@@ -330,45 +330,98 @@ Comprehensive performance testing for client-side state management libraries.
     if (existsSync(resultsPath)) {
       try {
         const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
-        const benchmarks = [];
+
+        // Group benchmarks by library and calculate scores
+        const libraryPerformance = {};
+        const testScores = {}; // Track max Hz per test for normalization
 
         results.files?.forEach(file => {
           file.groups?.forEach(g => {
+            // First pass: find max Hz for each test
+            const byTest = {};
             g.benchmarks?.forEach(bench => {
-              benchmarks.push(bench);
+              const testName = bench.name.split(' - ')[0];
+              if (!byTest[testName]) byTest[testName] = [];
+              byTest[testName].push(bench);
+            });
+
+            // Calculate max Hz per test and library scores
+            Object.values(byTest).forEach(testBenches => {
+              const maxHz = Math.max(...testBenches.map(b => b.hz || 0));
+
+              testBenches.forEach(bench => {
+                if (!libraryPerformance[bench.library]) {
+                  libraryPerformance[bench.library] = {
+                    scores: [],
+                    totalHz: 0,
+                    count: 0,
+                    maxHz: 0
+                  };
+                }
+
+                const score = maxHz > 0 ? (bench.hz / maxHz) * 100 : 0;
+                libraryPerformance[bench.library].scores.push(score);
+                libraryPerformance[bench.library].totalHz += bench.hz;
+                libraryPerformance[bench.library].count++;
+                libraryPerformance[bench.library].maxHz = Math.max(libraryPerformance[bench.library].maxHz, bench.hz);
+              });
             });
           });
         });
 
-        if (benchmarks.length > 0) {
-          benchmarks.sort((a, b) => b.hz - a.hz);
-          const topBenchmarks = benchmarks.slice(0, 8);
+        if (Object.keys(libraryPerformance).length > 0) {
+          // Calculate geometric mean score for each library
+          const libraryRankings = Object.entries(libraryPerformance)
+            .map(([library, data]) => ({
+              library,
+              score: geometricMean(data.scores),
+              avgHz: data.totalHz / data.count,
+              maxHz: data.maxHz
+            }))
+            .sort((a, b) => b.score - a.score);
 
-          readme += `| Rank | Library | Operations/sec | Performance |\n`;
-          readme += `|------|---------|----------------|-------------|\n`;
+          // Add visual chart
+          const topScore = libraryRankings[0].score;
+          readme += `**Performance Chart:**\n\n\`\`\`\n`;
+          libraryRankings.forEach((lib, idx) => {
+            const rank = idx + 1;
+            const emoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}.`;
+            const barLength = Math.round((lib.score / 100) * 30);
+            const bar = '█'.repeat(barLength);
+            readme += `${emoji.toString().padEnd(4)} ${formatLibraryName(lib.library).padEnd(18)} ${bar.padEnd(32)} ${lib.score.toFixed(1)}/100\n`;
+          });
+          readme += `\`\`\`\n\n`;
 
-          topBenchmarks.forEach((bench, index) => {
-            const libraryName = formatLibraryName(bench.library);
-            const perf = formatHz(bench.hz);
-            const emoji = getPerformanceEmoji(bench.hz);
-            readme += `| ${index + 1} | **${libraryName}** | ${perf} | ${emoji} |\n`;
+          // Add detailed table
+          readme += `| Rank | Library | Score | Relative | Avg Performance |\n`;
+          readme += `|------|---------|-------|----------|----------------|\n`;
+
+          libraryRankings.forEach((lib, index) => {
+            const rank = index + 1;
+            const emoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+            const rankDisplay = emoji || rank.toString();
+            const libraryName = formatLibraryName(lib.library);
+            const relative = rank === 1 ? 'Baseline' : `${((lib.score / topScore) * 100).toFixed(1)}%`;
+            const avgPerf = formatHz(lib.avgHz);
+
+            readme += `| ${rankDisplay} | **${libraryName}** | ${lib.score.toFixed(1)}/100 | ${relative} | ${avgPerf} |\n`;
           });
           readme += '\n';
         } else {
-          readme += `| Rank | Library | Operations/sec | Performance |\n`;
-          readme += `|------|---------|----------------|-------------|\n`;
+          readme += `| Rank | Library | Score | Performance |\n`;
+          readme += `|------|---------|-------|-------------|\n`;
           readme += `| - | - | ⏳ Pending | - |\n\n`;
           readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
         }
       } catch (error) {
-        readme += `| Rank | Library | Operations/sec | Performance |\n`;
-        readme += `|------|---------|----------------|-------------|\n`;
+        readme += `| Rank | Library | Score | Performance |\n`;
+        readme += `|------|---------|-------|-------------|\n`;
         readme += `| - | - | ⏳ Pending | - |\n\n`;
         readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
       }
     } else {
-      readme += `| Rank | Library | Operations/sec | Performance |\n`;
-      readme += `|------|---------|----------------|-------------|\n`;
+      readme += `| Rank | Library | Score | Performance |\n`;
+      readme += `|------|---------|-------|-------------|\n`;
       readme += `| - | - | ⏳ Pending | - |\n\n`;
       readme += `> Run benchmarks: \`npm run benchmark:${group.name}\`\n\n`;
     }

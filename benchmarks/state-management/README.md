@@ -61,38 +61,64 @@ Percentage of benchmark tests each library supports:
 
 [📊 View Detailed Results →](groups/read/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
-| 1 | **Solid Signals** | ~31.1M ops/sec | ⚡⚡⚡⚡ |
-| 2 | **Jotai** | ~29.5M ops/sec | ⚡⚡⚡⚡ |
-| 3 | **Preact Signals** | ~27.5M ops/sec | ⚡⚡⚡⚡ |
-| 4 | **Zen** | ~26.0M ops/sec | ⚡⚡⚡⚡ |
-| 5 | **MobX** | ~21.6M ops/sec | ⚡⚡⚡⚡ |
-| 6 | **Solid Signals** | ~19.8M ops/sec | ⚡⚡⚡⚡ |
-| 7 | **Jotai** | ~15.9M ops/sec | ⚡⚡⚡⚡ |
-| 8 | **Zen** | ~14.8M ops/sec | ⚡⚡⚡⚡ |
+**Performance Chart:**
+
+```
+🥇   Solid Signals      █████████████████████████████    95.8/100
+🥈   Jotai              █████████████████████████        83.8/100
+🥉   Zen                ███████████████████████          75.9/100
+4.   Preact Signals     ███████████████                  48.7/100
+5.   MobX               ██████████                       31.7/100
+6.   Redux Toolkit      ██                               8.2/100
+7.   Valtio             ██                               8.0/100
+8.   Zustand            █                                3.2/100
+```
+
+| Rank | Library | Score | Relative | Avg Performance |
+|------|---------|-------|----------|----------------|
+| 🥇 | **Solid Signals** | 95.8/100 | Baseline | ~25.4M ops/sec |
+| 🥈 | **Jotai** | 83.8/100 | 87.5% | ~22.7M ops/sec |
+| 🥉 | **Zen** | 75.9/100 | 79.2% | ~20.4M ops/sec |
+| 4 | **Preact Signals** | 48.7/100 | 50.8% | ~16.6M ops/sec |
+| 5 | **MobX** | 31.7/100 | 33.1% | ~12.3M ops/sec |
+| 6 | **Redux Toolkit** | 8.2/100 | 8.5% | ~3.1M ops/sec |
+| 7 | **Valtio** | 8.0/100 | 8.3% | ~2.5M ops/sec |
+| 8 | **Zustand** | 3.2/100 | 3.4% | ~1.4M ops/sec |
 
 ### ✏️ Write Operations
 
 [📊 View Detailed Results →](groups/write/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
-| 1 | **Solid Signals** | ~28.4M ops/sec | ⚡⚡⚡⚡ |
-| 2 | **Jotai** | ~27.8M ops/sec | ⚡⚡⚡⚡ |
-| 3 | **Solid Signals** | ~25.5M ops/sec | ⚡⚡⚡⚡ |
-| 4 | **Preact Signals** | ~24.9M ops/sec | ⚡⚡⚡⚡ |
-| 5 | **Zen** | ~24.1M ops/sec | ⚡⚡⚡⚡ |
-| 6 | **Jotai** | ~10.3M ops/sec | ⚡⚡⚡⚡ |
-| 7 | **Preact Signals** | ~9.3M ops/sec | ⚡⚡⚡ |
-| 8 | **Zen** | ~7.1M ops/sec | ⚡⚡⚡ |
+**Performance Chart:**
+
+```
+🥇   Solid Signals      ██████████████████████████████   100.0/100
+🥈   Jotai              ███████████████████              62.7/100
+🥉   Preact Signals     █████████████████                56.5/100
+4.   Zen                ███████████████                  48.6/100
+5.   Valtio             █                                3.9/100
+6.   MobX               █                                3.4/100
+7.   Redux Toolkit                                       0.9/100
+8.   Zustand                                             0.3/100
+```
+
+| Rank | Library | Score | Relative | Avg Performance |
+|------|---------|-------|----------|----------------|
+| 🥇 | **Solid Signals** | 100.0/100 | Baseline | ~27.0M ops/sec |
+| 🥈 | **Jotai** | 62.7/100 | 62.7% | ~19.0M ops/sec |
+| 🥉 | **Preact Signals** | 56.5/100 | 56.5% | ~17.1M ops/sec |
+| 4 | **Zen** | 48.6/100 | 48.6% | ~15.6M ops/sec |
+| 5 | **Valtio** | 3.9/100 | 3.9% | ~1.8M ops/sec |
+| 6 | **MobX** | 3.4/100 | 3.4% | ~1.5M ops/sec |
+| 7 | **Redux Toolkit** | 0.9/100 | 0.9% | ~420K ops/sec |
+| 8 | **Zustand** | 0.3/100 | 0.3% | ~155K ops/sec |
 
 ### 🏗️ Store Creation
 
 [📊 View Detailed Results →](groups/creation/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
+| Rank | Library | Score | Performance |
+|------|---------|-------|-------------|
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:creation`
@@ -101,23 +127,36 @@ Percentage of benchmark tests each library supports:
 
 [📊 View Detailed Results →](groups/async/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
-| 1 | **Zustand** | ~890 ops/sec | ○ |
-| 2 | **Redux Toolkit** | ~887 ops/sec | ○ |
-| 3 | **Zen** | ~887 ops/sec | ○ |
-| 4 | **Preact Signals** | ~886 ops/sec | ○ |
-| 5 | **Jotai** | ~884 ops/sec | ○ |
-| 6 | **Valtio** | ~883 ops/sec | ○ |
-| 7 | **Preact Signals** | ~882 ops/sec | ○ |
-| 8 | **Solid Signals** | ~882 ops/sec | ○ |
+**Performance Chart:**
+
+```
+🥇   Zustand            ██████████████████████████████   99.6/100
+🥈   Preact Signals     ██████████████████████████████   99.5/100
+🥉   Zen                ██████████████████████████████   99.3/100
+4.   Valtio             ██████████████████████████████   99.2/100
+5.   Redux Toolkit      ██████████████████████████████   99.2/100
+6.   Jotai              ██████████████████████████████   99.1/100
+7.   Solid Signals      ██████████████████████████████   98.8/100
+8.   MobX               ██████████████████████████████   98.7/100
+```
+
+| Rank | Library | Score | Relative | Avg Performance |
+|------|---------|-------|----------|----------------|
+| 🥇 | **Zustand** | 99.6/100 | Baseline | ~886 ops/sec |
+| 🥈 | **Preact Signals** | 99.5/100 | 99.8% | ~884 ops/sec |
+| 🥉 | **Zen** | 99.3/100 | 99.7% | ~883 ops/sec |
+| 4 | **Valtio** | 99.2/100 | 99.6% | ~882 ops/sec |
+| 5 | **Redux Toolkit** | 99.2/100 | 99.5% | ~882 ops/sec |
+| 6 | **Jotai** | 99.1/100 | 99.5% | ~881 ops/sec |
+| 7 | **Solid Signals** | 98.8/100 | 99.2% | ~879 ops/sec |
+| 8 | **MobX** | 98.7/100 | 99.0% | ~877 ops/sec |
 
 ### 🔧 Complex Operations
 
 [📊 View Detailed Results →](groups/complexity/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
+| Rank | Library | Score | Performance |
+|------|---------|-------|-------------|
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:complexity`
@@ -126,8 +165,8 @@ Percentage of benchmark tests each library supports:
 
 [📊 View Detailed Results →](groups/memory/)
 
-| Rank | Library | Operations/sec | Performance |
-|------|---------|----------------|-------------|
+| Rank | Library | Score | Performance |
+|------|---------|-------|-------------|
 | - | - | ⏳ Pending | - |
 
 > Run benchmarks: `npm run benchmark:memory`
@@ -241,4 +280,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T18:38:36.388Z*
+*Last updated: 2025-11-10T18:42:53.451Z*
