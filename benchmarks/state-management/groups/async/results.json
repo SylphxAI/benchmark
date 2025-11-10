@@ -1,0 +1,158 @@
+{
+  "files": [
+    {
+      "filepath": "groups/async/async-state.bench.ts",
+      "groups": [
+        {
+          "fullName": "Benchmark",
+          "benchmarks": [
+            {
+              "name": "Async Loading - Redux Toolkit",
+              "library": "redux-toolkit",
+              "hz": 887.39,
+              "mean": 0.000014200000000000001,
+              "p99": null,
+              "rme": 1.25,
+              "samples": 444
+            },
+            {
+              "name": "Async Loading - Zustand",
+              "library": "zustand",
+              "hz": 881.04,
+              "mean": 0.000013700000000000001,
+              "p99": null,
+              "rme": 0.89,
+              "samples": 441
+            },
+            {
+              "name": "Async Loading - Jotai",
+              "library": "jotai",
+              "hz": 883.52,
+              "mean": 0.0000132,
+              "p99": null,
+              "rme": 1.1,
+              "samples": 442
+            },
+            {
+              "name": "Async Loading - MobX",
+              "library": "mobx",
+              "hz": 878.43,
+              "mean": 0.000014999999999999999,
+              "p99": null,
+              "rme": 1.08,
+              "samples": 440
+            },
+            {
+              "name": "Async Loading - Valtio",
+              "library": "valtio",
+              "hz": 883.15,
+              "mean": 0.0000138,
+              "p99": null,
+              "rme": 1.08,
+              "samples": 442
+            },
+            {
+              "name": "Async Loading - Preact Signals",
+              "library": "preact-signals",
+              "hz": 886.17,
+              "mean": 0.0000135,
+              "p99": null,
+              "rme": 1.17,
+              "samples": 444
+            },
+            {
+              "name": "Async Loading - Solid Signals",
+              "library": "solid-signals",
+              "hz": 874.97,
+              "mean": 0.0000177,
+              "p99": null,
+              "rme": 0.51,
+              "samples": 438
+            },
+            {
+              "name": "Async Loading - Zen",
+              "library": "zen",
+              "hz": 878.61,
+              "mean": 0.0000134,
+              "p99": null,
+              "rme": 0.77,
+              "samples": 440
+            },
+            {
+              "name": "Concurrent Async - Redux Toolkit",
+              "library": "redux-toolkit",
+              "hz": 875.83,
+              "mean": 0.0000141,
+              "p99": null,
+              "rme": 0.64,
+              "samples": 438
+            },
+            {
+              "name": "Concurrent Async - Zustand",
+              "library": "zustand",
+              "hz": 890.24,
+              "mean": 0.000014,
+              "p99": null,
+              "rme": 1.31,
+              "samples": 446
+            },
+            {
+              "name": "Concurrent Async - Jotai",
+              "library": "jotai",
+              "hz": 878.24,
+              "mean": 0.0000147,
+              "p99": null,
+              "rme": 0.9,
+              "samples": 440
+            },
+            {
+              "name": "Concurrent Async - MobX",
+              "library": "mobx",
+              "hz": 875.92,
+              "mean": 0.0000161,
+              "p99": null,
+              "rme": 0.72,
+              "samples": 438
+            },
+            {
+              "name": "Concurrent Async - Valtio",
+              "library": "valtio",
+              "hz": 880.14,
+              "mean": 0.000014,
+              "p99": null,
+              "rme": 1,
+              "samples": 441
+            },
+            {
+              "name": "Concurrent Async - Preact Signals",
+              "library": "preact-signals",
+              "hz": 882.21,
+              "mean": 0.0000145,
+              "p99": null,
+              "rme": 1.41,
+              "samples": 442
+            },
+            {
+              "name": "Concurrent Async - Solid Signals",
+              "library": "solid-signals",
+              "hz": 882.17,
+              "mean": 0.0000144,
+              "p99": null,
+              "rme": 1.18,
+              "samples": 442
+            },
+            {
+              "name": "Concurrent Async - Zen",
+              "library": "zen",
+              "hz": 886.83,
+              "mean": 0.0000141,
+              "p99": null,
+              "rme": 1.25,
+              "samples": 444
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
