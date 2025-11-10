@@ -26,7 +26,7 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
 |---------|---------|-------------------|---------------|------|-------|----------|--------|
-| Solid Signals | 1.9.10 | 4.1 KB | 2,502,108 | 39.9M | 33.1M | 32.1M | 923 |
+| 👑 Solid Signals | 1.9.10 | 4.1 KB | 2,502,108 | 39.9M | 33.1M | 32.1M | 923 |
 | Preact Signals | 2.4.0 | 3.1 KB | 2,325,407 | 34.3M | 28.2M | 33.4M | 904 |
 | Zen | 1.2.1 | 5.5 KB | 2,279,178 | 32.2M | 28.2M | 32.2M | 924 |
 | Jotai | 2.15.1 | 4.4 KB | 1,271,186 | 36.3M | 33.9M | 2.3M | 917 |
