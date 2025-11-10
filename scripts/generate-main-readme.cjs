@@ -175,6 +175,41 @@ function generateMainReadme(categoryPath) {
     }))
     .sort((a, b) => b.score - a.score);
 
+  // Calculate test coverage (how many unique tests each library participates in)
+  const libraryCoverage = {};
+  const allUniqueTests = new Set();
+
+  GROUPS.forEach(group => {
+    if (!allResults[group.name]) return;
+
+    const results = allResults[group.name];
+    results.files?.forEach(file => {
+      file.groups?.forEach(g => {
+        const testNames = new Set();
+        g.benchmarks?.forEach(bench => {
+          const testName = `${group.name}:${bench.name.split(' - ')[0]}`;
+          testNames.add(testName);
+          allUniqueTests.add(testName);
+
+          if (!libraryCoverage[bench.library]) {
+            libraryCoverage[bench.library] = new Set();
+          }
+          libraryCoverage[bench.library].add(testName);
+        });
+      });
+    });
+  });
+
+  const totalTests = allUniqueTests.size;
+  const coverageRanking = Object.entries(libraryCoverage)
+    .map(([library, tests]) => ({
+      library,
+      supported: tests.size,
+      total: totalTests,
+      percentage: Math.round((tests.size / totalTests) * 100)
+    }))
+    .sort((a, b) => b.percentage - a.percentage);
+
   // Calculate overall rankings (by peak performance)
   const overallRanking = Object.entries(libraryStats)
     .map(([library, stats]) => ({
@@ -264,6 +299,25 @@ Comprehensive performance testing for client-side state management libraries.
       readme += `| ${index + 1} | **${libraryName}** | ${bestCategory} | ${peakPerf} | ${emoji} |\n`;
     });
     readme += '\n';
+  }
+
+  // Test Coverage Rankings
+  if (coverageRanking.length > 0) {
+    readme += `### 🎯 Test Coverage Rankings\n\n`;
+    readme += `Percentage of benchmark tests each library supports:\n\n`;
+    readme += `| Rank | Library | Supported | Coverage |\n`;
+    readme += `|------|---------|-----------|----------|\n`;
+
+    coverageRanking.forEach((lib, index) => {
+      const rank = index + 1;
+      const emoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+      const rankDisplay = emoji || rank.toString();
+      const libraryName = formatLibraryName(lib.library);
+
+      readme += `| ${rankDisplay} | **${libraryName}** | ${lib.supported}/${lib.total} | ${lib.percentage}% |\n`;
+    });
+    readme += '\n';
+    readme += `> 🎯 **Note:** Higher coverage means the library participates in more test categories.\n\n`;
   }
 
   // Category-specific rankings

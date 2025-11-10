@@ -40,6 +40,23 @@ Highest recorded performance by category:
 | 7 | **Valtio** | read | ~3.9M ops/sec | ⚡⚡⚡ |
 | 8 | **Zustand** | read | ~2.4M ops/sec | ⚡⚡⚡ |
 
+### 🎯 Test Coverage Rankings
+
+Percentage of benchmark tests each library supports:
+
+| Rank | Library | Supported | Coverage |
+|------|---------|-----------|----------|
+| 🥇 | **Redux Toolkit** | 6/6 | 100% |
+| 🥈 | **Zustand** | 6/6 | 100% |
+| 🥉 | **Jotai** | 6/6 | 100% |
+| 4 | **MobX** | 6/6 | 100% |
+| 5 | **Valtio** | 6/6 | 100% |
+| 6 | **Preact Signals** | 6/6 | 100% |
+| 7 | **Solid Signals** | 6/6 | 100% |
+| 8 | **Zen** | 6/6 | 100% |
+
+> 🎯 **Note:** Higher coverage means the library participates in more test categories.
+
 ### 📖 Read Operations
 
 [📊 View Detailed Results →](groups/read/)
@@ -224,4 +241,4 @@ The modular structure makes it easy to:
 - Extend to new libraries
 
 ---
-*Last updated: 2025-11-10T18:35:39.910Z*
+*Last updated: 2025-11-10T18:38:36.388Z*
