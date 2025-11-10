@@ -175,6 +175,26 @@ Libraries participate only if they have native support for the tested capability
 | MobX | 4.0M | 0.11x |
 | Jotai | 640K | 0.02x |
 
+**Chained Computed** (computed from computed, 2 levels)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 37.9M | 1.00x (fastest) |
+| Zen | 33.6M | 0.89x |
+| Preact Signals | 12.1M | 0.32x |
+| MobX | 2.2M | 0.06x |
+| Jotai | 394K | 0.01x |
+
+**Computed Update Performance** (triggering computed recalculation)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 19.9M | 1.00x (fastest) |
+| Preact Signals | 486K | 0.02x |
+| Zen | 454K | 0.02x |
+| MobX | 40K | 0.00x |
+| Jotai | 5K | 0.00x |
+
 ---
 
 ### 10 - Selectors (Feature Test)
@@ -210,6 +230,22 @@ Libraries participate only if they have native support for the tested capability
 | Solid Signals | 27.9M | 1.00x (fastest) |
 | MobX | 146K | 0.01x |
 | Valtio | 68K | 0.00x |
+
+**Unbatched Updates** (3 fields, no batching)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 42.5M | 1.00x (fastest) |
+| Valtio | 4.8M | 0.11x |
+| MobX | 3.8M | 0.09x |
+
+**Batch with Subscriptions** (3 fields with observers)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+| Solid Signals | 41.1M | 1.00x (fastest) |
+| Valtio | 4.7M | 0.11x |
+| MobX | 3.2M | 0.08x |
 
 ---
 

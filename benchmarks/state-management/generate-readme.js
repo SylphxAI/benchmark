@@ -375,6 +375,38 @@ function generateDetailedResults() {
     section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
 
+  section += `
+**Chained Computed** (computed from computed, 2 levels)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  const chainedBenches = extractBenchmarks(results['09-computed-native'], 'Chained Computed -');
+  const maxChained = Math.max(...chainedBenches.map(b => b.hz || 0));
+  chainedBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Chained Computed - ', '');
+    const rel = ((b.hz || 0) / maxChained).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += `
+**Computed Update Performance** (triggering computed recalculation)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  const updateBenches = extractBenchmarks(results['09-computed-native'], 'Computed Updates -');
+  const maxUpdate = Math.max(...updateBenches.map(b => b.hz || 0));
+  updateBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Computed Updates - ', '');
+    const rel = ((b.hz || 0) / maxUpdate).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
   section += '\n---\n\n';
 
   // 10 - Selectors
@@ -432,6 +464,38 @@ function generateDetailedResults() {
   largeBatchBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
     const lib = b.name.replace('Large Batch - ', '');
     const rel = ((b.hz || 0) / maxLargeBatch).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += `
+**Unbatched Updates** (3 fields, no batching)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  const unbatchedBenches = extractBenchmarks(results['11-batching-native'], 'Unbatched Updates -');
+  const maxUnbatched = Math.max(...unbatchedBenches.map(b => b.hz || 0));
+  unbatchedBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Unbatched Updates - ', '');
+    const rel = ((b.hz || 0) / maxUnbatched).toFixed(2) + 'x';
+    const note = i === 0 ? ' (fastest)' : '';
+    section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
+  });
+
+  section += `
+**Batch with Subscriptions** (3 fields with observers)
+
+| Library | ops/sec | Relative |
+|---------|---------|----------|
+`;
+
+  const batchSubBenches = extractBenchmarks(results['11-batching-native'], 'Batched with Observers -');
+  const maxBatchSub = Math.max(...batchSubBenches.map(b => b.hz || 0));
+  batchSubBenches.sort((a, b) => (b.hz || 0) - (a.hz || 0)).forEach((b, i) => {
+    const lib = b.name.replace('Batched with Observers - ', '');
+    const rel = ((b.hz || 0) / maxBatchSub).toFixed(2) + 'x';
     const note = i === 0 ? ' (fastest)' : '';
     section += `| ${lib} | ${formatNumber(b.hz)} | ${rel}${note} |\n`;
   });
