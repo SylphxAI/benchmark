@@ -57,13 +57,13 @@ function generateBarChart(benchmarks, maxValue) {
     const percentage = maxValue > 0 ? value / maxValue : 0;
     const barLength = Math.round(percentage * maxBarLength);
     const bar = '█'.repeat(barLength);
-    const crown = index === 0 ? '👑' : ' ';
 
     // Extract library name
     const nameParts = b.name.split(' - ');
     const libName = nameParts[nameParts.length - 1];
 
-    chart += `${crown} ${libName.padEnd(20)} ${bar} ${formatNumber(value)}\n`;
+    // No crown in charts - only in tables for perfect alignment
+    chart += `${libName.padEnd(20)} ${bar} ${formatNumber(value)}\n`;
   });
 
   chart += '```\n\n';
