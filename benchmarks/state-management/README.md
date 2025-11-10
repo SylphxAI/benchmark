@@ -18,7 +18,7 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 |  7 | **Redux Toolkit** | **104K** | 0.04x |
 |  8 | **MobX** | **42K** | 0.02x |
 
-> **Note**: Groups 04 (Complexity), 05 (Cache), and 07 (Form) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
+> **Note**: Groups 04 (Complexity), 05 (Cache Performance), 07 (Form State) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
 ---
 
@@ -26,14 +26,14 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
 |---------|---------|-------------------|---------------|------|-------|----------|--------|
-| Solid Signals | 1.9.10 | 4.0 KB | 👑 2.5M | 👑 39.9M | 33.1M | 32.1M | 923 |
-| Preact Signals | 2.4.0 | 3.0 KB | 2.3M | 34.3M | 28.2M | 👑 33.4M | 904 |
-| Zen | 1.2.1 | 5.3 KB | 2.3M | 32.2M | 28.2M | 32.2M | 924 |
-| Jotai | 2.15.1 | 4.3 KB | 1.3M | 36.3M | 👑 33.9M | 2.3M | 917 |
-| Valtio | 2.2.0 | 3.1 KB | 258K | 4.9M | 4.2M | 235K | 898 |
-| Zustand | 5.0.8 | 👑 1.2 KB | 188K | 363K | 351K | 10.9M | 907 |
-| Redux Toolkit | 2.10.1 | 13.8 KB | 104K | 960K | 784K | 173K | 892 |
-| MobX | 6.15.0 | 17.6 KB | 42K | 3.8M | 3.0M | 278 | 👑 925 |
+| Solid Signals | N/A | 4.0 KB | 👑 2.5M | 👑 39.9M | 33.1M | 32.1M | 923 |
+| Preact Signals | N/A | 3.0 KB | 2.3M | 34.3M | 28.2M | 👑 33.4M | 904 |
+| Zen | N/A | 5.3 KB | 2.3M | 32.2M | 28.2M | 32.2M | 924 |
+| Jotai | N/A | 4.3 KB | 1.3M | 36.3M | 👑 33.9M | 2.3M | 917 |
+| Valtio | N/A | 3.1 KB | 258K | 4.9M | 4.2M | 235K | 898 |
+| Zustand | N/A | 👑 1.2 KB | 188K | 363K | 351K | 10.9M | 907 |
+| Redux Toolkit | N/A | 13.8 KB | 104K | 960K | 784K | 173K | 892 |
+| MobX | N/A | 17.6 KB | 42K | 3.8M | 3.0M | 278 | 👑 925 |
 
 ---
 
@@ -156,7 +156,6 @@ MobX                  278
 | Redux Toolkit | 173K | 0.01x |
 | MobX | 278 | 0.00x |
 > **Note**: MobX's low creation performance is expected due to makeAutoObservable overhead.
-
 ---
 
 ### 06 - Memory Allocation
@@ -185,12 +184,11 @@ Redux Toolkit        ███████████████████�
 | Valtio | 898 | 0.97x |
 | Redux Toolkit | 892 | 0.96x |
 > **Note**: All libraries perform similarly for large state allocation, indicating minimal per-field overhead.
-
 ---
 
 ### 08 - Reactive Async (Feature Test)
 
-**Participating Libraries**: Jotai only
+**Participating Libraries**: Jotai
 
 **Reactive Async Read**
 
@@ -401,22 +399,14 @@ MobX                 ███ 3.2M
 
 ### Performance Tiers
 
-1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen - Exceptional performance across all operations
-2. **Atom-based (Tier A)**: Jotai - Very fast but creation overhead impacts overall score
-3. **Proxy-based (Tier B)**: Valtio - Moderate performance with good ergonomics
-4. **Store-based (Tier C)**: Zustand, Redux Toolkit - Lower raw performance but predictable
-5. **Observable-based (Tier D)**: MobX - High creation cost, moderate runtime performance
+1. **Signal-based (Tier S)**: Solid Signals, Preact Signals, Zen
+2. **Atom-based (Tier A)**: Jotai
+3. **Proxy-based (Tier B)**: Valtio
+4. **Store-based (Tier C)**: Zustand, Redux Toolkit
+5. **Observable-based (Tier D)**: MobX
 
 ### Trade-offs
 
-- **Solid Signals**: Fastest overall, but requires Solid.js ecosystem
-- **Preact Signals**: Excellent balance of speed and bundle size (3.1 KB)
-- **Zen**: Similar performance to Preact, slightly larger bundle (5.5 KB)
-- **Jotai**: Very fast read/write, slower creation, unique async capabilities
-- **Valtio**: Simple API, moderate performance, good for nested mutations
-- **Zustand**: Minimal bundle (1.2 KB), simple API, moderate performance
-- **Redux Toolkit**: Feature-rich, DevTools support, larger bundle (14.2 KB)
-- **MobX**: Automatic tracking, slow creation, largest bundle (18.0 KB)
 
 ---
 
