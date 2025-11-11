@@ -455,33 +455,19 @@ Click on any group to view detailed benchmark results.
     const groupScores = calculateGroupOverall(resultsData);
 
     if (groupScores.length > 0) {
-      // Find best values for crown
+      // Find best value for crown
       const maxOverall = Math.max(...groupScores.map(s => s.overall));
-      const maxPeak = Math.max(...groupScores.map(s => s.max));
 
-      section += `| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |\n`;
-      section += `|------|---------|---------|---------------|-------------|------------------|--------------|\n`;
+      section += `| Rank | Library | Group Score |\n`;
+      section += `|------|---------|-------------|\n`;
 
       groupScores.forEach((entry, index) => {
         const rank = index + 1;
         const emoji = rank === 1 ? '🥇 ' : rank === 2 ? '🥈 ' : rank === 3 ? '🥉 ' : ' ';
 
-        // Find library key
-        const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-          libraryMetadata.libraries[key].displayName === entry.library
-        );
-
-        const version = versions.libraries[libKey]?.current || 'N/A';
-        const size = versions.libraries[libKey]?.size?.gzip || 0;
-        const sizeKB = (size / 1024).toFixed(1);
-        const lastUpdated = versions.libraries[libKey]?.lastUpdated
-          ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-          : 'N/A';
-
         const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
-        const peakCrown = entry.max === maxPeak ? '👑 ' : '';
 
-        section += `| ${emoji}${rank} | **${entry.library}** | ${version} | ${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${peakCrown}${formatNumber(entry.max)} | ${lastUpdated} |\n`;
+        section += `| ${emoji}${rank} | **${entry.library}** | ${overallCrown}${formatNumber(entry.overall)} |\n`;
       });
 
       section += `\n`;

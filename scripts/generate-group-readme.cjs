@@ -139,16 +139,10 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
       readme += `**Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}\n`;
     }
 
-    readme += `\n| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |\n`;
-    readme += `|------|---------|---------|---------------|-------------|------------------|--------------|\n`;
+    readme += `\n| Rank | Library | Group Score |\n`;
+    readme += `|------|---------|-------------|\n`;
 
     const maxOverall = Math.max(...scores.map(s => s.overall));
-    const minSize = Math.min(...scores.map(entry => {
-      const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-        libraryMetadata.libraries[key].displayName === entry.library
-      );
-      return versions.libraries?.[libKey]?.size?.gzip || Infinity;
-    }));
 
     scores.forEach((entry, index) => {
       const rank = index + 1;
@@ -158,19 +152,11 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
         libraryMetadata.libraries[key].displayName === entry.library
       );
 
-      const version = versions.libraries?.[libKey]?.current || 'N/A';
-      const size = versions.libraries?.[libKey]?.size?.gzip || 0;
-      const sizeKB = (size / 1024).toFixed(1);
-      const lastUpdated = versions.libraries?.[libKey]?.lastUpdated
-        ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-        : 'N/A';
       const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
-
-      const sizeCrown = size === minSize ? '👑 ' : '';
       const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
       const libraryLink = githubUrl ? `[**${entry.library}**](${githubUrl})` : `**${entry.library}**`;
 
-      readme += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${formatNumber(entry.max)} | ${lastUpdated} |\n`;
+      readme += `| ${emoji}${rank} | ${libraryLink} | ${overallCrown}${formatNumber(entry.overall)} |\n`;
     });
 
     readme += `\n---\n\n`;
