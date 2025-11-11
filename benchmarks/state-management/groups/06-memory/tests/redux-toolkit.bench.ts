@@ -12,10 +12,10 @@ const store = reduxActionsV2;
 
 describe('06-memory - Redux Toolkit', () => {
   bench(TESTS.LARGE_STATE_READ.name, () => {
-    return store.getCount();
+    return store.getCount()
   });
 
   bench(TESTS.LARGE_STATE_UPDATE.name, () => {
-    store.increment();
+    store.increment()
   });
 });

@@ -46,8 +46,60 @@ function generateTestFile(
   tests: Record<string, any>
 ): string {
   const testCases = Object.entries(tests).map(([testKey, testDef]) => {
-    // Code is already a string, just indent it properly
-    const indentedBody = testDef.code.split('\n').map(line => `    ${line}`).join('\n');
+    // Extract function body with proper formatting
+    const funcStr = testDef.code.toString();
+
+    // Match function body between { and } - handle both arrow and regular functions
+    // Handle minified versions like "store=>{...}" and normal "store => {...}"
+    let match = funcStr.match(/(?:store\s*=>|function\s*\(\s*store\s*\))\s*\{([\s\S]*)\}$/);
+
+    if (!match) {
+      console.error(`Function string: ${funcStr}`);
+      throw new Error(`Failed to parse function for ${testKey}`);
+    }
+
+    let body = match[1].trim();
+
+    // If body is empty, return empty bench
+    if (!body) {
+      return `  bench(TESTS.${testKey}.name, () => {});`;
+    }
+
+    // Split into lines and filter empty ones
+    let lines = body.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+
+    // If it's a single line (minified), format it nicely
+    if (lines.length === 1) {
+      // Add proper indentation for single line
+      return `  bench(TESTS.${testKey}.name, () => {
+    ${lines[0]}
+  });`;
+    }
+
+    // For multi-line, find minimum indentation and preserve structure
+    lines = body.split('\n');
+    const nonEmptyLines = lines.filter(line => line.trim().length > 0);
+
+    if (nonEmptyLines.length === 0) {
+      return `  bench(TESTS.${testKey}.name, () => {});`;
+    }
+
+    // Find minimum indentation
+    const minIndent = Math.min(
+      ...nonEmptyLines.map(line => {
+        const match = line.match(/^(\s*)/);
+        return match ? match[1].length : 0;
+      })
+    );
+
+    // Remove minimum indentation and add bench indentation
+    const indentedBody = lines
+      .filter(line => line.trim().length > 0)
+      .map(line => {
+        const trimmed = line.substring(minIndent);
+        return `    ${trimmed}`;
+      })
+      .join('\n');
 
     return `  bench(TESTS.${testKey}.name, () => {
 ${indentedBody}

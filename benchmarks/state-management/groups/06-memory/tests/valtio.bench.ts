@@ -12,10 +12,10 @@ const store = valtioActionsV2;
 
 describe('06-memory - Valtio', () => {
   bench(TESTS.LARGE_STATE_READ.name, () => {
-    return store.getCount();
+    return store.getCount()
   });
 
   bench(TESTS.LARGE_STATE_UPDATE.name, () => {
-    store.increment();
+    store.increment()
   });
 });

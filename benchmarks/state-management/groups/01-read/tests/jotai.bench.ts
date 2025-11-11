@@ -12,31 +12,22 @@ const store = jotaiActionsV2;
 
 describe('01-read - Jotai', () => {
   bench(TESTS.SIMPLE_READ.name, () => {
-    store.increment();
-        return store.getCount();
+    store.increment();return store.getCount()
   });
 
   bench(TESTS.HIGH_FREQ_READ_X10.name, () => {
-    for (let i = 0; i < 10; i++) {
-          store.getCount();
-        }
+    for(let i=0;i<10;i++){store.getCount()}
   });
 
   bench(TESTS.HIGH_FREQ_READ_X100.name, () => {
-    for (let i = 0; i < 100; i++) {
-          store.getCount();
-        }
+    for(let i=0;i<100;i++){store.getCount()}
   });
 
   bench(TESTS.HIGH_FREQ_READ_X1000.name, () => {
-    for (let i = 0; i < 1000; i++) {
-          store.getCount();
-        }
+    for(let i=0;i<1e3;i++){store.getCount()}
   });
 
   bench(TESTS.HIGH_FREQ_READ_X10000.name, () => {
-    for (let i = 0; i < 10000; i++) {
-          store.getCount();
-        }
+    for(let i=0;i<1e4;i++){store.getCount()}
   });
 });

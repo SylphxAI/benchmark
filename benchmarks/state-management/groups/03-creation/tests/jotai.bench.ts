@@ -12,8 +12,6 @@ const store = jotaiActionsV2;
 
 describe('03-creation - Jotai', () => {
   bench(TESTS.STORE_CREATION.name, () => {
-    // Store creation is handled by setup/initialization
-        // This test measures the overhead of store access
-        return store;
+    return store
   });
 });
