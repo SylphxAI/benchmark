@@ -25,7 +25,7 @@ Native async atoms that auto-recompute when dependencies change.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**Zen**](https://github.com/SylphxAI/zen) | 👑 8.1M |
+| 🥇 1 | [**Zen**](https://github.com/SylphxAI/zen) | 👑 8.0M |
 | 🥈 2 | [**Jotai**](https://github.com/pmndrs/jotai) | 12K |
 
 ---
@@ -55,22 +55,22 @@ Native async atoms that auto-recompute when dependencies change.
 ### Async Computed Read
 
 ```
-🥇   Zen                ████████████████████████████████████████     10.5M ops/sec
+🥇   Zen                ████████████████████████████████████████     10.4M ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 10,515,547 | ±0.70% | 0.1000ms | 0.2000ms | 5257774 |
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 10,373,642 | ±0.73% | 0.1000ms | 0.2000ms | 5186822 |
 
 ### Async Computed with Dependency Update
 
 ```
-🥇   Zen                ████████████████████████████████████████      9.9M ops/sec
+🥇   Zen                ████████████████████████████████████████      9.4M ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,851,391 | ±0.26% | 0.1000ms | 0.2000ms | 4925696 |
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,396,775 | ±0.30% | 0.1000ms | 0.2000ms | 4698388 |
 
 ### Chained Async Atoms
 
@@ -90,35 +90,35 @@ Native async atoms that auto-recompute when dependencies change.
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,882,424 | ±0.36% | 0.1000ms | 0.2000ms | 4941212 |
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,911,255 | ±0.34% | 0.1000ms | 0.2000ms | 4955628 |
 
 ### Complex Async Dependencies
 
 ```
-🥇   Zen                ████████████████████████████████████████      9.6M ops/sec
+🥇   Zen                ████████████████████████████████████████     10.0M ops/sec
 🥈   Jotai                                                             431 ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,634,307 | ±0.27% | 0.1000ms | 0.2000ms | 4817154 |
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 9,991,571 | ±0.32% | 0.1000ms | 0.2000ms | 4995786 |
 | 🥈 | [**Jotai**](https://github.com/pmndrs/jotai) | 431 | ±1.23% | 2318.6000ms | 2625.4000ms | 216 |
 
-**Key Insight:** Zen is 22337.83x faster than Jotai in this test.
+**Key Insight:** Zen is 23166.18x faster than Jotai in this test.
 
 ### Concurrent Async Reads
 
 ```
-🥇   Zen                ████████████████████████████████████████      3.5M ops/sec
-🥈   Jotai              ██████                                        549K ops/sec
+🥇   Zen                ████████████████████████████████████████      3.3M ops/sec
+🥈   Jotai              ███████                                       549K ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 3,499,901 | ±0.33% | 0.3000ms | 0.5000ms | 1749951 |
+| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 3,323,940 | ±0.40% | 0.3000ms | 0.5000ms | 1661971 |
 | 🥈 | [**Jotai**](https://github.com/pmndrs/jotai) | 548,762 | ±0.35% | 1.8000ms | 2.9000ms | 274381 |
 
-**Key Insight:** Zen is 6.38x faster than Jotai in this test.
+**Key Insight:** Zen is 6.06x faster than Jotai in this test.
 
 ---
 
@@ -138,4 +138,4 @@ npx vitest bench groups/08-async-reactive/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T12:22:16.288Z*
+*Last generated: 2025-11-11T12:44:10.667Z*
