@@ -111,6 +111,19 @@ function generateHeader() {
 
 ${categoryConfig.description}.
 
+## 📑 Table of Contents
+
+- [Overall Performance Score](#overall-performance-score)
+- [Performance by Group](#performance-by-group)
+- [Feature Support Matrix](#feature-support-matrix)
+- [Test Categories](#test-categories)
+- [Group Results Summary](#group-results-summary)
+- [Methodology](#methodology)
+- [Key Insights](#key-insights)
+- [Running Benchmarks](#running-benchmarks)
+
+---
+
 `;
 }
 
@@ -203,8 +216,21 @@ See which library wins in each test group:
 
 `;
 
-  // Get all libraries from metadata
-  const allLibraries = Object.values(libraryMetadata.libraries).map(lib => lib.displayName);
+  // Get all libraries and sort by overall score
+  const indexScores = overallScores.scores;
+  const maxRead = Math.max(...indexScores.map(s => s.read));
+  const maxWrite = Math.max(...indexScores.map(s => s.write));
+  const maxCreation = Math.max(...indexScores.map(s => s.creation));
+  const maxMemory = Math.max(...indexScores.map(s => s.memory));
+
+  const sortedLibraries = indexScores.map(entry => {
+    const readIndex = (entry.read / maxRead) * 100;
+    const writeIndex = (entry.write / maxWrite) * 100;
+    const creationIndex = (entry.creation / maxCreation) * 100;
+    const memoryIndex = (entry.memory / maxMemory) * 100;
+    const overallIndex = Math.pow(readIndex * writeIndex * creationIndex * memoryIndex, 1 / 4);
+    return { library: entry.library, overallIndex };
+  }).sort((a, b) => b.overallIndex - a.overallIndex).map(s => s.library);
 
   // Calculate rankings for each group
   const groupRankings = {};
@@ -220,12 +246,14 @@ See which library wins in each test group:
     groupRankings[groupKey] = groupScores.map(s => s.library);
   });
 
-  // Build header with group numbers
+  // Build header with group numbers (with links)
   const groupKeys = Object.keys(groupsConfig.groups).sort();
   let header = '| Library |';
   groupKeys.forEach(key => {
     const num = key.match(/\d+/)[0];
-    header += ` ${num} |`;
+    const groupConfig = groupsConfig.groups[key];
+    const anchor = `${num}---${groupConfig.title.toLowerCase().replace(/\s+/g, '-')}`;
+    header += ` [${num}](#${anchor}) |`;
   });
   section += header + '\n';
 
@@ -235,9 +263,16 @@ See which library wins in each test group:
   });
   section += separator + '\n';
 
-  // Build rows for each library
-  allLibraries.forEach(library => {
-    let row = `| **${library}** |`;
+  // Build rows for each library (sorted by overall score)
+  sortedLibraries.forEach(library => {
+    // Get GitHub URL
+    const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+      libraryMetadata.libraries[key].displayName === library
+    );
+    const githubUrl = libraryMetadata.libraries[libKey]?.url || '';
+    const libraryLink = githubUrl ? `[**${library}**](${githubUrl})` : `**${library}**`;
+
+    let row = `| ${libraryLink} |`;
 
     groupKeys.forEach(groupKey => {
       const rankings = groupRankings[groupKey];

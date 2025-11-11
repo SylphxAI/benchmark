@@ -2,6 +2,19 @@
 
 Comprehensive performance benchmarks for JavaScript/TypeScript state management libraries.
 
+## 📑 Table of Contents
+
+- [Overall Performance Score](#overall-performance-score)
+- [Performance by Group](#performance-by-group)
+- [Feature Support Matrix](#feature-support-matrix)
+- [Test Categories](#test-categories)
+- [Group Results Summary](#group-results-summary)
+- [Methodology](#methodology)
+- [Key Insights](#key-insights)
+- [Running Benchmarks](#running-benchmarks)
+
+---
+
 ## Overall Performance Score
 
 **Based on Universal Tests**: Read, Write, Creation, Memory
@@ -27,16 +40,16 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 See which library wins in each test group:
 
-| Library | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 |
+| Library | [01](#01---read-operations) | [02](#02---write-operations) | [03](#03---store-creation) | [04](#04---complexity) | [05](#05---cache-performance) | [06](#06---memory-allocation) | [07](#07---form-state) | [08](#08---reactive-async) | [09](#09---computed-native) | [10](#10---selectors) | [11](#11---batching-native) |
 |---------|------|------|------|------|------|------|------|------|------|------|------|
-| **Redux Toolkit** | 6 | 7 | 7 | - | - | 8 | - | - | - | 🥈 | - |
-| **Zustand** | 8 | 8 | 4 | - | - | 5 | - | - | - | 🥉 | - |
-| **Jotai** | 🥈 | 🥈 | 5 | - | - | 4 | - | 🥇 | 5 | - | - |
-| **MobX** | 5 | 6 | 8 | - | - | 🥇 | - | - | 4 | - | 🥉 |
-| **Valtio** | 7 | 5 | 6 | - | - | 7 | - | - | - | 🥇 | 🥈 |
-| **Preact Signals** | 4 | 🥉 | 🥇 | - | - | 6 | - | - | 🥉 | - | - |
-| **Solid Signals** | 🥇 | 🥇 | 🥉 | - | - | 🥉 | - | - | 🥇 | - | 🥇 |
-| **Zen** | 🥉 | 4 | 🥈 | - | - | 🥈 | - | - | 🥈 | - | - |
+| [**Solid Signals**](https://github.com/solidjs/solid) | 🥇 | 🥇 | 🥉 | - | - | 🥉 | - | - | 🥇 | - | 🥇 |
+| [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥇 | - | - | 6 | - | - | 🥉 | - | - |
+| [**Zen**](https://github.com/sylphxltd/zen) | 🥉 | 4 | 🥈 | - | - | 🥈 | - | - | 🥈 | - | - |
+| [**Jotai**](https://github.com/pmndrs/jotai) | 🥈 | 🥈 | 5 | - | - | 4 | - | 🥇 | 5 | - | - |
+| [**Valtio**](https://github.com/pmndrs/valtio) | 7 | 5 | 6 | - | - | 7 | - | - | - | 🥇 | 🥈 |
+| [**Zustand**](https://github.com/pmndrs/zustand) | 8 | 8 | 4 | - | - | 5 | - | - | - | 🥉 | - |
+| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 6 | 7 | 7 | - | - | 8 | - | - | - | 🥈 | - |
+| [**MobX**](https://github.com/mobxjs/mobx) | 5 | 6 | 8 | - | - | 🥇 | - | - | 4 | - | 🥉 |
 
 **Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable
 
