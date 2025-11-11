@@ -1,118 +1,143 @@
 # Write Operations
 
-Performance benchmarks for state write and mutation operations.
+Simple increments and burst updates.
 
-## Simple Increment
+## Group Overall Performance
 
-**Performance Comparison:**
+**Methodology**: Geometric mean across all tests in this group
+**Last Benchmark Run**: Nov 10, 2025, 4:38 PM
 
-```
-🥇   Solid Signals      ████████████████████████████████████████       28.45M ops/sec
-🥈   Jotai              ███████████████████████████████████████        27.77M ops/sec
-🥉   Preact Signals     ███████████████████████████████████            24.94M ops/sec
-4.   Zen                ██████████████████████████████████             24.12M ops/sec
-5.   Valtio             █████                                           3.37M ops/sec
-6.   MobX               ████                                            2.77M ops/sec
-7.   Redux Toolkit      █                                             764.87K ops/sec
-8.   Zustand                                                          281.07K ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Solid Signals** | 28,449,865.78 | ±1.81% | N/A | N/A | 14,224,934 |
-| 🥈 | **Jotai** | 27,766,588.11 | ±0.35% | N/A | N/A | 13,883,295 |
-| 🥉 | **Preact Signals** | 24,941,333.5 | ±0.63% | N/A | N/A | 12,470,667 |
-| 4 | **Zen** | 24,120,665.04 | ±0.17% | N/A | N/A | 12,060,333 |
-| 5 | **Valtio** | 3,369,223.37 | ±0.33% | 0.0002ms | 0.0003ms | 1,684,612 |
-| 6 | **MobX** | 2,767,973.25 | ±0.38% | 0.0002ms | 0.0004ms | 1,383,987 |
-| 7 | **Redux Toolkit** | 764,869.42 | ±0.28% | 0.0010ms | 0.0013ms | 382,435 |
-| 8 | **Zustand** | 281,066.02 | ±2.36% | 0.0026ms | 0.0038ms | 140,534 |
-
-**Key Insight:** Solid Signals is 101.22x faster than Zustand in this category.
-
-## Burst Updates
-
-**Performance Comparison:**
-
-```
-🥇   Solid Signals      ████████████████████████████████████████       25.49M ops/sec
-🥈   Jotai              ████████████████                               10.27M ops/sec
-🥉   Preact Signals     ███████████████                                 9.29M ops/sec
-4.   Zen                ███████████                                     7.09M ops/sec
-5.   Valtio             █                                             330.64K ops/sec
-6.   MobX                                                             296.67K ops/sec
-7.   Redux Toolkit                                                     75.27K ops/sec
-8.   Zustand                                                           28.14K ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|------|---------|---------|----------|------|-----|----------|
-| 🥇 | **Solid Signals** | 25,488,574.37 | ±0.14% | N/A | N/A | 12,744,288 |
-| 🥈 | **Jotai** | 10,272,479.4 | ±0.13% | N/A | 0.0001ms | 5,136,240 |
-| 🥉 | **Preact Signals** | 9,291,260.18 | ±0.07% | N/A | 0.0001ms | 4,645,631 |
-| 4 | **Zen** | 7,089,524.37 | ±0.80% | N/A | 0.0002ms | 3,544,763 |
-| 5 | **Valtio** | 330,642.67 | ±0.34% | 0.0027ms | 0.0030ms | 165,322 |
-| 6 | **MobX** | 296,671.09 | ±0.36% | 0.0031ms | 0.0034ms | 148,336 |
-| 7 | **Redux Toolkit** | 75,274.23 | ±0.55% | 0.0110ms | 0.0133ms | 37,638 |
-| 8 | **Zustand** | 28,142.89 | ±0.27% | 0.0336ms | 0.0355ms | 14,072 |
-
-**Key Insight:** Solid Signals is 905.68x faster than Zustand in this category.
-
-## Available Tests
-
-### Test Files
-
-- `write-x1` - Individual benchmark test
-- `write-x1000` - Individual benchmark test
-- `write-x10000` - Individual benchmark test
-
-## How to Run Tests
-
-### Quick Start
-
-``ash
-# Run all write benchmarks
-npm run benchmark:write
-
-# Run specific test
-node scripts/run-generated-tests.cjs write-single.bench.ts
-
-# Run all write tests
-node scripts/run-generated-tests.cjs write-*.bench.ts
-
-# Use developer dashboard
-node scripts/dev-dashboard.cjs
-``
-
-### Available Commands
-
-``ash
-npm run benchmark:write        # Run all write tests
-node scripts/run-generated-tests.cjs list # List all available tests
-npx tsx scripts/test-generator.ts state-management # Regenerate tests
-``
-
-## Technical Details
-
-**Description**: Write operations test state mutation and update performance.
-
-**Test Scales**: `Single`, `Burst`, `Batch`, `Heavy`
-
-**Focus Areas**: - Mutation speed
-- Batch operations
-- State consistency
-
-**Library Interface**: All libraries implement a standardized interface with these methods:
- `get count`, `increment`, `setNested`, `addUser`, etc.
-
-**Measurement**: Each test runs multiple iterations and reports:
-- Operations per second (ops/sec)
-- Mean execution time
-- 99th percentile (p99)
-- Statistical variance
+| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
+|------|---------|---------|---------------|-------------|------------------|--------------|
+| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 31.2M | 33.1M | Dec 6 |
+| 🥈 2 | **Jotai** | 2.15.1 | 4.3 KB | 20.3M | 33.9M | Dec 6 |
+| 🥉 3 | **Preact Signals** | 2.4.0 | 3.0 KB | 18.4M | 28.2M | Nov 7 |
+|  4 | **Zen** | 1.2.1 | 5.3 KB | 16.8M | 28.2M | Nov 7 |
+|  5 | **Valtio** | 2.2.0 | 3.1 KB | 1.5M | 4.2M | Nov 6 |
+|  6 | **MobX** | 6.15.0 | 17.6 KB | 1.1M | 3.0M | Dec 6 |
+|  7 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 242K | 784K | Dec 6 |
+|  8 | **Zustand** | 5.0.8 | 👑 1.2 KB | 105K | 351K | Nov 6 |
 
 ---
-*Last updated: 2025-11-10T19:08:35.705Z*
-*Generated by: group-readme-generator.cjs*
 
-🔗 [← Back to State Management Overview](../README.md)
+## Detailed Results
+
+### groups/02-write/write-x1.bench.ts > Write Operations - x1
+
+**Performance Comparison:**
+
+```
+🥇   Jotai              ████████████████████████████████████████     33.9M ops/sec
+🥈   Solid Signals      ███████████████████████████████████████      33.1M ops/sec
+🥉   Solid Signals      ███████████████████████████████████          29.3M ops/sec
+4.   Zen                █████████████████████████████████            28.2M ops/sec
+5.   Preact Signals     █████████████████████████████████            28.2M ops/sec
+6.   Jotai              ██████████████                               12.2M ops/sec
+7.   Preact Signals     ██████████████                               12.1M ops/sec
+8.   Zen                ████████████                                  9.9M ops/sec
+9.   Valtio             █████                                         4.2M ops/sec
+10.  MobX               ████                                          3.0M ops/sec
+11.  Redux Toolkit      █                                             784K ops/sec
+12.  Valtio             █                                             557K ops/sec
+13.  MobX                                                             381K ops/sec
+14.  Zustand                                                          351K ops/sec
+15.  Redux Toolkit                                                     75K ops/sec
+16.  Zustand                                                           31K ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|---------|
+| 🥇 | **Jotai** | 33,919,541.254 | ±0.35% | 0.0295ms | 0.0830ms |  |
+| 🥈 | **Solid Signals** | 33,108,765.669 | ±0.10% | 0.0302ms | 0.0420ms |  |
+| 🥉 | **Solid Signals** | 29,346,240.943 | ±0.11% | 0.0341ms | 0.0830ms |  |
+| 4 | **Zen** | 28,233,961.21 | ±0.16% | 0.0354ms | 0.0840ms |  |
+| 5 | **Preact Signals** | 28,203,918.646 | ±1.41% | 0.0355ms | 0.0840ms |  |
+| 6 | **Jotai** | 12,197,574.439 | ±0.08% | 0.0820ms | 0.1250ms |  |
+| 7 | **Preact Signals** | 12,063,278.794 | ±2.66% | 0.0829ms | 0.1250ms |  |
+| 8 | **Zen** | 9,949,298.249 | ±0.11% | 0.1005ms | 0.1670ms |  |
+| 9 | **Valtio** | 4,240,840.27 | ±0.33% | 0.2358ms | 0.4160ms |  |
+| 10 | **MobX** | 3,045,725.257 | ±0.49% | 0.3283ms | 0.7090ms |  |
+| 11 | **Redux Toolkit** | 784,474.613 | ±0.49% | 1.2747ms | 3.1250ms |  |
+| 12 | **Valtio** | 556,643.368 | ±0.53% | 1.7965ms | 2.5830ms |  |
+| 13 | **MobX** | 381,372.832 | ±0.43% | 2.6221ms | 3.9160ms |  |
+| 14 | **Zustand** | 350,821.763 | ±0.64% | 2.8505ms | 4.1250ms |  |
+| 15 | **Redux Toolkit** | 74,951.41 | ±2.06% | 13.3420ms | 26.4580ms |  |
+| 16 | **Zustand** | 31,179.13 | ±0.60% | 32.0727ms | 70.7500ms |  |
+
+**Key Insight:** Jotai is 1087.89x faster than Zustand in this category.
+
+### groups/02-write/write-x1000.bench.ts > Write - 1000x operations (experimental)
+
+**Performance Comparison:**
+
+```
+🥇   Simple Increment (1 iterations)                                                  0 ops/sec
+🥈   Simple Increment (1 iterations)                                                  0 ops/sec
+🥉   Simple Increment (1 iterations)                                                  0 ops/sec
+4.   Simple Increment (1 iterations)                                                  0 ops/sec
+5.   Simple Increment (1 iterations)                                                  0 ops/sec
+6.   Simple Increment (1 iterations)                                                  0 ops/sec
+7.   Simple Increment (1 iterations)                                                  0 ops/sec
+8.   Simple Increment (1 iterations)                                                  0 ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|---------|
+| 🥇 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 🥈 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 🥉 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 4 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 5 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 6 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 7 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 8 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+
+**Key Insight:** Simple Increment (1 iterations) is 0.00x faster than Simple Increment (1 iterations) in this category.
+
+### groups/02-write/write-x10000.bench.ts > Write - 10000x operations (experimental)
+
+**Performance Comparison:**
+
+```
+🥇   Simple Increment (1 iterations)                                                  0 ops/sec
+🥈   Simple Increment (1 iterations)                                                  0 ops/sec
+🥉   Simple Increment (1 iterations)                                                  0 ops/sec
+4.   Simple Increment (1 iterations)                                                  0 ops/sec
+5.   Simple Increment (1 iterations)                                                  0 ops/sec
+6.   Simple Increment (1 iterations)                                                  0 ops/sec
+7.   Simple Increment (1 iterations)                                                  0 ops/sec
+8.   Simple Increment (1 iterations)                                                  0 ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|------|---------|---------|----------|------|-----|---------|
+| 🥇 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 🥈 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 🥉 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 4 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 5 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 6 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 7 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+| 8 | **Simple Increment (1 iterations)** | N/A | N/A | N/A | N/A |  |
+
+**Key Insight:** Simple Increment (1 iterations) is 0.00x faster than Simple Increment (1 iterations) in this category.
+
+---
+
+## 🔗 Navigation
+
+- [← Back to State Management Overview](../../README.md)
+- [Overall Performance Score](../../README.md#overall-performance-score)
+
+## 🚀 Running This Group
+
+```bash
+# Run this group
+npm run benchmark:write
+
+# Or run specific test file
+npx vitest bench groups/02-write/*.bench.ts
+```
+
+---
+*Last generated: 2025-11-11T00:27:16.781Z*

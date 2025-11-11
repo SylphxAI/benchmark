@@ -4,9 +4,72 @@
  */
 
 const { readFileSync, writeFileSync, existsSync } = require('fs');
-const { join } = require('path');
+const { join, dirname } = require('path');
 
-function generateGroupReadme(groupPath, groupName) {
+function formatNumber(num) {
+  if (!num) return '0';
+  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
+  if (num >= 1000) return `${Math.round(num / 1000)}K`;
+  return Math.round(num).toString();
+}
+
+function getAllBenchmarks(resultsData) {
+  if (!resultsData || !resultsData.files) return [];
+  const benchmarks = [];
+  resultsData.files.forEach(file => {
+    file.groups?.forEach(group => {
+      group.benchmarks?.forEach(b => benchmarks.push(b));
+    });
+  });
+  return benchmarks;
+}
+
+function calculateGroupOverall(resultsData, libraryMetadata) {
+  // Get all benchmarks
+  const allBenches = getAllBenchmarks(resultsData);
+  if (allBenches.length === 0) return [];
+
+  // Get valid library display names
+  const validLibraries = new Set(
+    Object.values(libraryMetadata.libraries || {}).map(lib => lib.displayName)
+  );
+
+  // Group by library (extract from benchmark name)
+  const libraryScores = {};
+
+  allBenches.forEach(bench => {
+    const nameParts = bench.name.split(' - ');
+    const libName = nameParts[nameParts.length - 1];
+
+    // Only include valid libraries
+    if (!validLibraries.has(libName)) return;
+
+    if (!libraryScores[libName]) {
+      libraryScores[libName] = [];
+    }
+    libraryScores[libName].push(bench.hz || 0);
+  });
+
+  // Calculate geometric mean for each library
+  const scores = Object.entries(libraryScores).map(([library, values]) => {
+    // Filter out zeros
+    const validValues = values.filter(v => v > 0);
+    if (validValues.length === 0) return { library, overall: 0 };
+
+    // Geometric mean
+    const product = validValues.reduce((acc, val) => acc * val, 1);
+    const overall = Math.pow(product, 1 / validValues.length);
+
+    // Also get max (for fastest in this group)
+    const max = Math.max(...validValues);
+
+    return { library, overall, max };
+  });
+
+  return scores.sort((a, b) => b.overall - a.overall);
+}
+
+function generateGroupReadme(groupPath, groupName, categoryPath) {
   const resultsPath = join(groupPath, 'results.json');
 
   if (!existsSync(resultsPath)) {
@@ -15,31 +78,137 @@ function generateGroupReadme(groupPath, groupName) {
   }
 
   const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
+
+  // Load category configs
+  const versionsPath = join(categoryPath, 'versions.json');
+  const metadataPath = join(categoryPath, 'library-metadata.json');
+  const groupsConfigPath = join(categoryPath, 'groups-config.json');
+
+  let versions = {};
+  let libraryMetadata = { libraries: {} };
+  let groupsConfig = { groups: {} };
+
+  if (existsSync(versionsPath)) {
+    versions = JSON.parse(readFileSync(versionsPath, 'utf-8'));
+  }
+  if (existsSync(metadataPath)) {
+    libraryMetadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
+  }
+  if (existsSync(groupsConfigPath)) {
+    groupsConfig = JSON.parse(readFileSync(groupsConfigPath, 'utf-8'));
+  }
+
+  // Get group config
+  const groupKey = Object.keys(groupsConfig.groups || {}).find(key => key.endsWith(groupName));
+  const groupConfig = groupKey ? groupsConfig.groups[groupKey] : null;
+  const groupTitle = groupConfig ? groupConfig.title : groupName.replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase());
+  const groupDescription = groupConfig ? groupConfig.description : `Performance benchmarks for ${groupName} operations`;
+
   const readmePath = join(groupPath, 'README.md');
 
-  let readme = `# ${groupName.charAt(0).toUpperCase() + groupName.slice(1)} Tests\n\n`;
-  readme += `Performance benchmarks for ${groupName} operations across state management libraries.\n\n`;
+  let readme = `# ${groupTitle}\n\n`;
+  readme += `${groupDescription}.\n\n`;
 
-  // Generate performance table
+  // Generate group overall score
+  const scores = calculateGroupOverall(results, libraryMetadata);
+
+  if (scores.length > 0) {
+    readme += `## Group Overall Performance\n\n`;
+    readme += `**Methodology**: Geometric mean across all tests in this group\n`;
+
+    if (versions.lastBenchmarkRun) {
+      readme += `**Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}\n`;
+    }
+
+    readme += `\n| Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |\n`;
+    readme += `|------|---------|---------|---------------|-------------|------------------|--------------|\n`;
+
+    const maxOverall = Math.max(...scores.map(s => s.overall));
+    const minSize = Math.min(...scores.map(entry => {
+      const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+        libraryMetadata.libraries[key].displayName === entry.library
+      );
+      return versions.libraries?.[libKey]?.size?.gzip || Infinity;
+    }));
+
+    scores.forEach((entry, index) => {
+      const rank = index + 1;
+      const emoji = rank === 1 ? '🥇 ' : rank === 2 ? '🥈 ' : rank === 3 ? '🥉 ' : ' ';
+
+      const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+        libraryMetadata.libraries[key].displayName === entry.library
+      );
+
+      const version = versions.libraries?.[libKey]?.current || 'N/A';
+      const size = versions.libraries?.[libKey]?.size?.gzip || 0;
+      const sizeKB = (size / 1024).toFixed(1);
+      const lastUpdated = versions.libraries?.[libKey]?.lastUpdated
+        ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        : 'N/A';
+
+      const sizeCrown = size === minSize ? '👑 ' : '';
+      const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
+
+      readme += `| ${emoji}${rank} | **${entry.library}** | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${formatNumber(entry.max)} | ${lastUpdated} |\n`;
+    });
+
+    readme += `\n---\n\n`;
+  }
+
+  // Generate detailed performance results
+  readme += `## Detailed Results\n\n`;
+
   if (results.files && results.files.length > 0) {
-    readme += `## 📊 Performance Results\n\n`;
-
     results.files.forEach(file => {
       file.groups?.forEach(group => {
         readme += `### ${group.fullName}\n\n`;
 
         if (group.benchmarks && group.benchmarks.length > 0) {
-          readme += '| Library | Ops/sec | Variance | Mean |\n';
-          readme += '|---------|---------|----------|------|\n';
+          const sorted = [...group.benchmarks].sort((a, b) => (b.hz || 0) - (a.hz || 0));
+          const maxHz = sorted[0]?.hz || 1;
 
-          group.benchmarks
-            .sort((a, b) => (b.hz || 0) - (a.hz || 0))
-            .forEach(bench => {
-              const opsPerSec = bench.hz ? bench.hz.toLocaleString() : 'N/A';
-              const variance = bench.rme ? `±${bench.rme.toFixed(2)}%` : 'N/A';
-              const mean = bench.mean ? `${(bench.mean * 1000).toFixed(4)}ms` : 'N/A';
-              readme += `| ${bench.name} | ${opsPerSec} | ${variance} | ${mean} |\n`;
-            });
+          // Performance comparison chart
+          readme += '**Performance Comparison:**\n\n```\n';
+          sorted.forEach((bench, idx) => {
+            const nameParts = bench.name.split(' - ');
+            const libName = nameParts[nameParts.length - 1];
+            const emoji = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `${idx + 1}. `;
+            const percentage = (bench.hz || 0) / maxHz;
+            const barLength = Math.round(percentage * 40);
+            const bar = '█'.repeat(barLength);
+            const opsText = formatNumber(bench.hz) + ' ops/sec';
+
+            readme += `${emoji.padEnd(4)} ${libName.padEnd(18)} ${bar.padEnd(42)} ${opsText.padStart(15)}\n`;
+          });
+          readme += '```\n\n';
+
+          // Detailed table
+          readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
+          readme += '|------|---------|---------|----------|------|-----|---------|\n';
+
+          sorted.forEach((bench, idx) => {
+            const nameParts = bench.name.split(' - ');
+            const libName = nameParts[nameParts.length - 1];
+            const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
+            const opsPerSec = bench.hz ? bench.hz.toLocaleString('en-US', { maximumFractionDigits: 3 }) : 'N/A';
+            const variance = bench.rme ? `±${bench.rme.toFixed(2)}%` : 'N/A';
+            const mean = bench.mean ? `${(bench.mean * 1000).toFixed(4)}ms` : 'N/A';
+            const p99 = bench.p99 ? `${(bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
+            const samples = bench.samples || 'N/A';
+
+            readme += `| ${emoji} | **${libName}** | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
+          });
+
+          // Key insight
+          if (sorted.length >= 2) {
+            const fastest = sorted[0];
+            const slowest = sorted[sorted.length - 1];
+            const fastestName = fastest.name.split(' - ').pop();
+            const slowestName = slowest.name.split(' - ').pop();
+            const ratio = ((fastest.hz || 0) / (slowest.hz || 1)).toFixed(2);
+
+            readme += `\n**Key Insight:** ${fastestName} is ${ratio}x faster than ${slowestName} in this category.\n`;
+          }
 
           readme += '\n';
         }
@@ -47,22 +216,20 @@ function generateGroupReadme(groupPath, groupName) {
     });
   }
 
-  // Add link back to main README
-  readme += `## 🔗 Related\n\n`;
-  readme += `- [← Back to State Management Benchmarks](../README.md)\n`;
-  readme += `- [Overall Performance Rankings](../README.md#-performance-rankings)\n\n`;
+  // Add link back to category README
+  readme += `---\n\n`;
+  readme += `## 🔗 Navigation\n\n`;
+  readme += `- [← Back to State Management Overview](../../README.md)\n`;
+  readme += `- [Overall Performance Score](../../README.md#overall-performance-score)\n\n`;
 
   // Add how to run section
-  readme += `## 🚀 Running Tests\n\n`;
-  readme += `To run only ${groupName} tests:\n\n`;
+  readme += `## 🚀 Running This Group\n\n`;
   readme += `\`\`\`bash\n`;
-  readme += `npm run benchmark:${groupName}\n`;
+  readme += `# Run this group\n`;
+  readme += `npm run benchmark:${groupName.replace(/^\d+-/, '')}\n\n`;
+  readme += `# Or run specific test file\n`;
+  readme += `npx vitest bench groups/${groupName}/*.bench.ts\n`;
   readme += `\`\`\`\n\n`;
-
-  readme += `To run all state management tests:\n\n`;
-  readme += `\`\`\`bash\n`;
-  readme += `npm run benchmark\n`;
-  readme += `\`\`\`\n`;
 
   readme += `---\n`;
   readme += `*Last generated: ${new Date().toISOString()}*\n`;
@@ -87,4 +254,4 @@ if (!existsSync(groupPath)) {
   process.exit(1);
 }
 
-generateGroupReadme(groupPath, groupName);
+generateGroupReadme(groupPath, groupName, categoryPath);
