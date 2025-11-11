@@ -10,7 +10,7 @@ import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config
 const store = solidActionsV2;
 
 describe('03-creation - Solid Signals', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

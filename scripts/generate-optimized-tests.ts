@@ -33,30 +33,30 @@ const LIBRARY_STORE_MAP: Record<string, string> = {
 const GROUP_TESTS: Record<string, { testName: string; code: string }[]> = {
   '01-read': [
     {
-      testName: 'TEST_NAMES.SIMPLE_READ',
+      testName: 'TEST_NAMES.READ.SIMPLE_READ',
       code: `    store.increment();
     return store.getCount();`
     },
     {
-      testName: '`${TEST_NAMES.HIGH_FREQ_READ} (x10)`',
+      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X10',
       code: `    for (let i = 0; i < ITERATIONS.X10; i++) {
       store.getCount();
     }`
     },
     {
-      testName: '`${TEST_NAMES.HIGH_FREQ_READ} (x100)`',
+      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X100',
       code: `    for (let i = 0; i < ITERATIONS.X100; i++) {
       store.getCount();
     }`
     },
     {
-      testName: '`${TEST_NAMES.HIGH_FREQ_READ} (x1000)`',
+      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X1000',
       code: `    for (let i = 0; i < ITERATIONS.X1000; i++) {
       store.getCount();
     }`
     },
     {
-      testName: '`${TEST_NAMES.HIGH_FREQ_READ} (x10000)`',
+      testName: 'TEST_NAMES.READ.HIGH_FREQ_READ_X10000',
       code: `    for (let i = 0; i < ITERATIONS.X10000; i++) {
       store.getCount();
     }`
@@ -64,29 +64,29 @@ const GROUP_TESTS: Record<string, { testName: string; code: string }[]> = {
   ],
   '02-write': [
     {
-      testName: 'TEST_NAMES.SINGLE_UPDATE',
+      testName: 'TEST_NAMES.WRITE.SINGLE_UPDATE',
       code: `    store.increment();`
     },
     {
-      testName: '`${TEST_NAMES.BATCH_UPDATE} (x10)`',
+      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X10',
       code: `    for (let i = 0; i < ITERATIONS.X10; i++) {
       store.increment();
     }`
     },
     {
-      testName: '`${TEST_NAMES.BATCH_UPDATE} (x100)`',
+      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X100',
       code: `    for (let i = 0; i < ITERATIONS.X100; i++) {
       store.increment();
     }`
     },
     {
-      testName: '`${TEST_NAMES.BATCH_UPDATE} (x1000)`',
+      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X1000',
       code: `    for (let i = 0; i < ITERATIONS.X1000; i++) {
       store.increment();
     }`
     },
     {
-      testName: '`${TEST_NAMES.BATCH_UPDATE} (x10000)`',
+      testName: 'TEST_NAMES.WRITE.BATCH_UPDATE_X10000',
       code: `    for (let i = 0; i < ITERATIONS.X10000; i++) {
       store.increment();
     }`
@@ -94,17 +94,17 @@ const GROUP_TESTS: Record<string, { testName: string; code: string }[]> = {
   ],
   '03-creation': [
     {
-      testName: 'TEST_NAMES.STORE_CREATION',
+      testName: 'TEST_NAMES.CREATION.STORE_CREATION',
       code: `    // Store creation is handled by setup`
     }
   ],
   '06-memory': [
     {
-      testName: 'TEST_NAMES.LARGE_STATE_READ',
+      testName: 'TEST_NAMES.MEMORY.LARGE_STATE_READ',
       code: `    return store.getCount();`
     },
     {
-      testName: 'TEST_NAMES.LARGE_STATE_UPDATE',
+      testName: 'TEST_NAMES.MEMORY.LARGE_STATE_UPDATE',
       code: `    store.increment();`
     }
   ],

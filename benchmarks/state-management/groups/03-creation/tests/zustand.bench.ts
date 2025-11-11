@@ -10,7 +10,7 @@ import { zustandActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-conf
 const store = zustandActionsV2;
 
 describe('03-creation - Zustand', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

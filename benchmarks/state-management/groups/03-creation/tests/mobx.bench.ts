@@ -10,7 +10,7 @@ import { mobxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config'
 const store = mobxActionsV2;
 
 describe('03-creation - MobX', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

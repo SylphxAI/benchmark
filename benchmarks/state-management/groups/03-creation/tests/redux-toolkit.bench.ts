@@ -10,7 +10,7 @@ import { reduxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config
 const store = reduxActionsV2;
 
 describe('03-creation - Redux Toolkit', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

@@ -41,28 +41,35 @@ export {
   zenActionsV2
 };
 
-// Test name constants (single source of truth)
+// Test name constants organized by group domain
 export const TEST_NAMES = {
-  // Read operations
-  SIMPLE_READ: 'Simple Read',
-  HIGH_FREQ_READ: 'High Frequency Read',
-
-  // Write operations
-  SINGLE_UPDATE: 'Single Update',
-  BATCH_UPDATE: 'Batch Update',
-
-  // Creation operations
-  STORE_CREATION: 'Store Creation',
-
-  // Memory operations
-  LARGE_STATE_READ: 'Large State Read',
-  LARGE_STATE_UPDATE: 'Large State Update',
-
-  // Batching
-  BATCHED_UPDATES: 'Batched Updates',
-  UNBATCHED_UPDATES: 'Unbatched Updates',
-  LARGE_BATCH: 'Large Batch',
-  BATCHED_WITH_OBSERVERS: 'Batched with Observers',
+  READ: {
+    SIMPLE_READ: 'Simple Read',
+    HIGH_FREQ_READ_X10: 'High Frequency Read (x10)',
+    HIGH_FREQ_READ_X100: 'High Frequency Read (x100)',
+    HIGH_FREQ_READ_X1000: 'High Frequency Read (x1000)',
+    HIGH_FREQ_READ_X10000: 'High Frequency Read (x10000)',
+  },
+  WRITE: {
+    SINGLE_UPDATE: 'Single Update',
+    BATCH_UPDATE_X10: 'Batch Update (x10)',
+    BATCH_UPDATE_X100: 'Batch Update (x100)',
+    BATCH_UPDATE_X1000: 'Batch Update (x1000)',
+    BATCH_UPDATE_X10000: 'Batch Update (x10000)',
+  },
+  CREATION: {
+    STORE_CREATION: 'Store Creation',
+  },
+  MEMORY: {
+    LARGE_STATE_READ: 'Large State Read',
+    LARGE_STATE_UPDATE: 'Large State Update',
+  },
+  BATCHING: {
+    BATCHED_UPDATES: 'Batched Updates',
+    UNBATCHED_UPDATES: 'Unbatched Updates',
+    LARGE_BATCH: 'Large Batch',
+    BATCHED_WITH_OBSERVERS: 'Batched with Observers',
+  }
 };
 
 // Iteration counts for different test scales

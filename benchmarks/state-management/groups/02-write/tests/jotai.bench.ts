@@ -10,29 +10,29 @@ import { jotaiActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config
 const store = jotaiActionsV2;
 
 describe('02-write - Jotai', () => {
-  bench(TEST_NAMES.SINGLE_UPDATE, () => {
+  bench(TEST_NAMES.WRITE.SINGLE_UPDATE, () => {
     store.increment();
   });
 
-  bench(`${TEST_NAMES.BATCH_UPDATE} (x10)`, () => {
+  bench(TEST_NAMES.WRITE.BATCH_UPDATE_X10, () => {
     for (let i = 0; i < ITERATIONS.X10; i++) {
       store.increment();
     }
   });
 
-  bench(`${TEST_NAMES.BATCH_UPDATE} (x100)`, () => {
+  bench(TEST_NAMES.WRITE.BATCH_UPDATE_X100, () => {
     for (let i = 0; i < ITERATIONS.X100; i++) {
       store.increment();
     }
   });
 
-  bench(`${TEST_NAMES.BATCH_UPDATE} (x1000)`, () => {
+  bench(TEST_NAMES.WRITE.BATCH_UPDATE_X1000, () => {
     for (let i = 0; i < ITERATIONS.X1000; i++) {
       store.increment();
     }
   });
 
-  bench(`${TEST_NAMES.BATCH_UPDATE} (x10000)`, () => {
+  bench(TEST_NAMES.WRITE.BATCH_UPDATE_X10000, () => {
     for (let i = 0; i < ITERATIONS.X10000; i++) {
       store.increment();
     }

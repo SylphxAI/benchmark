@@ -10,7 +10,7 @@ import { preactActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-confi
 const store = preactActionsV2;
 
 describe('03-creation - Preact Signals', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

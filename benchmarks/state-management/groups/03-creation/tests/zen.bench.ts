@@ -10,7 +10,7 @@ import { zenActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
 const store = zenActionsV2;
 
 describe('03-creation - Zen', () => {
-  bench(TEST_NAMES.STORE_CREATION, () => {
+  bench(TEST_NAMES.CREATION.STORE_CREATION, () => {
     // Store creation is handled by setup
   });
 });

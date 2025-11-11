@@ -10,30 +10,30 @@ import { mobxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config'
 const store = mobxActionsV2;
 
 describe('01-read - MobX', () => {
-  bench(TEST_NAMES.SIMPLE_READ, () => {
+  bench(TEST_NAMES.READ.SIMPLE_READ, () => {
     store.increment();
     return store.getCount();
   });
 
-  bench(`${TEST_NAMES.HIGH_FREQ_READ} (x10)`, () => {
+  bench(TEST_NAMES.READ.HIGH_FREQ_READ_X10, () => {
     for (let i = 0; i < ITERATIONS.X10; i++) {
       store.getCount();
     }
   });
 
-  bench(`${TEST_NAMES.HIGH_FREQ_READ} (x100)`, () => {
+  bench(TEST_NAMES.READ.HIGH_FREQ_READ_X100, () => {
     for (let i = 0; i < ITERATIONS.X100; i++) {
       store.getCount();
     }
   });
 
-  bench(`${TEST_NAMES.HIGH_FREQ_READ} (x1000)`, () => {
+  bench(TEST_NAMES.READ.HIGH_FREQ_READ_X1000, () => {
     for (let i = 0; i < ITERATIONS.X1000; i++) {
       store.getCount();
     }
   });
 
-  bench(`${TEST_NAMES.HIGH_FREQ_READ} (x10000)`, () => {
+  bench(TEST_NAMES.READ.HIGH_FREQ_READ_X10000, () => {
     for (let i = 0; i < ITERATIONS.X10000; i++) {
       store.getCount();
     }
