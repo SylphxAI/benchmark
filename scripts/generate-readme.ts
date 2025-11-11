@@ -125,7 +125,48 @@ function loadFeatureMatrix(benchmarkDir: string): FeatureMatrix | null {
   if (!existsSync(featuresPath)) {
     return null;
   }
-  return JSON.parse(readFileSync(featuresPath, 'utf-8'));
+
+  const rawFeatures = JSON.parse(readFileSync(featuresPath, 'utf-8'));
+
+  // Transform from features.json format to FeatureMatrix format
+  // features.json has: { features: { "feature-id": { name, description, supported: [...] } } }
+  // FeatureMatrix needs: { description, features: [...], libraries: { "lib": { "feature": bool } } }
+
+  if (!rawFeatures.features) {
+    return null;
+  }
+
+  // Load library metadata to get all libraries
+  const metadataPath = join(benchmarkDir, 'library-metadata.json');
+  const metadata = existsSync(metadataPath)
+    ? JSON.parse(readFileSync(metadataPath, 'utf-8')).libraries
+    : {};
+
+  const allLibraries = Object.keys(metadata);
+
+  // Build features array
+  const features: FeatureDefinition[] = Object.entries(rawFeatures.features).map(([id, feature]: [string, any]) => ({
+    id,
+    label: feature.name,
+    description: feature.description
+  }));
+
+  // Build libraries object
+  const libraries: { [packageName: string]: { [featureId: string]: boolean } } = {};
+
+  for (const libraryPkg of allLibraries) {
+    libraries[libraryPkg] = {};
+
+    for (const [featureId, feature] of Object.entries(rawFeatures.features) as [string, any][]) {
+      libraries[libraryPkg][featureId] = feature.supported?.includes(libraryPkg) || false;
+    }
+  }
+
+  return {
+    description: 'Compare state management libraries by their supported features',
+    features,
+    libraries
+  };
 }
 
 function generateFeatureMatrixTable(featureMatrix: FeatureMatrix, metadata: LibraryMetadata): string {
