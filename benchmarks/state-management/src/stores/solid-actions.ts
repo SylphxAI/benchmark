@@ -21,6 +21,18 @@ export const solidActionsV2: StateActions = {
     return count();
   },
 
+  // 03-creation methods
+  createEmptyStore: () => {
+    const [value] = createSignal(0);
+    return value;
+  },
+
+  createStoreWithItems: (count: number) => {
+    const items = Array.from({ length: count }, (_, i) => ({ id: i, value: i }));
+    const [value] = createSignal(items);
+    return value;
+  },
+
   // 04-complexity methods
   readNestedState: () => {
     const state = deepNested();

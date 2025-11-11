@@ -18,8 +18,8 @@ export interface StateActions {
   // 03-CREATION (Optional)
   // ============================================================================
 
-  // Test measures store access overhead, not actual creation
-  // Libraries can return any value to indicate successful access
+  createEmptyStore?(): any;
+  createStoreWithItems?(count: number): any;
 
   // ============================================================================
   // 04-COMPLEXITY (Optional)

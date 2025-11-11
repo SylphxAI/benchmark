@@ -21,6 +21,16 @@ export const zenActionsV2: StateActions = {
     return get(countZen);
   },
 
+  // 03-creation methods
+  createEmptyStore: () => {
+    return zen(0);
+  },
+
+  createStoreWithItems: (count: number) => {
+    const items = Array.from({ length: count }, (_, i) => ({ id: i, value: i }));
+    return zen(items);
+  },
+
   // 04-complexity methods
   readNestedState: () => {
     const state = get(deepNestedZen);
