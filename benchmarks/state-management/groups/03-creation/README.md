@@ -192,4 +192,4 @@ npx vitest bench groups/03-creation/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T12:10:41.276Z*
+*Last generated: 2025-11-11T12:13:50.422Z*
