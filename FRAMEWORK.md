@@ -1,126 +1,140 @@
-# 🎯 Benchmark Hub - Unified Framework
+# 🎯 Benchmark Hub - Object-Reference Based Framework
 
 ## Overview
 
-A type-safe, centralized benchmark framework that simplifies adding libraries and tests.
+Type-safe benchmark framework using **object references instead of strings** for maximum safety and IDE support.
 
-**Key Innovation**: Register everything from root `src/` directory - no need to navigate multiple folders or edit JSON files.
+**Key Innovation**: Groups and Tests are objects, not strings. No more typos, full IDE autocomplete, refactor-safe!
 
 ---
 
 ## 🎨 The Problem We Solved
 
-### Before (Old Approach)
-
-Adding a new library required:
-1. Edit `benchmarks/{category}/library-metadata.json` - add metadata
-2. Edit `benchmarks/{category}/features.json` - add feature support
-3. Edit `benchmarks/{category}/groups-config.json` - update groups
-4. Create `benchmarks/{category}/groups/{group}/benchmark.bench.ts` - write tests
-5. Repeat for every group
-6. Run benchmarks from category directory
-7. Hope everything is consistent
+### Old Approach (String-based)
+```typescript
+❌ library.registerTest({
+  group: '01-read',       // 打錯字？
+  name: 'Simple Read',    // 改了這裡，忘記改其他地方？
+  test: ...
+});
+```
 
 **Problems:**
-- ❌ Scattered across 4+ files and multiple folders
-- ❌ No type safety
-- ❌ Easy to miss updates
-- ❌ Duplicated setup code
-- ❌ Hard to maintain
+- ❌ No compile-time checking
+- ❌ Easy to make typos
+- ❌ Refactoring breaks things silently
+- ❌ No IDE autocomplete
+- ❌ No "Go to Definition"
 
-### After (New Approach)
-
-Adding a new library:
-1. Create ONE file: `src/libraries/{library}.ts`
-2. Register library
-3. Register tests
-4. Done ✅
+### New Approach (Object-reference based)
+```typescript
+✅ const simpleRead = group.createTest({ name: 'Simple Read' });
+✅ library.implement(simpleRead, (ctx) => {
+  // Type-safe!
+  // IDE autocomplete!
+  // Refactor-safe!
+});
+```
 
 **Benefits:**
-- ✅ Single source of truth
-- ✅ Full TypeScript type safety
-- ✅ Centralized in root `src/`
-- ✅ Shared setup code
-- ✅ Auto-validated
+- ✅ Compile-time type checking
+- ✅ IDE autocomplete
+- ✅ Go to definition
+- ✅ Rename symbol = auto update everywhere
+- ✅ Impossible to reference wrong test
 
 ---
 
-## 📁 New Structure
+## 📁 Architecture
 
 ```
-src/
-├── core/                       # Framework core
-│   ├── types.ts               # All type definitions
-│   ├── registry.ts            # Central registration system
-│   ├── benchmark.ts           # Benchmark runner
-│   └── index.ts               # Core exports
+project/
+├── src/core/                    # Framework (can be published as package)
+│   ├── types.ts                # Type definitions
+│   ├── category.ts             # Category class
+│   ├── group.ts                # Group class
+│   ├── test.ts                 # Test class
+│   ├── library.ts              # Library class
+│   ├── runner.ts               # Benchmark runner
+│   └── index.ts                # Exports
 │
-├── categories/                 # Category definitions
-│   ├── state-management.ts    # Category config + groups
-│   ├── immutability.ts
-│   ├── router.ts
-│   └── css-frameworks.ts
-│
-├── libraries/                  # Library registrations + tests
-│   ├── jotai.ts               # Jotai: register + all tests
-│   ├── zustand.ts             # Zustand: register + all tests
-│   ├── mobx.ts
-│   └── ...
-│
-├── index.ts                    # Main entry point
-└── cli.ts                      # CLI tool
+└── benchmarks/
+    ├── state-management/        # Independent category
+    │   ├── package.json        # Own dependencies (jotai, zustand, ...)
+    │   ├── node_modules/       # Own node_modules
+    │   ├── index.ts            # Category definition
+    │   └── libraries/
+    │       ├── jotai.ts        # Library + all tests
+    │       └── zustand.ts
+    │
+    └── immutability/            # Independent category
+        ├── package.json        # Own dependencies (immer, mutative, ...)
+        └── ...
 ```
 
-**Key Principle**: Each library = ONE file containing:
-- Library registration
-- All its tests
-- Shared setup/cleanup code
+**Key Principle**: Each category is independent with its own dependencies!
 
 ---
 
 ## 🚀 API
 
-### 1. Register Category
-
-Define category with groups and features:
+### Step 1: Create Category + Groups + Tests
 
 ```typescript
-// src/categories/state-management.ts
-import { registerCategory } from '@core/registry';
+// benchmarks/state-management/index.ts
+import { createCategory } from '../../src/core';
 
-registerCategory({
+// 1. Create category
+export const category = createCategory({
   id: 'state-management',
   name: 'State Management',
+  description: '...',
   emoji: '🗃️',
-
-  groups: [
-    {
-      id: '01-read',
-      title: 'Read Operations',
-      type: 'universal',
-      benchmarks: [
-        { name: 'Simple Read', pattern: 'Simple Read', description: '...' }
-      ]
-    }
-  ],
-
-  performanceTiers: [ /* ... */ ],
-  features: { /* ... */ }
 });
+
+// 2. Create groups (returns object references!)
+export const groups = {
+  read: category.createGroup({
+    id: '01-read',
+    title: 'Read Operations',
+    type: 'universal',
+  }),
+
+  write: category.createGroup({
+    id: '02-write',
+    title: 'Write Operations',
+    type: 'universal',
+  }),
+};
+
+// 3. Create tests (returns object references!)
+export const tests = {
+  simpleRead: groups.read.createTest({
+    name: 'Simple Read',
+    description: 'Read a single counter value',
+  }),
+
+  simpleIncrement: groups.write.createTest({
+    name: 'Simple Increment',
+    description: 'Increment counter once',
+  }),
+};
 ```
 
-### 2. Register Library + Tests
-
-One file per library:
+### Step 2: Register Library + Implement Tests
 
 ```typescript
-// src/libraries/jotai.ts
-import { registerLibrary, registerTest } from '@core/registry';
+// benchmarks/state-management/libraries/jotai.ts
 import { atom, createStore } from 'jotai';
+import { category, tests } from '../index';
 
-// 1. Register the library
-registerLibrary({
-  category: 'state-management',
+interface JotaiStore {
+  store: ReturnType<typeof createStore>;
+  counterAtom: ReturnType<typeof atom<number>>;
+}
+
+// Register library
+const jotai = category.registerLibrary<JotaiStore>({
   id: 'jotai',
   displayName: 'Jotai',
   packageName: 'jotai',
@@ -131,264 +145,259 @@ registerLibrary({
       const store = createStore();
       const counterAtom = atom(0);
       return { store, counterAtom };
-    }
-  }
+    },
+  },
 });
 
-// 2. Register all tests for this library
-registerTest({
-  category: 'state-management',
-  group: '01-read',
-  name: 'Simple Read',
-  test: (ctx) => {
-    const value = ctx.store.store.get(ctx.store.counterAtom);
-  }
+// Implement tests using object references!
+jotai.implement(tests.simpleRead, (ctx) => {
+  //             ↑ Object reference, not string!
+  //             ↑ IDE autocomplete works!
+  //             ↑ Ctrl+Click to jump to definition!
+  const { store, counterAtom } = ctx.store;
+  const value = store.get(counterAtom);
 });
 
-registerTest({
-  category: 'state-management',
-  group: '02-write',
-  name: 'Simple Increment',
-  test: (ctx) => {
-    ctx.store.store.set(ctx.store.counterAtom, (v) => v + 1);
-  }
+jotai.implement(tests.simpleIncrement, (ctx) => {
+  const { store, counterAtom } = ctx.store;
+  store.set(counterAtom, (v) => v + 1);
 });
 ```
 
-### 3. Run Benchmarks
+### Step 3: Run Benchmarks
+
+```typescript
+// benchmarks/state-management/index.ts
+async function main() {
+  // Import libraries (they register themselves)
+  await import('./libraries/jotai');
+  await import('./libraries/zustand');
+
+  // Print summary
+  category.printSummary();
+
+  // Validate
+  const validation = category.validate();
+  if (!validation.valid) {
+    console.error('Validation failed:', validation.errors);
+    process.exit(1);
+  }
+
+  // Run benchmarks
+  const results = await category.run();
+  console.log('Benchmarks completed!');
+}
+```
 
 ```bash
-# List all registered items
-bun run src/cli.ts --list
-
-# Validate registry
-bun run src/cli.ts --validate
-
-# Run all benchmarks
-bun run src/cli.ts
-
-# Run specific category
-bun run src/cli.ts --category state-management
-
-# Run specific group
-bun run src/cli.ts --category state-management --group 01-read
-
-# Run specific library
-bun run src/cli.ts --category state-management --library jotai
+cd benchmarks/state-management
+bun install
+bun run index.ts
 ```
 
 ---
 
-## 🎯 Key Features
+## ✅ Benefits of Object References
 
-### 1. Type Safety
-
-Full TypeScript support with type inference:
-
+### 1. IDE Autocomplete
 ```typescript
-interface JotaiStore {
-  store: ReturnType<typeof createStore>;
-  counterAtom: ReturnType<typeof atom<number>>;
-}
+library.implement(tests.|)  // Press Ctrl+Space
+                      ↑
+              Shows all available tests:
+              - tests.simpleRead
+              - tests.simpleIncrement
+              - tests.burstUpdates
+              - ...
+```
 
-registerLibrary<JotaiStore>({ /* ... */ });
+### 2. Go to Definition
+```typescript
+library.implement(tests.simpleRead, ...)
+                        ↑
+                  Ctrl+Click jumps to:
 
-registerTest({
-  test: (ctx: TestContext<JotaiStore>) => {
-    // ctx.store is fully typed!
-    ctx.store.store.get(ctx.store.counterAtom);
-  }
+const simpleRead = groups.read.createTest({
+  name: 'Simple Read',
+  description: '...'
 });
 ```
 
-### 2. Centralized Registry
+### 3. Refactor Safe
+```typescript
+// Rename symbol: simpleRead → basicRead
+// ✅ All references auto-update
+// ✅ No broken strings
+// ✅ Compile-time verification
+```
 
-Single source of truth:
-- Categories → Defines structure
-- Libraries → Implementation
-- Tests → Benchmarks
+### 4. Type Safety
+```typescript
+// Wrong category's test
+const otherTest = otherCategory.tests.someTest;
+library.implement(otherTest, ...);
+// ❌ Compile Error! Test from different category!
+```
 
-All validated at runtime!
+### 5. Impossible to Typo
+```typescript
+// String-based (OLD)
+registerTest({ group: '01-raed', name: '...' })  // ❌ Typo!
 
-### 3. Simple API
-
-Only 3 functions needed:
-- `registerCategory()` - Define category
-- `registerLibrary()` - Add library
-- `registerTest()` - Add test
-
-### 4. Flexible
-
-Easy to:
-- Add new library → Create one file
-- Add new test → Call `registerTest()`
-- Add new category → Create category file
-- Remove library → Delete one file
+// Object-based (NEW)
+library.implement(tests.simpleRead, ...)  // ✅ Impossible to typo!
+```
 
 ---
 
 ## 📊 Comparison
 
-### Adding a Library
-
-**Old Way:**
-```
-1. cd benchmarks/state-management/
-2. Edit library-metadata.json
-3. Edit features.json
-4. Edit groups-config.json
-5. cd groups/01-read/
-6. Create benchmark.bench.ts
-7. cd ../02-write/
-8. Create benchmark.bench.ts
-9. cd ../03-creation/
-10. Create benchmark.bench.ts
-... (repeat for 15 groups)
-```
-
-**New Way:**
-```
-1. Create src/libraries/mobx.ts
-2. Add registerLibrary() + registerTest() calls
-3. Done ✅
-```
-
-### Code Comparison
-
-**Old Way (Scattered):**
-```
-benchmarks/state-management/
-├── library-metadata.json         ← Edit here
-├── features.json                 ← Edit here
-├── groups-config.json            ← Edit here
-└── groups/
-    ├── 01-read/
-    │   └── benchmark.bench.ts    ← Duplicate setup
-    ├── 02-write/
-    │   └── benchmark.bench.ts    ← Duplicate setup
-    └── 03-creation/
-        └── benchmark.bench.ts    ← Duplicate setup
-```
-
-**New Way (Centralized):**
-```typescript
-// src/libraries/mobx.ts
-registerLibrary({ /* once */ });
-registerTest({ /* test 1 */ });
-registerTest({ /* test 2 */ });
-registerTest({ /* test 3 */ });
-// All in one file ✅
-```
-
----
-
-## 🛠️ Development Workflow
-
-### Adding a New Library
-
-1. Create `src/libraries/{name}.ts`:
-
-```typescript
-import { registerLibrary, registerTest } from '@core/registry';
-
-registerLibrary({
-  category: 'state-management',
-  id: 'new-lib',
-  displayName: 'New Lib',
-  packageName: 'new-lib',
-  githubUrl: 'https://github.com/...',
-
-  setup: {
-    createStore: () => {
-      // Initialize library
-      return storeInstance;
-    }
-  }
-});
-
-// Register all tests
-registerTest({ /* ... */ });
-registerTest({ /* ... */ });
-```
-
-2. Import in `src/index.ts`:
-
-```typescript
-import './libraries/new-lib';
-```
-
-3. Test:
-
-```bash
-bun run src/cli.ts --validate
-bun run src/cli.ts --library new-lib
-```
-
 ### Adding a New Test
 
-Just add `registerTest()` call in library file:
-
+**Before (String-based):**
 ```typescript
-// src/libraries/existing-lib.ts
-registerTest({
-  category: 'state-management',
-  group: '01-read',
-  name: 'New Test Pattern',
-  test: (ctx) => {
-    // Test implementation
+// In groups-config.json
+{
+  "01-read": {
+    "benchmarks": [
+      { "name": "New Test" }  // Add here
+    ]
   }
+}
+
+// In library file
+registerTest({
+  group: '01-read',     // ❌ Must type exact string
+  name: 'New Test',     // ❌ Must match exactly
+  test: ...
 });
+```
+
+**After (Object-based):**
+```typescript
+// In index.ts
+export const tests = {
+  newTest: groups.read.createTest({ name: 'New Test' })
+  //       ↑ Object created once
+};
+
+// In library file
+library.implement(tests.newTest, ...)
+//                      ↑ IDE autocomplete!
 ```
 
 ---
 
-## 🎓 Migration Guide
+## 🎓 Usage Guide
 
-To migrate existing benchmarks:
+### For Category Authors
 
-1. **Category**: Copy groups from `groups-config.json` to `src/categories/{category}.ts`
-2. **Libraries**: For each library:
-   - Create `src/libraries/{library}.ts`
-   - Copy metadata from `library-metadata.json`
-   - Convert tests from `groups/*/benchmark.bench.ts` to `registerTest()` calls
-3. **Import**: Add imports to `src/index.ts`
+1. **Create category package**:
+```bash
+mkdir benchmarks/my-category
+cd benchmarks/my-category
+bun init -y
+```
+
+2. **Install framework** (once published):
+```bash
+bun add @benchmark-hub/core
+```
+
+3. **Define category**:
+```typescript
+// index.ts
+import { createCategory } from '@benchmark-hub/core';
+
+export const category = createCategory({ ... });
+export const groups = { ... };
+export const tests = { ... };
+```
+
+4. **Add libraries**:
+```typescript
+// libraries/my-lib.ts
+import { category, tests } from '../index';
+
+const lib = category.registerLibrary({ ... });
+lib.implement(tests.someTest, ...);
+```
+
+5. **Run**:
+```bash
+bun run index.ts
+```
+
+### For Library Implementers
+
+Just create ONE file per library:
+
+```typescript
+// libraries/new-library.ts
+import { category, tests } from '../index';
+
+const lib = category.registerLibrary({
+  id: 'new-library',
+  displayName: 'New Library',
+  packageName: 'new-library',
+  githubUrl: '...',
+  setup: {
+    createStore: () => { /* ... */ }
+  }
+});
+
+// Implement all tests
+lib.implement(tests.test1, ...);
+lib.implement(tests.test2, ...);
+lib.implement(tests.test3, ...);
+```
+
+Done! Framework handles everything else.
 
 ---
 
-## 📦 Tech Stack
+## 🏗️ Architecture Principles
 
-- **Runtime**: Bun (fast JavaScript runtime)
-- **Language**: TypeScript (type safety)
-- **Linter/Formatter**: Biome (fast, modern)
-- **Benchmarking**: Vitest (benchmark runner)
+1. **Framework = Tool**: Core provides API, not implementations
+2. **Categories = Independent**: Each has own dependencies
+3. **Objects > Strings**: Type-safe references everywhere
+4. **One File per Library**: Registration + all tests together
+5. **Validation**: Runtime checks ensure consistency
 
 ---
 
-## ✅ Current Status
+## 📦 Publishing Framework
 
-**Implemented:**
-- ✅ Core framework (types, registry, runner)
-- ✅ CLI tool
-- ✅ Example category (state-management)
-- ✅ Example libraries (jotai, zustand)
-- ✅ Full type safety
-- ✅ Validation system
-- ✅ Documentation
+Once stable, publish core as npm package:
 
-**Next Steps:**
-- [ ] Migrate all state-management libraries
-- [ ] Migrate immutability category
-- [ ] Migrate router category
-- [ ] Migrate css-frameworks category
-- [ ] Add result export functionality
-- [ ] Add README generation from results
+```json
+{
+  "name": "@benchmark-hub/core",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/core/index.ts"
+  }
+}
+```
+
+Then categories use it:
+```typescript
+import { createCategory } from '@benchmark-hub/core';
+```
 
 ---
 
 ## 🎉 Summary
 
-**Before**: Scattered files, manual JSON editing, no type safety, hard to maintain
+**Old Way**: Strings everywhere, no type safety, easy to break
 
-**After**: Centralized registry, type-safe API, single file per library, easy to extend
+**New Way**: Object references, full type safety, impossible to break
 
-**Result**: Adding a library went from 15+ file edits to ONE file creation! 🚀
+**Result**:
+- ✅ IDE autocomplete
+- ✅ Go to definition
+- ✅ Rename symbol
+- ✅ Compile-time checking
+- ✅ Refactor-safe
+- ✅ No typos possible
+
+**Developer Experience: 10/10** 🚀

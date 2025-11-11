@@ -3,8 +3,8 @@
  */
 
 export * from './types';
-export * from './registry';
-export * from './benchmark';
-
-export { registry, registerCategory, registerLibrary, registerTest, getRegistry } from './registry';
-export { benchmarkRunner } from './benchmark';
+export { Category, createCategory } from './category';
+export { Group } from './group';
+export { Test } from './test';
+export { Library } from './library';
+export { BenchmarkRunner } from './runner';

@@ -1,5 +1,6 @@
 /**
  * Core type definitions for the benchmark framework
+ * Uses object references instead of strings for type safety
  */
 
 // ============================================================================
@@ -15,18 +16,8 @@ export interface BenchmarkResult {
   samples: number;
 }
 
-export interface GroupResults {
-  [libraryKey: string]: BenchmarkResult;
-}
-
-export interface CategoryResults {
-  [groupKey: string]: {
-    [benchmarkName: string]: GroupResults;
-  };
-}
-
 // ============================================================================
-// Category Configuration
+// Performance Tier
 // ============================================================================
 
 export interface PerformanceTier {
@@ -35,173 +26,112 @@ export interface PerformanceTier {
   description: string;
 }
 
-export interface CategoryConfig {
-  id: string;
-  name: string;
-  description: string;
-  emoji?: string;
-  performanceTiers: PerformanceTier[];
-  environment: {
-    runtime: string;
-    framework: string;
-    hardware: string;
-    iterations: string;
-  };
-}
-
 // ============================================================================
-// Group Configuration
+// Configuration Types
 // ============================================================================
-
-export type GroupType = 'universal' | 'feature-specific';
-
-export interface BenchmarkDefinition {
-  name: string;
-  pattern: string;
-  description: string;
-}
 
 export interface GroupConfig {
   id: string;
   title: string;
   description: string;
-  type: GroupType;
-  benchmarks: BenchmarkDefinition[];
+  type: 'universal' | 'feature-specific';
 }
 
-// ============================================================================
-// Library Configuration
-// ============================================================================
-
-export interface LibraryMetadata {
-  id: string;
-  displayName: string;
-  packageName: string;
-  githubUrl: string;
+export interface TestConfig {
+  name: string;
   description?: string;
-  category: string;
 }
 
-export interface LibraryVersion {
-  version: string;
-  lastChecked: string;
-  lastBenchmarked?: string;
-}
-
-// ============================================================================
-// Feature Support
-// ============================================================================
-
-export interface Feature {
+export interface CategoryConfig {
   id: string;
   name: string;
   description: string;
-  supported: string[]; // Array of library IDs
+  emoji?: string;
+  performanceTiers?: PerformanceTier[];
 }
 
-export interface FeatureMatrix {
-  [featureId: string]: Feature;
-}
-
-// ============================================================================
-// Test Registration Types
-// ============================================================================
-
-export interface TestContext<TStore = any> {
-  library: LibraryMetadata;
-  store: TStore;
-  cleanup?: () => void | Promise<void>;
-}
-
-export type TestFunction<TStore = any> = (
-  ctx: TestContext<TStore>
-) => void | Promise<void>;
-
-export interface TestRegistration {
-  category: string;
-  group: string;
-  name: string;
-  description?: string;
-  test: TestFunction;
-}
-
-// ============================================================================
-// Library Registration Types
-// ============================================================================
-
-export interface LibrarySetup<TStore = any> {
-  /**
-   * Create a new store instance
-   */
-  createStore: () => TStore | Promise<TStore>;
-
-  /**
-   * Optional cleanup function
-   */
-  cleanup?: (store: TStore) => void | Promise<void>;
-
-  /**
-   * Optional initialization
-   */
-  init?: () => void | Promise<void>;
-}
-
-export interface LibraryRegistration<TStore = any> {
-  category: string;
+export interface LibraryConfig<TStore = any> {
   id: string;
   displayName: string;
   packageName: string;
   githubUrl: string;
   description?: string;
   setup: LibrarySetup<TStore>;
-  features?: string[]; // Feature IDs this library supports
+  features?: string[];
 }
 
 // ============================================================================
-// Category Registration Types
+// Setup Types
 // ============================================================================
 
-export interface CategoryRegistration {
-  id: string;
-  name: string;
-  description: string;
-  emoji?: string;
-  performanceTiers: PerformanceTier[];
-  groups: GroupConfig[];
-  features?: FeatureMatrix;
+export interface LibrarySetup<TStore = any> {
+  createStore: () => TStore | Promise<TStore>;
+  cleanup?: (store: TStore) => void | Promise<void>;
+  init?: () => void | Promise<void>;
+}
+
+export interface TestContext<TStore = any> {
+  library: {
+    id: string;
+    displayName: string;
+    packageName: string;
+    githubUrl: string;
+  };
+  store: TStore;
+  cleanup?: () => void | Promise<void>;
 }
 
 // ============================================================================
-// Registry State
+// Test Function Type
 // ============================================================================
 
-export interface RegistryState {
-  categories: Map<string, CategoryRegistration>;
-  libraries: Map<string, Map<string, LibraryRegistration>>; // category -> library id -> registration
-  tests: Map<string, Map<string, Map<string, TestRegistration>>>; // category -> group -> test name -> registration
-}
+export type TestFunction<TStore = any> = (
+  ctx: TestContext<TStore>
+) => void | Promise<void>;
 
 // ============================================================================
-// Benchmark Execution Types
+// Execution Options
 // ============================================================================
 
 export interface BenchmarkOptions {
-  category?: string;
-  group?: string;
-  library?: string;
   warmup?: boolean;
   iterations?: number;
+  filter?: {
+    groups?: string[];
+    tests?: string[];
+    libraries?: string[];
+  };
 }
 
-export interface BenchmarkReport {
+export interface RunOptions {
+  outputPath?: string;
+  filter?: {
+    groups?: string[];
+    tests?: string[];
+    libraries?: string[];
+  };
+}
+
+// ============================================================================
+// Results Types
+// ============================================================================
+
+export interface LibraryTestResult {
+  library: string;
+  test: string;
+  group: string;
+  result: BenchmarkResult;
+}
+
+export interface CategoryResults {
   category: string;
   timestamp: string;
-  results: CategoryResults;
-  rankings: LibraryRanking[];
+  results: LibraryTestResult[];
+  rankings?: LibraryRanking[];
 }
 
 export interface LibraryRanking {
   library: string;
   score: number;
-  tier: string;
+  tier?: string;
 }
