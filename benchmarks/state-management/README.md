@@ -23,6 +23,25 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 ---
 
+## Performance by Group
+
+See which library wins in each test group:
+
+| Library | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 |
+|---------|------|------|------|------|------|------|------|------|------|------|------|
+| **Redux Toolkit** | 6 | 7 | 7 | - | - | 8 | - | - | - | 🥈 | - |
+| **Zustand** | 8 | 8 | 4 | - | - | 5 | - | - | - | 🥉 | - |
+| **Jotai** | 🥈 | 🥈 | 5 | - | - | 4 | - | 🥇 | 5 | - | - |
+| **MobX** | 5 | 6 | 8 | - | - | 🥇 | - | - | 4 | - | 🥉 |
+| **Valtio** | 7 | 5 | 6 | - | - | 7 | - | - | - | 🥇 | 🥈 |
+| **Preact Signals** | 4 | 🥉 | 🥇 | - | - | 6 | - | - | 🥉 | - | - |
+| **Solid Signals** | 🥇 | 🥇 | 🥉 | - | - | 🥉 | - | - | 🥇 | - | 🥇 |
+| **Zen** | 🥉 | 4 | 🥈 | - | - | 🥈 | - | - | 🥈 | - | - |
+
+**Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable
+
+---
+
 ## Feature Support Matrix
 
 | Feature | Description | Libraries |

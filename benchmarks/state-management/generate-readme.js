@@ -196,6 +196,87 @@ function generateOverallScore() {
   return section + '\n---\n\n';
 }
 
+function generatePerformanceMatrix(results) {
+  let section = `## Performance by Group
+
+See which library wins in each test group:
+
+`;
+
+  // Get all libraries from metadata
+  const allLibraries = Object.values(libraryMetadata.libraries).map(lib => lib.displayName);
+
+  // Calculate rankings for each group
+  const groupRankings = {};
+
+  Object.entries(groupsConfig.groups).forEach(([groupKey, groupConfig]) => {
+    const resultsData = results[groupKey];
+    if (!resultsData || groupConfig.status === 'incomplete') {
+      groupRankings[groupKey] = null;
+      return;
+    }
+
+    const groupScores = calculateGroupOverall(resultsData);
+    groupRankings[groupKey] = groupScores.map(s => s.library);
+  });
+
+  // Build header with group numbers
+  const groupKeys = Object.keys(groupsConfig.groups).sort();
+  let header = '| Library |';
+  groupKeys.forEach(key => {
+    const num = key.match(/\d+/)[0];
+    header += ` ${num} |`;
+  });
+  section += header + '\n';
+
+  let separator = '|---------|';
+  groupKeys.forEach(() => {
+    separator += '------|';
+  });
+  section += separator + '\n';
+
+  // Build rows for each library
+  allLibraries.forEach(library => {
+    let row = `| **${library}** |`;
+
+    groupKeys.forEach(groupKey => {
+      const rankings = groupRankings[groupKey];
+
+      if (!rankings) {
+        // Group is incomplete or no results
+        row += ' - |';
+        return;
+      }
+
+      const groupConfig = groupsConfig.groups[groupKey];
+      // Check if library participates in this group
+      if (groupConfig.type === 'feature' && groupConfig.libraries && !groupConfig.libraries.includes(library)) {
+        row += ' - |';
+        return;
+      }
+
+      const rank = rankings.indexOf(library);
+      if (rank === -1) {
+        row += ' - |';
+      } else if (rank === 0) {
+        row += ' 🥇 |';
+      } else if (rank === 1) {
+        row += ' 🥈 |';
+      } else if (rank === 2) {
+        row += ' 🥉 |';
+      } else {
+        row += ` ${rank + 1} |`;
+      }
+    });
+
+    section += row + '\n';
+  });
+
+  section += '\n**Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable\n\n';
+
+  return section + '---\n\n';
+}
+
 
 function generateFeatureMatrix() {
   let section = `## Feature Support Matrix
@@ -508,6 +589,7 @@ function generateReadme() {
   let readme = '';
   readme += generateHeader();
   readme += generateOverallScore();
+  readme += generatePerformanceMatrix(results);
   readme += generateFeatureMatrix();
   readme += generateTestCategories();
   readme += generateGroupSummaries(results);
