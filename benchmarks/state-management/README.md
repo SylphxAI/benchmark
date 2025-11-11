@@ -32,14 +32,8 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Rank | Library | Version | Overall Score | Bundle (gzip) | Last Updated |
 |:----:|---------|---------|---------------|---------------|--------------|
-| 🥇 1 | [**Zen**](https://github.com/SylphxAI/zen) | 2.0.0 | 👑 46.4/100 | 5.3 KB | Nov 11 |
-| 🥈 2 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 41.2/100 | 4.0 KB | Dec 6 |
-| 🥉 3 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 36.0/100 | 3.0 KB | Nov 7 |
-|  4 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 17.6/100 | 👑 1.2 KB | Nov 6 |
-|  5 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 2.6/100 | 17.6 KB | Dec 6 |
-|  6 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 1.9/100 | 3.1 KB | Nov 6 |
-|  7 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 1.3/100 | 4.3 KB | Dec 6 |
-|  8 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 1.3/100 | 13.8 KB | Dec 6 |
+| 🥇 1 | [**Zen**](https://github.com/SylphxAI/zen) | 2.0.0 | 👑 74.5/100 | 👑 5.3 KB | Nov 11 |
+| 🥈 2 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 2.0/100 | 13.8 KB | Dec 6 |
 
 ---
 
@@ -49,14 +43,8 @@ See which library wins in each test group:
 
 | Library | [01](#01---read-operations) | [02](#02---write-operations) | [03](#03---store-creation) | [04](#04---complexity) | [06](#06---memory-allocation) | [07](#07---form-state) | [08](#08---reactive-async) | [09](#09---computed-native) | [10](#10---selectors) | [11](#11---batching-native) | [15](#15---real-world-patterns) |
 |---------|------|------|------|------|------|------|------|------|------|------|------|
-| [**Zen**](https://github.com/SylphxAI/zen) | 🥇 | 🥇 | 🥉 | 🥇 | 🥈 | 🥇 | - | - | - | - | - |
-| [**Solid Signals**](https://github.com/solidjs/solid) | 🥈 | 🥈 | 🥈 | 🥉 | 4 | 🥈 | - | - | - | - | - |
-| [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥇 | 🥈 | 🥉 | 🥉 | - | - | - | - | - |
-| [**Zustand**](https://github.com/pmndrs/zustand) | 🥉 | 4 | 4 | 4 | 🥇 | 4 | - | - | - | - | - |
-| [**MobX**](https://github.com/mobxjs/mobx) | 7 | 5 | 6 | 5 | 5 | 6 | - | - | - | - | - |
-| [**Valtio**](https://github.com/pmndrs/valtio) | 6 | 6 | 7 | - | - | 5 | - | - | - | - | - |
-| [**Jotai**](https://github.com/pmndrs/jotai) | 8 | 7 | 5 | 6 | 6 | 7 | 8 | - | - | - | - |
-| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 5 | 8 | 8 | - | 7 | - | - | - | - | - | - |
+| [**Zen**](https://github.com/SylphxAI/zen) | 🥇 | 🥇 | 🥇 | 🥇 | 🥇 | 🥇 | - | - | - | - | - |
+| [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 🥈 | 🥈 | 🥈 | - | 🥈 | - | - | - | - | - | - |
 
 **Legend:** 🥇 1st place | 🥈 2nd place | 🥉 3rd place | - Not applicable
 
@@ -109,25 +97,13 @@ Simple read and high-frequency read patterns
 
 ```
 🥇   Zen                ████████████████████████████████████████     10.1M ops/sec
-🥈   Solid Signals      ████████████████████████                      6.1M ops/sec
-🥉   Zustand            █████████                                     2.2M ops/sec
-4.   Preact Signals     ████████                                      2.1M ops/sec
-5.   Redux Toolkit      ████                                          958K ops/sec
-6.   Valtio             ██                                            443K ops/sec
-7.   MobX               █                                             242K ops/sec
-8.   Jotai                                                             31K ops/sec
+🥈   Redux Toolkit      ████                                          958K ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
 | 🥇 1 | **Zen** | 👑 10.1M |
-| 🥈 2 | **Solid Signals** | 6.1M |
-| 🥉 3 | **Zustand** | 2.2M |
-|  4 | **Preact Signals** | 2.1M |
-|  5 | **Redux Toolkit** | 958K |
-|  6 | **Valtio** | 443K |
-|  7 | **MobX** | 242K |
-|  8 | **Jotai** | 31K |
+| 🥈 2 | **Redux Toolkit** | 958K |
 
 **[View Detailed Results →](groups/01-read/README.md)**
 
@@ -139,25 +115,13 @@ Simple increments and burst updates
 
 ```
 🥇   Zen                ████████████████████████████████████████      2.7M ops/sec
-🥈   Solid Signals      ███████████████████████████████████████       2.7M ops/sec
-🥉   Preact Signals     ████████████████                              1.1M ops/sec
-4.   Zustand            ███                                           199K ops/sec
-5.   MobX               █                                              43K ops/sec
-6.   Valtio                                                            31K ops/sec
-7.   Jotai                                                             10K ops/sec
-8.   Redux Toolkit                                                      4K ops/sec
+🥈   Redux Toolkit                                                      4K ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
 | 🥇 1 | **Zen** | 👑 2.7M |
-| 🥈 2 | **Solid Signals** | 2.7M |
-| 🥉 3 | **Preact Signals** | 1.1M |
-|  4 | **Zustand** | 199K |
-|  5 | **MobX** | 43K |
-|  6 | **Valtio** | 31K |
-|  7 | **Jotai** | 10K |
-|  8 | **Redux Toolkit** | 4K |
+| 🥈 2 | **Redux Toolkit** | 4K |
 
 **[View Detailed Results →](groups/02-write/README.md)**
 
@@ -168,26 +132,14 @@ Simple increments and burst updates
 Instance creation overhead
 
 ```
-🥇   Preact Signals     ████████████████████████████████████████      6.4M ops/sec
-🥈   Solid Signals      ██████████████                                2.3M ops/sec
-🥉   Zen                ██████████                                    1.5M ops/sec
-4.   Zustand            █                                              92K ops/sec
-5.   Jotai                                                              5K ops/sec
-6.   MobX                                                               4K ops/sec
-7.   Valtio                                                             2K ops/sec
-8.   Redux Toolkit                                                     714 ops/sec
+🥇   Zen                ████████████████████████████████████████      1.5M ops/sec
+🥈   Redux Toolkit                                                     714 ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | **Preact Signals** | 👑 6.4M |
-| 🥈 2 | **Solid Signals** | 2.3M |
-| 🥉 3 | **Zen** | 1.5M |
-|  4 | **Zustand** | 92K |
-|  5 | **Jotai** | 5K |
-|  6 | **MobX** | 4K |
-|  7 | **Valtio** | 2K |
-|  8 | **Redux Toolkit** | 714 |
+| 🥇 1 | **Zen** | 👑 1.5M |
+| 🥈 2 | **Redux Toolkit** | 714 |
 
 **[View Detailed Results →](groups/03-creation/README.md)**
 
@@ -199,21 +151,11 @@ Deep nested state
 
 ```
 🥇   Zen                ████████████████████████████████████████      6.6M ops/sec
-🥈   Preact Signals     ████████████████████████████████              5.2M ops/sec
-🥉   Solid Signals      ██████████████████████████████                5.0M ops/sec
-4.   Zustand            ██████████████                                2.3M ops/sec
-5.   MobX               ████████                                      1.4M ops/sec
-6.   Jotai              ████                                          685K ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
 | 🥇 1 | **Zen** | 👑 6.6M |
-| 🥈 2 | **Preact Signals** | 5.2M |
-| 🥉 3 | **Solid Signals** | 5.0M |
-|  4 | **Zustand** | 2.3M |
-|  5 | **MobX** | 1.4M |
-|  6 | **Jotai** | 685K |
 
 **[View Detailed Results →](groups/04-complexity/README.md)**
 
@@ -224,24 +166,14 @@ Deep nested state
 Large state allocation performance
 
 ```
-🥇   Zustand            ████████████████████████████████████████      3.1M ops/sec
-🥈   Zen                ███████████████████████████                   2.2M ops/sec
-🥉   Preact Signals     █████████████████████                         1.7M ops/sec
-4.   Solid Signals      █████████████████████                         1.7M ops/sec
-5.   MobX               ████████                                      651K ops/sec
-6.   Jotai              ████                                          331K ops/sec
-7.   Redux Toolkit      ███                                           214K ops/sec
+🥇   Zen                ████████████████████████████████████████      2.2M ops/sec
+🥈   Redux Toolkit      ████                                          214K ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | **Zustand** | 👑 3.1M |
-| 🥈 2 | **Zen** | 2.2M |
-| 🥉 3 | **Preact Signals** | 1.7M |
-|  4 | **Solid Signals** | 1.7M |
-|  5 | **MobX** | 651K |
-|  6 | **Jotai** | 331K |
-|  7 | **Redux Toolkit** | 214K |
+| 🥇 1 | **Zen** | 👑 2.2M |
+| 🥈 2 | **Redux Toolkit** | 214K |
 
 **[View Detailed Results →](groups/06-memory/README.md)**
 
@@ -253,23 +185,11 @@ Multi-field updates
 
 ```
 🥇   Zen                ████████████████████████████████████████     24.8M ops/sec
-🥈   Solid Signals      ████████████████████████████████             20.1M ops/sec
-🥉   Preact Signals     ████████████████████████████████             20.0M ops/sec
-4.   Zustand            ██████████████████████                       13.7M ops/sec
-5.   Valtio             ████                                          2.6M ops/sec
-6.   MobX               ██                                            1.4M ops/sec
-7.   Jotai              ██                                            1.2M ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
 | 🥇 1 | **Zen** | 👑 24.8M |
-| 🥈 2 | **Solid Signals** | 20.1M |
-| 🥉 3 | **Preact Signals** | 20.0M |
-|  4 | **Zustand** | 13.7M |
-|  5 | **Valtio** | 2.6M |
-|  6 | **MobX** | 1.4M |
-|  7 | **Jotai** | 1.2M |
 
 **[View Detailed Results →](groups/07-form/README.md)**
 
@@ -282,26 +202,14 @@ Native async atoms that auto-recompute when dependencies change
 **Participating Libraries**: Jotai
 
 ```
-🥇   Zustand            ████████████████████████████████████████       656 ops/sec
-🥈   Redux Toolkit      ██████████████████████████████████████         625 ops/sec
-🥉   Valtio             ██████                                          90 ops/sec
-4.   Solid Signals      ██████                                          90 ops/sec
-5.   Preact Signals     █████                                           90 ops/sec
-6.   Zen                █████                                           90 ops/sec
-7.   MobX               █████                                           88 ops/sec
-8.   Jotai              █████                                           87 ops/sec
+🥇   Redux Toolkit      ████████████████████████████████████████       625 ops/sec
+🥈   Zen                ██████                                          90 ops/sec
 ```
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | **Zustand** | 👑 656 |
-| 🥈 2 | **Redux Toolkit** | 625 |
-| 🥉 3 | **Valtio** | 90 |
-|  4 | **Solid Signals** | 90 |
-|  5 | **Preact Signals** | 90 |
-|  6 | **Zen** | 90 |
-|  7 | **MobX** | 88 |
-|  8 | **Jotai** | 87 |
+| 🥇 1 | **Redux Toolkit** | 👑 625 |
+| 🥈 2 | **Zen** | 90 |
 
 **[View Detailed Results →](groups/08-async-reactive/README.md)**
 
@@ -382,17 +290,11 @@ Complex patterns beyond basic operations: optimistic updates, undo/redo, derived
 
 ### Performance Tiers
 
-1. **Observable-based (Tier D)**: Zen, Solid Signals, Preact Signals, Zustand, MobX, Valtio, Jotai, Redux Toolkit - High creation cost, moderate runtime performance
+1. **Observable-based (Tier D)**: Zen, Redux Toolkit - High creation cost, moderate runtime performance
 
 ### Trade-offs
 
 - **Zen**: Similar performance to Preact, slightly larger bundle
-- **Solid Signals**: Fastest overall, but requires Solid.js ecosystem
-- **Preact Signals**: Excellent balance of speed and bundle size
-- **Zustand**: Minimal bundle, simple API, moderate performance
-- **MobX**: Automatic tracking, slow creation, largest bundle
-- **Valtio**: Simple API, moderate performance, good for nested mutations
-- **Jotai**: Very fast read/write, slower creation, unique async capabilities
 - **Redux Toolkit**: Feature-rich, DevTools support, larger bundle
 
 ---
