@@ -13,7 +13,8 @@ function runGroupBenchmark(groupName, categoryPath) {
 
   try {
     // Run vitest bench for the specific group
-    const vitestCmd = `vitest bench --run --outputJson=${join(groupPath, 'results.json')} '${join(groupPath, '**/*.bench.ts')}'`;
+    // Note: No quotes around glob pattern so shell expands it properly
+    const vitestCmd = `npx vitest bench --run --outputJson=${join(groupPath, 'results.json')} ${join(groupPath, 'tests')}/*.bench.ts`;
     console.log(`Running: ${vitestCmd}`);
 
     execSync(vitestCmd, {
@@ -24,12 +25,13 @@ function runGroupBenchmark(groupName, categoryPath) {
     console.log(`\n✅ ${groupName} benchmark completed successfully!`);
 
     // Generate README for the group
-    const readmeCmd = `node generate-group-readme.cjs ${groupName} ${categoryPath}`;
+    const readmeScript = join(__dirname, 'generate-group-readme.cjs');
+    const readmeCmd = `node ${readmeScript} ${groupName} ${categoryPath}`;
     console.log(`Generating README: ${readmeCmd}`);
 
     execSync(readmeCmd, {
       stdio: 'inherit',
-      cwd: join(__dirname, '..')
+      cwd: categoryPath
     });
 
     console.log(`\n📝 README generated for ${groupName} group!`);

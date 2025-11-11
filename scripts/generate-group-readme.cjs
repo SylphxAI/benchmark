@@ -77,26 +77,55 @@ function calculateGroupOverall(resultsData, libraryMetadata) {
 }
 
 function generateGroupReadme(groupPath, groupName, categoryPath) {
+  // Support two modes:
+  // 1. New architecture: single results.json file
+  // 2. Old architecture: results/ directory with multiple .json files
+
+  const singleResultFile = join(groupPath, 'results.json');
   const resultsDir = join(groupPath, 'results');
 
-  if (!existsSync(resultsDir)) {
-    console.error(`❌ No results directory found for group: ${groupName}`);
-    return;
+  let mergedResults = { files: [] };
+
+  // Try new architecture first (single results.json)
+  if (existsSync(singleResultFile)) {
+    try {
+      mergedResults = JSON.parse(readFileSync(singleResultFile, 'utf8'));
+      console.log(`✅ Using single results.json for ${groupName}`);
+
+      // Add library name to each benchmark name (same as old architecture)
+      mergedResults.files?.forEach(fileResult => {
+        if (fileResult.groups && fileResult.groups.length > 0) {
+          const fullName = fileResult.groups[0].fullName;
+          // Extract library name from "groups/.../file.bench.ts > 04-complexity - Jotai" format
+          const parts = fullName.split(' - ');
+          if (parts.length >= 2) {
+            const libName = parts.slice(1).join(' - ').trim();
+
+            // Add library name to each benchmark if it doesn't have it
+            fileResult.groups[0].benchmarks?.forEach(bench => {
+              if (!bench.name.includes(' - ')) {
+                bench.name = `${bench.name} - ${libName}`;
+                bench.id = `${bench.name}`;
+              }
+            });
+          }
+        }
+      });
+    } catch (error) {
+      console.error(`❌ Failed to read results.json:`, error.message);
+      return;
+    }
   }
+  // Fall back to old architecture (results/ directory)
+  else if (existsSync(resultsDir)) {
+    const resultFiles = readdirSync(resultsDir).filter(f => f.endsWith('.json'));
 
-  // Read and merge all per-library result files
-  const resultFiles = readdirSync(resultsDir).filter(f => f.endsWith('.json'));
+    if (resultFiles.length === 0) {
+      console.error(`❌ No result files found in results/ for group: ${groupName}`);
+      return;
+    }
 
-  if (resultFiles.length === 0) {
-    console.error(`❌ No result files found for group: ${groupName}`);
-    return;
-  }
-
-  // Merge all library results into a single structure
-  // Also track which library each result came from (based on filename)
-  const mergedResults = {
-    files: []
-  };
+    console.log(`✅ Using results/ directory with ${resultFiles.length} files for ${groupName}`);
 
   const libraryFromFile = {}; // Map filepath to library name
 
@@ -127,6 +156,7 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
       mergedResults.files = mergedResults.files.concat(libraryResult.files);
     }
   });
+  }
 
   const results = mergedResults;
 
