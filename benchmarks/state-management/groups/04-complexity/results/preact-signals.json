@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "filepath": "groups/04-complexity/tests/preact-signals.bench.ts",
+      "groups": [
+        {
+          "fullName": "04-complexity - Preact Signals",
+          "benchmarks": [
+            {
+              "id": "Deep Nested Read (10 levels) - Preact Signals",
+              "name": "Deep Nested Read (10 levels)",
+              "hz": 36414997.78,
+              "min": 0,
+              "max": 1.3525,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0.0001,
+              "rme": 0.54,
+              "samples": 18207499
+            },
+            {
+              "id": "Deep Nested Write (10 levels) - Preact Signals",
+              "name": "Deep Nested Write (10 levels)",
+              "hz": 10421638.94,
+              "min": 0,
+              "max": 0.7309,
+              "mean": 0.0001,
+              "p75": 0.0001,
+              "p99": 0.0002,
+              "p995": 0.0002,
+              "p999": 0.0005,
+              "rme": 0.75,
+              "samples": 5210820
+            },
+            {
+              "id": "Array Splice (middle) - Preact Signals",
+              "name": "Array Splice (middle)",
+              "hz": 20903299.04,
+              "min": 0,
+              "max": 0.8166,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0.0001,
+              "p995": 0.0001,
+              "p999": 0.0002,
+              "rme": 0.4,
+              "samples": 10451650
+            },
+            {
+              "id": "Large Array Map (1000 items) - Preact Signals",
+              "name": "Large Array Map (1000 items)",
+              "hz": 36709663.43,
+              "min": 0,
+              "max": 0.2631,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0.0001,
+              "rme": 0.14,
+              "samples": 18354833
+            },
+            {
+              "id": "Multi-field Update (unrelated) - Preact Signals",
+              "name": "Multi-field Update (unrelated)",
+              "hz": 15451.82,
+              "min": 0.0163,
+              "max": 12.1924,
+              "mean": 0.0647,
+              "p75": 0.0622,
+              "p99": 0.1205,
+              "p995": 0.1363,
+              "p999": 5.9407,
+              "rme": 12.81,
+              "samples": 7727
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

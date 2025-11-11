@@ -7,32 +7,46 @@
           "fullName": "06-memory - Preact Signals",
           "benchmarks": [
             {
-              "id": "Large State Read - Preact Signals",
-              "name": "Large State Read",
-              "hz": 49507834.34,
+              "id": "Large State Read (1000 items) - Preact Signals",
+              "name": "Large State Read (1000 items)",
+              "hz": 44385522.49,
               "min": 0,
-              "max": 0.1099,
+              "max": 0.6887,
               "mean": 0,
               "p75": 0,
               "p99": 0,
               "p995": 0,
-              "p999": 0,
-              "rme": 0.09,
-              "samples": 24753919
+              "p999": 0.0001,
+              "rme": 0.3,
+              "samples": 22192762
             },
             {
-              "id": "Large State Update - Preact Signals",
-              "name": "Large State Update",
-              "hz": 45460743.27,
-              "min": 0,
-              "max": 0.1818,
-              "mean": 0,
-              "p75": 0,
-              "p99": 0,
-              "p995": 0,
-              "p999": 0,
-              "rme": 0.09,
-              "samples": 22730372
+              "id": "Large State Update (1000 items) - Preact Signals",
+              "name": "Large State Update (1000 items)",
+              "hz": 418743.31,
+              "min": 0.0017,
+              "max": 5.1041,
+              "mean": 0.0024,
+              "p75": 0.0023,
+              "p99": 0.0056,
+              "p995": 0.0061,
+              "p999": 0.0074,
+              "rme": 2.02,
+              "samples": 209372
+            },
+            {
+              "id": "Large State Filter - Preact Signals",
+              "name": "Large State Filter",
+              "hz": 439794.42,
+              "min": 0.0018,
+              "max": 0.1826,
+              "mean": 0.0023,
+              "p75": 0.0022,
+              "p99": 0.0086,
+              "p995": 0.009,
+              "p999": 0.01,
+              "rme": 0.33,
+              "samples": 219898
             }
           ]
         }

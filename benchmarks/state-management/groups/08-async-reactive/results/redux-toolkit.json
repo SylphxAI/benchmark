@@ -1,0 +1,70 @@
+{
+  "files": [
+    {
+      "filepath": "groups/08-async-reactive/tests/redux-toolkit.bench.ts",
+      "groups": [
+        {
+          "fullName": "08-async-reactive - Redux Toolkit",
+          "benchmarks": [
+            {
+              "id": "Async Reactive Read - Redux Toolkit",
+              "name": "Async Reactive Read",
+              "hz": 1118229.07,
+              "min": 0,
+              "max": 137.73,
+              "mean": 0.0009,
+              "p75": 0.0002,
+              "p99": 0.0004,
+              "p995": 0.0005,
+              "p999": 0.001,
+              "rme": 61,
+              "samples": 577682
+            },
+            {
+              "id": "Async Reactive Chained - Redux Toolkit",
+              "name": "Async Reactive Chained",
+              "hz": 792378.82,
+              "min": 0.0001,
+              "max": 36.5899,
+              "mean": 0.0013,
+              "p75": 0.0002,
+              "p99": 0.0005,
+              "p995": 0.0009,
+              "p999": 0.0016,
+              "rme": 44.35,
+              "samples": 400840
+            },
+            {
+              "id": "Async Reactive Complex - Redux Toolkit",
+              "name": "Async Reactive Complex",
+              "hz": 480867.57,
+              "min": 0.0002,
+              "max": 37.611,
+              "mean": 0.0021,
+              "p75": 0.0003,
+              "p99": 0.0007,
+              "p995": 0.0008,
+              "p999": 0.0016,
+              "rme": 39.87,
+              "samples": 246085
+            },
+            {
+              "id": "Async Reactive Concurrent - Redux Toolkit",
+              "name": "Async Reactive Concurrent",
+              "hz": 317540.39,
+              "min": 0.0002,
+              "max": 40.4313,
+              "mean": 0.0031,
+              "p75": 0.0004,
+              "p99": 0.0009,
+              "p995": 0.0011,
+              "p999": 0.0034,
+              "rme": 43.89,
+              "samples": 159033
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
