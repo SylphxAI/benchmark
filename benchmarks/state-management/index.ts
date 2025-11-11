@@ -90,6 +90,12 @@ async function main() {
   // Import libraries AFTER category/groups/tests are defined
   await import('./libraries/jotai');
   await import('./libraries/zustand');
+  await import('./libraries/redux-toolkit');
+  await import('./libraries/mobx');
+  await import('./libraries/valtio');
+  await import('./libraries/preact-signals');
+  await import('./libraries/solid-js');
+  await import('./libraries/zen');
 
   // Print summary
   category.printSummary();
