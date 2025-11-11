@@ -6,7 +6,11 @@ Multi-field updates.
 
 - [Group Overall Performance](#group-overall-performance)
 - [Detailed Results](#detailed-results)
-  - [groups/07-form/form-state.bench.ts > Form State - Form state management](#groups07-formform-statebenchts-form-state---form-state-management)
+  - [07-form - Jotai](#07-form---jotai)
+  - [07-form - MobX](#07-form---mobx)
+  - [07-form - Solid Signals](#07-form---solid-signals)
+  - [07-form - Valtio](#07-form---valtio)
+  - [07-form - Zustand](#07-form---zustand)
 - [Navigation](#-navigation)
 - [Running This Group](#-running-this-group)
 
@@ -24,46 +28,115 @@ Multi-field updates.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 👑 0 |
-| 🥈 2 | [**Zustand**](https://github.com/pmndrs/zustand) | 👑 0 |
-| 🥉 3 | [**Jotai**](https://github.com/pmndrs/jotai) | 👑 0 |
-|  4 | [**MobX**](https://github.com/mobxjs/mobx) | 👑 0 |
-|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 👑 0 |
-|  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 👑 0 |
-|  7 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 0 |
-|  8 | [**Zen**](https://github.com/SylphxAI/zen) | 👑 0 |
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 24.0M |
+| 🥈 2 | [**Zustand**](https://github.com/pmndrs/zustand) | 18.9M |
+| 🥉 3 | [**Valtio**](https://github.com/pmndrs/valtio) | 4.4M |
+|  4 | [**MobX**](https://github.com/mobxjs/mobx) | 2.2M |
+|  5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.2M |
 
 ---
 
 ## Detailed Results
 
-### groups/07-form/form-state.bench.ts > Form State - Form state management
-
-**Performance Comparison:**
+### Conditional Field Update
 
 ```
-🥇   Redux Toolkit                                                       0 ops/sec
-🥈   Zustand                                                             0 ops/sec
-🥉   Jotai                                                               0 ops/sec
-4.   MobX                                                                0 ops/sec
-5.   Valtio                                                              0 ops/sec
-6.   Preact Signals                                                      0 ops/sec
-7.   Solid Signals                                                       0 ops/sec
-8.   Zen                                                                 0 ops/sec
+🥇   Solid Signals      ████████████████████████████████████████     46.3M ops/sec
+🥈   Zustand            ████████████████████████████████████████     45.9M ops/sec
+🥉   Valtio             ████████████████████████                     27.3M ops/sec
+4.   MobX               ███████                                       8.1M ops/sec
+5.   Jotai              ██████                                        6.5M ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | N/A | N/A | N/A | N/A | N/A |
-| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | N/A | N/A | N/A | N/A | N/A |
-| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | N/A | N/A | N/A | N/A | N/A |
-| 4 | [**MobX**](https://github.com/mobxjs/mobx) | N/A | N/A | N/A | N/A | N/A |
-| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A | N/A |
-| 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A | N/A |
-| 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A | N/A |
-| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A | N/A |
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 46,349,005 | ±0.04% | 0.0000ms | 0.0000ms | 23174504 |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | 45,945,156 | ±0.06% | 0.0000ms | 0.0000ms | 22972578 |
+| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 27,295,082 | ±0.03% | 0.0000ms | 0.0000ms | 13647541 |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | 8,051,060 | ±0.03% | 0.1000ms | 0.2000ms | 4025530 |
+| 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 6,466,585 | ±0.13% | 0.2000ms | 0.2000ms | 3233293 |
 
-**Key Insight:** Redux Toolkit is 0.00x faster than Zen in this test.
+**Key Insight:** Solid Signals is 7.17x faster than Jotai in this test.
+
+### Full Form Reset
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     30.6M ops/sec
+🥈   Zustand            ████████████████████████                     18.2M ops/sec
+🥉   Jotai              ███                                           2.2M ops/sec
+4.   MobX                                                             123K ops/sec
+5.   Valtio                                                            99K ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 30,618,687 | ±0.30% | 0.0000ms | 0.0000ms | 15309344 |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | 18,156,959 | ±3.86% | 0.1000ms | 0.1000ms | 9078480 |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,195,168 | ±0.78% | 0.5000ms | 0.6000ms | 1097585 |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | 122,752 | ±0.30% | 8.1000ms | 10.1000ms | 61377 |
+| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | 99,437 | ±54.89% | 10.1000ms | 15.7000ms | 56341 |
+
+**Key Insight:** Solid Signals is 307.92x faster than Valtio in this test.
+
+### Multiple Fields Update (3 fields)
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     17.4M ops/sec
+🥈   Zustand            ███████████████████████████████              13.4M ops/sec
+🥉   Valtio             ██████                                        2.7M ops/sec
+4.   Jotai              ████                                          1.5M ops/sec
+5.   MobX               ███                                           1.4M ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 17,371,902 | ±0.38% | 0.1000ms | 0.1000ms | 8685951 |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | 13,357,193 | ±0.61% | 0.1000ms | 0.1000ms | 6678597 |
+| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 2,699,362 | ±0.21% | 0.4000ms | 0.5000ms | 1349682 |
+| 4 | [**Jotai**](https://github.com/pmndrs/jotai) | 1,542,937 | ±0.60% | 0.6000ms | 1.0000ms | 771469 |
+| 5 | [**MobX**](https://github.com/mobxjs/mobx) | 1,368,345 | ±0.15% | 0.7000ms | 1.0000ms | 684173 |
+
+**Key Insight:** Solid Signals is 12.70x faster than MobX in this test.
+
+### Nested Field Update
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     16.5M ops/sec
+🥈   Valtio             ██████████████████████████████████           14.1M ops/sec
+🥉   Zustand            █████████████████████████████                12.1M ops/sec
+4.   MobX               █████████████                                 5.4M ops/sec
+5.   Jotai              ████                                          1.6M ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 16,548,821 | ±0.44% | 0.1000ms | 0.1000ms | 8274411 |
+| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 14,122,811 | ±0.03% | 0.1000ms | 0.1000ms | 7061406 |
+| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 12,106,266 | ±0.03% | 0.1000ms | 0.1000ms | 6053134 |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | 5,416,436 | ±0.11% | 0.2000ms | 0.3000ms | 2708218 |
+| 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 1,560,908 | ±0.72% | 0.6000ms | 0.9000ms | 780454 |
+
+**Key Insight:** Solid Signals is 10.60x faster than Jotai in this test.
+
+### Single Field Update
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     19.7M ops/sec
+🥈   Zustand            █████████████████████████████████████        18.0M ops/sec
+🥉   Valtio             ██████████████████████████████████           16.8M ops/sec
+4.   MobX               ███████████████                               7.4M ops/sec
+5.   Jotai              ███                                           1.6M ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 19,680,173 | ±0.85% | 0.1000ms | 0.1000ms | 9840087 |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | 18,047,397 | ±1.00% | 0.1000ms | 0.1000ms | 9023699 |
+| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 16,830,701 | ±0.07% | 0.1000ms | 0.1000ms | 8415351 |
+| 4 | [**MobX**](https://github.com/mobxjs/mobx) | 7,384,262 | ±0.05% | 0.1000ms | 0.2000ms | 3692132 |
+| 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 1,562,507 | ±0.64% | 0.6000ms | 1.0000ms | 781254 |
+
+**Key Insight:** Solid Signals is 12.60x faster than Jotai in this test.
 
 ---
 
@@ -83,4 +156,4 @@ npx vitest bench groups/07-form/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T04:05:19.522Z*
+*Last generated: 2025-11-11T10:02:59.209Z*
