@@ -44,165 +44,31 @@ Instance creation overhead.
 
 ## Detailed Results
 
-### 03-creation - Jotai
-
-**Performance Comparison:**
-
-```
-🥇   Jotai              ████████████████████████████████████████      2.4M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,399,742 | ±2.06% | 0.4000ms | 1.0000ms | 1199871 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Jotai](https://github.com/pmndrs/jotai) | Store Creation | 2,399,742 | ±2.06% | 0.4000ms | 1.0000ms | 1199871 |
-
-### 03-creation - MobX
-
-**Performance Comparison:**
-
-```
-🥇   MobX               ████████████████████████████████████████       399 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 399 | ±7.37% | 2503.7000ms | 7867.4000ms | 200 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [MobX](https://github.com/mobxjs/mobx) | Store Creation | 399 | ±7.37% | 2503.7000ms | 7867.4000ms | 200 |
-
-### 03-creation - Preact Signals
-
-**Performance Comparison:**
-
-```
-🥇   Preact Signals     ████████████████████████████████████████     40.1M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 40,097,070 | ±0.06% | N/A | N/A | 20048536 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Preact Signals](https://github.com/preactjs/signals) | Store Creation | 40,097,070 | ±0.06% | N/A | N/A | 20048536 |
-
-### 03-creation - Redux Toolkit
-
-**Performance Comparison:**
-
-```
-🥇   Redux Toolkit      ████████████████████████████████████████      260K ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 260,270 | ±0.63% | 3.8000ms | 4.9000ms | 130136 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Redux Toolkit](https://github.com/reduxjs/redux-toolkit) | Store Creation | 260,270 | ±0.63% | 3.8000ms | 4.9000ms | 130136 |
-
-### 03-creation - Solid Signals
-
-**Performance Comparison:**
-
-```
-🥇   Solid Signals      ████████████████████████████████████████     38.6M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 38,643,032 | ±0.46% | N/A | N/A | 19321517 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Solid Signals](https://github.com/solidjs/solid) | Store Creation | 38,643,032 | ±0.46% | N/A | N/A | 19321517 |
-
-### 03-creation - Valtio
-
-**Performance Comparison:**
-
-```
-🥇   Valtio             ████████████████████████████████████████      640K ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 639,684 | ±61.45% | 1.6000ms | 1.0000ms | 323942 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Valtio](https://github.com/pmndrs/valtio) | Store Creation | 639,684 | ±61.45% | 1.6000ms | 1.0000ms | 323942 |
-
-### 03-creation - Zen
-
-**Performance Comparison:**
+### Store Creation
 
 ```
 🥇   Zen                ████████████████████████████████████████     40.4M ops/sec
+🥈   Preact Signals     ████████████████████████████████████████     40.1M ops/sec
+🥉   Solid Signals      ██████████████████████████████████████       38.6M ops/sec
+4.   Zustand            █████████████                                12.8M ops/sec
+5.   Jotai              ██                                            2.4M ops/sec
+6.   Valtio             █                                             640K ops/sec
+7.   Redux Toolkit                                                    260K ops/sec
+8.   MobX                                                              399 ops/sec
 ```
 
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
 | 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 40,368,887 | ±0.04% | N/A | N/A | 20184444 |
+| 🥈 | [**Preact Signals**](https://github.com/preactjs/signals) | 40,097,070 | ±0.06% | N/A | N/A | 20048536 |
+| 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 38,643,032 | ±0.46% | N/A | N/A | 19321517 |
+| 4 | [**Zustand**](https://github.com/pmndrs/zustand) | 12,785,973 | ±1.22% | 0.1000ms | 0.2000ms | 6392987 |
+| 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,399,742 | ±2.06% | 0.4000ms | 1.0000ms | 1199871 |
+| 6 | [**Valtio**](https://github.com/pmndrs/valtio) | 639,684 | ±61.45% | 1.6000ms | 1.0000ms | 323942 |
+| 7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 260,270 | ±0.63% | 3.8000ms | 4.9000ms | 130136 |
+| 8 | [**MobX**](https://github.com/mobxjs/mobx) | 399 | ±7.37% | 2503.7000ms | 7867.4000ms | 200 |
 
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zen](https://github.com/SylphxAI/zen) | Store Creation | 40,368,887 | ±0.04% | N/A | N/A | 20184444 |
-
-### 03-creation - Zustand
-
-**Performance Comparison:**
-
-```
-🥇   Zustand            ████████████████████████████████████████     12.8M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 12,785,973 | ±1.22% | 0.1000ms | 0.2000ms | 6392987 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zustand](https://github.com/pmndrs/zustand) | Store Creation | 12,785,973 | ±1.22% | 0.1000ms | 0.2000ms | 6392987 |
+**Key Insight:** Zen is 101071.30x faster than MobX in this test.
 
 ---
 
@@ -222,4 +88,4 @@ npx vitest bench groups/03-creation/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T05:05:13.948Z*
+*Last generated: 2025-11-11T05:07:41.775Z*

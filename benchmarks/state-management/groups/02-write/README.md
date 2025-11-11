@@ -44,173 +44,57 @@ Simple increments and burst updates.
 
 ## Detailed Results
 
-### 02-write - Jotai
-
-**Performance Comparison:**
+### Burst Updates
 
 ```
-🥇   Jotai              ████████████████████████████████████████     22.7M ops/sec
+🥇   Solid Signals      ████████████████████████████████████████     36.5M ops/sec
+🥈   Jotai              ████████████████                             14.2M ops/sec
+🥉   Preact Signals     ███████████████                              13.4M ops/sec
+4.   Zen                ██████████████                               13.0M ops/sec
+5.   Valtio             █                                             576K ops/sec
+6.   MobX                                                             409K ops/sec
+7.   Redux Toolkit                                                     96K ops/sec
+8.   Zustand                                                           35K ops/sec
 ```
 
-**Overall Performance (Geometric Mean):**
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 36,486,929 | ±0.06% | N/A | N/A | 18243465 |
+| 🥈 | [**Jotai**](https://github.com/pmndrs/jotai) | 14,221,233 | ±0.06% | 0.1000ms | 0.1000ms | 7110617 |
+| 🥉 | [**Preact Signals**](https://github.com/preactjs/signals) | 13,360,720 | ±0.06% | 0.1000ms | 0.1000ms | 6680361 |
+| 4 | [**Zen**](https://github.com/SylphxAI/zen) | 12,998,806 | ±0.03% | 0.1000ms | 0.1000ms | 6499403 |
+| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | 576,258 | ±0.86% | 1.7000ms | 2.2000ms | 288130 |
+| 6 | [**MobX**](https://github.com/mobxjs/mobx) | 408,984 | ±0.68% | 2.4000ms | 3.0000ms | 204493 |
+| 7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 96,371 | ±1.56% | 10.4000ms | 20.5000ms | 48186 |
+| 8 | [**Zustand**](https://github.com/pmndrs/zustand) | 35,210 | ±1.22% | 28.4000ms | 42.8000ms | 17605 |
 
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 22,680,929 | ±0.08% | 0.0500ms | 0.1000ms | 25197114 |
+**Key Insight:** Solid Signals is 1036.27x faster than Zustand in this test.
 
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Jotai](https://github.com/pmndrs/jotai) | Simple Increment | 36,172,992 | ±0.10% | N/A | N/A | 18086497 |
-|  | Burst Updates | 14,221,233 | ±0.06% | 0.1000ms | 0.1000ms | 7110617 |
-
-### 02-write - MobX
-
-**Performance Comparison:**
+### Simple Increment
 
 ```
-🥇   MobX               ████████████████████████████████████████      1.2M ops/sec
+🥇   Solid Signals      ████████████████████████████████████████     40.0M ops/sec
+🥈   Preact Signals     ████████████████████████████████████         36.3M ops/sec
+🥉   Jotai              ████████████████████████████████████         36.2M ops/sec
+4.   Zen                ██████████████████████████████████           34.5M ops/sec
+5.   Valtio             █████                                         5.1M ops/sec
+6.   MobX               ████                                          3.6M ops/sec
+7.   Redux Toolkit      █                                             951K ops/sec
+8.   Zustand                                                          365K ops/sec
 ```
 
-**Overall Performance (Geometric Mean):**
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 40,015,677 | ±0.06% | N/A | N/A | 20007840 |
+| 🥈 | [**Preact Signals**](https://github.com/preactjs/signals) | 36,334,502 | ±0.12% | N/A | N/A | 18167251 |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | 36,172,992 | ±0.10% | N/A | N/A | 18086497 |
+| 4 | [**Zen**](https://github.com/SylphxAI/zen) | 34,466,747 | ±0.26% | N/A | N/A | 17233374 |
+| 5 | [**Valtio**](https://github.com/pmndrs/valtio) | 5,070,716 | ±0.16% | 0.2000ms | 0.3000ms | 2535359 |
+| 6 | [**MobX**](https://github.com/mobxjs/mobx) | 3,628,966 | ±0.65% | 0.3000ms | 0.4000ms | 1814484 |
+| 7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 951,114 | ±0.30% | 1.1000ms | 1.5000ms | 475559 |
+| 8 | [**Zustand**](https://github.com/pmndrs/zustand) | 365,484 | ±0.09% | 2.7000ms | 3.3000ms | 182742 |
 
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 1,218,274 | ±0.67% | 1.3500ms | 3.0000ms | 2018977 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [MobX](https://github.com/mobxjs/mobx) | Simple Increment | 3,628,966 | ±0.65% | 0.3000ms | 0.4000ms | 1814484 |
-|  | Burst Updates | 408,984 | ±0.68% | 2.4000ms | 3.0000ms | 204493 |
-
-### 02-write - Preact Signals
-
-**Performance Comparison:**
-
-```
-🥇   Preact Signals     ████████████████████████████████████████     22.0M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 22,033,046 | ±0.09% | 0.0500ms | 0.1000ms | 24847612 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Preact Signals](https://github.com/preactjs/signals) | Simple Increment | 36,334,502 | ±0.12% | N/A | N/A | 18167251 |
-|  | Burst Updates | 13,360,720 | ±0.06% | 0.1000ms | 0.1000ms | 6680361 |
-
-### 02-write - Redux Toolkit
-
-**Performance Comparison:**
-
-```
-🥇   Redux Toolkit      ████████████████████████████████████████      303K ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 302,753 | ±0.93% | 5.7500ms | 20.5000ms | 523745 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Redux Toolkit](https://github.com/reduxjs/redux-toolkit) | Simple Increment | 951,114 | ±0.30% | 1.1000ms | 1.5000ms | 475559 |
-|  | Burst Updates | 96,371 | ±1.56% | 10.4000ms | 20.5000ms | 48186 |
-
-### 02-write - Solid Signals
-
-**Performance Comparison:**
-
-```
-🥇   Solid Signals      ████████████████████████████████████████     38.2M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 38,210,590 | ±0.06% | N/A | N/A | 38251305 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Solid Signals](https://github.com/solidjs/solid) | Simple Increment | 40,015,677 | ±0.06% | N/A | N/A | 20007840 |
-|  | Burst Updates | 36,486,929 | ±0.06% | N/A | N/A | 18243465 |
-
-### 02-write - Valtio
-
-**Performance Comparison:**
-
-```
-🥇   Valtio             ████████████████████████████████████████      1.7M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 1,709,398 | ±0.51% | 0.9500ms | 2.2000ms | 2823489 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Valtio](https://github.com/pmndrs/valtio) | Simple Increment | 5,070,716 | ±0.16% | 0.2000ms | 0.3000ms | 2535359 |
-|  | Burst Updates | 576,258 | ±0.86% | 1.7000ms | 2.2000ms | 288130 |
-
-### 02-write - Zen
-
-**Performance Comparison:**
-
-```
-🥇   Zen                ████████████████████████████████████████     21.2M ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 21,166,638 | ±0.15% | 0.0500ms | 0.1000ms | 23732777 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zen](https://github.com/SylphxAI/zen) | Simple Increment | 34,466,747 | ±0.26% | N/A | N/A | 17233374 |
-|  | Burst Updates | 12,998,806 | ±0.03% | 0.1000ms | 0.1000ms | 6499403 |
-
-### 02-write - Zustand
-
-**Performance Comparison:**
-
-```
-🥇   Zustand            ████████████████████████████████████████      113K ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 113,440 | ±0.66% | 15.5500ms | 42.8000ms | 200347 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zustand](https://github.com/pmndrs/zustand) | Simple Increment | 365,484 | ±0.09% | 2.7000ms | 3.3000ms | 182742 |
-|  | Burst Updates | 35,210 | ±1.22% | 28.4000ms | 42.8000ms | 17605 |
+**Key Insight:** Solid Signals is 109.49x faster than Zustand in this test.
 
 ---
 
@@ -230,4 +114,4 @@ npx vitest bench groups/02-write/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T05:05:13.912Z*
+*Last generated: 2025-11-11T05:07:41.738Z*

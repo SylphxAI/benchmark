@@ -221,153 +221,100 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
   readme += `## Detailed Results\n\n`;
 
   if (results.files && results.files.length > 0) {
+    // Collect all benchmarks and group by test name (arena format)
+    const testArena = {}; // { testName: [{ library, bench }] }
+    const validLibraries = new Set(
+      Object.values(libraryMetadata.libraries || {}).map(lib => lib.displayName)
+    );
+
     results.files.forEach(file => {
       file.groups?.forEach(group => {
-        readme += `### ${group.fullName}\n\n`;
+        group.benchmarks?.forEach(bench => {
+          const nameParts = bench.name.split(' - ');
 
-        if (group.benchmarks && group.benchmarks.length > 0) {
-          // Group benchmarks by library
-          const libraryBenchmarks = {};
-
-          // Get valid library names for validation
-          const validLibraries = new Set(
-            Object.values(libraryMetadata.libraries || {}).map(lib => lib.displayName)
-          );
-
-          group.benchmarks.forEach(bench => {
-            const nameParts = bench.name.split(' - ');
-
-            // Try last part first (e.g., "Simple Read - Redux Toolkit")
-            let libName = nameParts[nameParts.length - 1].trim();
-
-            // If not a valid library, try first part (e.g., "Redux Toolkit - Simple Read")
-            if (!validLibraries.has(libName) && nameParts.length > 1) {
-              libName = nameParts[0].trim();
-            }
-
-            // Skip if still not valid
-            if (!validLibraries.has(libName)) {
-              return;
-            }
-
-            if (!libraryBenchmarks[libName]) {
-              libraryBenchmarks[libName] = [];
-            }
-            libraryBenchmarks[libName].push(bench);
-          });
-
-          // Calculate aggregated scores per library (geometric mean)
-          const libraryScores = Object.entries(libraryBenchmarks).map(([libName, benches]) => {
-            const validHzValues = benches.map(b => b.hz || 0).filter(v => v > 0);
-
-            if (validHzValues.length === 0) {
-              return { library: libName, overall: 0, benches };
-            }
-
-            // Geometric mean for overall score
-            const product = validHzValues.reduce((acc, val) => acc * val, 1);
-            const overall = Math.pow(product, 1 / validHzValues.length);
-
-            // Calculate average stats
-            const avgRme = benches.reduce((sum, b) => sum + (b.rme || 0), 0) / benches.length;
-            const avgMean = benches.reduce((sum, b) => sum + (b.mean || 0), 0) / benches.length;
-            const maxP99 = Math.max(...benches.map(b => b.p99 || 0));
-            const totalSamples = benches.reduce((sum, b) => sum + (b.samples || 0), 0);
-
-            return {
-              library: libName,
-              overall,
-              avgRme,
-              avgMean,
-              maxP99,
-              totalSamples,
-              benches
-            };
-          }).sort((a, b) => b.overall - a.overall);
-
-          const maxHz = libraryScores[0]?.overall || 1;
-
-          // Performance comparison chart (aggregated by library)
-          readme += '**Performance Comparison:**\n\n```\n';
-          libraryScores.forEach((score, idx) => {
-            const emoji = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `${idx + 1}. `;
-            const percentage = score.overall / maxHz;
-            const barLength = Math.round(percentage * 40);
-            const bar = '█'.repeat(barLength);
-            const opsText = formatNumber(score.overall) + ' ops/sec';
-
-            readme += `${emoji.padEnd(4)} ${score.library.padEnd(18)} ${bar.padEnd(42)} ${opsText.padStart(15)}\n`;
-          });
-          readme += '```\n\n';
-
-          // Aggregated summary table
-          readme += '**Overall Performance (Geometric Mean):**\n\n';
-          readme += '| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |\n';
-          readme += '|:----:|---------|----------------|--------------|----------|---------|---------------|\n';
-
-          libraryScores.forEach((score, idx) => {
-            const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
-            const opsPerSec = score.overall ? score.overall.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
-            const variance = score.avgRme ? `±${score.avgRme.toFixed(2)}%` : 'N/A';
-            const mean = score.avgMean ? `${(score.avgMean * 1000).toFixed(4)}ms` : 'N/A';
-            const p99 = score.maxP99 ? `${(score.maxP99 * 1000).toFixed(4)}ms` : 'N/A';
-            const samples = score.totalSamples || 'N/A';
-
-            // Add GitHub link to library name
-            const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-              libraryMetadata.libraries[key].displayName === score.library
-            );
-            const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
-            const libraryLink = githubUrl ? `[**${score.library}**](${githubUrl})` : `**${score.library}**`;
-
-            readme += `| ${emoji} | ${libraryLink} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
-          });
-
-          readme += '\n';
-
-          // Detailed test results for each library
-          readme += '**Individual Test Results:**\n\n';
-          readme += '| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |\n';
-          readme += '|---------|------|---------|----------|------|-----|---------|' + '\n';
-
-          libraryScores.forEach(score => {
-            // Add GitHub link to library name
-            const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-              libraryMetadata.libraries[key].displayName === score.library
-            );
-            const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
-            const libraryLink = githubUrl ? `[${score.library}](${githubUrl})` : score.library;
-
-            // Sort benchmarks by hz descending
-            const sortedBenches = [...score.benches].sort((a, b) => (b.hz || 0) - (a.hz || 0));
-
-            sortedBenches.forEach((bench, benchIdx) => {
-              const testName = bench.name.replace(` - ${score.library}`, '');
-              const opsPerSec = bench.hz ? bench.hz.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
-              const variance = bench.rme ? `±${bench.rme.toFixed(2)}%` : 'N/A';
-              const mean = bench.mean ? `${(bench.mean * 1000).toFixed(4)}ms` : 'N/A';
-              const p99 = bench.p99 ? `${(bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
-              const samples = bench.samples || 'N/A';
-
-              // Show library name only for first benchmark
-              const libCell = benchIdx === 0 ? libraryLink : '';
-
-              readme += `| ${libCell} | ${testName} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
-            });
-          });
-
-          // Key insight
-          if (libraryScores.length >= 2) {
-            const fastest = libraryScores[0];
-            const slowest = libraryScores[libraryScores.length - 1];
-            const ratio = ((fastest.overall || 0) / (slowest.overall || 1)).toFixed(2);
-
-            readme += `\n**Key Insight:** ${fastest.library} is ${ratio}x faster than ${slowest.library} in this test group.\n`;
+          // Extract library name
+          let libName = nameParts[nameParts.length - 1].trim();
+          if (!validLibraries.has(libName) && nameParts.length > 1) {
+            libName = nameParts[0].trim();
+          }
+          if (!validLibraries.has(libName)) {
+            return;
           }
 
-          readme += '\n';
-        }
+          // Extract test name (everything except library name)
+          const testName = nameParts.length > 1
+            ? nameParts.slice(0, -1).join(' - ').trim()
+            : bench.name.replace(` - ${libName}`, '').trim();
+
+          if (!testArena[testName]) {
+            testArena[testName] = [];
+          }
+
+          testArena[testName].push({
+            library: libName,
+            bench: bench
+          });
+        });
       });
+    });
+
+    // Generate arena table for each test
+    const testNames = Object.keys(testArena).sort();
+
+    testNames.forEach((testName, testIdx) => {
+      const competitors = testArena[testName];
+
+      // Sort by performance (hz) descending
+      competitors.sort((a, b) => (b.bench.hz || 0) - (a.bench.hz || 0));
+
+      readme += `### ${testName}\n\n`;
+
+      // ASCII bar chart
+      const maxHz = competitors[0]?.bench.hz || 1;
+      readme += '```\n';
+      competitors.slice(0, 10).forEach((comp, idx) => {
+        const emoji = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `${idx + 1}. `;
+        const percentage = (comp.bench.hz || 0) / maxHz;
+        const barLength = Math.round(percentage * 40);
+        const bar = '█'.repeat(barLength);
+        const opsText = formatNumber(comp.bench.hz) + ' ops/sec';
+
+        readme += `${emoji.padEnd(4)} ${comp.library.padEnd(18)} ${bar.padEnd(42)} ${opsText.padStart(15)}\n`;
+      });
+      readme += '```\n\n';
+
+      // Detailed ranking table
+      readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
+      readme += '|:----:|---------|---------|----------|------|-----|---------|' + '\n';
+
+      competitors.forEach((comp, idx) => {
+        const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
+        const opsPerSec = comp.bench.hz ? comp.bench.hz.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
+        const variance = comp.bench.rme ? `±${comp.bench.rme.toFixed(2)}%` : 'N/A';
+        const mean = comp.bench.mean ? `${(comp.bench.mean * 1000).toFixed(4)}ms` : 'N/A';
+        const p99 = comp.bench.p99 ? `${(comp.bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
+        const samples = comp.bench.samples || 'N/A';
+
+        // Add GitHub link to library name
+        const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+          libraryMetadata.libraries[key].displayName === comp.library
+        );
+        const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
+        const libraryLink = githubUrl ? `[**${comp.library}**](${githubUrl})` : `**${comp.library}**`;
+
+        readme += `| ${emoji} | ${libraryLink} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
+      });
+
+      // Key insight for this test
+      if (competitors.length >= 2) {
+        const fastest = competitors[0];
+        const slowest = competitors[competitors.length - 1];
+        const ratio = ((fastest.bench.hz || 0) / (slowest.bench.hz || 1)).toFixed(2);
+
+        readme += `\n**Key Insight:** ${fastest.library} is ${ratio}x faster than ${slowest.library} in this test.\n`;
+      }
+
+      readme += '\n';
     });
   }
 

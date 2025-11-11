@@ -44,165 +44,31 @@ Large state allocation performance.
 
 ## Detailed Results
 
-### 06-memory - Jotai
-
-**Performance Comparison:**
-
-```
-🥇   Jotai              ████████████████████████████████████████       892 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Jotai**](https://github.com/pmndrs/jotai) | 892 | ±2.05% | 1120.5000ms | 1640.5000ms | 447 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Jotai](https://github.com/pmndrs/jotai) | Large State Allocation | 892 | ±2.05% | 1120.5000ms | 1640.5000ms | 447 |
-
-### 06-memory - MobX
-
-**Performance Comparison:**
-
-```
-🥇   MobX               ████████████████████████████████████████       884 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 884 | ±1.96% | 1130.7000ms | 1911.1000ms | 443 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [MobX](https://github.com/mobxjs/mobx) | Large State Allocation | 884 | ±1.96% | 1130.7000ms | 1911.1000ms | 443 |
-
-### 06-memory - Preact Signals
-
-**Performance Comparison:**
-
-```
-🥇   Preact Signals     ████████████████████████████████████████       888 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 888 | ±1.67% | 1126.7000ms | 1859.8000ms | 444 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Preact Signals](https://github.com/preactjs/signals) | Large State Allocation | 888 | ±1.67% | 1126.7000ms | 1859.8000ms | 444 |
-
-### 06-memory - Redux Toolkit
-
-**Performance Comparison:**
-
-```
-🥇   Redux Toolkit      ████████████████████████████████████████       898 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 898 | ±1.38% | 1113.2000ms | 1699.5000ms | 450 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Redux Toolkit](https://github.com/reduxjs/redux-toolkit) | Large State Allocation | 898 | ±1.38% | 1113.2000ms | 1699.5000ms | 450 |
-
-### 06-memory - Solid Signals
-
-**Performance Comparison:**
-
-```
-🥇   Solid Signals      ████████████████████████████████████████       885 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 885 | ±2.21% | 1130.2000ms | 1905.3000ms | 443 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Solid Signals](https://github.com/solidjs/solid) | Large State Allocation | 885 | ±2.21% | 1130.2000ms | 1905.3000ms | 443 |
-
-### 06-memory - Valtio
-
-**Performance Comparison:**
-
-```
-🥇   Valtio             ████████████████████████████████████████       892 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 892 | ±1.56% | 1121.3000ms | 1751.5000ms | 446 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Valtio](https://github.com/pmndrs/valtio) | Large State Allocation | 892 | ±1.56% | 1121.3000ms | 1751.5000ms | 446 |
-
-### 06-memory - Zen
-
-**Performance Comparison:**
-
-```
-🥇   Zen                ████████████████████████████████████████       869 ops/sec
-```
-
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
-| 🥇 | [**Zen**](https://github.com/SylphxAI/zen) | 869 | ±1.65% | 1151.2000ms | 1902.9000ms | 435 |
-
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zen](https://github.com/SylphxAI/zen) | Large State Allocation | 869 | ±1.65% | 1151.2000ms | 1902.9000ms | 435 |
-
-### 06-memory - Zustand
-
-**Performance Comparison:**
+### Large State Allocation
 
 ```
 🥇   Zustand            ████████████████████████████████████████       900 ops/sec
+🥈   Redux Toolkit      ████████████████████████████████████████       898 ops/sec
+🥉   Jotai              ████████████████████████████████████████       892 ops/sec
+4.   Valtio             ████████████████████████████████████████       892 ops/sec
+5.   Preact Signals     ███████████████████████████████████████        888 ops/sec
+6.   Solid Signals      ███████████████████████████████████████        885 ops/sec
+7.   MobX               ███████████████████████████████████████        884 ops/sec
+8.   Zen                ███████████████████████████████████████        869 ops/sec
 ```
 
-**Overall Performance (Geometric Mean):**
-
-| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|----------------|--------------|----------|---------|---------------|
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
 | 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 900 | ±1.24% | 1111.5000ms | 1570.5000ms | 450 |
+| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 898 | ±1.38% | 1113.2000ms | 1699.5000ms | 450 |
+| 🥉 | [**Jotai**](https://github.com/pmndrs/jotai) | 892 | ±2.05% | 1120.5000ms | 1640.5000ms | 447 |
+| 4 | [**Valtio**](https://github.com/pmndrs/valtio) | 892 | ±1.56% | 1121.3000ms | 1751.5000ms | 446 |
+| 5 | [**Preact Signals**](https://github.com/preactjs/signals) | 888 | ±1.67% | 1126.7000ms | 1859.8000ms | 444 |
+| 6 | [**Solid Signals**](https://github.com/solidjs/solid) | 885 | ±2.21% | 1130.2000ms | 1905.3000ms | 443 |
+| 7 | [**MobX**](https://github.com/mobxjs/mobx) | 884 | ±1.96% | 1130.7000ms | 1911.1000ms | 443 |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | 869 | ±1.65% | 1151.2000ms | 1902.9000ms | 435 |
 
-**Individual Test Results:**
-
-| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
-|---------|------|---------|----------|------|-----|---------|
-| [Zustand](https://github.com/pmndrs/zustand) | Large State Allocation | 900 | ±1.24% | 1111.5000ms | 1570.5000ms | 450 |
+**Key Insight:** Zustand is 1.04x faster than Zen in this test.
 
 ---
 
@@ -222,4 +88,4 @@ npx vitest bench groups/06-memory/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T05:05:13.982Z*
+*Last generated: 2025-11-11T05:07:41.856Z*
