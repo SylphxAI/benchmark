@@ -10,14 +10,14 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 
 | Rank | Library | Version | Bundle (gzip) | Overall Score | Read | Write | Creation | Memory | Last Updated |
 |------|---------|---------|---------------|---------------|------|-------|----------|--------|--------------|
-| 🥇 1 | **Solid Signals** | 1.9.10 | 4.0 KB | 👑 2.5M | 👑 39.9M | 33.1M | 32.1M | 923 | Dec 6 |
-| 🥈 2 | **Preact Signals** | 2.4.0 | 3.0 KB | 2.3M | 34.3M | 28.2M | 👑 33.4M | 904 | Nov 7 |
-| 🥉 3 | **Zen** | 1.2.1 | 5.3 KB | 2.3M | 32.2M | 28.2M | 32.2M | 924 | Nov 7 |
-|  4 | **Jotai** | 2.15.1 | 4.3 KB | 1.3M | 36.3M | 👑 33.9M | 2.3M | 917 | Dec 6 |
-|  5 | **Valtio** | 2.2.0 | 3.1 KB | 258K | 4.9M | 4.2M | 235K | 898 | Nov 6 |
-|  6 | **Zustand** | 5.0.8 | 👑 1.2 KB | 188K | 363K | 351K | 10.9M | 907 | Nov 6 |
-|  7 | **Redux Toolkit** | 2.10.1 | 13.8 KB | 104K | 960K | 784K | 173K | 892 | Dec 6 |
-|  8 | **MobX** | 6.15.0 | 17.6 KB | 42K | 3.8M | 3.0M | 278 | 👑 925 | Dec 6 |
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 👑 2.5M | 👑 39.9M | 33.1M | 32.1M | 923 | Dec 6 |
+| 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 2.3M | 34.3M | 28.2M | 👑 33.4M | 904 | Nov 7 |
+| 🥉 3 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 2.3M | 32.2M | 28.2M | 32.2M | 924 | Nov 7 |
+|  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 1.3M | 36.3M | 👑 33.9M | 2.3M | 917 | Dec 6 |
+|  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 3.1 KB | 258K | 4.9M | 4.2M | 235K | 898 | Nov 6 |
+|  6 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 👑 1.2 KB | 188K | 363K | 351K | 10.9M | 907 | Nov 6 |
+|  7 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 13.8 KB | 104K | 960K | 784K | 173K | 892 | Dec 6 |
+|  8 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 42K | 3.8M | 3.0M | 278 | 👑 925 | Dec 6 |
 
 > **Note**: Groups 04 (Complexity), 05 (Cache Performance), 07 (Form State) currently have incomplete implementations and are excluded from the Overall Performance Score. These tests require refactoring to use real store implementations rather than placeholder logic.
 
@@ -64,77 +64,77 @@ Libraries participate only if they have native support for the tested capability
 
 Click on any group to view detailed benchmark results.
 
-### [01 - Read Operations](groups/01-read/)
+### [01 - Read Operations](groups/01-read/README.md)
 
 Simple read and high-frequency read patterns
 
 **Top Performer**: 👑 **Solid Signals** - 39.9M ops/sec
 
-**[View Detailed Results →](groups/01-read/)**
+**[View Detailed Results →](groups/01-read/README.md)**
 
 ---
 
-### [02 - Write Operations](groups/02-write/)
+### [02 - Write Operations](groups/02-write/README.md)
 
 Simple increments and burst updates
 
 **Top Performer**: 👑 **Jotai** - 33.9M ops/sec
 
-**[View Detailed Results →](groups/02-write/)**
+**[View Detailed Results →](groups/02-write/README.md)**
 
 ---
 
-### [03 - Store Creation](groups/03-creation/)
+### [03 - Store Creation](groups/03-creation/README.md)
 
 Instance creation overhead
 
 **Top Performer**: 👑 **Preact Signals** - 33.4M ops/sec
 
-**[View Detailed Results →](groups/03-creation/)**
+**[View Detailed Results →](groups/03-creation/README.md)**
 
 ---
 
-### [04 - Complexity](groups/04-complexity/)
+### [04 - Complexity](groups/04-complexity/README.md)
 
 Deep nested state
 
 ⚠️ *Implementation incomplete - excluded from Overall Performance Score*
 
-**[View Group Details →](groups/04-complexity/)**
+**[View Detailed Results →](groups/04-complexity/README.md)**
 
 ---
 
-### [05 - Cache Performance](groups/05-cache/)
+### [05 - Cache Performance](groups/05-cache/README.md)
 
 Repeated access patterns
 
 ⚠️ *Implementation incomplete - excluded from Overall Performance Score*
 
-**[View Group Details →](groups/05-cache/)**
+**[View Detailed Results →](groups/05-cache/README.md)**
 
 ---
 
-### [06 - Memory Allocation](groups/06-memory/)
+### [06 - Memory Allocation](groups/06-memory/README.md)
 
 Large state allocation performance
 
 **Top Performer**: 👑 **MobX** - 925 ops/sec
 
-**[View Detailed Results →](groups/06-memory/)**
+**[View Detailed Results →](groups/06-memory/README.md)**
 
 ---
 
-### [07 - Form State](groups/07-form/)
+### [07 - Form State](groups/07-form/README.md)
 
 Multi-field updates
 
 ⚠️ *Implementation incomplete - excluded from Overall Performance Score*
 
-**[View Group Details →](groups/07-form/)**
+**[View Detailed Results →](groups/07-form/README.md)**
 
 ---
 
-### [08 - Reactive Async](groups/08-async-reactive/) (Feature Test)
+### [08 - Reactive Async](groups/08-async-reactive/README.md) (Feature Test)
 
 Async atoms/computations
 
@@ -142,11 +142,11 @@ Async atoms/computations
 
 **Top Performer**: 👑 **Jotai** - 872 ops/sec
 
-**[View Detailed Results →](groups/08-async-reactive/)**
+**[View Detailed Results →](groups/08-async-reactive/README.md)**
 
 ---
 
-### [09 - Computed Native](groups/09-computed-native/) (Feature Test)
+### [09 - Computed Native](groups/09-computed-native/README.md) (Feature Test)
 
 Native computed values
 
@@ -154,11 +154,11 @@ Native computed values
 
 **Top Performer**: 👑 **Solid Signals** - 38.5M ops/sec
 
-**[View Detailed Results →](groups/09-computed-native/)**
+**[View Detailed Results →](groups/09-computed-native/README.md)**
 
 ---
 
-### [10 - Selectors](groups/10-selectors/) (Feature Test)
+### [10 - Selectors](groups/10-selectors/README.md) (Feature Test)
 
 Manual selector pattern
 
@@ -166,11 +166,11 @@ Manual selector pattern
 
 **Top Performer**: 👑 **Valtio** - 5.3M ops/sec
 
-**[View Detailed Results →](groups/10-selectors/)**
+**[View Detailed Results →](groups/10-selectors/README.md)**
 
 ---
 
-### [11 - Batching Native](groups/11-batching-native/) (Feature Test)
+### [11 - Batching Native](groups/11-batching-native/README.md) (Feature Test)
 
 Built-in batching
 
@@ -178,7 +178,7 @@ Built-in batching
 
 **Top Performer**: 👑 **Solid Signals** - 42.5M ops/sec
 
-**[View Detailed Results →](groups/11-batching-native/)**
+**[View Detailed Results →](groups/11-batching-native/README.md)**
 
 ---
 

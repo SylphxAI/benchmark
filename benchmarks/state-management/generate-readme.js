@@ -157,6 +157,7 @@ function generateOverallScore() {
     const lastUpdated = versions.libraries[libKey]?.lastUpdated
       ? new Date(versions.libraries[libKey].lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
       : 'N/A';
+    const githubUrl = libraryMetadata.libraries[libKey]?.url || '';
 
     // Add crown to each metric's winner
     const sizeCrown = size === minSize ? '👑 ' : '';
@@ -166,7 +167,9 @@ function generateOverallScore() {
     const creationCrown = entry.creation === maxCreation ? '👑 ' : '';
     const memoryCrown = entry.memory === maxMemory ? '👑 ' : '';
 
-    section += `| ${emoji}${rank} | **${entry.library}** | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${readCrown}${formatNumber(entry.read)} | ${writeCrown}${formatNumber(entry.write)} | ${creationCrown}${formatNumber(entry.creation)} | ${memoryCrown}${formatNumber(entry.memory)} | ${lastUpdated} |\n`;
+    const libraryLink = githubUrl ? `[**${entry.library}**](${githubUrl})` : `**${entry.library}**`;
+
+    section += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${readCrown}${formatNumber(entry.read)} | ${writeCrown}${formatNumber(entry.write)} | ${creationCrown}${formatNumber(entry.creation)} | ${memoryCrown}${formatNumber(entry.memory)} | ${lastUpdated} |\n`;
   });
 
   const incompleteGroups = Object.entries(groupsConfig.groups)
@@ -183,50 +186,6 @@ function generateOverallScore() {
   return section + '\n---\n\n';
 }
 
-function generateLibraryComparison(scores) {
-  let section = `## Library Comparison
-
-| Library | Version | Bundle Size (gzip) | Overall Score | Read | Write | Creation | Memory |
-|---------|---------|-------------------|---------------|------|-------|----------|--------|
-`;
-
-  // Find best value for each metric
-  const maxOverall = Math.max(...scores.map(s => s.overall));
-  const maxRead = Math.max(...scores.map(s => s.read));
-  const maxWrite = Math.max(...scores.map(s => s.write));
-  const maxCreation = Math.max(...scores.map(s => s.creation));
-  const maxMemory = Math.max(...scores.map(s => s.memory));
-
-  // Find smallest bundle size
-  const minSize = Math.min(...scores.map(entry => {
-    const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-      libraryMetadata.libraries[key].displayName === entry.library
-    );
-    return versions.libraries[libKey]?.size?.gzip || Infinity;
-  }));
-
-  scores.forEach((entry) => {
-    const libKey = Object.keys(libraryMetadata.libraries).find(key =>
-      libraryMetadata.libraries[key].displayName === entry.library
-    );
-
-    const version = versions.libraries[libKey]?.version || 'N/A';
-    const size = versions.libraries[libKey]?.size?.gzip || 0;
-    const sizeKB = (size / 1024).toFixed(1);
-
-    // Add crown to each metric's winner
-    const sizeCrown = size === minSize ? '👑 ' : '';
-    const overallCrown = entry.overall === maxOverall ? '👑 ' : '';
-    const readCrown = entry.read === maxRead ? '👑 ' : '';
-    const writeCrown = entry.write === maxWrite ? '👑 ' : '';
-    const creationCrown = entry.creation === maxCreation ? '👑 ' : '';
-    const memoryCrown = entry.memory === maxMemory ? '👑 ' : '';
-
-    section += `| ${entry.library} | ${version} | ${sizeCrown}${sizeKB} KB | ${overallCrown}${formatNumber(entry.overall)} | ${readCrown}${formatNumber(entry.read)} | ${writeCrown}${formatNumber(entry.write)} | ${creationCrown}${formatNumber(entry.creation)} | ${memoryCrown}${formatNumber(entry.memory)} |\n`;
-  });
-
-  return section + '\n---\n\n';
-}
 
 function generateFeatureMatrix() {
   let section = `## Feature Support Matrix
@@ -301,7 +260,7 @@ Click on any group to view detailed benchmark results.
     const resultsData = results[groupKey];
     const num = groupKey.match(/\d+/)[0];
     const testType = groupConfig.type === 'feature' ? ' (Feature Test)' : '';
-    const groupPath = `groups/${groupKey}/`;
+    const groupPath = `groups/${groupKey}/README.md`;
 
     section += `### [${num} - ${groupConfig.title}](${groupPath})${testType}\n\n`;
     section += `${groupConfig.description}\n\n`;
@@ -312,13 +271,13 @@ Click on any group to view detailed benchmark results.
 
     if (groupConfig.status === 'incomplete') {
       section += `⚠️ *Implementation incomplete - excluded from Overall Performance Score*\n\n`;
-      section += `**[View Group Details →](${groupPath})**\n\n---\n\n`;
+      section += `**[View Detailed Results →](${groupPath})**\n\n---\n\n`;
       return;
     }
 
     if (!resultsData) {
       section += `*No results available*\n\n`;
-      section += `**[View Group Details →](${groupPath})**\n\n---\n\n`;
+      section += `**[View Detailed Results →](${groupPath})**\n\n---\n\n`;
       return;
     }
 
