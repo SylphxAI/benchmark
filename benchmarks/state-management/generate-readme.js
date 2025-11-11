@@ -82,8 +82,67 @@ function generateBenchmarkSection(title, description, benchmarks, hasNote, noteT
   return section;
 }
 
-// Auto-discover groups and load results
+// Load per-library results and merge them
+function loadPerLibraryResults() {
+  const resultsPath = join(__dirname, 'results');
+  const mergedResults = {};
+
+  try {
+    const resultFiles = readdirSync(resultsPath)
+      .filter(f => f.endsWith('-benchmark.json'))
+      .sort();
+
+    if (resultFiles.length === 0) {
+      return null; // No per-library results found
+    }
+
+    console.log(`📊 Loading ${resultFiles.length} per-library benchmark results...`);
+
+    resultFiles.forEach(file => {
+      try {
+        const libraryResult = JSON.parse(readFileSync(join(resultsPath, file), 'utf-8'));
+
+        // libraryResult.groups contains: { "01-read": { files: [...] }, ... }
+        Object.entries(libraryResult.groups).forEach(([groupName, groupData]) => {
+          if (!mergedResults[groupName]) {
+            mergedResults[groupName] = groupData;
+          } else {
+            // Merge files arrays
+            if (groupData && groupData.files) {
+              if (!mergedResults[groupName].files) {
+                mergedResults[groupName].files = [];
+              }
+              mergedResults[groupName].files = mergedResults[groupName].files.concat(groupData.files);
+            }
+          }
+        });
+
+        console.log(`  ✓ Loaded ${libraryResult.library} v${libraryResult.version}`);
+      } catch (err) {
+        console.warn(`  ⚠️  Failed to load ${file}:`, err.message);
+      }
+    });
+
+    console.log(`✅ Merged results from ${resultFiles.length} libraries\n`);
+    return mergedResults;
+
+  } catch (err) {
+    // results/ directory doesn't exist or is empty
+    return null;
+  }
+}
+
+// Auto-discover groups and load results (backward compatible)
 function loadAllResults() {
+  // Try per-library results first (new format)
+  const perLibraryResults = loadPerLibraryResults();
+  if (perLibraryResults && Object.keys(perLibraryResults).length > 0) {
+    console.log('📦 Using per-library benchmark results\n');
+    return perLibraryResults;
+  }
+
+  // Fall back to group results (old format)
+  console.log('📦 Using group-based benchmark results (legacy)\n');
   const groupsPath = join(__dirname, 'groups');
   const results = {};
 
