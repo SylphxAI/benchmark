@@ -4,7 +4,6 @@
  */
 
 import { bench, describe } from 'vitest';
-import { get, set } from '@sylphx/zen';
 import {
   zenCountStore,
   zenDoubledStore,
@@ -13,19 +12,19 @@ import {
 
 describe('09-computed-native - Zen', () => {
   bench('Native Computed', () => {
-    set(zenCountStore, Math.random());
-    get(zenDoubledStore);
+    zenCountStore.value = Math.random();
+    zenDoubledStore.value;
   });
 
   bench('Chained Computed', () => {
-    set(zenCountStore, Math.random());
-    get(zenLevel3Computed);
+    zenCountStore.value = Math.random();
+    zenLevel3Computed.value;
   });
 
   bench('Computed Updates', () => {
     for (let i = 0; i < 100; i++) {
-      set(zenCountStore, i);
-      get(zenDoubledStore);
+      zenCountStore.value = i;
+      zenDoubledStore.value;
     }
   });
 });

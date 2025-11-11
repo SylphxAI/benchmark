@@ -9,72 +9,72 @@
             {
               "id": "Async Computed Read - Zen",
               "name": "Async Computed Read",
-              "hz": 10515546.99,
+              "hz": 10373641.76,
               "min": 0,
-              "max": 1.667,
+              "max": 1.7644,
               "mean": 0.0001,
               "p75": 0.0001,
               "p99": 0.0002,
               "p995": 0.0003,
               "p999": 0.0006,
-              "rme": 0.7,
-              "samples": 5257774
+              "rme": 0.73,
+              "samples": 5186822
             },
             {
               "id": "Async Computed with Dependency Update - Zen",
               "name": "Async Computed with Dependency Update",
-              "hz": 9851390.86,
+              "hz": 9396774.72,
               "min": 0,
-              "max": 0.1893,
+              "max": 0.2341,
               "mean": 0.0001,
               "p75": 0.0001,
               "p99": 0.0002,
               "p995": 0.0003,
               "p999": 0.0004,
-              "rme": 0.26,
-              "samples": 4925696
+              "rme": 0.3,
+              "samples": 4698388
             },
             {
               "id": "Chained Async Computed - Zen",
               "name": "Chained Async Computed",
-              "hz": 9882423.66,
+              "hz": 9911255.19,
               "min": 0,
-              "max": 0.2185,
+              "max": 0.2156,
               "mean": 0.0001,
               "p75": 0.0001,
               "p99": 0.0002,
               "p995": 0.0003,
               "p999": 0.0004,
-              "rme": 0.36,
-              "samples": 4941212
+              "rme": 0.34,
+              "samples": 4955628
             },
             {
               "id": "Complex Async Dependencies - Zen",
               "name": "Complex Async Dependencies",
-              "hz": 9634307.4,
+              "hz": 9991571.4,
               "min": 0,
-              "max": 0.1835,
+              "max": 0.2545,
               "mean": 0.0001,
               "p75": 0.0001,
               "p99": 0.0002,
               "p995": 0.0003,
               "p999": 0.0004,
-              "rme": 0.27,
-              "samples": 4817154
+              "rme": 0.32,
+              "samples": 4995786
             },
             {
               "id": "Concurrent Async Reads - Zen",
               "name": "Concurrent Async Reads",
-              "hz": 3499900.98,
+              "hz": 3323940.35,
               "min": 0.0002,
-              "max": 0.1775,
+              "max": 0.2007,
               "mean": 0.0003,
               "p75": 0.0003,
               "p99": 0.0005,
-              "p995": 0.0005,
+              "p995": 0.0006,
               "p999": 0.0008,
-              "rme": 0.33,
-              "samples": 1749951
+              "rme": 0.4,
+              "samples": 1661971
             }
           ]
         }

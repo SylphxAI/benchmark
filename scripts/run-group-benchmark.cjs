@@ -12,9 +12,15 @@ function runGroupBenchmark(groupName, categoryPath) {
   console.log(`🚀 Running ${groupName} benchmark tests...\n`);
 
   try {
+    // Check if group uses unified runner or separate test files
+    const fs = require('fs');
+    const runnerPath = join(groupPath, 'runner.bench.ts');
+    const testsPattern = fs.existsSync(runnerPath)
+      ? `${groupPath}/runner.bench.ts`
+      : `${join(groupPath, 'tests')}/*.bench.ts`;
+
     // Run vitest bench for the specific group
-    // Note: No quotes around glob pattern so shell expands it properly
-    const vitestCmd = `npx vitest bench --run --outputJson=${join(groupPath, 'results.json')} ${join(groupPath, 'tests')}/*.bench.ts`;
+    const vitestCmd = `npx vitest bench --run --outputJson=${join(groupPath, 'results.json')} ${testsPattern}`;
     console.log(`Running: ${vitestCmd}`);
 
     execSync(vitestCmd, {
