@@ -1,0 +1,10 @@
+[install]
+auto = "fallback"
+production = false
+optional = true
+
+[install.cache]
+disable = false
+
+[test]
+preload = []

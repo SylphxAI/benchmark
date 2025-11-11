@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM"],
+    "target": "ESNext",
+    "lib": ["ESNext"],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "types": ["bun-types"],
+
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true,
+
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -15,29 +18,28 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "exactOptionalPropertyTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    "noEmit": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@/benchmarks/*": ["src/benchmarks/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/types/*": ["src/types/*"]
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@categories/*": ["./src/categories/*"],
+      "@libraries/*": ["./src/libraries/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "reports"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "benchmarks", "dist", "build"]
 }
