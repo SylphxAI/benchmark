@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "check-versions": "tsx scripts/check-versions.ts",
-    "generate-readme": "tsx scripts/generate-readme.ts",
     "benchmark:state": "cd benchmarks/state-management && npm run benchmark"
   },
   "keywords": [

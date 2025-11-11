@@ -21,17 +21,18 @@ benchmark-state/
 ├── scripts/
 │   ├── check-single-library.ts           # Check if library needs benchmarking
 │   ├── benchmark-single-library.ts       # Run benchmark for single library
-│   ├── generate-readme.ts                # Generate category README
+│   ├── calculate-rankings.ts             # Calculate performance rankings
 │   └── generate-root-readme.ts           # Generate root README
 │
 └── benchmarks/
     └── state-management/
         ├── library-metadata.json         # Library definitions
         ├── versions.json                 # Version tracking
-        ├── generate-readme.js            # Category README generator
+        ├── generate-readme.js            # Category README generator (new style)
         ├── groups/                       # Benchmark test groups
         │   ├── 01-read/
         │   ├── 02-write/
+        │   ├── 15-real-world-patterns/   # Complex real-world patterns
         │   └── ...
         └── results/                      # Per-library benchmark results
             ├── .gitkeep

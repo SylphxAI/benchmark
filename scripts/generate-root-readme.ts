@@ -139,7 +139,7 @@ npm install
 npm run benchmark
 
 # Generate report
-npx tsx ../../scripts/generate-readme.ts .
+node generate-readme.js
 \`\`\`
 
 ---
