@@ -80,61 +80,83 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
   const displayName = libInfo.displayName;
   const currentVersion = versionInfo.current;
 
+  // Convert display name to same format as split script uses
+  const testFileLibraryName = displayName.toLowerCase().replace(/\s+/g, '-').replace(/@/g, '').replace(/\//g, '-');
+
   console.log(`📚 Library: ${displayName}`);
   console.log(`📦 Version: ${currentVersion}`);
   console.log(``);
 
-  // Run benchmarks filtered by library name
+  // Run benchmarks for this specific library
   console.log(`⏳ Running benchmarks (this may take several minutes)...\n`);
 
+  const groupsPath = join(categoryPath, 'groups');
+  const groupResults: Record<string, any> = {};
+
   try {
-    // Run vitest with testNamePattern filter for this specific library
-    const benchCmd = `npx vitest bench --run -t "${displayName}"`;
+    // Get all test files for this library across all groups
+    const groups = readdirSync(groupsPath).filter((dir: string) => {
+      const fullPath = join(groupsPath, dir);
+      return statSync(fullPath).isDirectory() && /^\d{2}-/.test(dir);
+    });
+
+    // Run benchmark for this library using file path pattern (not -t filter)
+    const testPattern = `groups/*/tests/${testFileLibraryName}.bench.ts`;
+    const benchCmd = `npx vitest bench --run --reporter=json --outputFile=.vitest-results.json "${testPattern}"`;
+
+    console.log(`📝 Running tests: ${testPattern}\n`);
 
     execSync(benchCmd, {
       cwd: categoryPath,
-      stdio: 'inherit',
+      stdio: ['inherit', 'pipe', 'inherit'],
       encoding: 'utf-8'
     });
 
     console.log(`\n✅ Benchmarks completed for ${displayName}`);
 
-  } catch (error) {
-    console.error(`\n❌ Benchmark failed for ${displayName}:`, error instanceof Error ? error.message : 'Unknown error');
-    process.exit(1);
-  }
+    // Read the JSON results from vitest
+    const vitestResultsPath = join(categoryPath, '.vitest-results.json');
 
-  // Collect results from all group results.json files
-  console.log(`\n📊 Collecting results...`);
+    if (existsSync(vitestResultsPath)) {
+      const vitestResults = JSON.parse(readFileSync(vitestResultsPath, 'utf-8'));
 
-  const groupResults: Record<string, any> = {};
-  const groupsPath = join(categoryPath, 'groups');
+      // Process results and save per-group
+      console.log(`\n📊 Processing results...`);
 
-  try {
-    const groups = readdirSync(groupsPath).filter((dir: string) => {
-      const fullPath = join(groupsPath, dir);
-      return statSync(fullPath).isDirectory();
-    });
+      for (const groupDir of groups) {
+        const groupTestPath = join(groupsPath, groupDir, 'tests', `${testFileLibraryName}.bench.ts`);
 
-    for (const groupDir of groups) {
-      const groupResultsPath = join(groupsPath, groupDir, 'results.json');
+        if (existsSync(groupTestPath)) {
+          // Extract results for this group from vitest output
+          const groupResult = extractGroupResults(vitestResults, groupDir, testFileLibraryName);
 
-      if (existsSync(groupResultsPath)) {
-        const groupData = JSON.parse(readFileSync(groupResultsPath, 'utf-8'));
+          if (groupResult) {
+            // Save to groups/{group}/results/{library}.json
+            const groupResultsDir = join(groupsPath, groupDir, 'results');
+            if (!existsSync(groupResultsDir)) {
+              mkdirSync(groupResultsDir, { recursive: true });
+            }
 
-        // Filter benchmarks for this library only
-        const filteredData = filterLibraryBenchmarks(groupData, displayName);
+            const groupResultPath = join(groupResultsDir, `${testFileLibraryName}.json`);
+            writeFileSync(groupResultPath, JSON.stringify(groupResult, null, 2));
 
-        if (filteredData) {
-          groupResults[groupDir] = filteredData;
+            groupResults[groupDir] = groupResult;
+            console.log(`  ✓ Saved ${groupDir}/results/${testFileLibraryName}.json`);
+          }
         }
+      }
+
+      // Clean up vitest results file
+      if (existsSync(vitestResultsPath)) {
+        execSync(`rm ${vitestResultsPath}`, { cwd: categoryPath });
       }
     }
 
-    console.log(`✓ Collected results from ${Object.keys(groupResults).length} groups`);
+    console.log(`\n✓ Processed results for ${Object.keys(groupResults).length} groups`);
 
   } catch (error) {
-    console.error(`⚠️  Error collecting results:`, error instanceof Error ? error.message : 'Unknown error');
+    console.error(`\n❌ Benchmark failed for ${displayName}:`, error instanceof Error ? error.message : 'Unknown error');
+    process.exit(1);
   }
 
   // Create library benchmark result
@@ -157,41 +179,47 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
   console.log(`\n✨ Done!\n`);
 }
 
-function filterLibraryBenchmarks(data: any, libraryName: string): any | null {
-  if (!data || !data.files) return null;
+/**
+ * Extract group results from vitest JSON output
+ */
+function extractGroupResults(vitestResults: any, groupName: string, libraryKey: string): any | null {
+  if (!vitestResults || !vitestResults.testResults) return null;
 
-  const filteredFiles = data.files.map((file: any) => {
-    if (!file.groups) return null;
+  // Find test results for this group's test file
+  const testFileSuffix = `groups/${groupName}/tests/${libraryKey}.bench.ts`;
 
-    const filteredGroups = file.groups.map((group: any) => {
-      if (!group.benchmarks) return null;
+  const groupTestResults = vitestResults.testResults.find((result: any) =>
+    result.name && result.name.endsWith(testFileSuffix)
+  );
 
-      const filteredBenchmarks = group.benchmarks.filter((bench: any) => {
-        // Check if benchmark name includes the library name
-        return bench.name && bench.name.includes(libraryName);
-      });
+  if (!groupTestResults || !groupTestResults.assertionResults) return null;
 
-      if (filteredBenchmarks.length === 0) return null;
-
-      return {
-        ...group,
-        benchmarks: filteredBenchmarks
-      };
-    }).filter((g: any) => g !== null);
-
-    if (filteredGroups.length === 0) return null;
-
-    return {
-      ...file,
-      groups: filteredGroups
-    };
-  }).filter((f: any) => f !== null);
-
-  if (filteredFiles.length === 0) return null;
+  // Convert vitest format to our benchmark format
+  const benchmarks = groupTestResults.assertionResults.map((assertion: any) => ({
+    id: assertion.fullName || assertion.title,
+    name: assertion.title,
+    hz: assertion.hz || 0,
+    rme: assertion.rme || 0,
+    mean: assertion.mean || 0,
+    p75: assertion.p75 || 0,
+    p99: assertion.p99 || 0,
+    p995: assertion.p995 || 0,
+    p999: assertion.p999 || 0,
+    samples: assertion.samples || []
+  }));
 
   return {
-    ...data,
-    files: filteredFiles
+    files: [
+      {
+        filepath: groupTestResults.name,
+        groups: [
+          {
+            fullName: `${groupName} - ${libraryKey}`,
+            benchmarks
+          }
+        ]
+      }
+    ]
   };
 }
 

@@ -77,14 +77,34 @@ function calculateGroupOverall(resultsData, libraryMetadata) {
 }
 
 function generateGroupReadme(groupPath, groupName, categoryPath) {
-  const resultsPath = join(groupPath, 'results.json');
+  const resultsDir = join(groupPath, 'results');
 
-  if (!existsSync(resultsPath)) {
-    console.error(`❌ No results found for group: ${groupName}`);
+  if (!existsSync(resultsDir)) {
+    console.error(`❌ No results directory found for group: ${groupName}`);
     return;
   }
 
-  const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
+  // Read and merge all per-library result files
+  const resultFiles = readdirSync(resultsDir).filter(f => f.endsWith('.json'));
+
+  if (resultFiles.length === 0) {
+    console.error(`❌ No result files found for group: ${groupName}`);
+    return;
+  }
+
+  // Merge all library results into a single structure
+  const mergedResults = {
+    files: []
+  };
+
+  resultFiles.forEach(file => {
+    const libraryResult = JSON.parse(readFileSync(join(resultsDir, file), 'utf-8'));
+    if (libraryResult.files) {
+      mergedResults.files = mergedResults.files.concat(libraryResult.files);
+    }
+  });
+
+  const results = mergedResults;
 
   // Load category configs
   const versionsPath = join(categoryPath, 'versions.json');
