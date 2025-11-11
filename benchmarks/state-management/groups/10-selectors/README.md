@@ -6,10 +6,9 @@ Manual selector pattern.
 
 - [Group Overall Performance](#group-overall-performance)
 - [Detailed Results](#detailed-results)
-  - [groups/10-selectors/selectors.bench.ts > Simple Selector](#groups10-selectorsselectorsbenchts-simple-selector)
-  - [groups/10-selectors/selectors.bench.ts > Chained Selectors](#groups10-selectorsselectorsbenchts-chained-selectors)
-  - [groups/10-selectors/selectors.bench.ts > Selector Repeated Access](#groups10-selectorsselectorsbenchts-selector-repeated-access)
-  - [groups/10-selectors/selectors.bench.ts > Selector with Updates](#groups10-selectorsselectorsbenchts-selector-with-updates)
+  - [10-selectors - Redux Toolkit](#10-selectors---redux-toolkit)
+  - [10-selectors - Valtio](#10-selectors---valtio)
+  - [10-selectors - Zustand](#10-selectors---zustand)
 - [Navigation](#-navigation)
 - [Running This Group](#-running-this-group)
 
@@ -27,85 +26,77 @@ Manual selector pattern.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**Valtio**](https://github.com/pmndrs/valtio) | 👑 913K |
-| 🥈 2 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 166K |
-| 🥉 3 | [**Zustand**](https://github.com/pmndrs/zustand) | 137K |
+| 🥇 1 | [**Valtio**](https://github.com/pmndrs/valtio) | 👑 818K |
+| 🥈 2 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 141K |
+| 🥉 3 | [**Zustand**](https://github.com/pmndrs/zustand) | 128K |
 
 ---
 
 ## Detailed Results
 
-### groups/10-selectors/selectors.bench.ts > Simple Selector
-
-**Performance Comparison:**
+### Chained Selectors
 
 ```
-🥇   Valtio             ████████████████████████████████████████      5.3M ops/sec
-🥈   Redux Toolkit      █████                                         597K ops/sec
-🥉   Zustand            ███                                           365K ops/sec
+🥇   Valtio             ████████████████████████████████████████      4.1M ops/sec
+🥈   Zustand            ███                                           358K ops/sec
+🥉   Redux Toolkit      ███                                           330K ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 5,282,459 | ±0.44% | 0.1893ms | 0.2500ms | 0 |
-| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 597,077 | ±1.86% | 1.6748ms | 2.2500ms | 0 |
-| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 365,422 | ±0.16% | 2.7366ms | 3.4160ms | 0 |
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,110,334 | ±0.15% | 0.2000ms | 0.4000ms | 2055167 |
+| 🥈 | [**Zustand**](https://github.com/pmndrs/zustand) | 357,981 | ±0.17% | 2.8000ms | 3.5000ms | 178991 |
+| 🥉 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 329,657 | ±2.29% | 3.0000ms | 4.4000ms | 164829 |
 
-**Key Insight:** Valtio is 14.46x faster than Zustand in this test.
+**Key Insight:** Valtio is 12.47x faster than Redux Toolkit in this test.
 
-### groups/10-selectors/selectors.bench.ts > Chained Selectors
-
-**Performance Comparison:**
+### Repeated Selector Access
 
 ```
-🥇   Valtio             ████████████████████████████████████████      4.8M ops/sec
-🥈   Redux Toolkit      ███                                           385K ops/sec
-🥉   Zustand            ███                                           371K ops/sec
+🥇   Zustand            ████████████████████████████████████████      651K ops/sec
+🥈   Valtio             █████████████████████████████                 475K ops/sec
+🥉   Redux Toolkit      █████████████████████████████                 466K ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,756,206 | ±0.17% | 0.2103ms | 0.2500ms | 0 |
-| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 384,802 | ±2.87% | 2.5987ms | 3.5420ms | 0 |
-| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 371,291 | ±0.25% | 2.6933ms | 3.3340ms | 0 |
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 650,528 | ±0.08% | 1.5000ms | 2.1000ms | 325264 |
+| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 474,722 | ±0.05% | 2.1000ms | 2.6000ms | 237361 |
+| 🥉 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 465,592 | ±0.65% | 2.1000ms | 4.8000ms | 232796 |
 
-**Key Insight:** Valtio is 12.81x faster than Zustand in this test.
+**Key Insight:** Zustand is 1.40x faster than Redux Toolkit in this test.
 
-### groups/10-selectors/selectors.bench.ts > Selector Repeated Access
-
-**Performance Comparison:**
+### Selector
 
 ```
-🥇   Zustand            ████████████████████████████████████████      705K ops/sec
-🥈   Redux Toolkit      ████████████████████████████████              563K ops/sec
-🥉   Valtio             ████████████████████████████                  487K ops/sec
+🥇   Valtio             ████████████████████████████████████████      4.2M ops/sec
+🥈   Redux Toolkit      █████                                         526K ops/sec
+🥉   Zustand            ███                                           320K ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Zustand**](https://github.com/pmndrs/zustand) | 704,667 | ±0.14% | 1.4191ms | 1.7920ms | 0 |
-| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 562,733 | ±0.35% | 1.7770ms | 2.2500ms | 0 |
-| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 486,966 | ±0.16% | 2.0535ms | 3.0830ms | 0 |
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,210,310 | ±0.59% | 0.2000ms | 0.4000ms | 2105156 |
+| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 526,193 | ±1.65% | 1.9000ms | 2.7000ms | 263097 |
+| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 320,123 | ±1.51% | 3.1000ms | 10.0000ms | 160062 |
 
-**Key Insight:** Zustand is 1.45x faster than Valtio in this test.
+**Key Insight:** Valtio is 13.15x faster than Zustand in this test.
 
-### groups/10-selectors/selectors.bench.ts > Selector with Updates
-
-**Performance Comparison:**
+### Selector Updates
 
 ```
-🥇   Valtio             ████████████████████████████████████████       57K ops/sec
-🥈   Redux Toolkit      ████                                            6K ops/sec
+🥇   Valtio             ████████████████████████████████████████       54K ops/sec
+🥈   Redux Toolkit      ████                                            5K ops/sec
 🥉   Zustand            ███                                             4K ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
-| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 56,829 | ±0.44% | 17.5966ms | 43.3330ms | 0 |
-| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 5,806 | ±2.55% | 172.2408ms | 317.0410ms | 0 |
-| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 3,701 | ±0.43% | 270.1700ms | 389.5000ms | 0 |
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 54,467 | ±0.19% | 18.4000ms | 23.8000ms | 27234 |
+| 🥈 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 4,885 | ±2.43% | 204.7000ms | 717.9000ms | 2443 |
+| 🥉 | [**Zustand**](https://github.com/pmndrs/zustand) | 3,600 | ±0.41% | 277.8000ms | 316.1000ms | 1800 |
 
-**Key Insight:** Valtio is 15.35x faster than Zustand in this test.
+**Key Insight:** Valtio is 15.13x faster than Zustand in this test.
 
 ---
 
@@ -125,4 +116,4 @@ npx vitest bench groups/10-selectors/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T04:05:19.642Z*
+*Last generated: 2025-11-11T10:30:05.484Z*

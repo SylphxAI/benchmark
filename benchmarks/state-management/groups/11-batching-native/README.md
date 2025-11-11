@@ -26,9 +26,9 @@ Built-in batching.
 
 | Rank | Library | Group Score |
 |:----:|---------|-------------|
-| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 37.2M |
-| 🥈 2 | [**Valtio**](https://github.com/pmndrs/valtio) | 1.4M |
-| 🥉 3 | [**MobX**](https://github.com/mobxjs/mobx) | 1.4M |
+| 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 30.4M |
+| 🥈 2 | [**Valtio**](https://github.com/pmndrs/valtio) | 1.6M |
+| 🥉 3 | [**MobX**](https://github.com/mobxjs/mobx) | 1.2M |
 
 ---
 
@@ -37,66 +37,66 @@ Built-in batching.
 ### Batched Updates
 
 ```
-🥇   Solid Signals      ████████████████████████████████████████     40.5M ops/sec
-🥈   Valtio             ████                                          4.0M ops/sec
-🥉   MobX               ███                                           2.8M ops/sec
+🥇   Solid Signals      ████████████████████████████████████████     32.9M ops/sec
+🥈   Valtio             ██████                                        4.6M ops/sec
+🥉   MobX               ███                                           2.4M ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 40,483,559 | ±1.26% | 0.0000ms | 0.1000ms | 20241781 |
-| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 3,951,992 | ±0.62% | 0.3000ms | 0.4000ms | 1975997 |
-| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 2,757,413 | ±0.21% | 0.4000ms | 0.5000ms | 1378707 |
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 32,924,002 | ±0.12% | 0.0000ms | 0.1000ms | 16462002 |
+| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,560,188 | ±0.40% | 0.2000ms | 0.3000ms | 2280095 |
+| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 2,408,977 | ±0.17% | 0.4000ms | 0.7000ms | 1204489 |
 
-**Key Insight:** Solid Signals is 14.68x faster than MobX in this test.
+**Key Insight:** Solid Signals is 13.67x faster than MobX in this test.
 
 ### Batched with Observers
 
 ```
-🥇   Solid Signals      ████████████████████████████████████████     41.1M ops/sec
-🥈   Valtio             ████                                          4.1M ops/sec
+🥇   Solid Signals      ████████████████████████████████████████     32.8M ops/sec
+🥈   Valtio             ██████                                        4.6M ops/sec
+🥉   MobX               ███                                           2.5M ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 32,772,808 | ±0.11% | 0.0000ms | 0.1000ms | 16386405 |
+| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,615,830 | ±0.16% | 0.2000ms | 0.3000ms | 2307915 |
+| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 2,454,376 | ±0.28% | 0.4000ms | 0.7000ms | 1227189 |
+
+**Key Insight:** Solid Signals is 13.35x faster than MobX in this test.
+
+### Large Batch
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     22.8M ops/sec
+🥈   MobX                                                             105K ops/sec
+🥉   Valtio                                                            65K ops/sec
+```
+
+| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
+|:----:|---------|---------|----------|------|-----|---------|
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 22,836,124 | ±0.10% | 0.0000ms | 0.1000ms | 11418063 |
+| 🥈 | [**MobX**](https://github.com/mobxjs/mobx) | 104,838 | ±0.68% | 9.5000ms | 18.9000ms | 52420 |
+| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 65,004 | ±0.21% | 15.4000ms | 19.1000ms | 32503 |
+
+**Key Insight:** Solid Signals is 351.30x faster than Valtio in this test.
+
+### Unbatched Updates
+
+```
+🥇   Solid Signals      ████████████████████████████████████████     34.8M ops/sec
+🥈   Valtio             █████                                         4.5M ops/sec
 🥉   MobX               ███                                           2.9M ops/sec
 ```
 
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 41,057,307 | ±0.05% | 0.0000ms | 0.1000ms | 20528654 |
-| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,120,504 | ±0.20% | 0.2000ms | 0.4000ms | 2060252 |
-| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 2,853,148 | ±0.08% | 0.4000ms | 0.5000ms | 1426575 |
+| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 34,790,649 | ±0.06% | 0.0000ms | 0.1000ms | 17395326 |
+| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,512,588 | ±0.84% | 0.2000ms | 0.3000ms | 2256295 |
+| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 2,922,693 | ±0.17% | 0.3000ms | 0.5000ms | 1461347 |
 
-**Key Insight:** Solid Signals is 14.39x faster than MobX in this test.
-
-### Large Batch
-
-```
-🥇   Solid Signals      ████████████████████████████████████████     27.4M ops/sec
-🥈   MobX                                                             134K ops/sec
-🥉   Valtio                                                            57K ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 27,433,810 | ±0.08% | 0.0000ms | 0.0000ms | 13716906 |
-| 🥈 | [**MobX**](https://github.com/mobxjs/mobx) | 133,628 | ±0.14% | 7.5000ms | 10.2000ms | 66815 |
-| 🥉 | [**Valtio**](https://github.com/pmndrs/valtio) | 57,391 | ±0.35% | 17.4000ms | 28.4000ms | 28696 |
-
-**Key Insight:** Solid Signals is 478.02x faster than Valtio in this test.
-
-### Unbatched Updates
-
-```
-🥇   Solid Signals      ████████████████████████████████████████     41.9M ops/sec
-🥈   Valtio             ████                                          4.1M ops/sec
-🥉   MobX               ███                                           3.3M ops/sec
-```
-
-| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
-|:----:|---------|---------|----------|------|-----|---------|
-| 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 41,856,233 | ±1.26% | 0.0000ms | 0.1000ms | 20928118 |
-| 🥈 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,095,058 | ±0.87% | 0.2000ms | 0.4000ms | 2047529 |
-| 🥉 | [**MobX**](https://github.com/mobxjs/mobx) | 3,297,375 | ±0.73% | 0.3000ms | 0.5000ms | 1648688 |
-
-**Key Insight:** Solid Signals is 12.69x faster than MobX in this test.
+**Key Insight:** Solid Signals is 11.90x faster than MobX in this test.
 
 ---
 
@@ -116,4 +116,4 @@ npx vitest bench groups/11-batching-native/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T10:17:57.020Z*
+*Last generated: 2025-11-11T10:30:05.534Z*
