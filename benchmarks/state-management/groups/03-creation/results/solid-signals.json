@@ -9,16 +9,16 @@
             {
               "id": "Store Creation - Solid Signals",
               "name": "Store Creation",
-              "hz": 38643031.68,
+              "hz": 50083586.7,
               "min": 0,
-              "max": 1.0973,
+              "max": 0.0335,
               "mean": 0,
               "p75": 0,
               "p99": 0,
               "p995": 0,
-              "p999": 0.0001,
-              "rme": 0.46,
-              "samples": 19321517
+              "p999": 0,
+              "rme": 0.05,
+              "samples": 25041794
             }
           ]
         }

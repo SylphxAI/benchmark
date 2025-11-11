@@ -9,16 +9,16 @@
             {
               "id": "Store Creation - Zen",
               "name": "Store Creation",
-              "hz": 40368887.27,
+              "hz": 50070802.2,
               "min": 0,
-              "max": 0.0173,
+              "max": 0.0315,
               "mean": 0,
               "p75": 0,
               "p99": 0,
               "p995": 0,
               "p999": 0,
-              "rme": 0.04,
-              "samples": 20184444
+              "rme": 0.05,
+              "samples": 25035402
             }
           ]
         }

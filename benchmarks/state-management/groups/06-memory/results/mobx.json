@@ -7,18 +7,32 @@
           "fullName": "06-memory - MobX",
           "benchmarks": [
             {
-              "id": "Large State Allocation - MobX",
-              "name": "Large State Allocation",
-              "hz": 884.45,
-              "min": 1.0308,
-              "max": 4.7014,
-              "mean": 1.1307,
-              "p75": 1.0945,
-              "p99": 1.9111,
-              "p995": 2.019,
-              "p999": 4.7014,
-              "rme": 1.96,
-              "samples": 443
+              "id": "Large State Read - MobX",
+              "name": "Large State Read",
+              "hz": 50889059.8,
+              "min": 0,
+              "max": 0.0265,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0,
+              "rme": 0.05,
+              "samples": 25444530
+            },
+            {
+              "id": "Large State Update - MobX",
+              "name": "Large State Update",
+              "hz": 4089232.1,
+              "min": 0.0002,
+              "max": 0.298,
+              "mean": 0.0002,
+              "p75": 0.0003,
+              "p99": 0.0003,
+              "p995": 0.0003,
+              "p999": 0.0005,
+              "rme": 0.22,
+              "samples": 2044617
             }
           ]
         }

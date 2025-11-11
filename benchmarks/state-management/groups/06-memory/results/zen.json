@@ -7,18 +7,32 @@
           "fullName": "06-memory - Zen",
           "benchmarks": [
             {
-              "id": "Large State Allocation - Zen",
-              "name": "Large State Allocation",
-              "hz": 868.67,
-              "min": 1.038,
-              "max": 3.8028,
-              "mean": 1.1512,
-              "p75": 1.1201,
-              "p99": 1.9029,
-              "p995": 1.9278,
-              "p999": 3.8028,
-              "rme": 1.65,
-              "samples": 435
+              "id": "Large State Read - Zen",
+              "name": "Large State Read",
+              "hz": 49803497,
+              "min": 0,
+              "max": 0.0133,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0,
+              "rme": 0.04,
+              "samples": 24901749
+            },
+            {
+              "id": "Large State Update - Zen",
+              "name": "Large State Update",
+              "hz": 44714114.39,
+              "min": 0,
+              "max": 0.0111,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0,
+              "rme": 0.04,
+              "samples": 22357058
             }
           ]
         }

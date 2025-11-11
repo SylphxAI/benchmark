@@ -291,8 +291,8 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
         const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
         const opsPerSec = comp.bench.hz ? comp.bench.hz.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
         const variance = comp.bench.rme ? `±${comp.bench.rme.toFixed(2)}%` : 'N/A';
-        const mean = comp.bench.mean ? `${(comp.bench.mean * 1000).toFixed(4)}ms` : 'N/A';
-        const p99 = comp.bench.p99 ? `${(comp.bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
+        const mean = comp.bench.mean != null ? `${(comp.bench.mean * 1000).toFixed(4)}ms` : 'N/A';
+        const p99 = comp.bench.p99 != null ? `${(comp.bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
         const samples = comp.bench.samples || 'N/A';
 
         // Add GitHub link to library name

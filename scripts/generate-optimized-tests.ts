@@ -172,7 +172,8 @@ async function generateAllTests(categoryPath: string) {
         continue;
       }
 
-      const safeLibName = libraryKey.replace(/@/g, '').replace(/\//g, '-');
+      // Use same naming convention as benchmark-single-library.ts (based on displayName)
+      const safeLibName = libInfo.displayName.toLowerCase().replace(/\s+/g, '-').replace(/@/g, '').replace(/\//g, '-');
       const testFilePath = join(testsPath, `${safeLibName}.bench.ts`);
 
       const content = generateTestFile(

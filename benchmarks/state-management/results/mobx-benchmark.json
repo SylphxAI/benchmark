@@ -2,7 +2,7 @@
   "library": "MobX",
   "libraryKey": "mobx",
   "version": "6.15.0",
-  "lastRun": "2025-11-11T04:53:02.579Z",
+  "lastRun": "2025-11-11T05:27:50.784Z",
   "groups": {
     "01-read": {
       "files": [
@@ -15,30 +15,72 @@
                 {
                   "id": "Simple Read - MobX",
                   "name": "Simple Read",
-                  "hz": 3848893.41,
+                  "hz": 4079717.38,
                   "min": 0.0002,
-                  "max": 1.4186,
-                  "mean": 0.0003,
+                  "max": 1.8731,
+                  "mean": 0.0002,
                   "p75": 0.0003,
                   "p99": 0.0003,
                   "p995": 0.0004,
-                  "p999": 0.0011,
-                  "rme": 0.63,
-                  "samples": 1924447
+                  "p999": 0.001,
+                  "rme": 0.75,
+                  "samples": 2039859
                 },
                 {
-                  "id": "High Frequency Read - MobX",
-                  "name": "High Frequency Read",
-                  "hz": 26483123.83,
+                  "id": "High Frequency Read (x10) - MobX",
+                  "name": "High Frequency Read (x10)",
+                  "hz": 11642801.72,
                   "min": 0,
-                  "max": 0.0141,
-                  "mean": 0,
-                  "p75": 0,
-                  "p99": 0,
-                  "p995": 0,
-                  "p999": 0.0001,
+                  "max": 0.0125,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
                   "rme": 0.02,
-                  "samples": 13241563
+                  "samples": 5821401
+                },
+                {
+                  "id": "High Frequency Read (x100) - MobX",
+                  "name": "High Frequency Read (x100)",
+                  "hz": 1569466.83,
+                  "min": 0.0005,
+                  "max": 0.0322,
+                  "mean": 0.0006,
+                  "p75": 0.0007,
+                  "p99": 0.0008,
+                  "p995": 0.0008,
+                  "p999": 0.0008,
+                  "rme": 0.03,
+                  "samples": 784734
+                },
+                {
+                  "id": "High Frequency Read (x1000) - MobX",
+                  "name": "High Frequency Read (x1000)",
+                  "hz": 161274.2,
+                  "min": 0.0057,
+                  "max": 0.0342,
+                  "mean": 0.0062,
+                  "p75": 0.0065,
+                  "p99": 0.0075,
+                  "p995": 0.0082,
+                  "p999": 0.0083,
+                  "rme": 0.05,
+                  "samples": 80638
+                },
+                {
+                  "id": "High Frequency Read (x10000) - MobX",
+                  "name": "High Frequency Read (x10000)",
+                  "hz": 16883.36,
+                  "min": 0.0568,
+                  "max": 0.1062,
+                  "mean": 0.0592,
+                  "p75": 0.0595,
+                  "p99": 0.0693,
+                  "p995": 0.0693,
+                  "p999": 0.0734,
+                  "rme": 0.09,
+                  "samples": 8442
                 }
               ]
             }
@@ -55,32 +97,74 @@
               "fullName": "02-write - MobX",
               "benchmarks": [
                 {
-                  "id": "Simple Increment - MobX",
-                  "name": "Simple Increment",
-                  "hz": 3628966.41,
+                  "id": "Single Update - MobX",
+                  "name": "Single Update",
+                  "hz": 3820589.85,
                   "min": 0.0002,
-                  "max": 1.5834,
+                  "max": 0.1824,
                   "mean": 0.0003,
                   "p75": 0.0003,
-                  "p99": 0.0004,
-                  "p995": 0.0005,
-                  "p999": 0.0012,
-                  "rme": 0.65,
-                  "samples": 1814484
+                  "p99": 0.0003,
+                  "p995": 0.0004,
+                  "p999": 0.0011,
+                  "rme": 0.17,
+                  "samples": 1910295
                 },
                 {
-                  "id": "Burst Updates - MobX",
-                  "name": "Burst Updates",
-                  "hz": 408984.41,
+                  "id": "Batch Update (x10) - MobX",
+                  "name": "Batch Update (x10)",
+                  "hz": 402135.61,
                   "min": 0.0023,
-                  "max": 1.6836,
-                  "mean": 0.0024,
+                  "max": 5.3826,
+                  "mean": 0.0025,
                   "p75": 0.0024,
-                  "p99": 0.003,
-                  "p995": 0.003,
-                  "p999": 0.0037,
-                  "rme": 0.68,
-                  "samples": 204493
+                  "p99": 0.0033,
+                  "p995": 0.0066,
+                  "p999": 0.0085,
+                  "rme": 2.11,
+                  "samples": 201068
+                },
+                {
+                  "id": "Batch Update (x100) - MobX",
+                  "name": "Batch Update (x100)",
+                  "hz": 41777.2,
+                  "min": 0.0232,
+                  "max": 0.1736,
+                  "mean": 0.0239,
+                  "p75": 0.0239,
+                  "p99": 0.0269,
+                  "p995": 0.0286,
+                  "p999": 0.0687,
+                  "rme": 0.17,
+                  "samples": 20889
+                },
+                {
+                  "id": "Batch Update (x1000) - MobX",
+                  "name": "Batch Update (x1000)",
+                  "hz": 4199.98,
+                  "min": 0.2325,
+                  "max": 0.4274,
+                  "mean": 0.2381,
+                  "p75": 0.238,
+                  "p99": 0.2602,
+                  "p995": 0.295,
+                  "p999": 0.3592,
+                  "rme": 0.16,
+                  "samples": 2100
+                },
+                {
+                  "id": "Batch Update (x10000) - MobX",
+                  "name": "Batch Update (x10000)",
+                  "hz": 412.95,
+                  "min": 2.3604,
+                  "max": 2.6441,
+                  "mean": 2.4216,
+                  "p75": 2.4475,
+                  "p99": 2.5747,
+                  "p995": 2.5952,
+                  "p999": 2.6441,
+                  "rme": 0.31,
+                  "samples": 207
                 }
               ]
             }
@@ -99,16 +183,16 @@
                 {
                   "id": "Store Creation - MobX",
                   "name": "Store Creation",
-                  "hz": 399.41,
-                  "min": 1.9935,
-                  "max": 8.0045,
-                  "mean": 2.5037,
-                  "p75": 2.0885,
-                  "p99": 7.8674,
-                  "p995": 7.957,
-                  "p999": 8.0045,
-                  "rme": 7.37,
-                  "samples": 200
+                  "hz": 51039684.67,
+                  "min": 0,
+                  "max": 0.0813,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.06,
+                  "samples": 25519843
                 }
               ]
             }
@@ -125,18 +209,32 @@
               "fullName": "06-memory - MobX",
               "benchmarks": [
                 {
-                  "id": "Large State Allocation - MobX",
-                  "name": "Large State Allocation",
-                  "hz": 884.45,
-                  "min": 1.0308,
-                  "max": 4.7014,
-                  "mean": 1.1307,
-                  "p75": 1.0945,
-                  "p99": 1.9111,
-                  "p995": 2.019,
-                  "p999": 4.7014,
-                  "rme": 1.96,
-                  "samples": 443
+                  "id": "Large State Read - MobX",
+                  "name": "Large State Read",
+                  "hz": 50889059.8,
+                  "min": 0,
+                  "max": 0.0265,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.05,
+                  "samples": 25444530
+                },
+                {
+                  "id": "Large State Update - MobX",
+                  "name": "Large State Update",
+                  "hz": 4089232.1,
+                  "min": 0.0002,
+                  "max": 0.298,
+                  "mean": 0.0002,
+                  "p75": 0.0003,
+                  "p99": 0.0003,
+                  "p995": 0.0003,
+                  "p999": 0.0005,
+                  "rme": 0.22,
+                  "samples": 2044617
                 }
               ]
             }
@@ -155,58 +253,58 @@
                 {
                   "id": "Batched Updates - MobX",
                   "name": "Batched Updates",
-                  "hz": 3301370.04,
+                  "hz": 3217903.37,
                   "min": 0.0002,
-                  "max": 0.948,
+                  "max": 0.9886,
                   "mean": 0.0003,
                   "p75": 0.0003,
                   "p99": 0.0004,
                   "p995": 0.0004,
-                  "p999": 0.0011,
-                  "rme": 0.4,
-                  "samples": 1650686
+                  "p999": 0.001,
+                  "rme": 0.41,
+                  "samples": 1608952
                 },
                 {
                   "id": "Unbatched Updates - MobX",
                   "name": "Unbatched Updates",
-                  "hz": 3824649.68,
+                  "hz": 3706391.5,
                   "min": 0.0002,
-                  "max": 4.6732,
+                  "max": 4.3243,
                   "mean": 0.0003,
                   "p75": 0.0003,
                   "p99": 0.0003,
-                  "p995": 0.0004,
+                  "p995": 0.0003,
                   "p999": 0.0005,
-                  "rme": 1.83,
-                  "samples": 1912325
+                  "rme": 1.7,
+                  "samples": 1853197
                 },
                 {
                   "id": "Large Batch - MobX",
                   "name": "Large Batch",
-                  "hz": 153639.94,
-                  "min": 0.0062,
-                  "max": 0.0295,
-                  "mean": 0.0065,
-                  "p75": 0.0065,
-                  "p99": 0.0076,
-                  "p995": 0.0081,
-                  "p999": 0.0084,
-                  "rme": 0.03,
-                  "samples": 76820
+                  "hz": 148241.26,
+                  "min": 0.0064,
+                  "max": 1.5466,
+                  "mean": 0.0067,
+                  "p75": 0.0067,
+                  "p99": 0.0078,
+                  "p995": 0.0079,
+                  "p999": 0.0082,
+                  "rme": 0.6,
+                  "samples": 74121
                 },
                 {
                   "id": "Batched with Observers - MobX",
                   "name": "Batched with Observers",
-                  "hz": 3306212.41,
+                  "hz": 3262443.91,
                   "min": 0.0002,
-                  "max": 0.2076,
+                  "max": 0.0225,
                   "mean": 0.0003,
                   "p75": 0.0003,
                   "p99": 0.0004,
                   "p995": 0.0004,
-                  "p999": 0.0006,
-                  "rme": 0.18,
-                  "samples": 1653107
+                  "p999": 0.0005,
+                  "rme": 0.02,
+                  "samples": 1631223
                 }
               ]
             }

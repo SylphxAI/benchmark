@@ -2,7 +2,7 @@
   "library": "Preact Signals",
   "libraryKey": "@preact/signals",
   "version": "2.4.0",
-  "lastRun": "2025-11-11T04:54:25.847Z",
+  "lastRun": "2025-11-11T05:28:51.534Z",
   "groups": {
     "01-read": {
       "files": [
@@ -15,30 +15,72 @@
                 {
                   "id": "Simple Read - Preact Signals",
                   "name": "Simple Read",
-                  "hz": 33823773.8,
+                  "hz": 42798573.95,
                   "min": 0,
-                  "max": 2.1204,
+                  "max": 0.5421,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
-                  "p995": 0.0001,
+                  "p995": 0,
                   "p999": 0.0001,
-                  "rme": 1.01,
-                  "samples": 16911887
+                  "rme": 0.42,
+                  "samples": 21399288
                 },
                 {
-                  "id": "High Frequency Read - Preact Signals",
-                  "name": "High Frequency Read",
-                  "hz": 7318540.84,
-                  "min": 0.0001,
-                  "max": 0.1293,
+                  "id": "High Frequency Read (x10) - Preact Signals",
+                  "name": "High Frequency Read (x10)",
+                  "hz": 12029271.45,
+                  "min": 0,
+                  "max": 0.0414,
                   "mean": 0.0001,
                   "p75": 0.0001,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0003,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
+                  "rme": 0.04,
+                  "samples": 6014636
+                },
+                {
+                  "id": "High Frequency Read (x100) - Preact Signals",
+                  "name": "High Frequency Read (x100)",
+                  "hz": 1571431.92,
+                  "min": 0.0005,
+                  "max": 0.014,
+                  "mean": 0.0006,
+                  "p75": 0.0007,
+                  "p99": 0.0008,
+                  "p995": 0.0008,
+                  "p999": 0.0008,
+                  "rme": 0.03,
+                  "samples": 785716
+                },
+                {
+                  "id": "High Frequency Read (x1000) - Preact Signals",
+                  "name": "High Frequency Read (x1000)",
+                  "hz": 172661.02,
+                  "min": 0.0054,
+                  "max": 0.0196,
+                  "mean": 0.0058,
+                  "p75": 0.0058,
+                  "p99": 0.0071,
+                  "p995": 0.0073,
+                  "p999": 0.0076,
+                  "rme": 0.04,
+                  "samples": 86331
+                },
+                {
+                  "id": "High Frequency Read (x10000) - Preact Signals",
+                  "name": "High Frequency Read (x10000)",
+                  "hz": 17483.12,
+                  "min": 0.0544,
+                  "max": 0.0745,
+                  "mean": 0.0572,
+                  "p75": 0.0587,
+                  "p99": 0.0668,
+                  "p995": 0.0668,
+                  "p999": 0.0683,
                   "rme": 0.13,
-                  "samples": 3659271
+                  "samples": 8742
                 }
               ]
             }
@@ -55,32 +97,74 @@
               "fullName": "02-write - Preact Signals",
               "benchmarks": [
                 {
-                  "id": "Simple Increment - Preact Signals",
-                  "name": "Simple Increment",
-                  "hz": 36334501.71,
+                  "id": "Single Update - Preact Signals",
+                  "name": "Single Update",
+                  "hz": 43906701.8,
                   "min": 0,
-                  "max": 0.207,
+                  "max": 0.2241,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
                   "p995": 0,
                   "p999": 0.0001,
-                  "rme": 0.12,
-                  "samples": 18167251
+                  "rme": 0.27,
+                  "samples": 21953352
                 },
                 {
-                  "id": "Burst Updates - Preact Signals",
-                  "name": "Burst Updates",
-                  "hz": 13360719.94,
+                  "id": "Batch Update (x10) - Preact Signals",
+                  "name": "Batch Update (x10)",
+                  "hz": 8836087.56,
                   "min": 0,
-                  "max": 0.0645,
+                  "max": 0.0158,
                   "mean": 0.0001,
                   "p75": 0.0001,
-                  "p99": 0.0001,
-                  "p995": 0.0001,
+                  "p99": 0.0002,
+                  "p995": 0.0002,
                   "p999": 0.0002,
-                  "rme": 0.06,
-                  "samples": 6680361
+                  "rme": 0.03,
+                  "samples": 4418044
+                },
+                {
+                  "id": "Batch Update (x100) - Preact Signals",
+                  "name": "Batch Update (x100)",
+                  "hz": 1073137.1,
+                  "min": 0.0008,
+                  "max": 0.305,
+                  "mean": 0.0009,
+                  "p75": 0.001,
+                  "p99": 0.0011,
+                  "p995": 0.0012,
+                  "p999": 0.0012,
+                  "rme": 0.17,
+                  "samples": 536569
+                },
+                {
+                  "id": "Batch Update (x1000) - Preact Signals",
+                  "name": "Batch Update (x1000)",
+                  "hz": 107265.35,
+                  "min": 0.0085,
+                  "max": 0.0985,
+                  "mean": 0.0093,
+                  "p75": 0.0097,
+                  "p99": 0.0117,
+                  "p995": 0.0117,
+                  "p999": 0.0267,
+                  "rme": 0.11,
+                  "samples": 53633
+                },
+                {
+                  "id": "Batch Update (x10000) - Preact Signals",
+                  "name": "Batch Update (x10000)",
+                  "hz": 9663.96,
+                  "min": 0.0979,
+                  "max": 0.1825,
+                  "mean": 0.1035,
+                  "p75": 0.107,
+                  "p99": 0.1202,
+                  "p995": 0.1207,
+                  "p999": 0.1454,
+                  "rme": 0.17,
+                  "samples": 4832
                 }
               ]
             }
@@ -99,16 +183,16 @@
                 {
                   "id": "Store Creation - Preact Signals",
                   "name": "Store Creation",
-                  "hz": 40097069.59,
+                  "hz": 50261789.1,
                   "min": 0,
-                  "max": 0.0491,
+                  "max": 0.1245,
                   "mean": 0,
                   "p75": 0,
                   "p99": 0,
                   "p995": 0,
-                  "p999": 0.0001,
-                  "rme": 0.06,
-                  "samples": 20048536
+                  "p999": 0,
+                  "rme": 0.09,
+                  "samples": 25130895
                 }
               ]
             }
@@ -125,18 +209,32 @@
               "fullName": "06-memory - Preact Signals",
               "benchmarks": [
                 {
-                  "id": "Large State Allocation - Preact Signals",
-                  "name": "Large State Allocation",
-                  "hz": 887.52,
-                  "min": 1.0293,
-                  "max": 3.9671,
-                  "mean": 1.1267,
-                  "p75": 1.103,
-                  "p99": 1.8598,
-                  "p995": 1.9603,
-                  "p999": 3.9671,
-                  "rme": 1.67,
-                  "samples": 444
+                  "id": "Large State Read - Preact Signals",
+                  "name": "Large State Read",
+                  "hz": 49507834.34,
+                  "min": 0,
+                  "max": 0.1099,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.09,
+                  "samples": 24753919
+                },
+                {
+                  "id": "Large State Update - Preact Signals",
+                  "name": "Large State Update",
+                  "hz": 45460743.27,
+                  "min": 0,
+                  "max": 0.1818,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.09,
+                  "samples": 22730372
                 }
               ]
             }

@@ -2,7 +2,7 @@
   "library": "Redux Toolkit",
   "libraryKey": "@reduxjs/toolkit",
   "version": "2.10.1",
-  "lastRun": "2025-11-11T04:53:39.748Z",
+  "lastRun": "2025-11-11T05:26:28.289Z",
   "groups": {
     "01-read": {
       "files": [
@@ -15,30 +15,72 @@
                 {
                   "id": "Simple Read - Redux Toolkit",
                   "name": "Simple Read",
-                  "hz": 950871.19,
-                  "min": 0.0009,
-                  "max": 0.3637,
-                  "mean": 0.0011,
+                  "hz": 958313.98,
+                  "min": 0.0008,
+                  "max": 0.0998,
+                  "mean": 0.001,
                   "p75": 0.001,
-                  "p99": 0.0016,
-                  "p995": 0.0019,
-                  "p999": 0.003,
-                  "rme": 0.3,
-                  "samples": 475436
+                  "p99": 0.0013,
+                  "p995": 0.0016,
+                  "p999": 0.0023,
+                  "rme": 0.17,
+                  "samples": 479157
                 },
                 {
-                  "id": "High Frequency Read - Redux Toolkit",
-                  "name": "High Frequency Read",
-                  "hz": 6507009.06,
-                  "min": 0.0001,
-                  "max": 0.1049,
-                  "mean": 0.0002,
-                  "p75": 0.0002,
-                  "p99": 0.0002,
-                  "p995": 0.0002,
-                  "p999": 0.0003,
-                  "rme": 0.05,
-                  "samples": 3253505
+                  "id": "High Frequency Read (x10) - Redux Toolkit",
+                  "name": "High Frequency Read (x10)",
+                  "hz": 11604299.28,
+                  "min": 0,
+                  "max": 0.0168,
+                  "mean": 0.0001,
+                  "p75": 0.0001,
+                  "p99": 0.0001,
+                  "p995": 0.0001,
+                  "p999": 0.0002,
+                  "rme": 0.02,
+                  "samples": 5802150
+                },
+                {
+                  "id": "High Frequency Read (x100) - Redux Toolkit",
+                  "name": "High Frequency Read (x100)",
+                  "hz": 1520020.74,
+                  "min": 0.0005,
+                  "max": 0.0154,
+                  "mean": 0.0007,
+                  "p75": 0.0007,
+                  "p99": 0.0008,
+                  "p995": 0.0008,
+                  "p999": 0.0008,
+                  "rme": 0.02,
+                  "samples": 760011
+                },
+                {
+                  "id": "High Frequency Read (x1000) - Redux Toolkit",
+                  "name": "High Frequency Read (x1000)",
+                  "hz": 154991.25,
+                  "min": 0.006,
+                  "max": 0.0487,
+                  "mean": 0.0065,
+                  "p75": 0.0065,
+                  "p99": 0.0073,
+                  "p995": 0.008,
+                  "p999": 0.0083,
+                  "rme": 0.03,
+                  "samples": 77496
+                },
+                {
+                  "id": "High Frequency Read (x10000) - Redux Toolkit",
+                  "name": "High Frequency Read (x10000)",
+                  "hz": 15728.74,
+                  "min": 0.0618,
+                  "max": 0.0975,
+                  "mean": 0.0636,
+                  "p75": 0.0644,
+                  "p99": 0.0687,
+                  "p995": 0.0702,
+                  "p999": 0.0732,
+                  "rme": 0.06,
+                  "samples": 7865
                 }
               ]
             }
@@ -55,32 +97,74 @@
               "fullName": "02-write - Redux Toolkit",
               "benchmarks": [
                 {
-                  "id": "Simple Increment - Redux Toolkit",
-                  "name": "Simple Increment",
-                  "hz": 951114.44,
+                  "id": "Single Update - Redux Toolkit",
+                  "name": "Single Update",
+                  "hz": 941328.22,
                   "min": 0.0009,
-                  "max": 0.1842,
+                  "max": 0.1705,
                   "mean": 0.0011,
                   "p75": 0.001,
-                  "p99": 0.0015,
-                  "p995": 0.002,
-                  "p999": 0.0075,
-                  "rme": 0.3,
-                  "samples": 475559
+                  "p99": 0.0013,
+                  "p995": 0.0017,
+                  "p999": 0.0029,
+                  "rme": 0.22,
+                  "samples": 470665
                 },
                 {
-                  "id": "Burst Updates - Redux Toolkit",
-                  "name": "Burst Updates",
-                  "hz": 96370.8,
-                  "min": 0.0094,
-                  "max": 3.9193,
-                  "mean": 0.0104,
-                  "p75": 0.01,
-                  "p99": 0.0205,
-                  "p995": 0.0219,
-                  "p999": 0.0468,
-                  "rme": 1.56,
-                  "samples": 48186
+                  "id": "Batch Update (x10) - Redux Toolkit",
+                  "name": "Batch Update (x10)",
+                  "hz": 93819.48,
+                  "min": 0.0097,
+                  "max": 4.6745,
+                  "mean": 0.0107,
+                  "p75": 0.0103,
+                  "p99": 0.0208,
+                  "p995": 0.0221,
+                  "p999": 0.0397,
+                  "rme": 1.86,
+                  "samples": 46910
+                },
+                {
+                  "id": "Batch Update (x100) - Redux Toolkit",
+                  "name": "Batch Update (x100)",
+                  "hz": 9810.61,
+                  "min": 0.0978,
+                  "max": 0.4203,
+                  "mean": 0.1019,
+                  "p75": 0.102,
+                  "p99": 0.1145,
+                  "p995": 0.1972,
+                  "p999": 0.2451,
+                  "rme": 0.3,
+                  "samples": 4906
+                },
+                {
+                  "id": "Batch Update (x1000) - Redux Toolkit",
+                  "name": "Batch Update (x1000)",
+                  "hz": 982.28,
+                  "min": 0.9874,
+                  "max": 1.2152,
+                  "mean": 1.018,
+                  "p75": 1.0222,
+                  "p99": 1.1499,
+                  "p995": 1.1564,
+                  "p999": 1.2152,
+                  "rme": 0.29,
+                  "samples": 492
+                },
+                {
+                  "id": "Batch Update (x10000) - Redux Toolkit",
+                  "name": "Batch Update (x10000)",
+                  "hz": 97.5904,
+                  "min": 9.9707,
+                  "max": 10.8065,
+                  "mean": 10.2469,
+                  "p75": 10.2905,
+                  "p99": 10.8065,
+                  "p995": 10.8065,
+                  "p999": 10.8065,
+                  "rme": 0.45,
+                  "samples": 49
                 }
               ]
             }
@@ -99,16 +183,16 @@
                 {
                   "id": "Store Creation - Redux Toolkit",
                   "name": "Store Creation",
-                  "hz": 260270.4,
-                  "min": 0.0033,
-                  "max": 1.3949,
-                  "mean": 0.0038,
-                  "p75": 0.0038,
-                  "p99": 0.0049,
-                  "p995": 0.0054,
-                  "p999": 0.0185,
-                  "rme": 0.63,
-                  "samples": 130136
+                  "hz": 50023499.2,
+                  "min": 0,
+                  "max": 0.093,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.07,
+                  "samples": 25011751
                 }
               ]
             }
@@ -125,18 +209,32 @@
               "fullName": "06-memory - Redux Toolkit",
               "benchmarks": [
                 {
-                  "id": "Large State Allocation - Redux Toolkit",
-                  "name": "Large State Allocation",
-                  "hz": 898.28,
-                  "min": 1.0284,
-                  "max": 3.403,
-                  "mean": 1.1132,
-                  "p75": 1.0896,
-                  "p99": 1.6995,
-                  "p995": 1.8923,
-                  "p999": 3.403,
-                  "rme": 1.38,
-                  "samples": 450
+                  "id": "Large State Read - Redux Toolkit",
+                  "name": "Large State Read",
+                  "hz": 50019794.3,
+                  "min": 0,
+                  "max": 0.03,
+                  "mean": 0,
+                  "p75": 0,
+                  "p99": 0,
+                  "p995": 0,
+                  "p999": 0,
+                  "rme": 0.05,
+                  "samples": 25009898
+                },
+                {
+                  "id": "Large State Update - Redux Toolkit",
+                  "name": "Large State Update",
+                  "hz": 983272.96,
+                  "min": 0.0009,
+                  "max": 0.2442,
+                  "mean": 0.001,
+                  "p75": 0.001,
+                  "p99": 0.0013,
+                  "p995": 0.0013,
+                  "p999": 0.0015,
+                  "rme": 0.25,
+                  "samples": 491637
                 }
               ]
             }

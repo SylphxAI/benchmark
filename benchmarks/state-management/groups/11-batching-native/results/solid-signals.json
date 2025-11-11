@@ -9,58 +9,58 @@
             {
               "id": "Batched Updates - Solid Signals",
               "name": "Batched Updates",
-              "hz": 41556588.84,
+              "hz": 40352276.63,
               "min": 0,
-              "max": 3.8359,
+              "max": 0.1648,
               "mean": 0,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 1.51,
-              "samples": 20778296
+              "rme": 0.12,
+              "samples": 20176139
             },
             {
               "id": "Unbatched Updates - Solid Signals",
               "name": "Unbatched Updates",
-              "hz": 43009351.74,
+              "hz": 42581870.76,
               "min": 0,
-              "max": 0.1036,
+              "max": 0.0484,
               "mean": 0,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.06,
-              "samples": 21504676
+              "rme": 0.05,
+              "samples": 21290937
             },
             {
               "id": "Large Batch - Solid Signals",
               "name": "Large Batch",
-              "hz": 27681016.67,
+              "hz": 27443126.85,
               "min": 0,
-              "max": 0.1162,
+              "max": 0.104,
               "mean": 0,
               "p75": 0,
               "p99": 0,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.05,
-              "samples": 13840509
+              "rme": 0.07,
+              "samples": 13721564
             },
             {
               "id": "Batched with Observers - Solid Signals",
               "name": "Batched with Observers",
-              "hz": 41482070.76,
+              "hz": 41416837.67,
               "min": 0,
-              "max": 0.5681,
+              "max": 1.2481,
               "mean": 0,
               "p75": 0,
               "p99": 0.0001,
               "p995": 0.0001,
               "p999": 0.0001,
-              "rme": 0.23,
-              "samples": 20741037
+              "rme": 0.5,
+              "samples": 20708419
             }
           ]
         }

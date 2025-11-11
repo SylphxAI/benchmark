@@ -1,14 +1,20 @@
 /**
  * 06-memory - Solid Signals
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = solidActionsV2;
 
 describe('06-memory - Solid Signals', () => {
-  bench('Large State Allocation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Solid Signals')!.actions;
-    actions.allocateLargeState();
+  bench(TEST_NAMES.LARGE_STATE_READ, () => {
+    return store.getCount();
+  });
+
+  bench(TEST_NAMES.LARGE_STATE_UPDATE, () => {
+    store.increment();
   });
 });

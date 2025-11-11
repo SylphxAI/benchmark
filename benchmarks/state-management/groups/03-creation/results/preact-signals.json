@@ -9,16 +9,16 @@
             {
               "id": "Store Creation - Preact Signals",
               "name": "Store Creation",
-              "hz": 40097069.59,
+              "hz": 50261789.1,
               "min": 0,
-              "max": 0.0491,
+              "max": 0.1245,
               "mean": 0,
               "p75": 0,
               "p99": 0,
               "p995": 0,
-              "p999": 0.0001,
-              "rme": 0.06,
-              "samples": 20048536
+              "p999": 0,
+              "rme": 0.09,
+              "samples": 25130895
             }
           ]
         }

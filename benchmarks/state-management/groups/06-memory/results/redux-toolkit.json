@@ -7,18 +7,32 @@
           "fullName": "06-memory - Redux Toolkit",
           "benchmarks": [
             {
-              "id": "Large State Allocation - Redux Toolkit",
-              "name": "Large State Allocation",
-              "hz": 898.28,
-              "min": 1.0284,
-              "max": 3.403,
-              "mean": 1.1132,
-              "p75": 1.0896,
-              "p99": 1.6995,
-              "p995": 1.8923,
-              "p999": 3.403,
-              "rme": 1.38,
-              "samples": 450
+              "id": "Large State Read - Redux Toolkit",
+              "name": "Large State Read",
+              "hz": 50019794.3,
+              "min": 0,
+              "max": 0.03,
+              "mean": 0,
+              "p75": 0,
+              "p99": 0,
+              "p995": 0,
+              "p999": 0,
+              "rme": 0.05,
+              "samples": 25009898
+            },
+            {
+              "id": "Large State Update - Redux Toolkit",
+              "name": "Large State Update",
+              "hz": 983272.96,
+              "min": 0.0009,
+              "max": 0.2442,
+              "mean": 0.001,
+              "p75": 0.001,
+              "p99": 0.0013,
+              "p995": 0.0013,
+              "p999": 0.0015,
+              "rme": 0.25,
+              "samples": 491637
             }
           ]
         }

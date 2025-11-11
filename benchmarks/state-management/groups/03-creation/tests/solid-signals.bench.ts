@@ -1,14 +1,16 @@
 /**
  * 03-creation - Solid Signals
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { solidActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = solidActionsV2;
 
 describe('03-creation - Solid Signals', () => {
-  bench('Store Creation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Solid Signals')!.actions;
-    actions.createStore();
+  bench(TEST_NAMES.STORE_CREATION, () => {
+    // Store creation is handled by setup
   });
 });

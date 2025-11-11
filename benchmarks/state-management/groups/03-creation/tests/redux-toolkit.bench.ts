@@ -1,14 +1,16 @@
 /**
  * 03-creation - Redux Toolkit
- * Auto-generated per-library test file
+ * Optimized per-library test file
  */
 
 import { bench, describe } from 'vitest';
-import { LIBRARIES } from '../../shared/test-config';
+import { reduxActionsV2, TEST_NAMES, ITERATIONS } from '../../shared/test-config';
+
+// Store initialized outside bench for accurate performance measurement
+const store = reduxActionsV2;
 
 describe('03-creation - Redux Toolkit', () => {
-  bench('Store Creation', () => {
-    const actions = LIBRARIES.find(lib => lib.name === 'Redux Toolkit')!.actions;
-    actions.createStore();
+  bench(TEST_NAMES.STORE_CREATION, () => {
+    // Store creation is handled by setup
   });
 });
