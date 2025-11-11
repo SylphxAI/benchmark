@@ -10,23 +10,23 @@
   <!-- Grid lines -->
   <line x1="60" y1="60" x2="740" y2="60" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="65" text-anchor="end" font-size="12" fill="#6b7280">
-    600K
+    605K
   </text>
   <line x1="60" y1="116" x2="740" y2="116" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="121" text-anchor="end" font-size="12" fill="#6b7280">
-    480K
+    484K
   </text>
   <line x1="60" y1="172" x2="740" y2="172" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="177" text-anchor="end" font-size="12" fill="#6b7280">
-    360K
+    363K
   </text>
   <line x1="60" y1="228" x2="740" y2="228" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="233" text-anchor="end" font-size="12" fill="#6b7280">
-    240K
+    242K
   </text>
   <line x1="60" y1="284" x2="740" y2="284" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="289" text-anchor="end" font-size="12" fill="#6b7280">
-    120K
+    121K
   </text>
   <line x1="60" y1="340" x2="740" y2="340" stroke="#e5e7eb" stroke-width="1"/>
   <text x="50" y="345" text-anchor="end" font-size="12" fill="#6b7280">
@@ -47,30 +47,30 @@
   <text x="740" y="365" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-45, 740, 365)">
     11-11
   </text>
-  <polyline points="60,99.08276203788392 230,105.07657226751243 400,113.01800700475843 570,98.41726074464464 740,85.45454545454547" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <circle cx="60" cy="99.08276203788392" r="4" fill="#3b82f6"/>
-  <circle cx="230" cy="105.07657226751243" r="4" fill="#3b82f6"/>
-  <circle cx="400" cy="113.01800700475843" r="4" fill="#3b82f6"/>
-  <circle cx="570" cy="98.41726074464464" r="4" fill="#3b82f6"/>
-  <circle cx="740" cy="85.45454545454547" r="4" fill="#3b82f6"/>
-  <polyline points="60,98.90068867751901 230,100.25279863146153 400,120.97509140329439 570,98.63183963884097 740,104.61581983299405" fill="none" stroke="#ef4444" stroke-width="2"/>
-  <circle cx="60" cy="98.90068867751901" r="4" fill="#ef4444"/>
-  <circle cx="230" cy="100.25279863146153" r="4" fill="#ef4444"/>
-  <circle cx="400" cy="120.97509140329439" r="4" fill="#ef4444"/>
-  <circle cx="570" cy="98.63183963884097" r="4" fill="#ef4444"/>
-  <circle cx="740" cy="104.61581983299405" r="4" fill="#ef4444"/>
-  <polyline points="60,99.57350241573971 230,98.77590013694973 400,90.95339830712092 570,99.22611140045896 740,86.24976306669555" fill="none" stroke="#10b981" stroke-width="2"/>
-  <circle cx="60" cy="99.57350241573971" r="4" fill="#10b981"/>
-  <circle cx="230" cy="98.77590013694973" r="4" fill="#10b981"/>
-  <circle cx="400" cy="90.95339830712092" r="4" fill="#10b981"/>
-  <circle cx="570" cy="99.22611140045896" r="4" fill="#10b981"/>
-  <circle cx="740" cy="86.24976306669555" r="4" fill="#10b981"/>
-  <polyline points="60,98.94860011360089 230,98.75828193246824 400,92.67403922552631 570,98.24255620560922 740,85.80281739976164" fill="none" stroke="#f59e0b" stroke-width="2"/>
-  <circle cx="60" cy="98.94860011360089" r="4" fill="#f59e0b"/>
-  <circle cx="230" cy="98.75828193246824" r="4" fill="#f59e0b"/>
-  <circle cx="400" cy="92.67403922552631" r="4" fill="#f59e0b"/>
-  <circle cx="570" cy="98.24255620560922" r="4" fill="#f59e0b"/>
-  <circle cx="740" cy="85.80281739976164" r="4" fill="#f59e0b"/>
+  <polyline points="60,101.15939491209159 230,107.10154033155587 400,114.97452233132552 570,100.49963003636671 740,109.28294932009186" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="60" cy="101.15939491209159" r="4" fill="#3b82f6"/>
+  <circle cx="230" cy="107.10154033155587" r="4" fill="#3b82f6"/>
+  <circle cx="400" cy="114.97452233132552" r="4" fill="#3b82f6"/>
+  <circle cx="570" cy="100.49963003636671" r="4" fill="#3b82f6"/>
+  <circle cx="740" cy="109.28294932009186" r="4" fill="#3b82f6"/>
+  <polyline points="60,100.97889096838136 230,102.31934614824604 400,122.8630190970934 570,100.71235932615298 740,88.0822424648801" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="60" cy="100.97889096838136" r="4" fill="#ef4444"/>
+  <circle cx="230" cy="102.31934614824604" r="4" fill="#ef4444"/>
+  <circle cx="400" cy="122.8630190970934" r="4" fill="#ef4444"/>
+  <circle cx="570" cy="100.71235932615298" r="4" fill="#ef4444"/>
+  <circle cx="740" cy="88.0822424648801" r="4" fill="#ef4444"/>
+  <polyline points="60,101.64590525804937 230,100.85517806684837 400,93.10010380922557 570,101.30150864702398 740,104.61577898431736" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="60" cy="101.64590525804937" r="4" fill="#10b981"/>
+  <circle cx="230" cy="100.85517806684837" r="4" fill="#10b981"/>
+  <circle cx="400" cy="93.10010380922557" r="4" fill="#10b981"/>
+  <circle cx="570" cy="101.30150864702398" r="4" fill="#10b981"/>
+  <circle cx="740" cy="104.61577898431736" r="4" fill="#10b981"/>
+  <polyline points="60,101.02638942254436 230,100.8377117258986 400,94.8059133294044 570,100.32643139700085 740,85.4545454545455" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="60" cy="101.02638942254436" r="4" fill="#f59e0b"/>
+  <circle cx="230" cy="100.8377117258986" r="4" fill="#f59e0b"/>
+  <circle cx="400" cy="94.8059133294044" r="4" fill="#f59e0b"/>
+  <circle cx="570" cy="100.32643139700085" r="4" fill="#f59e0b"/>
+  <circle cx="740" cy="85.4545454545455" r="4" fill="#f59e0b"/>
   <rect x="650" y="42" width="12" height="12" fill="#3b82f6"/>
   <text x="668" y="53" font-size="12" fill="#374151">Silk - Toggle theme 1000x</text>
   <rect x="650" y="62" width="12" height="12" fill="#ef4444"/>
