@@ -4,6 +4,30 @@
 
 This benchmark category uses a **completely config-driven architecture** with **zero hardcoded values**. All test groups, libraries, features, and metadata are defined in JSON configuration files.
 
+## README Structure
+
+**Two-Level Architecture:**
+
+1. **Category README** (`benchmarks/state-management/README.md`)
+   - Overall Performance Score table (all libraries)
+   - Feature Support Matrix
+   - Test Categories list
+   - **Group Results Summary** (top performer + link to each group)
+   - Methodology
+   - Key Insights
+
+2. **Group READMEs** (`groups/01-read/README.md`, `groups/02-write/README.md`, etc.)
+   - Detailed benchmark results for that group
+   - Performance charts
+   - Full comparison tables
+   - Group-specific insights
+
+**Benefits:**
+- Cleaner category overview
+- Better navigation structure
+- Faster page loading
+- Scales with unlimited groups
+
 ## Configuration Files
 
 ### 1. `category-config.json`
