@@ -12,7 +12,6 @@ const groupsConfig = JSON.parse(readFileSync(join(__dirname, 'groups-config.json
 const libraryMetadata = JSON.parse(readFileSync(join(__dirname, 'library-metadata.json'), 'utf-8'));
 const versions = JSON.parse(readFileSync(join(__dirname, 'versions.json'), 'utf-8'));
 const features = JSON.parse(readFileSync(join(__dirname, 'features.json'), 'utf-8'));
-const overallScores = JSON.parse(readFileSync(join(__dirname, 'overall-scores.json'), 'utf-8'));
 
 // Utility functions
 function formatNumber(num) {
@@ -20,6 +19,84 @@ function formatNumber(num) {
   if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
   if (num >= 1000) return `${Math.round(num / 1000)}K`;
   return Math.round(num).toString();
+}
+
+function geometricMean(values) {
+  if (values.length === 0) return 0;
+  const validValues = values.filter(v => v > 0);
+  if (validValues.length === 0) return 0;
+  const product = validValues.reduce((acc, val) => acc * val, 1);
+  return Math.pow(product, 1 / validValues.length);
+}
+
+function extractLibraryName(benchmarkName, metadata) {
+  for (const [pkgName, libInfo] of Object.entries(metadata.libraries)) {
+    if (benchmarkName.startsWith(libInfo.displayName)) {
+      return libInfo.displayName;
+    }
+  }
+  return null;
+}
+
+// Calculate performance scores using correct algorithm
+function calculatePerformanceScores(mergedResults) {
+  const performanceScores = new Map();
+  const benchmarkGroups = new Map();
+
+  // Collect all benchmarks from merged results
+  for (const [groupKey, groupData] of Object.entries(mergedResults)) {
+    const allBenches = getAllBenchmarks(groupData);
+
+    for (const bench of allBenches) {
+      // Skip non-throughput metrics
+      if (bench.metricType && bench.metricType !== 'throughput') continue;
+
+      // Use _library property added by getAllBenchmarks
+      const libraryName = bench._library;
+      if (!libraryName) {
+        continue;
+      }
+
+      // In per-library format, bench.name is just the test name (no library prefix)
+      const benchmarkName = bench.name;
+
+      // Group by benchmark name
+      if (!benchmarkGroups.has(benchmarkName)) {
+        benchmarkGroups.set(benchmarkName, []);
+      }
+      benchmarkGroups.get(benchmarkName).push({ ...bench, libraryName });
+    }
+  }
+
+  // For each benchmark name, calculate scores
+  for (const [benchmarkName, results] of benchmarkGroups.entries()) {
+    if (results.length === 0) continue;
+
+    // Find max Hz for THIS specific benchmark across all libraries
+    const maxHz = Math.max(...results.map(r => r.hz || 0));
+    if (maxHz === 0) continue;
+
+    // Calculate scores for each library in this benchmark
+    for (const result of results) {
+      const hz = result.hz || 0;
+      const score = (hz / maxHz) * 100;
+
+      if (!performanceScores.has(result.libraryName)) {
+        performanceScores.set(result.libraryName, []);
+      }
+      performanceScores.get(result.libraryName).push(score);
+    }
+  }
+
+  // Calculate geometric mean for each library
+  const rankings = Array.from(performanceScores.entries())
+    .map(([name, scores]) => ({
+      library: name,
+      score: Math.round(geometricMean(scores) * 10) / 10
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  return rankings;
 }
 
 function getAllBenchmarks(resultsData) {
@@ -195,31 +272,9 @@ ${categoryConfig.description}.
 `;
 }
 
-function generateOverallScore() {
-  const scores = overallScores.scores;
-
-  // Calculate index-based scores (fastest = 100)
-  const maxRead = Math.max(...scores.map(s => s.read));
-  const maxWrite = Math.max(...scores.map(s => s.write));
-  const maxCreation = Math.max(...scores.map(s => s.creation));
-  const maxMemory = Math.max(...scores.map(s => s.memory));
-
-  const indexScores = scores.map(entry => {
-    // Normalize each metric to 0-100
-    const readIndex = (entry.read / maxRead) * 100;
-    const writeIndex = (entry.write / maxWrite) * 100;
-    const creationIndex = (entry.creation / maxCreation) * 100;
-    const memoryIndex = (entry.memory / maxMemory) * 100;
-
-    // Geometric mean of normalized scores
-    const product = readIndex * writeIndex * creationIndex * memoryIndex;
-    const overallIndex = Math.pow(product, 1 / 4);
-
-    return {
-      library: entry.library,
-      overallIndex: overallIndex
-    };
-  }).sort((a, b) => b.overallIndex - a.overallIndex);
+function generateOverallScore(performanceRankings) {
+  // Use dynamically calculated scores
+  const indexScores = performanceRankings;
 
   // Find smallest bundle size
   const minSize = Math.min(...indexScores.map(entry => {
@@ -231,15 +286,16 @@ function generateOverallScore() {
 
   let section = `## Overall Performance Score
 
-**Based on Universal Tests**: ${overallScores.includedTests.join(', ')}
+**Based on Universal Tests**: All benchmark tests across all categories
 
 **Methodology**:
 1. Each library's raw performance (ops/sec) is measured for each test
 2. Scores are normalized to an index where the fastest library = 100
    - Formula: \`Index = (Library_Speed / Fastest_Speed) × 100\`
-3. The overall score is the geometric mean of all normalized indices
+3. Each test is compared BY NAME across libraries (not mixed within categories)
+4. The overall score is the geometric mean of all normalized indices
    - Formula: \`Overall = ⁿ√(Index₁ × Index₂ × ... × Indexₙ)\`
-4. Geometric mean prevents any single test from dominating the overall score
+5. Geometric mean prevents any single test from dominating the overall score
 
 **Last Benchmark Run**: ${new Date(versions.lastBenchmarkRun).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
 
@@ -269,7 +325,7 @@ function generateOverallScore() {
 
     const libraryLink = githubUrl ? `[**${entry.library}**](${githubUrl})` : `**${entry.library}**`;
 
-    section += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${scoreCrown}${entry.overallIndex.toFixed(1)}/100 | ${sizeCrown}${sizeKB} KB | ${lastUpdated} |\n`;
+    section += `| ${emoji}${rank} | ${libraryLink} | ${version} | ${scoreCrown}${entry.score.toFixed(1)}/100 | ${sizeCrown}${sizeKB} KB | ${lastUpdated} |\n`;
   });
 
   const incompleteGroups = Object.entries(groupsConfig.groups)
@@ -286,28 +342,15 @@ function generateOverallScore() {
   return section + '\n---\n\n';
 }
 
-function generatePerformanceMatrix(results) {
+function generatePerformanceMatrix(results, performanceRankings) {
   let section = `## Performance by Group
 
 See which library wins in each test group:
 
 `;
 
-  // Get all libraries and sort by overall score
-  const indexScores = overallScores.scores;
-  const maxRead = Math.max(...indexScores.map(s => s.read));
-  const maxWrite = Math.max(...indexScores.map(s => s.write));
-  const maxCreation = Math.max(...indexScores.map(s => s.creation));
-  const maxMemory = Math.max(...indexScores.map(s => s.memory));
-
-  const sortedLibraries = indexScores.map(entry => {
-    const readIndex = (entry.read / maxRead) * 100;
-    const writeIndex = (entry.write / maxWrite) * 100;
-    const creationIndex = (entry.creation / maxCreation) * 100;
-    const memoryIndex = (entry.memory / maxMemory) * 100;
-    const overallIndex = Math.pow(readIndex * writeIndex * creationIndex * memoryIndex, 1 / 4);
-    return { library: entry.library, overallIndex };
-  }).sort((a, b) => b.overallIndex - a.overallIndex).map(s => s.library);
+  // Get all libraries sorted by performance score
+  const sortedLibraries = performanceRankings.map(r => r.library);
 
   // Calculate rankings for each group
   const groupRankings = {};
@@ -603,8 +646,8 @@ function generateMethodology() {
 `;
 }
 
-function generateInsights(scores) {
-  const sorted = [...scores].sort((a, b) => b.overall - a.overall);
+function generateInsights(performanceRankings) {
+  const sorted = [...performanceRankings].sort((a, b) => b.score - a.score);
 
   let section = `## Key Insights
 
@@ -617,7 +660,7 @@ function generateInsights(scores) {
 
   sorted.forEach(entry => {
     for (const tier of tiers) {
-      if (entry.overall >= tier.threshold) {
+      if (entry.score >= tier.threshold) {
         tier.examples.push(entry.library);
         break;
       }
@@ -697,17 +740,21 @@ MIT
 // Main generation
 function generateReadme() {
   const results = loadAllResults();
-  const scores = overallScores.scores.sort((a, b) => b.overall - a.overall);
+
+  // Calculate scores dynamically using correct algorithm
+  const performanceRankings = calculatePerformanceScores(results);
+  console.log('📊 Calculated performance scores:');
+  performanceRankings.forEach(r => console.log(`  ${r.library}: ${r.score}/100`));
 
   let readme = '';
   readme += generateHeader();
-  readme += generateOverallScore();
-  readme += generatePerformanceMatrix(results);
+  readme += generateOverallScore(performanceRankings);
+  readme += generatePerformanceMatrix(results, performanceRankings);
   readme += generateFeatureMatrix();
   readme += generateTestCategories();
   readme += generateGroupSummaries(results);
   readme += generateMethodology();
-  readme += generateInsights(scores);
+  readme += generateInsights(performanceRankings);
   readme += generateFooter();
 
   writeFileSync(join(__dirname, 'README.md'), readme);
