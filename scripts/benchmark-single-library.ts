@@ -7,7 +7,7 @@
  * Example: npx tsx benchmark-single-library.ts jotai benchmarks/state-management
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, statSync, mkdirSync } from 'fs';
 import { execSync } from 'child_process';
 import { join } from 'path';
 
@@ -43,7 +43,9 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
   const versionsPath = join(categoryPath, 'versions.json');
   const metadataPath = join(categoryPath, 'library-metadata.json');
   const resultsDir = join(categoryPath, 'results');
-  const outputPath = join(resultsDir, `${libraryKey}-benchmark.json`);
+  // Sanitize library key for filename (replace / and @ with -)
+  const safeLibraryKey = libraryKey.replace(/@/g, '').replace(/\//g, '-');
+  const outputPath = join(resultsDir, `${safeLibraryKey}-benchmark.json`);
 
   console.log(`\n🎯 Benchmarking ${libraryKey}...\n`);
 
@@ -86,8 +88,8 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
   console.log(`⏳ Running benchmarks (this may take several minutes)...\n`);
 
   try {
-    // Run vitest with grep filter for this specific library
-    const benchCmd = `npx vitest bench --run --grep "${displayName}"`;
+    // Run vitest with testNamePattern filter for this specific library
+    const benchCmd = `npx vitest bench --run -t "${displayName}"`;
 
     execSync(benchCmd, {
       cwd: categoryPath,
@@ -109,7 +111,6 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
   const groupsPath = join(categoryPath, 'groups');
 
   try {
-    const { readdirSync, statSync } = require('fs');
     const groups = readdirSync(groupsPath).filter((dir: string) => {
       const fullPath = join(groupsPath, dir);
       return statSync(fullPath).isDirectory();
@@ -144,6 +145,11 @@ async function benchmarkSingleLibrary(libraryKey: string, categoryPath: string) 
     lastRun: new Date().toISOString(),
     groups: groupResults
   };
+
+  // Ensure results directory exists
+  if (!existsSync(resultsDir)) {
+    mkdirSync(resultsDir, { recursive: true });
+  }
 
   // Save to results/[library]-benchmark.json
   writeFileSync(outputPath, JSON.stringify(result, null, 2));

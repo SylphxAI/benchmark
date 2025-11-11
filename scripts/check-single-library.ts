@@ -51,7 +51,9 @@ interface LibraryMetadata {
 async function checkSingleLibrary(libraryKey: string, categoryPath: string): Promise<boolean> {
   const versionsPath = join(categoryPath, 'versions.json');
   const metadataPath = join(categoryPath, 'library-metadata.json');
-  const resultsPath = join(categoryPath, 'results', `${libraryKey}-benchmark.json`);
+  // Sanitize library key for filename (replace / and @ with -)
+  const safeLibraryKey = libraryKey.replace(/@/g, '').replace(/\//g, '-');
+  const resultsPath = join(categoryPath, 'results', `${safeLibraryKey}-benchmark.json`);
 
   console.log(`\n🔍 Checking ${libraryKey}...\n`);
 
