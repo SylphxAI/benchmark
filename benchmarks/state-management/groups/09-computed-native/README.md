@@ -116,4 +116,4 @@ npx vitest bench groups/09-computed-native/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T12:13:50.652Z*
+*Last generated: 2025-11-11T12:15:22.190Z*
