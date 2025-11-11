@@ -242,8 +242,7 @@ jobs:
           echo "✓ Group READMEs generated"
 
       - name: Generate category README
-        run: node generate-readme.js
-        working-directory: benchmarks/state-management
+        run: npx tsx scripts/generate-readme.ts benchmarks/state-management
 
       - name: Generate root README
         run: npx tsx scripts/generate-root-readme.ts
