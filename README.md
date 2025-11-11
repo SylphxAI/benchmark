@@ -28,10 +28,15 @@ Each category has its own detailed README with benchmark results, methodology, a
 
 ## 🔬 How It Works
 
-- **Automated**: Runs daily via GitHub Actions
-- **Smart Execution**: Only runs when libraries update or test files change
+- **Automated**: Runs hourly via GitHub Actions for per-library checks
+- **Smart Execution**: Only benchmarks libraries with new versions (75-85% cost reduction)
+- **Independent Results**: Each library tested and stored separately
 - **Comprehensive**: Multiple real-world test scenarios per category
 - **Transparent**: Open source, reproducible locally
+
+> 📖 **[Read the Architecture Documentation →](./ARCHITECTURE.md)**
+>
+> Learn about the per-library benchmark system, cost optimization strategies, and how to add new libraries.
 
 ---
 
