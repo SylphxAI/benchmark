@@ -300,9 +300,10 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
           });
           readme += '```\n\n';
 
-          // Detailed table (aggregated by library)
-          readme += '| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |\n';
-          readme += '|:----:|---------|---------|--------------|----------|---------|---------------|\n';
+          // Aggregated summary table
+          readme += '**Overall Performance (Geometric Mean):**\n\n';
+          readme += '| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |\n';
+          readme += '|:----:|---------|----------------|--------------|----------|---------|---------------|\n';
 
           libraryScores.forEach((score, idx) => {
             const emoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1;
@@ -322,13 +323,46 @@ function generateGroupReadme(groupPath, groupName, categoryPath) {
             readme += `| ${emoji} | ${libraryLink} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
           });
 
+          readme += '\n';
+
+          // Detailed test results for each library
+          readme += '**Individual Test Results:**\n\n';
+          readme += '| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |\n';
+          readme += '|---------|------|---------|----------|------|-----|---------|' + '\n';
+
+          libraryScores.forEach(score => {
+            // Add GitHub link to library name
+            const libKey = Object.keys(libraryMetadata.libraries).find(key =>
+              libraryMetadata.libraries[key].displayName === score.library
+            );
+            const githubUrl = libraryMetadata.libraries?.[libKey]?.url || '';
+            const libraryLink = githubUrl ? `[${score.library}](${githubUrl})` : score.library;
+
+            // Sort benchmarks by hz descending
+            const sortedBenches = [...score.benches].sort((a, b) => (b.hz || 0) - (a.hz || 0));
+
+            sortedBenches.forEach((bench, benchIdx) => {
+              const testName = bench.name.replace(` - ${score.library}`, '');
+              const opsPerSec = bench.hz ? bench.hz.toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
+              const variance = bench.rme ? `±${bench.rme.toFixed(2)}%` : 'N/A';
+              const mean = bench.mean ? `${(bench.mean * 1000).toFixed(4)}ms` : 'N/A';
+              const p99 = bench.p99 ? `${(bench.p99 * 1000).toFixed(4)}ms` : 'N/A';
+              const samples = bench.samples || 'N/A';
+
+              // Show library name only for first benchmark
+              const libCell = benchIdx === 0 ? libraryLink : '';
+
+              readme += `| ${libCell} | ${testName} | ${opsPerSec} | ${variance} | ${mean} | ${p99} | ${samples} |\n`;
+            });
+          });
+
           // Key insight
           if (libraryScores.length >= 2) {
             const fastest = libraryScores[0];
             const slowest = libraryScores[libraryScores.length - 1];
             const ratio = ((fastest.overall || 0) / (slowest.overall || 1)).toFixed(2);
 
-            readme += `\n**Key Insight:** ${fastest.library} is ${ratio}x faster than ${slowest.library} in this test.\n`;
+            readme += `\n**Key Insight:** ${fastest.library} is ${ratio}x faster than ${slowest.library} in this test group.\n`;
           }
 
           readme += '\n';

@@ -42,9 +42,20 @@ Built-in batching.
 🥇   MobX               ████████████████████████████████████████      1.6M ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
+**Overall Performance (Geometric Mean):**
+
+| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|----------------|--------------|----------|---------|---------------|
 | 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 1,591,403 | ±0.61% | 1.8500ms | 7.6000ms | 5292938 |
+
+**Individual Test Results:**
+
+| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
+|---------|------|---------|----------|------|-----|---------|
+| [MobX](https://github.com/mobxjs/mobx) | Unbatched Updates | 3,824,650 | ±1.83% | 0.3000ms | 0.3000ms | 1912325 |
+|  | Batched with Observers | 3,306,212 | ±0.18% | 0.3000ms | 0.4000ms | 1653107 |
+|  | Batched Updates | 3,301,370 | ±0.40% | 0.3000ms | 0.4000ms | 1650686 |
+|  | Large Batch | 153,640 | ±0.03% | 6.5000ms | 7.6000ms | 76820 |
 
 ### 11-batching-native - Solid Signals
 
@@ -54,9 +65,20 @@ Built-in batching.
 🥇   Solid Signals      ████████████████████████████████████████     37.8M ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
+**Overall Performance (Geometric Mean):**
+
+| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|----------------|--------------|----------|---------|---------------|
 | 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 37,849,602 | ±0.46% | N/A | 0.1000ms | 76864518 |
+
+**Individual Test Results:**
+
+| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
+|---------|------|---------|----------|------|-----|---------|
+| [Solid Signals](https://github.com/solidjs/solid) | Unbatched Updates | 43,009,352 | ±0.06% | N/A | 0.1000ms | 21504676 |
+|  | Batched Updates | 41,556,589 | ±1.51% | N/A | 0.1000ms | 20778296 |
+|  | Batched with Observers | 41,482,071 | ±0.23% | N/A | 0.1000ms | 20741037 |
+|  | Large Batch | 27,681,017 | ±0.05% | N/A | N/A | 13840509 |
 
 ### 11-batching-native - Valtio
 
@@ -66,9 +88,20 @@ Built-in batching.
 🥇   Valtio             ████████████████████████████████████████      1.7M ops/sec
 ```
 
-| Rank | Library | Ops/sec | Avg Variance | Avg Mean | Max p99 | Total Samples |
-|:----:|---------|---------|--------------|----------|---------|---------------|
+**Overall Performance (Geometric Mean):**
+
+| Rank | Library | Geometric Mean | Avg Variance | Avg Mean | Max p99 | Total Samples |
+|:----:|---------|----------------|--------------|----------|---------|---------------|
 | 🥇 | [**Valtio**](https://github.com/pmndrs/valtio) | 1,657,338 | ±0.17% | 3.8500ms | 17.4000ms | 7257614 |
+
+**Individual Test Results:**
+
+| Library | Test | Ops/sec | Variance | Mean | p99 | Samples |
+|---------|------|---------|----------|------|-----|---------|
+| [Valtio](https://github.com/pmndrs/valtio) | Unbatched Updates | 4,869,433 | ±0.12% | 0.2000ms | 0.3000ms | 2434717 |
+|  | Batched Updates | 4,795,324 | ±0.15% | 0.2000ms | 0.3000ms | 2397662 |
+|  | Batched with Observers | 4,782,912 | ±0.19% | 0.2000ms | 0.3000ms | 2391457 |
+|  | Large Batch | 67,555 | ±0.24% | 14.8000ms | 17.4000ms | 33778 |
 
 ---
 
@@ -88,4 +121,4 @@ npx vitest bench groups/11-batching-native/*.bench.ts
 ```
 
 ---
-*Last generated: 2025-11-11T04:55:50.406Z*
+*Last generated: 2025-11-11T05:05:14.017Z*
