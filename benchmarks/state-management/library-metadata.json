@@ -67,7 +67,7 @@
       "name": "Zen",
       "displayName": "Zen",
       "description": "Minimal and fast state management with signal-based reactivity",
-      "url": "https://github.com/sylphxltd/zen",
+      "url": "https://github.com/SylphxAI/zen",
       "npm": "@sylphx/zen",
       "color": "#00B8D4",
       "tradeoff": "Similar performance to Preact, slightly larger bundle"

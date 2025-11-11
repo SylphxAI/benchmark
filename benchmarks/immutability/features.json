@@ -104,11 +104,11 @@
       "mutableAPI": true,
       "jsonCompatible": true,
       "sources": {
-        "typeSafe": "https://github.com/sylphxltd/craft#100-type-safe",
-        "freeze": "https://github.com/sylphxltd/craft#current",
-        "immutableDataStructures": "https://github.com/sylphxltd/craft#map-set-support",
-        "mutableAPI": "https://github.com/sylphxltd/craft",
-        "jsonCompatible": "https://github.com/sylphxltd/craft#json-patches"
+        "typeSafe": "https://github.com/SylphxAI/craft#100-type-safe",
+        "freeze": "https://github.com/SylphxAI/craft#current",
+        "immutableDataStructures": "https://github.com/SylphxAI/craft#map-set-support",
+        "mutableAPI": "https://github.com/SylphxAI/craft",
+        "jsonCompatible": "https://github.com/SylphxAI/craft#json-patches"
       }
     }
   }

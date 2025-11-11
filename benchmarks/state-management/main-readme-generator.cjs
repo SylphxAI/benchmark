@@ -418,7 +418,7 @@ benchmarks/state-management/
   }
 
   generateFooter() {
-    return `Made with ⚡ by the Benchmark Team | [Report Issues](https://github.com/sylphxltd/benchmark/issues)
+    return `Made with ⚡ by the Benchmark Team | [Report Issues](https://github.com/SylphxAI/benchmark/issues)
 `;
   }
 }

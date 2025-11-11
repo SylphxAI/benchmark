@@ -86,8 +86,8 @@
       "codeSplitting": false,
       "searchParams": true,
       "sources": {
-        "typeSafe": "https://github.com/sylphxltd/zen-router",
-        "searchParams": "https://github.com/sylphxltd/zen-router"
+        "typeSafe": "https://github.com/SylphxAI/zen-router",
+        "searchParams": "https://github.com/SylphxAI/zen-router"
       }
     }
   }

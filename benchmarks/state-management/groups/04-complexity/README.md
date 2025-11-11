@@ -27,7 +27,7 @@ Deep nested state.
 |  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 2.2.0 | 3.1 KB | 👑 0 | 0 | Nov 6 |
 |  6 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 👑 0 | 0 | Nov 7 |
 |  7 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 👑 0 | 0 | Dec 6 |
-|  8 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 👑 0 | 0 | Nov 7 |
+|  8 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 5.3 KB | 👑 0 | 0 | Nov 7 |
 
 ---
 
@@ -57,7 +57,7 @@ Deep nested state.
 | 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A |  |
 | 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A |  |
 | 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A |  |
-| 8 | [**Zen**](https://github.com/sylphxltd/zen) | N/A | N/A | N/A | N/A |  |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A |  |
 
 **Key Insight:** Redux Toolkit is 0.00x faster than Zen in this category.
 
@@ -85,7 +85,7 @@ Deep nested state.
 | 5 | [**Valtio**](https://github.com/pmndrs/valtio) | N/A | N/A | N/A | N/A |  |
 | 6 | [**Preact Signals**](https://github.com/preactjs/signals) | N/A | N/A | N/A | N/A |  |
 | 7 | [**Solid Signals**](https://github.com/solidjs/solid) | N/A | N/A | N/A | N/A |  |
-| 8 | [**Zen**](https://github.com/sylphxltd/zen) | N/A | N/A | N/A | N/A |  |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | N/A | N/A | N/A | N/A |  |
 
 **Key Insight:** Redux Toolkit is 0.00x faster than Zen in this category.
 

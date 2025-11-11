@@ -41,10 +41,10 @@
       "criticalCSS": true,
       "cssIcons": false,
       "sources": {
-        "typeSafe": "https://github.com/sylphxltd/silk#type-safety",
-        "designTokens": "https://github.com/sylphxltd/silk#design-tokens",
-        "presetSystem": "https://github.com/sylphxltd/silk#presets",
-        "criticalCSS": "https://github.com/sylphxltd/silk#critical-css"
+        "typeSafe": "https://github.com/SylphxAI/silk#type-safety",
+        "designTokens": "https://github.com/SylphxAI/silk#design-tokens",
+        "presetSystem": "https://github.com/SylphxAI/silk#presets",
+        "criticalCSS": "https://github.com/SylphxAI/silk#critical-css"
       }
     },
     "tailwindcss": {

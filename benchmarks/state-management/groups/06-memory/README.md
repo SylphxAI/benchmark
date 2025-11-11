@@ -20,7 +20,7 @@ Large state allocation performance.
 | Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
 |------|---------|---------|---------------|-------------|------------------|--------------|
 | 🥇 1 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 👑 925 | 925 | Dec 6 |
-| 🥈 2 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 924 | 924 | Nov 7 |
+| 🥈 2 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 5.3 KB | 924 | 924 | Nov 7 |
 | 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 923 | 923 | Dec 6 |
 |  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 917 | 917 | Dec 6 |
 |  5 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 👑 1.2 KB | 907 | 907 | Nov 6 |
@@ -50,7 +50,7 @@ Large state allocation performance.
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|---------|
 | 🥇 | [**MobX**](https://github.com/mobxjs/mobx) | 924.983 | ±0.62% | 1081.1005ms | 1314.2920ms |  |
-| 🥈 | [**Zen**](https://github.com/sylphxltd/zen) | 923.605 | ±0.61% | 1082.7144ms | 1319.2920ms |  |
+| 🥈 | [**Zen**](https://github.com/SylphxAI/zen) | 923.605 | ±0.61% | 1082.7144ms | 1319.2920ms |  |
 | 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 922.99 | ±0.61% | 1083.4349ms | 1309.5830ms |  |
 | 4 | [**Jotai**](https://github.com/pmndrs/jotai) | 917.053 | ±0.66% | 1090.4491ms | 1352.5830ms |  |
 | 5 | [**Zustand**](https://github.com/pmndrs/zustand) | 907.287 | ±0.91% | 1102.1868ms | 1454.3750ms |  |

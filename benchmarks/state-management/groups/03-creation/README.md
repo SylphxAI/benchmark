@@ -20,7 +20,7 @@ Instance creation overhead.
 | Rank | Library | Version | Bundle (gzip) | Group Score | Peak Performance | Last Updated |
 |------|---------|---------|---------------|-------------|------------------|--------------|
 | 🥇 1 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 👑 33.4M | 33.4M | Nov 7 |
-| 🥈 2 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 32.2M | 32.2M | Nov 7 |
+| 🥈 2 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 5.3 KB | 32.2M | 32.2M | Nov 7 |
 | 🥉 3 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 32.1M | 32.1M | Dec 6 |
 |  4 | [**Zustand**](https://github.com/pmndrs/zustand) | 5.0.8 | 👑 1.2 KB | 10.9M | 10.9M | Nov 6 |
 |  5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 2.3M | 2.3M | Dec 6 |
@@ -50,7 +50,7 @@ Instance creation overhead.
 | Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |
 |------|---------|---------|----------|------|-----|---------|
 | 🥇 | [**Preact Signals**](https://github.com/preactjs/signals) | 33,384,299.33 | ±0.77% | 0.0300ms | 0.0420ms |  |
-| 🥈 | [**Zen**](https://github.com/sylphxltd/zen) | 32,150,344.264 | ±1.88% | 0.0311ms | 0.0830ms |  |
+| 🥈 | [**Zen**](https://github.com/SylphxAI/zen) | 32,150,344.264 | ±1.88% | 0.0311ms | 0.0830ms |  |
 | 🥉 | [**Solid Signals**](https://github.com/solidjs/solid) | 32,134,155.751 | ±0.07% | 0.0311ms | 0.0420ms |  |
 | 4 | [**Zustand**](https://github.com/pmndrs/zustand) | 10,875,729.217 | ±0.35% | 0.0919ms | 0.1670ms |  |
 | 5 | [**Jotai**](https://github.com/pmndrs/jotai) | 2,312,931.425 | ±1.77% | 0.4324ms | 1.0420ms |  |

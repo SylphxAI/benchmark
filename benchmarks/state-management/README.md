@@ -25,7 +25,7 @@ Comprehensive performance benchmarks for JavaScript/TypeScript state management 
 |------|---------|---------------|---------------|--------------|
 | 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 👑 98.4/100 | 4.0 KB | Dec 6 |
 | 🥈 2 | [**Preact Signals**](https://github.com/preactjs/signals) | 91.5/100 | 3.0 KB | Nov 7 |
-| 🥉 3 | [**Zen**](https://github.com/sylphxltd/zen) | 89.6/100 | 5.3 KB | Nov 7 |
+| 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 89.6/100 | 5.3 KB | Nov 7 |
 |  4 | [**Jotai**](https://github.com/pmndrs/jotai) | 50.0/100 | 4.3 KB | Dec 6 |
 |  5 | [**Valtio**](https://github.com/pmndrs/valtio) | 10.1/100 | 3.1 KB | Nov 6 |
 |  6 | [**Zustand**](https://github.com/pmndrs/zustand) | 7.4/100 | 👑 1.2 KB | Nov 6 |
@@ -44,7 +44,7 @@ See which library wins in each test group:
 |---------|------|------|------|------|------|------|------|------|------|------|------|
 | [**Solid Signals**](https://github.com/solidjs/solid) | 🥇 | 🥇 | 🥉 | - | - | 🥉 | - | - | 🥇 | - | 🥇 |
 | [**Preact Signals**](https://github.com/preactjs/signals) | 4 | 🥉 | 🥇 | - | - | 6 | - | - | 🥉 | - | - |
-| [**Zen**](https://github.com/sylphxltd/zen) | 🥉 | 4 | 🥈 | - | - | 🥈 | - | - | 🥈 | - | - |
+| [**Zen**](https://github.com/SylphxAI/zen) | 🥉 | 4 | 🥈 | - | - | 🥈 | - | - | 🥈 | - | - |
 | [**Jotai**](https://github.com/pmndrs/jotai) | 🥈 | 🥈 | 5 | - | - | 4 | - | 🥇 | 5 | - | - |
 | [**Valtio**](https://github.com/pmndrs/valtio) | 7 | 5 | 6 | - | - | 7 | - | - | - | 🥇 | 🥈 |
 | [**Zustand**](https://github.com/pmndrs/zustand) | 8 | 8 | 4 | - | - | 5 | - | - | - | 🥉 | - |

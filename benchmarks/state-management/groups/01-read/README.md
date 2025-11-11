@@ -23,7 +23,7 @@ Simple read and high-frequency read patterns.
 |------|---------|---------|---------------|-------------|------------------|--------------|
 | 🥇 1 | [**Solid Signals**](https://github.com/solidjs/solid) | 1.9.10 | 4.0 KB | 👑 28.3M | 39.9M | Dec 6 |
 | 🥈 2 | [**Jotai**](https://github.com/pmndrs/jotai) | 2.15.1 | 4.3 KB | 24.6M | 36.3M | Dec 6 |
-| 🥉 3 | [**Zen**](https://github.com/sylphxltd/zen) | 1.2.1 | 5.3 KB | 22.6M | 32.2M | Nov 7 |
+| 🥉 3 | [**Zen**](https://github.com/SylphxAI/zen) | 1.2.1 | 5.3 KB | 22.6M | 32.2M | Nov 7 |
 |  4 | [**Preact Signals**](https://github.com/preactjs/signals) | 2.4.0 | 3.0 KB | 14.7M | 34.3M | Nov 7 |
 |  5 | [**MobX**](https://github.com/mobxjs/mobx) | 6.15.0 | 17.6 KB | 9.8M | 25.2M | Dec 6 |
 |  6 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 2.10.1 | 13.8 KB | 2.5M | 6.6M | Dec 6 |
@@ -62,11 +62,11 @@ Simple read and high-frequency read patterns.
 | 🥇 | [**Solid Signals**](https://github.com/solidjs/solid) | 39,913,249.366 | ±0.04% | 0.0251ms | 0.0420ms |  |
 | 🥈 | [**Jotai**](https://github.com/pmndrs/jotai) | 36,293,502.403 | ±1.42% | 0.0276ms | 0.0420ms |  |
 | 🥉 | [**Preact Signals**](https://github.com/preactjs/signals) | 34,347,738.626 | ±0.04% | 0.0291ms | 0.0420ms |  |
-| 4 | [**Zen**](https://github.com/sylphxltd/zen) | 32,186,171.807 | ±0.16% | 0.0311ms | 0.0420ms |  |
+| 4 | [**Zen**](https://github.com/SylphxAI/zen) | 32,186,171.807 | ±0.16% | 0.0311ms | 0.0420ms |  |
 | 5 | [**MobX**](https://github.com/mobxjs/mobx) | 25,151,160.692 | ±0.10% | 0.0398ms | 0.0840ms |  |
 | 6 | [**Solid Signals**](https://github.com/solidjs/solid) | 20,090,065.719 | ±0.55% | 0.0498ms | 0.1250ms |  |
 | 7 | [**Jotai**](https://github.com/pmndrs/jotai) | 16,623,015.878 | ±0.42% | 0.0602ms | 0.1250ms |  |
-| 8 | [**Zen**](https://github.com/sylphxltd/zen) | 15,863,964.921 | ±0.45% | 0.0630ms | 0.1250ms |  |
+| 8 | [**Zen**](https://github.com/SylphxAI/zen) | 15,863,964.921 | ±0.45% | 0.0630ms | 0.1250ms |  |
 | 9 | [**Redux Toolkit**](https://github.com/reduxjs/redux-toolkit) | 6,578,053.737 | ±0.08% | 0.1520ms | 0.2080ms |  |
 | 10 | [**Preact Signals**](https://github.com/preactjs/signals) | 6,274,223.423 | ±0.43% | 0.1594ms | 0.3340ms |  |
 | 11 | [**Valtio**](https://github.com/pmndrs/valtio) | 4,920,751.715 | ±0.38% | 0.2032ms | 0.2500ms |  |

@@ -191,7 +191,7 @@ We welcome contributions! Here's how you can help:
 
 ```bash
 # Clone repository
-git clone https://github.com/sylphxltd/benchmark-state-management.git
+git clone https://github.com/SylphxAI/benchmark-state-management.git
 cd benchmark-state-management
 
 # Install dependencies

@@ -113,7 +113,7 @@ export const LIBRARIES: LibraryConfig[] = [
     displayName: 'Zen',
     category: 'signal',
     description: 'Minimal state management library',
-    website: 'https://github.com/sylphxltd/zen'
+    website: 'https://github.com/SylphxAI/zen'
   },
 ];
 

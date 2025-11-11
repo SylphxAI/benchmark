@@ -4,7 +4,7 @@
 
 ### *Automated performance benchmarks for popular JavaScript libraries*
 
-[![Automated Daily](https://img.shields.io/badge/Automated-Daily-brightgreen?style=for-the-badge)](https://github.com/sylphxltd/benchmark/actions)
+[![Automated Daily](https://img.shields.io/badge/Automated-Daily-brightgreen?style=for-the-badge)](https://github.com/SylphxAI/benchmark/actions)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
 [![Vitest](https://img.shields.io/badge/Vitest-Bench-729B1B?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
@@ -43,7 +43,7 @@ Browse to any category folder to see detailed benchmark results and insights.
 ### Run Locally
 ```bash
 # Clone the repo
-git clone https://github.com/sylphxltd/benchmark.git
+git clone https://github.com/SylphxAI/benchmark.git
 cd benchmark
 
 # Install root dependencies
@@ -90,7 +90,7 @@ Each category README includes:
 
 <div align="center">
 
-**Developed and maintained by [Sylph](https://github.com/sylphxltd)**
+**Developed and maintained by [Sylph](https://github.com/SylphxAI)**
 
 ### Supporting Tools
 [Vitest](https://vitest.dev) • [Bundlephobia](https://bundlephobia.com) • [GitHub Actions](https://github.com/features/actions)
