@@ -21,7 +21,7 @@ Professional performance comparison of JavaScript state management libraries.
 
 - **Last Updated:** November 10, 2025
 - **Last Run:** 4:38:08 PM UTC
-- **Environment:** Node.js v25.0.0, darwin arm64
+- **Environment:** Node.js v20.19.5, linux x64
 - **Test Framework:** Vitest Bench
 - **Iterations:** 3 runs averaged for statistical accuracy
 
@@ -731,4 +731,4 @@ This benchmark is automatically updated daily by GitHub Actions. Benchmarks run 
 
 ---
 
-*Last generated: 2025-11-11T17:23:23.778Z*
+*Last generated: 2025-11-11T17:24:14.078Z*
