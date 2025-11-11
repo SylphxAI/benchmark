@@ -147,31 +147,29 @@ zenLib.implement(tests.computedValue, (ctx) => {
 
 // ========== ASYNC OPERATIONS ==========
 
-zenLib.implement(tests.sequentialAsync, async (ctx) => {
-  // Sequential: await each operation
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.counter.value++;
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.counter.value++;
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.counter.value++;
+zenLib.implement(tests.asyncThroughput, async (ctx) => {
+  // Simulate rapid async operations (e.g., API calls)
+  // Each operation: async work + state update
+  for (let i = 0; i < 20; i++) {
+    // Microtask (faster than setTimeout, tests library overhead)
+    await Promise.resolve();
+    ctx.store.counter.value = i;
+  }
 });
 
-zenLib.implement(tests.concurrentAsync, async (ctx) => {
-  // Concurrent: Promise.all
-  await Promise.all([
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.counter.value++;
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.counter.value++;
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.counter.value++;
-    }),
-  ]);
+zenLib.implement(tests.concurrentUpdates, async (ctx) => {
+  // Test concurrent async updates to different parts of state
+  const operations = [];
+
+  for (let i = 0; i < 50; i++) {
+    operations.push(
+      Promise.resolve().then(() => {
+        ctx.store.counter.value++;
+      })
+    );
+  }
+
+  await Promise.all(operations);
 });
 
 // ========== REAL-WORLD SCENARIOS ==========

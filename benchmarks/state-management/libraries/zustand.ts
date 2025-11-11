@@ -150,31 +150,27 @@ zustand.implement(tests.computedValue, (ctx) => {
 
 // ========== ASYNC OPERATIONS ==========
 
-zustand.implement(tests.sequentialAsync, async (ctx) => {
-  // Sequential: await each operation
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
+zustand.implement(tests.asyncThroughput, async (ctx) => {
+  // Simulate rapid async operations
+  for (let i = 0; i < 20; i++) {
+    await Promise.resolve();
+    ctx.store.setState({ counter: i });
+  }
 });
 
-zustand.implement(tests.concurrentAsync, async (ctx) => {
-  // Concurrent: Promise.all
-  await Promise.all([
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-    }),
-  ]);
+zustand.implement(tests.concurrentUpdates, async (ctx) => {
+  // Test concurrent async updates
+  const operations = [];
+
+  for (let i = 0; i < 50; i++) {
+    operations.push(
+      Promise.resolve().then(() => {
+        ctx.store.setState((state) => ({ counter: state.counter + 1 }));
+      })
+    );
+  }
+
+  await Promise.all(operations);
 });
 
 // ========== REAL-WORLD SCENARIOS ==========

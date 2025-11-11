@@ -150,14 +150,14 @@ export const tests = {
   }),
 
   // ========== ASYNC OPERATIONS ==========
-  sequentialAsync: groups.asyncOperations.createTest({
-    name: 'Sequential Async (3 ops)',
-    description: 'Three async operations in sequence',
+  asyncThroughput: groups.asyncOperations.createTest({
+    name: 'Async Throughput (20 ops)',
+    description: 'Rapid async operations with state updates',
   }),
 
-  concurrentAsync: groups.asyncOperations.createTest({
-    name: 'Concurrent Async (3 ops)',
-    description: 'Three async operations in parallel',
+  concurrentUpdates: groups.asyncOperations.createTest({
+    name: 'Concurrent Updates (50x)',
+    description: 'Many concurrent async state updates',
   }),
 
   // ========== REAL-WORLD SCENARIOS ==========

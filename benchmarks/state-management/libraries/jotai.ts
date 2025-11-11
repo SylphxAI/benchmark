@@ -164,35 +164,31 @@ jotai.implement(tests.computedValue, (ctx) => {
 
 // ========== ASYNC OPERATIONS ==========
 
-jotai.implement(tests.sequentialAsync, async (ctx) => {
+jotai.implement(tests.asyncThroughput, async (ctx) => {
   const { store, counterAtom } = ctx.store;
 
-  // Sequential: await each operation
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  store.set(counterAtom, (prev) => prev + 1);
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  store.set(counterAtom, (prev) => prev + 1);
-
-  await new Promise((resolve) => setTimeout(resolve, 1));
-  store.set(counterAtom, (prev) => prev + 1);
+  // Simulate rapid async operations
+  for (let i = 0; i < 20; i++) {
+    await Promise.resolve();
+    store.set(counterAtom, i);
+  }
 });
 
-jotai.implement(tests.concurrentAsync, async (ctx) => {
+jotai.implement(tests.concurrentUpdates, async (ctx) => {
   const { store, counterAtom } = ctx.store;
 
-  // Concurrent: Promise.all
-  await Promise.all([
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      store.set(counterAtom, (prev) => prev + 1);
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      store.set(counterAtom, (prev) => prev + 1);
-    }),
-    new Promise((resolve) => setTimeout(resolve, 1)).then(() => {
-      store.set(counterAtom, (prev) => prev + 1);
-    }),
-  ]);
+  // Test concurrent async updates
+  const operations = [];
+
+  for (let i = 0; i < 50; i++) {
+    operations.push(
+      Promise.resolve().then(() => {
+        store.set(counterAtom, (prev) => prev + 1);
+      })
+    );
+  }
+
+  await Promise.all(operations);
 });
 
 // ========== REAL-WORLD SCENARIOS ==========
