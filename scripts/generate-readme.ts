@@ -4,7 +4,7 @@
  * Generates professional benchmark report with version tracking
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from 'fs';
 import { join } from 'path';
 import { calculateRankings } from './calculate-rankings.js';
 
@@ -129,9 +129,6 @@ function loadFeatureMatrix(benchmarkDir: string): FeatureMatrix | null {
   const rawFeatures = JSON.parse(readFileSync(featuresPath, 'utf-8'));
 
   // Transform from features.json format to FeatureMatrix format
-  // features.json has: { features: { "feature-id": { name, description, supported: [...] } } }
-  // FeatureMatrix needs: { description, features: [...], libraries: { "lib": { "feature": bool } } }
-
   if (!rawFeatures.features) {
     return null;
   }
@@ -602,117 +599,66 @@ function generateReadme(benchmarkDir: string) {
     readme += '\n';
   }
 
-  // Detailed results for each category
-  readme += '## 📊 Detailed Results\n\n';
+  // Group Results Summary (simple summaries with links to group READMEs)
+  readme += '## Group Results Summary\n\n';
+  readme += 'Click on any group to view detailed benchmark results.\n\n';
 
-  // Generate table of contents for test categories
-  if (groupedResults.size > 1) {
-    readme += '### 📑 Test Categories\n\n';
-    for (const [category] of groupedResults.entries()) {
-      // Generate GitHub-compatible anchor name: lowercase, replace spaces and punctuation with hyphens
-      const anchorName = category.toLowerCase()
-        .replace(/[^\w\s-]/g, '') // Remove special characters except spaces and hyphens
-        .replace(/\s+/g, '-') // Replace spaces with hyphens
-        .replace(/-+/g, '-') // Replace multiple hyphens with single
-        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
-      readme += `- [${category}](#${anchorName})\n`;
-    }
-    readme += '\n';
+  // Load groups config to get group information
+  const groupsConfigPath = join(benchmarkDir, 'groups-config.json');
+  let groupsConfig: any = { groups: {} };
+  if (existsSync(groupsConfigPath)) {
+    groupsConfig = JSON.parse(readFileSync(groupsConfigPath, 'utf-8'));
   }
 
-  for (const [category, results] of groupedResults.entries()) {
-    readme += `### ${category}\n\n`;
+  // Get all group directories
+  const groupsDir = join(benchmarkDir, 'groups');
+  if (existsSync(groupsDir)) {
+    const groupDirs = readdirSync(groupsDir)
+      .filter(name => {
+        const path = join(groupsDir, name);
+        return statSync(path).isDirectory() && readdirSync(path).some(f => f.endsWith('.ts'));
+      })
+      .sort();
 
-    // Add ASCII performance chart (exclude benchmarks from config)
-    readme += '**Performance Comparison:**\n\n';
-    const excludeList = metadata._config?.excludeFromCharts || [];
-    const libraryResults = results.filter(r => !excludeList.includes(r.name));
-    readme += generateASCIIChart(libraryResults);
-    readme += '\n';
+    for (const groupName of groupDirs) {
+      if (groupName === 'shared') continue;
 
-    // Detect metric type from first result
-    const metricType = results[0]?.metricType || 'throughput';
-    const metricUnit = results[0]?.metricUnit || 'ops/sec';
-    const isLowerBetter = metricType === 'time' || metricType === 'size';
+      // Get group config
+      const groupKey = Object.keys(groupsConfig.groups || {}).find(key => key.endsWith(groupName));
+      const groupConfig = groupKey ? groupsConfig.groups[groupKey] : null;
+      
+      const groupTitle = groupConfig?.title || groupName.replace(/-/g, ' ').replace(/^\\w/, (c: string) => c.toUpperCase());
+      const groupDescription = groupConfig?.description || '';
+      const isFeatureTest = groupConfig?.isFeatureTest || false;
+      const participatingLibs = groupConfig?.participatingLibraries;
 
-    // Get value based on metric type
-    const getValue = (r: BenchmarkResult) => {
-      if (metricType === 'throughput' || r.hz !== undefined) {
-        return r.hz || 0;
-      }
-      return r.mean;
-    };
-
-    // Sort: for time/size, ascending (lower is better); for throughput, descending (higher is better)
-    const sorted = [...results].sort((a, b) => {
-      const aVal = getValue(a);
-      const bVal = getValue(b);
-      return isLowerBetter ? aVal - bVal : bVal - aVal;
-    });
-    const detailRanks = assignRanksWithTies(sorted, getValue);
-
-    // Generate table headers based on metric type
-    if (metricType === 'time') {
-      readme += '| Rank | Library | Time | Variance | p75 | p99 | Samples |\n';
-      readme += '|------|---------|------|----------|-----|-----|--------|\n';
-    } else if (metricType === 'size') {
-      readme += '| Rank | Library | Size | Min | Max | p99 | Samples |\n';
-      readme += '|------|---------|------|-----|-----|-----|--------|\n';
-    } else {
-      readme += '| Rank | Library | Ops/sec | Variance | Mean | p99 | Samples |\n';
-      readme += '|------|---------|---------|----------|------|-----|--------|\n';
-    }
-
-    sorted.forEach((result, index) => {
-      const medal = getMedalForRank(detailRanks[index]);
-      readme += `| ${medal || detailRanks[index].toString()} | **${formatLibraryName(result.name, metadata)}** | `;
-
-      if (metricType === 'time') {
-        readme += `${formatNumber(result.mean)}${metricUnit} | `;
-        readme += `±${result.rme.toFixed(2)}% | `;
-        readme += `${formatNumber(result.p75)}${metricUnit} | `;
-        readme += `${formatNumber(result.p99)}${metricUnit} | `;
-      } else if (metricType === 'size') {
-        const sizeKB = result.mean / 1024;
-        const minKB = result.min / 1024;
-        const maxKB = result.max / 1024;
-        const p99KB = result.p99 / 1024;
-        readme += `${sizeKB.toFixed(2)}KB | `;
-        readme += `${minKB.toFixed(2)}KB | `;
-        readme += `${maxKB.toFixed(2)}KB | `;
-        readme += `${p99KB.toFixed(2)}KB | `;
-      } else {
-        readme += `${formatNumber(result.hz || 0)} | `;
-        readme += `±${result.rme.toFixed(2)}% | `;
-        readme += `${(result.mean * 1000).toFixed(4)}ms | `;
-        readme += `${(result.p99 * 1000).toFixed(4)}ms | `;
+      readme += `### [${groupTitle}](groups/${groupName}/README.md)${isFeatureTest ? ' (Feature Test)' : ''}\n\n`;
+      
+      if (groupDescription) {
+        readme += `${groupDescription}\n\n`;
       }
 
-      readme += `${formatNumber(result.samples)} |\n`;
-    });
-
-    readme += '\n';
-
-    // Performance insights based on metric type
-    if (sorted.length >= 3) {
-      const best = sorted[0];
-      const worst = sorted[sorted.length - 1];
-      const bestVal = getValue(best);
-      const worstVal = getValue(worst);
-
-      if (metricType === 'time') {
-        const speedup = (worstVal / bestVal).toFixed(2);
-        readme += `**Key Insight:** ${best.name} is **${speedup}x faster** than ${worst.name} in this category.\n\n`;
-      } else if (metricType === 'size') {
-        const ratio = (worstVal / bestVal).toFixed(2);
-        readme += `**Key Insight:** ${best.name} generates **${ratio}x smaller** CSS than ${worst.name} in this category.\n\n`;
-      } else {
-        const speedup = (bestVal / worstVal).toFixed(2);
-        readme += `**Key Insight:** ${best.name} is **${speedup}x faster** than ${worst.name} in this category.\n\n`;
+      if (isFeatureTest && participatingLibs && participatingLibs.length > 0) {
+        readme += `**Participating Libraries**: ${participatingLibs.map((lib: string) => metadata[lib]?.displayName || lib).join(', ')}\n\n`;
       }
+
+      // Check if group has results (support both architectures)
+      const groupResultsFile = join(groupsDir, groupName, 'results.json');
+      const groupResultsDir = join(groupsDir, groupName, 'results');
+      const hasResults = existsSync(groupResultsFile) || existsSync(groupResultsDir);
+
+      if (!hasResults) {
+        if (groupConfig?.incomplete) {
+          readme += `⚠️ *Implementation incomplete - excluded from Overall Performance Score*\n\n`;
+        } else {
+          readme += `*No results available*\n\n`;
+        }
+      }
+
+      readme += `**[View Detailed Results →](groups/${groupName}/README.md)**\n\n`;
+      readme += '---\n\n';
     }
   }
-
   // How to run section
   readme += '## 🚀 Running Benchmarks\n\n';
   readme += '```bash\n';
