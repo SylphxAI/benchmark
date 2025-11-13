@@ -1,4 +1,4 @@
-name: Auto-Update README
+name: Auto-Benchmark and Update
 
 on:
   schedule:
@@ -13,10 +13,10 @@ on:
 
 jobs:
   # ============================================================================
-  # Generate README from existing benchmark results
+  # Run benchmarks and update README
   # ============================================================================
-  generate-readme:
-    name: Generate README (state-management)
+  benchmark-and-update:
+    name: Benchmark & Update (state-management)
     runs-on: ubuntu-latest
 
     steps:
@@ -36,10 +36,18 @@ jobs:
         run: npm ci
 
       - name: Check versions and bundle sizes
+        id: check
         run: |
           echo "🔍 Checking library versions and bundle sizes..."
           npx tsx scripts/check-versions.ts benchmarks/state-management
           echo "✓ Version check complete"
+
+      - name: Run benchmarks
+        run: |
+          echo "🚀 Running benchmarks..."
+          cd benchmarks/state-management
+          npm run benchmark
+          echo "✓ Benchmarks complete"
 
       - name: Generate category README
         run: |
@@ -61,11 +69,11 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Add all changes (including versions.json updates)
+          # Add all changes (benchmark results, versions, README)
           git add benchmarks/ README.md
 
           # Create commit message
-          COMMIT_MSG="chore: auto-update README and versions"
+          COMMIT_MSG="chore: auto-benchmark and update results"
 
           git commit -m "$COMMIT_MSG" || echo "No changes to commit"
           git push || echo "Nothing to push"
