@@ -4,12 +4,12 @@
   "packageName": "@sylphx/silk",
   "test": "Conditional styling (1000 iterations)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:52:40.108Z",
+  "timestamp": "2025-11-13T11:58:46.339Z",
   "result": {
-    "opsPerSecond": 705243.4853133304,
-    "meanTime": 0.0014179499999999478,
-    "variance": 0.0000014514851515007,
-    "p99": 0.00574100000000044,
+    "opsPerSecond": 441542.2363848862,
+    "meanTime": 0.002264789000000249,
+    "variance": 0.000003101290444479177,
+    "p99": 0.009517999999999915,
     "samples": 1000
   }
 }

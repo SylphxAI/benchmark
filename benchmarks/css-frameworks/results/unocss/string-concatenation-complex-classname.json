@@ -4,12 +4,12 @@
   "packageName": "unocss",
   "test": "String concatenation (complex className)",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:52:40.108Z",
+  "timestamp": "2025-11-13T11:58:46.339Z",
   "result": {
-    "opsPerSecond": 985261.4736160195,
-    "meanTime": 0.0010149590000001609,
-    "variance": 0.0000016717593613187337,
-    "p99": 0.006011000000000877,
+    "opsPerSecond": 866889.168219889,
+    "meanTime": 0.0011535499999999388,
+    "variance": 0.000002847344507500166,
+    "p99": 0.007343000000005873,
     "samples": 1000
   }
 }

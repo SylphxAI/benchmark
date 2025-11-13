@@ -31,9 +31,9 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 
 **TL;DR** - Choose based on your needs:
 
-- **⚡ Maximum Performance**: Panda CSS - Fastest overall with 84.8/100 score
-- **⚖️ Best Balance**: Tailwind CSS - Great performance (84.6/100) with good ecosystem
-- **🎯 Popular Choice**: Silk - Widely used, good performance, minimal API
+- **⚡ Maximum Performance**: Silk - Fastest overall with 88.3/100 score
+- **⚖️ Best Balance**: UnoCSS - Great performance (86.9/100) with good ecosystem
+- **🎯 Popular Choice**: Panda CSS - Widely used, good performance, minimal API
 
 <details>
 <summary><b>📊 Detailed Performance Insights</b> (click to expand)</summary>
@@ -41,28 +41,28 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 ### When to Choose Each Library
 
 
-**Panda CSS** (Score: 84.8/100)
-- High-performance state management solution
-- **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/panda)
-
-
-**Tailwind CSS** (Score: 84.6/100)
-- High-performance state management solution
-- **Best for**: General purpose state management
-- [GitHub](#) • [npm](https://www.npmjs.com/package/tailwind)
-
-
-**Silk** (Score: 80.2/100)
+**Silk** (Score: 88.3/100)
 - High-performance state management solution
 - **Best for**: General purpose state management
 - [GitHub](#) • [npm](https://www.npmjs.com/package/silk)
 
 
-**UnoCSS** (Score: 77.7/100)
+**UnoCSS** (Score: 86.9/100)
 - High-performance state management solution
 - **Best for**: General purpose state management
 - [GitHub](#) • [npm](https://www.npmjs.com/package/unocss)
+
+
+**Panda CSS** (Score: 81.0/100)
+- High-performance state management solution
+- **Best for**: General purpose state management
+- [GitHub](#) • [npm](https://www.npmjs.com/package/panda)
+
+
+**Tailwind CSS** (Score: 80.0/100)
+- High-performance state management solution
+- **Best for**: General purpose state management
+- [GitHub](#) • [npm](https://www.npmjs.com/package/tailwind)
 
 
 </details>
@@ -75,10 +75,10 @@ Based on geometric mean of normalized scores across all 5 tests.
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
-| 🥇 1 | **[Panda CSS](#)** | 84.8/100 | 100% of fastest | [📦](https://www.npmjs.com/package/panda) [📊](https://bundlephobia.com/package/panda) |
-| 🥈 2 | **[Tailwind CSS](#)** | 84.6/100 | 100% of fastest | [📦](https://www.npmjs.com/package/tailwind) [📊](https://bundlephobia.com/package/tailwind) |
-| 🥉 3 | **[Silk](#)** | 80.2/100 | 95% of fastest | [📦](https://www.npmjs.com/package/silk) [📊](https://bundlephobia.com/package/silk) |
-|  4 | **[UnoCSS](#)** | 77.7/100 | 92% of fastest | [📦](https://www.npmjs.com/package/unocss) [📊](https://bundlephobia.com/package/unocss) |
+| 🥇 1 | **[Silk](#)** | 88.3/100 | 100% of fastest | [📦](https://www.npmjs.com/package/silk) [📊](https://bundlephobia.com/package/silk) |
+| 🥈 2 | **[UnoCSS](#)** | 86.9/100 | 98% of fastest | [📦](https://www.npmjs.com/package/unocss) [📊](https://bundlephobia.com/package/unocss) |
+| 🥉 3 | **[Panda CSS](#)** | 81.0/100 | 92% of fastest | [📦](https://www.npmjs.com/package/panda) [📊](https://bundlephobia.com/package/panda) |
+|  4 | **[Tailwind CSS](#)** | 80.0/100 | 91% of fastest | [📦](https://www.npmjs.com/package/tailwind) [📊](https://bundlephobia.com/package/tailwind) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -89,10 +89,10 @@ Based on geometric mean of normalized scores across all 5 tests.
 
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
-| **[Panda CSS](#)** | **84.8** | **8.02 KB** | State management solution... | General purpose... |
-| **[Tailwind CSS](#)** | **84.6** | **516.69 KB** | State management solution... | General purpose... |
-| **[Silk](#)** | **80.2** | **9.46 KB** | State management solution... | General purpose... |
-| **[UnoCSS](#)** | **77.7** | **3.42 KB** | State management solution... | General purpose... |
+| **[Silk](#)** | **88.3** | **9.46 KB** | State management solution... | General purpose... |
+| **[UnoCSS](#)** | **86.9** | **3.42 KB** | State management solution... | General purpose... |
+| **[Panda CSS](#)** | **81.0** | **8.02 KB** | State management solution... | General purpose... |
+| **[Tailwind CSS](#)** | **80.0** | **516.69 KB** | State management solution... | General purpose... |
 
 ---
 
@@ -106,50 +106,50 @@ Based on geometric mean of normalized scores across all 5 tests.
 #### Apply 100 inline styles
 
 ```
-🥇 UnoCSS             ████████████████████████████████████████   117K ops/sec
-🥈 Tailwind CSS       ██████████████████████████████████████     113K ops/sec
-🥉 Panda CSS          ██████████████████████████████████████     111K ops/sec
- Silk               ███████████████████████████████████        103K ops/sec
+🥇 Silk               ████████████████████████████████████████   120K ops/sec
+🥈 Tailwind CSS       █████████████████████████████████████      111K ops/sec
+🥉 Panda CSS          █████████████████████████████████████      110K ops/sec
+ UnoCSS             ████████████████████████                   71K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| UnoCSS | 117K | 0.009ms | 0.024ms | 1000 |
-| Tailwind CSS | 113K | 0.009ms | 0.022ms | 1000 |
-| Panda CSS | 111K | 0.009ms | 0.021ms | 1000 |
-| Silk | 103K | 0.010ms | 0.032ms | 1000 |
+| Silk | 120K | 0.008ms | 0.018ms | 1000 |
+| Tailwind CSS | 111K | 0.009ms | 0.024ms | 1000 |
+| Panda CSS | 110K | 0.009ms | 0.021ms | 1000 |
+| UnoCSS | 71K | 0.014ms | 0.034ms | 1000 |
 
 #### Conditional styling (1000 iterations)
 
 ```
-🥇 Silk               ████████████████████████████████████████   705K ops/sec
-🥈 Panda CSS          ████████████████████████████               500K ops/sec
-🥉 Tailwind CSS       ███████████████████████                    410K ops/sec
- UnoCSS             ███████████████████                        337K ops/sec
+🥇 Panda CSS          ████████████████████████████████████████   445K ops/sec
+🥈 Silk               ████████████████████████████████████████   442K ops/sec
+🥉 UnoCSS             ███████████████████████████████████████    434K ops/sec
+ Tailwind CSS       ███████████████████████████████████        386K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Silk | 705K | 0.001ms | 0.006ms | 1000 |
-| Panda CSS | 500K | 0.002ms | 0.008ms | 1000 |
-| Tailwind CSS | 410K | 0.002ms | 0.009ms | 1000 |
-| UnoCSS | 337K | 0.003ms | 0.010ms | 1000 |
+| Panda CSS | 445K | 0.002ms | 0.009ms | 1000 |
+| Silk | 442K | 0.002ms | 0.010ms | 1000 |
+| UnoCSS | 434K | 0.002ms | 0.009ms | 1000 |
+| Tailwind CSS | 386K | 0.003ms | 0.009ms | 1000 |
 
 #### String concatenation (complex className)
 
 ```
-🥇 Panda CSS          ████████████████████████████████████████   1.0M ops/sec
-🥈 UnoCSS             ███████████████████████████████████████    985K ops/sec
-🥉 Tailwind CSS       ████████████████████████████████           810K ops/sec
- Silk               ███████████████████████████                687K ops/sec
+🥇 UnoCSS             ████████████████████████████████████████   867K ops/sec
+🥈 Silk               ████████████████████████████               597K ops/sec
+🥉 Panda CSS          █████████████████████                      464K ops/sec
+ Tailwind CSS       ██████████████████                         389K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Panda CSS | 1.0M | 0.001ms | 0.006ms | 1000 |
-| UnoCSS | 985K | 0.001ms | 0.006ms | 1000 |
-| Tailwind CSS | 810K | 0.001ms | 0.007ms | 1000 |
-| Silk | 687K | 0.001ms | 0.006ms | 1000 |
+| UnoCSS | 867K | 0.001ms | 0.007ms | 1000 |
+| Silk | 597K | 0.002ms | 0.006ms | 1000 |
+| Panda CSS | 464K | 0.002ms | 0.010ms | 1000 |
+| Tailwind CSS | 389K | 0.003ms | 0.009ms | 1000 |
 
 ### 02-dynamic-updates
 
@@ -157,33 +157,33 @@ Based on geometric mean of normalized scores across all 5 tests.
 
 ```
 🥇 Tailwind CSS       ████████████████████████████████████████   393K ops/sec
-🥈 Silk               ███████████████████████████████████████    386K ops/sec
-🥉 Panda CSS          ██████████████████████████████             297K ops/sec
- UnoCSS             ████████████████████████                   238K ops/sec
+🥈 Silk               █████████████████████████████████████      364K ops/sec
+🥉 UnoCSS             ██████████████████████████████████         338K ops/sec
+ Panda CSS          ██████████████████████████████             297K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| Tailwind CSS | 393K | 0.003ms | 0.028ms | 1000 |
-| Silk | 386K | 0.003ms | 0.028ms | 1000 |
-| Panda CSS | 297K | 0.003ms | 0.029ms | 1000 |
-| UnoCSS | 238K | 0.004ms | 0.034ms | 1000 |
+| Tailwind CSS | 393K | 0.003ms | 0.015ms | 1000 |
+| Silk | 364K | 0.003ms | 0.016ms | 1000 |
+| UnoCSS | 338K | 0.003ms | 0.030ms | 1000 |
+| Panda CSS | 297K | 0.003ms | 0.022ms | 1000 |
 
 #### Theme toggle (dark/light mode)
 
 ```
-🥇 UnoCSS             ████████████████████████████████████████   554K ops/sec
-🥈 Tailwind CSS       ███████████████████████████████████████    535K ops/sec
-🥉 Panda CSS          ██████████████████████████████████         478K ops/sec
- Silk               ███████████████████████                    313K ops/sec
+🥇 UnoCSS             ████████████████████████████████████████   605K ops/sec
+🥈 Panda CSS          ██████████████████████████████████████     570K ops/sec
+🥉 Tailwind CSS       █████████████████████████████████████      553K ops/sec
+ Silk               ██████████████████████████████████         514K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
-| UnoCSS | 554K | 0.002ms | 0.007ms | 1000 |
-| Tailwind CSS | 535K | 0.002ms | 0.007ms | 1000 |
-| Panda CSS | 478K | 0.002ms | 0.006ms | 1000 |
-| Silk | 313K | 0.003ms | 0.007ms | 1000 |
+| UnoCSS | 605K | 0.002ms | 0.005ms | 1000 |
+| Panda CSS | 570K | 0.002ms | 0.003ms | 1000 |
+| Tailwind CSS | 553K | 0.002ms | 0.003ms | 1000 |
+| Silk | 514K | 0.002ms | 0.004ms | 1000 |
 
 
 </details>
@@ -265,10 +265,10 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 
 ## 🚀 Libraries Tested
 
-- **[Panda CSS](#)** (`@pandacss/dev`) v1.4.3 • 8.02 KB gzip - [📦 npm](https://www.npmjs.com/package/panda) • [📊 bundle size](https://bundlephobia.com/package/panda)
-- **[Tailwind CSS](#)** (`tailwindcss`) v3.4.15 • 516.69 KB gzip - [📦 npm](https://www.npmjs.com/package/tailwind) • [📊 bundle size](https://bundlephobia.com/package/tailwind)
 - **[Silk](#)** (`@sylphx/silk`) v1.0.0 • 9.46 KB gzip - [📦 npm](https://www.npmjs.com/package/silk) • [📊 bundle size](https://bundlephobia.com/package/silk)
 - **[UnoCSS](#)** (`unocss`) v0.65.3 • 3.42 KB gzip - [📦 npm](https://www.npmjs.com/package/unocss) • [📊 bundle size](https://bundlephobia.com/package/unocss)
+- **[Panda CSS](#)** (`@pandacss/dev`) v1.4.3 • 8.02 KB gzip - [📦 npm](https://www.npmjs.com/package/panda) • [📊 bundle size](https://bundlephobia.com/package/panda)
+- **[Tailwind CSS](#)** (`tailwindcss`) v3.4.15 • 516.69 KB gzip - [📦 npm](https://www.npmjs.com/package/tailwind) • [📊 bundle size](https://bundlephobia.com/package/tailwind)
 
 ---
 
@@ -298,7 +298,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T11:52:54.100Z*
+*Generated on 2025-11-13T11:59:12.143Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

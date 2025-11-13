@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-13T11:52:33.031Z",
+  "timestamp": "2025-11-13T11:58:44.265Z",
   "result": {
-    "opsPerSecond": 67524.99488329202,
-    "meanTime": 0.014809331000000326,
-    "variance": 0.00002545094281143069,
-    "p99": 0.042187999999981685,
+    "opsPerSecond": 70495.97513804378,
+    "meanTime": 0.014185206999999934,
+    "variance": 0.000016266164842144868,
+    "p99": 0.035568000000012034,
     "samples": 1000
   }
 }
