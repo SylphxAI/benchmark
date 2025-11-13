@@ -32,8 +32,8 @@ Comprehensive performance benchmarks for React validation libraries.
 **TL;DR** - Choose based on your needs:
 
 - **⚡ Maximum Performance**: Superstruct - Fastest overall with 100.0/100 score
-- **⚖️ Best Balance**: Yup - Great performance (15.2/100) with good ecosystem
-- **🎯 Popular Choice**: Joi - Widely used, good performance, minimal API
+- **⚖️ Best Balance**: Joi - Great performance (26.7/100) with good ecosystem
+- **🎯 Popular Choice**: Yup - Widely used, good performance, minimal API
 
 <details>
 <summary><b>📊 Detailed Performance Insights</b> (click to expand)</summary>
@@ -47,19 +47,19 @@ Comprehensive performance benchmarks for React validation libraries.
 - [GitHub](git://github.com/ianstormtaylor/superstruct) • [npm](https://www.npmjs.com/package/superstruct)
 
 
-**Yup** (Score: 15.2/100)
-- Dead simple Object schema validation
-- **Best for**: General purpose state management
-- [GitHub](https://github.com/jquense/yup) • [npm](https://www.npmjs.com/package/yup)
-
-
-**Joi** (Score: 13.5/100)
+**Joi** (Score: 26.7/100)
 - Object schema validation
 - **Best for**: General purpose state management
 - [GitHub](git://github.com/hapijs/joi) • [npm](https://www.npmjs.com/package/joi)
 
 
-**Zod** (Score: 8.5/100)
+**Yup** (Score: 23.9/100)
+- Dead simple Object schema validation
+- **Best for**: General purpose state management
+- [GitHub](https://github.com/jquense/yup) • [npm](https://www.npmjs.com/package/yup)
+
+
+**Zod** (Score: 16.9/100)
 - TypeScript-first schema declaration and validation library with static type inference
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/colinhacks/zod) • [npm](https://www.npmjs.com/package/zod)
@@ -71,14 +71,16 @@ Comprehensive performance benchmarks for React validation libraries.
 
 ## 📊 Overall Performance Rankings
 
-Based on geometric mean of normalized scores across all 10 tests.
+Based on **weighted geometric mean** of normalized scores across all 10 tests.
+
+*Scores use variance-based weighting to prevent unstable tests from dominating results. See [Methodology](#-methodology) for details.*
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
 | 🥇 1 | **[Superstruct](git://github.com/ianstormtaylor/superstruct)** | 100.0/100 | 100% of fastest | [📦](https://www.npmjs.com/package/superstruct) [📊](https://bundlephobia.com/package/superstruct) |
-| 🥈 2 | **[Yup](https://github.com/jquense/yup)** | 15.2/100 | 15% of fastest | [📦](https://www.npmjs.com/package/yup) [📊](https://bundlephobia.com/package/yup) |
-| 🥉 3 | **[Joi](git://github.com/hapijs/joi)** | 13.5/100 | 13% of fastest | [📦](https://www.npmjs.com/package/joi) [📊](https://bundlephobia.com/package/joi) |
-|  4 | **[Zod](https://github.com/colinhacks/zod)** | 8.5/100 | 8% of fastest | [📦](https://www.npmjs.com/package/zod) [📊](https://bundlephobia.com/package/zod) |
+| 🥈 2 | **[Joi](git://github.com/hapijs/joi)** | 26.7/100 | 27% of fastest | [📦](https://www.npmjs.com/package/joi) [📊](https://bundlephobia.com/package/joi) |
+| 🥉 3 | **[Yup](https://github.com/jquense/yup)** | 23.9/100 | 24% of fastest | [📦](https://www.npmjs.com/package/yup) [📊](https://bundlephobia.com/package/yup) |
+|  4 | **[Zod](https://github.com/colinhacks/zod)** | 16.9/100 | 17% of fastest | [📦](https://www.npmjs.com/package/zod) [📊](https://bundlephobia.com/package/zod) |
 
 
 *📦 = npm package • 📊 = bundle size*
@@ -90,9 +92,9 @@ Based on geometric mean of normalized scores across all 10 tests.
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
 | **[Superstruct](git://github.com/ianstormtaylor/superstruct)** | **100.0** | **3.44 KB** | A simple and composable way to validate data in Ja... | General purpose... |
-| **[Yup](https://github.com/jquense/yup)** | **15.2** | **13.33 KB** | Dead simple Object schema validation... | General purpose... |
-| **[Joi](git://github.com/hapijs/joi)** | **13.5** | **52.64 KB** | Object schema validation... | General purpose... |
-| **[Zod](https://github.com/colinhacks/zod)** | **8.5** | **52.88 KB** | TypeScript-first schema declaration and validation... | General purpose... |
+| **[Joi](git://github.com/hapijs/joi)** | **26.7** | **52.64 KB** | Object schema validation... | General purpose... |
+| **[Yup](https://github.com/jquense/yup)** | **23.9** | **13.33 KB** | Dead simple Object schema validation... | General purpose... |
+| **[Zod](https://github.com/colinhacks/zod)** | **16.9** | **52.88 KB** | TypeScript-first schema declaration and validation... | General purpose... |
 
 ---
 
@@ -281,7 +283,11 @@ Based on geometric mean of normalized scores across all 10 tests.
 
 ### Test Environment
 - **Runtime**: Bun (latest stable)
-- **Warmup**: 100 iterations to stabilize JIT
+- **Platform**: GitHub Actions (Ubuntu latest)
+- **CPU**: 2-core (Intel Xeon or AMD EPYC equivalent)
+- **RAM**: ~7GB available
+- **Node.js**: 20.x
+- **Warmup**: 100ms + 5 iterations to stabilize JIT
 - **Measurement**: 1000 iterations per test
 - **Execution**: Isolated process per library
 
@@ -292,10 +298,18 @@ Based on geometric mean of normalized scores across all 10 tests.
 - **Variance**: Consistency indicator
 
 ### Scoring System
-Overall scores use **geometric mean** of normalized performance across all tests:
+Overall scores use **weighted geometric mean** of normalized performance across all tests:
 - Each test result normalized to best performer (100%)
-- Geometric mean prevents single test from dominating
-- Score of 50 = half the speed of the fastest library on average
+- Test weights calculated based on 90th percentile of performance variance
+- Stable tests (low variance) receive higher weight
+- Unstable tests (high variance) receive lower weight
+- This prevents outlier tests from dominating the overall score
+
+**Example** (from current results):
+- High-Frequency Read (stable, factor 7.3): **weight 17.7%**
+- Complex Form (unstable, factor 600): **weight 0.2%**
+
+This methodology follows [krausest/js-framework-benchmark](https://github.com/krausest/js-framework-benchmark)'s weighted geometric mean approach.
 
 ### Reproducibility
 All tests are deterministic and reproducible:
@@ -350,8 +364,8 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 ## 🚀 Libraries Tested
 
 - **[Superstruct](git://github.com/ianstormtaylor/superstruct)** (`superstruct`) v2.0.2 • 3.44 KB gzip - [📦 npm](https://www.npmjs.com/package/superstruct) • [📊 bundle size](https://bundlephobia.com/package/superstruct)
-- **[Yup](https://github.com/jquense/yup)** (`yup`) v1.7.1 • 13.33 KB gzip - [📦 npm](https://www.npmjs.com/package/yup) • [📊 bundle size](https://bundlephobia.com/package/yup)
 - **[Joi](git://github.com/hapijs/joi)** (`joi`) v18.0.1 • 52.64 KB gzip - [📦 npm](https://www.npmjs.com/package/joi) • [📊 bundle size](https://bundlephobia.com/package/joi)
+- **[Yup](https://github.com/jquense/yup)** (`yup`) v1.7.1 • 13.33 KB gzip - [📦 npm](https://www.npmjs.com/package/yup) • [📊 bundle size](https://bundlephobia.com/package/yup)
 - **[Zod](https://github.com/colinhacks/zod)** (`zod`) v4.1.12 • 52.88 KB gzip - [📦 npm](https://www.npmjs.com/package/zod) • [📊 bundle size](https://bundlephobia.com/package/zod)
 
 ---
@@ -382,7 +396,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T22:06:51.393Z*
+*Generated on 2025-11-13T22:18:01.511Z*
 
 [⬆️ Back to Top](#validation-benchmarks) • [⬅️ Main README](../../README.md)
 

@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Undo/Redo - Inverse Patches",
   "group": "06-patches",
-  "timestamp": "2025-11-13T22:05:46.465Z",
+  "timestamp": "2025-11-13T22:17:07.850Z",
   "result": {
-    "opsPerSecond": 88442.82544462857,
-    "meanTime": 0.011914602999957424,
-    "variance": 0.00025278934428409056,
-    "p99": 0.022542709998815552,
+    "opsPerSecond": 89422.65726409307,
+    "meanTime": 0.01136635299997215,
+    "variance": 0.000003936389638159523,
+    "p99": 0.022543399998794483,
     "samples": 1000
   }
 }

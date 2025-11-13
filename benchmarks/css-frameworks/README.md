@@ -71,7 +71,9 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 
 ## 📊 Overall Performance Rankings
 
-Based on geometric mean of normalized scores across all 6 tests.
+Based on **weighted geometric mean** of normalized scores across all 6 tests.
+
+*Scores use variance-based weighting to prevent unstable tests from dominating results. See [Methodology](#-methodology) for details.*
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
@@ -215,7 +217,11 @@ Based on geometric mean of normalized scores across all 6 tests.
 
 ### Test Environment
 - **Runtime**: Bun (latest stable)
-- **Warmup**: 100 iterations to stabilize JIT
+- **Platform**: GitHub Actions (Ubuntu latest)
+- **CPU**: 2-core (Intel Xeon or AMD EPYC equivalent)
+- **RAM**: ~7GB available
+- **Node.js**: 20.x
+- **Warmup**: 100ms + 5 iterations to stabilize JIT
 - **Measurement**: 1000 iterations per test
 - **Execution**: Isolated process per library
 
@@ -226,10 +232,18 @@ Based on geometric mean of normalized scores across all 6 tests.
 - **Variance**: Consistency indicator
 
 ### Scoring System
-Overall scores use **geometric mean** of normalized performance across all tests:
+Overall scores use **weighted geometric mean** of normalized performance across all tests:
 - Each test result normalized to best performer (100%)
-- Geometric mean prevents single test from dominating
-- Score of 50 = half the speed of the fastest library on average
+- Test weights calculated based on 90th percentile of performance variance
+- Stable tests (low variance) receive higher weight
+- Unstable tests (high variance) receive lower weight
+- This prevents outlier tests from dominating the overall score
+
+**Example** (from current results):
+- High-Frequency Read (stable, factor 7.3): **weight 17.7%**
+- Complex Form (unstable, factor 600): **weight 0.2%**
+
+This methodology follows [krausest/js-framework-benchmark](https://github.com/krausest/js-framework-benchmark)'s weighted geometric mean approach.
 
 ### Reproducibility
 All tests are deterministic and reproducible:
@@ -316,7 +330,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T22:06:51.087Z*
+*Generated on 2025-11-13T22:18:01.194Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

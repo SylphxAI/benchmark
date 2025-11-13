@@ -4,12 +4,12 @@
   "packageName": "react-router-dom",
   "test": "Optional Parameter Route (with param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-13T22:05:52.918Z",
+  "timestamp": "2025-11-13T22:16:59.849Z",
   "result": {
-    "opsPerSecond": 54518.89583006887,
-    "meanTime": 0.019115295999978115,
-    "variance": 0.00002600619934364992,
-    "p99": 0.03854453000014472,
+    "opsPerSecond": 57768.62037520776,
+    "meanTime": 0.017738285000010366,
+    "variance": 0.000011910604700348566,
+    "p99": 0.03066209999933562,
     "samples": 1000
   }
 }
