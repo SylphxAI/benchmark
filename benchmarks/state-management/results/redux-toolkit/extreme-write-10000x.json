@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T03:08:00.569Z",
+  "timestamp": "2025-11-13T17:29:22.458Z",
   "result": {
-    "opsPerSecond": 32.114020796927214,
-    "meanTime": 31.139046907999873,
-    "variance": 2.33387235444258,
-    "p99": 37.90433299999859,
+    "opsPerSecond": 322087.74700902426,
+    "meanTime": 0.0031047440000006644,
+    "variance": 4.2714695743470476e-7,
+    "p99": 0.006708000000116954,
     "samples": 1000
   }
 }

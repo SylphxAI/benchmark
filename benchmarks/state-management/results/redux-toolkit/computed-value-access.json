@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T03:08:00.569Z",
+  "timestamp": "2025-11-13T17:29:22.458Z",
   "result": {
-    "opsPerSecond": 122717.24449741928,
-    "meanTime": 0.008148813999983759,
-    "variance": 0.00022738143680563422,
-    "p99": 0.01283300000068266,
+    "opsPerSecond": 3101198.303019481,
+    "meanTime": 0.0003224560000004999,
+    "variance": 1.9571918324709448e-7,
+    "p99": 0.0007080000000314612,
     "samples": 1000
   }
 }
