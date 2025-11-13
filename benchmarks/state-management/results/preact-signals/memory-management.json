@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T11:32:41.894Z",
+  "timestamp": "2025-11-13T11:35:35.183Z",
   "result": {
-    "opsPerSecond": 46264.84262898073,
-    "meanTime": 0.021614685000000206,
-    "variance": 0.0003578462560537769,
-    "p99": 0.05522299999998381,
+    "opsPerSecond": 40051.361866458414,
+    "meanTime": 0.02496793999999946,
+    "variance": 0.0004732882309224054,
+    "p99": 0.06172499999999559,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T11:32:34.886Z",
+  "timestamp": "2025-11-13T11:35:32.893Z",
   "result": {
-    "opsPerSecond": 96022.83038814976,
-    "meanTime": 0.010414190000000361,
-    "variance": 0.0000382699006718884,
-    "p99": 0.03932299999996758,
+    "opsPerSecond": 87267.21579271268,
+    "meanTime": 0.011459057000000059,
+    "variance": 0.00005078579956776273,
+    "p99": 0.0458059999999989,
     "samples": 1000
   }
 }
