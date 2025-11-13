@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T21:03:14.023Z",
+  "timestamp": "2025-11-13T21:05:15.138Z",
   "result": {
-    "opsPerSecond": 317807.13310173503,
-    "meanTime": 0.003900738000023921,
-    "variance": 0.0003974565735978341,
-    "p99": 0.007434200001007411,
+    "opsPerSecond": 323155.9792313954,
+    "meanTime": 0.0031603590000067925,
+    "variance": 8.508721924001467e-7,
+    "p99": 0.0051006099999722195,
     "samples": 1000
   }
 }

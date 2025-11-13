@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-13T21:03:14.023Z",
+  "timestamp": "2025-11-13T21:05:15.138Z",
   "result": {
-    "opsPerSecond": 47760.468432411966,
-    "meanTime": 0.02171068700003707,
-    "variance": 0.00031852742698333674,
-    "p99": 0.03588221000025441,
+    "opsPerSecond": 46901.54821785788,
+    "meanTime": 0.022174021999971955,
+    "variance": 0.0004222753315257057,
+    "p99": 0.03409460000053514,
     "samples": 1000
   }
 }
