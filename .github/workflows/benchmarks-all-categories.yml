@@ -139,6 +139,17 @@ jobs:
             fi
           done
 
+      - name: Generate category READMEs
+        run: |
+          # Regenerate README for each category with results
+          for category_dir in benchmarks/*/; do
+            category=$(basename "$category_dir")
+            if [ -d "$category_dir/results" ] && [ -f "$category_dir/index.ts" ]; then
+              echo "📝 Generating README for $category..."
+              npx tsx scripts/generate-simple-readme.ts "benchmarks/$category"
+            fi
+          done
+
       - name: Generate root README
         run: npx tsx scripts/generate-root-readme.ts
 
