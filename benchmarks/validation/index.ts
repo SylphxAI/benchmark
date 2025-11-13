@@ -22,10 +22,31 @@ export const category = createCategory({
 // ============================================================================
 
 export const groups = {
-  basic: category.createGroup({
-    id: '01-basic',
-    title: 'Basic Operations',
-    description: 'Basic operations and common use cases',
+  schemaCreation: category.createGroup({
+    id: '01-schema-creation',
+    title: 'Schema Creation',
+    description: 'Define and compile validation schemas',
+    type: 'universal',
+  }),
+
+  primitiveValidation: category.createGroup({
+    id: '02-primitive-validation',
+    title: 'Primitive Type Validation',
+    description: 'Validate basic types (string, number, boolean)',
+    type: 'universal',
+  }),
+
+  objectValidation: category.createGroup({
+    id: '03-object-validation',
+    title: 'Object Validation',
+    description: 'Validate complex nested objects and arrays',
+    type: 'universal',
+  }),
+
+  errorHandling: category.createGroup({
+    id: '04-error-handling',
+    title: 'Error Handling',
+    description: 'Validation failures and error reporting',
     type: 'universal',
   }),
 };
@@ -35,9 +56,58 @@ export const groups = {
 // ============================================================================
 
 export const tests = {
-  simpleTest: groups.basic.createTest({
-    name: 'Simple Test',
-    description: 'A basic test case',
+  // Schema Creation Tests
+  createSimpleSchema: groups.schemaCreation.createTest({
+    name: 'Create Simple Schema',
+    description: 'Define a schema with basic fields',
+  }),
+
+  createComplexSchema: groups.schemaCreation.createTest({
+    name: 'Create Complex Schema',
+    description: 'Define a schema with nested objects and arrays',
+  }),
+
+  // Primitive Validation Tests
+  validateString: groups.primitiveValidation.createTest({
+    name: 'Validate String',
+    description: 'Validate string type with constraints',
+  }),
+
+  validateNumber: groups.primitiveValidation.createTest({
+    name: 'Validate Number',
+    description: 'Validate number type with min/max',
+  }),
+
+  validateEmail: groups.primitiveValidation.createTest({
+    name: 'Validate Email',
+    description: 'Validate email format',
+  }),
+
+  // Object Validation Tests
+  validateFlatObject: groups.objectValidation.createTest({
+    name: 'Validate Flat Object',
+    description: 'Validate object with multiple fields',
+  }),
+
+  validateNestedObject: groups.objectValidation.createTest({
+    name: 'Validate Nested Object',
+    description: 'Validate deeply nested object structure',
+  }),
+
+  validateArray: groups.objectValidation.createTest({
+    name: 'Validate Array',
+    description: 'Validate array of objects',
+  }),
+
+  // Error Handling Tests
+  catchValidationErrors: groups.errorHandling.createTest({
+    name: 'Catch Validation Errors',
+    description: 'Handle validation failures',
+  }),
+
+  multipleErrors: groups.errorHandling.createTest({
+    name: 'Multiple Validation Errors',
+    description: 'Collect multiple validation errors',
   }),
 };
 
