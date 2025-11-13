@@ -79,6 +79,18 @@ Comprehensive performance benchmarks for React state-management libraries.
 
 Based on **weighted geometric mean** of normalized scores across all 28 tests.
 
+> **🆕 Dual Ranking System Available!**
+>
+> We now provide **two complementary ranking systems**:
+> - **Variance-Based** (shown below): Emphasizes test stability and measurement reliability
+> - **Hybrid Weighted**: Balances functional importance with data-driven stability
+>
+> **View Dual Ranking Comparison**: Run `bun ../../scripts/generate-dual-ranking.ts .`
+>
+> See [Hybrid Weighting Analysis](../../HYBRID_WEIGHTING_ANALYSIS.md) for details.
+
+### 🔬 Variance-Based Rankings (Data-Driven)
+
 *Scores use variance-based weighting to prevent unstable tests from dominating results. See [Methodology](#-methodology) for details.*
 
 | Rank | Library | Overall Score | Relative Performance | Links |
