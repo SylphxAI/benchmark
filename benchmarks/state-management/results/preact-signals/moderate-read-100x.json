@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Moderate Read (100x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T09:05:58.185Z",
+  "timestamp": "2025-11-13T10:06:10.720Z",
   "result": {
-    "opsPerSecond": 284503.43907757156,
-    "meanTime": 0.0035148960000000004,
-    "variance": 0.000005490792335183687,
-    "p99": 0.01182200000000222,
+    "opsPerSecond": 322196.08853949583,
+    "meanTime": 0.003103699999999897,
+    "variance": 0.000005983715554000182,
+    "p99": 0.013224000000001013,
     "samples": 1000
   }
 }
