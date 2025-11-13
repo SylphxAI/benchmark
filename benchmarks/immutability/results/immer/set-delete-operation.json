@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T20:04:46.019Z",
+  "timestamp": "2025-11-13T20:06:05.265Z",
   "result": {
-    "opsPerSecond": 252031.94879992687,
-    "meanTime": 0.004054316999972798,
-    "variance": 9.297557622104371e-7,
-    "p99": 0.006161010001160321,
+    "opsPerSecond": 270041.2101111501,
+    "meanTime": 0.0038504249999641617,
+    "variance": 0.0000014073519183983064,
+    "p99": 0.00822649999812711,
     "samples": 1000
   }
 }

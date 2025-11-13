@@ -4,12 +4,12 @@
   "packageName": "@sylphx/craft",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T20:04:46.019Z",
+  "timestamp": "2025-11-13T20:06:05.265Z",
   "result": {
-    "opsPerSecond": 499198.0838501204,
-    "meanTime": 0.0020620410000010453,
-    "variance": 4.850832025034e-7,
-    "p99": 0.003016189999661947,
+    "opsPerSecond": 504379.0013090918,
+    "meanTime": 0.0020501060000042344,
+    "variance": 5.023654622608988e-7,
+    "p99": 0.004420099999542797,
     "samples": 1000
   }
 }
