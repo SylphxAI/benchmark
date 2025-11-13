@@ -4,12 +4,12 @@
   "packageName": "unocss",
   "test": "Apply 100 inline styles",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:46:43.817Z",
+  "timestamp": "2025-11-13T11:52:40.108Z",
   "result": {
-    "opsPerSecond": 126664.00081166178,
-    "meanTime": 0.007894903000000071,
-    "variance": 0.000015724244133590003,
-    "p99": 0.015016000000002805,
+    "opsPerSecond": 117329.8541120617,
+    "meanTime": 0.008522979999999833,
+    "variance": 0.000008363033183598633,
+    "p99": 0.02411499999999478,
     "samples": 1000
   }
 }

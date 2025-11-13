@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T11:46:38.102Z",
+  "timestamp": "2025-11-13T11:52:33.031Z",
   "result": {
-    "opsPerSecond": 943975.0790588292,
-    "meanTime": 0.0010593499999989717,
-    "variance": 0.0000010146941675016677,
-    "p99": 0.0024750000000040018,
+    "opsPerSecond": 860828.9266065351,
+    "meanTime": 0.0011616710000000694,
+    "variance": 0.0000015381570267595445,
+    "p99": 0.002644999999972697,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@sylphx/silk",
   "test": "Apply 100 inline styles",
   "group": "01-style-application",
-  "timestamp": "2025-11-13T11:46:43.817Z",
+  "timestamp": "2025-11-13T11:52:40.108Z",
   "result": {
-    "opsPerSecond": 123274.28330797223,
-    "meanTime": 0.008111991999999965,
-    "variance": 0.000008490910541935916,
-    "p99": 0.021444999999999936,
+    "opsPerSecond": 102822.1703929939,
+    "meanTime": 0.009725528999999965,
+    "variance": 0.00002269774116715976,
+    "p99": 0.03164799999999701,
     "samples": 1000
   }
 }
