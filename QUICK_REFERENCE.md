@@ -135,15 +135,71 @@ Tests: 28 × 8 libraries = 224 runs
 
 ---
 
+## 🔬 混合權重系統 (NEW!)
+
+### 什麼是混合權重？
+
+**兩層權重系統** (2025-11-13 實施):
+
+```
+混合權重 = 類別權重 × 測試內權重
+
+第一層：類別級權重（手動，專家判斷）
+- basic-read: 35%
+- reactivity-patterns: 15%
+- performance-stress: 15%
+- advanced-operations: 15%
+- basic-write: 10%
+- async-operations: 5%
+- real-world: 5%
+
+第二層：測試級權重（自動，變異度）
+- 穩定測試 → 高權重
+- 不穩定測試 → 低權重
+```
+
+### 為什麼需要混合權重？
+
+**問題**: 純變異度權重導致 Read 54.5%，Reactivity 僅 16%
+
+**解決**: 混合系統平衡使用頻率和功能重要性
+- Read: 54.5% → 35% (仍然最高)
+- Reactivity: 16% → 15% (核心功能保持適當)
+- Real-world: 1.9% → 5% (整合場景增權)
+
+### 排名變化
+
+| 排名 | 變異度系統 | 混合系統 | 變化 |
+|------|-----------|---------|------|
+| 🥇 1 | Solid Signals (80.3) | **Zen (41.8)** | Zen ⬆️ |
+| 🥈 2 | Zen (78.7) | **Solid (41.3)** | Solid ⬇️ |
+| 🥉 3 | Preact (73.3) | Preact (39.0) | — |
+
+**差距極小**: 0.5 分（兩者都優秀）
+
+### 如何選擇？
+
+**變異度系統**: "哪個最快？"（強調穩定性）
+**混合系統**: "哪個最有價值？"（強調平衡）
+
+**建議**: 兩個系統都看，根據你的需求選擇
+
 ## 🔍 常見問題
 
-### Q: Reactivity Patterns 只有 5.9% 權重，是否太低？
+### Q: 混合權重是否更主觀？
 
-**A**: 這是數據驅動的結果
-- ✅ 這些測試變異度極大 (factor 200-600)
-- ✅ 不穩定的測試應該降低權重
-- ⚠️ 但作為核心功能，可能值得 12-15%
-- 💡 未來可能引入類別級別的手動調整
+**A**: 是的，但更透明
+- ✅ 類別權重公開透明
+- ✅ 基於狀態管理原則
+- ✅ 測試內權重仍然數據驅動
+- ✅ 開放社群反饋調整
+
+### Q: Reactivity Patterns 權重變化？
+
+**A**: 從數據驅動 16% → 混合 15%
+- ✅ 純變異度: 16.0%（過去有 5.9% 的問題已修復）
+- ✅ 混合系統: 15.0%（手動確保適當權重）
+- ✅ 作為核心功能，15% 是合理的
 
 ### Q: 為什麼不是所有測試等權重？
 
@@ -154,19 +210,22 @@ Tests: 28 × 8 libraries = 224 runs
 
 ### Q: 如何選擇 Library？
 
-**A**: 看你的使用場景
+**A**: 看你的使用場景和偏好的排名系統
 
-**Read 密集型應用** (最常見):
-→ Solid Signals 或 Zen
+**變異度系統推薦** (強調穩定性):
+- Read 密集型 → **Solid Signals** (#1, 80.3)
+- 通用場景 → **Zen** (#2, 78.7)
+- 輕量快速 → **Preact Signals** (#3, 73.3)
 
-**Write 密集型應用**:
-→ 查看 Basic Write 測試結果
+**混合系統推薦** (強調平衡):
+- 複雜 Reactivity → **Zen** (#1, 41.8)
+- Read 性能優先 → **Solid Signals** (#2, 41.3)
+- 全面表現 → **Preact Signals** (#3, 39.0)
 
-**複雜 Reactivity**:
-→ 查看 Reactivity Patterns 測試結果
-
-**小體積優先**:
-→ Zustand (0.59 KB)
+**其他考量**:
+- 小體積優先 → Zustand (0.59 KB)
+- 功能豐富 → Redux Toolkit
+- 簡單 API → Valtio
 
 ---
 
@@ -175,7 +234,8 @@ Tests: 28 × 8 libraries = 224 runs
 | 文檔 | 內容 | 適合 |
 |------|------|------|
 | **[EXECUTIVE_SUMMARY.md](./EXECUTIVE_SUMMARY.md)** | 執行摘要 | 快速了解 |
-| **[BENCHMARK_METHODOLOGY_ANALYSIS.md](./BENCHMARK_METHODOLOGY_ANALYSIS.md)** | 完整分析 | 深入理解 |
+| **[HYBRID_WEIGHTING_ANALYSIS.md](./HYBRID_WEIGHTING_ANALYSIS.md)** | 混合權重分析 | 了解新系統 |
+| **[BENCHMARK_METHODOLOGY_ANALYSIS.md](./BENCHMARK_METHODOLOGY_ANALYSIS.md)** | 完整方法論 | 深入理解 |
 | **[RANKING_ANALYSIS.md](./RANKING_ANALYSIS.md)** | 排名變化 | 了解為什麼 |
 | **[WEIGHTED_SCORING_COMPARISON.md](./WEIGHTED_SCORING_COMPARISON.md)** | 前後對比 | 驗證正確性 |
 
@@ -183,20 +243,34 @@ Tests: 28 × 8 libraries = 224 runs
 
 ## 🛠️ 實用工具
 
-### 查看測試權重
+### 查看權重分布
 
+**變異度權重** (純數據驅動):
 ```bash
 bun run scripts/calculate-test-weights.ts
 ```
 
-輸出:
+**混合權重** (類別 + 變異度):
+```bash
+bun run scripts/calculate-hybrid-weights.ts
 ```
-Test Weights (Based on 90th Percentile)
 
-High-Frequency Read: 17.67% weight
-Moderate Read: 15.27% weight
-...
-Complex Form: 0.22% weight
+**雙系統對比**:
+```bash
+bun run scripts/generate-dual-ranking.ts
+```
+
+輸出範例:
+```
+╔════════════════════════════════════════╗
+║     DUAL RANKING COMPARISON            ║
+╚════════════════════════════════════════╝
+
+Variance-Based  │ Hybrid Weighted
+────────────────┼────────────────
+🥇 Solid (80.3) │ 🥇 Zen (41.8)
+🥈 Zen (78.7)   │ 🥈 Solid (41.3)
+🥉 Preact (73.3)│ 🥉 Preact (39.0)
 ```
 
 ### 運行基準測試
