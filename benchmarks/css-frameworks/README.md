@@ -235,7 +235,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd benchmarks/css-frameworks
+cd /Users/kyle/benchmark-state/benchmarks/css-frameworks
 
 # Install category dependencies
 npm install
@@ -265,10 +265,10 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 
 ## 🚀 Libraries Tested
 
-- **[Panda CSS](#)** (`@pandacss/dev`) (8.02 KB gzip) - [📦 npm](https://www.npmjs.com/package/panda) • [📊 bundle size](https://bundlephobia.com/package/panda)
-- **[UnoCSS](#)** (`unocss`) (3.42 KB gzip) - [📦 npm](https://www.npmjs.com/package/unocss) • [📊 bundle size](https://bundlephobia.com/package/unocss)
-- **[Tailwind CSS](#)** (`tailwindcss`) (516.69 KB gzip) - [📦 npm](https://www.npmjs.com/package/tailwind) • [📊 bundle size](https://bundlephobia.com/package/tailwind)
-- **[Silk](#)** (`@sylphx/silk`) (9.46 KB gzip) - [📦 npm](https://www.npmjs.com/package/silk) • [📊 bundle size](https://bundlephobia.com/package/silk)
+- **[Panda CSS](#)** (`@pandacss/dev`) v1.4.3 • 8.02 KB gzip - [📦 npm](https://www.npmjs.com/package/panda) • [📊 bundle size](https://bundlephobia.com/package/panda)
+- **[UnoCSS](#)** (`unocss`) v0.65.3 • 3.42 KB gzip - [📦 npm](https://www.npmjs.com/package/unocss) • [📊 bundle size](https://bundlephobia.com/package/unocss)
+- **[Tailwind CSS](#)** (`tailwindcss`) v3.4.15 • 516.69 KB gzip - [📦 npm](https://www.npmjs.com/package/tailwind) • [📊 bundle size](https://bundlephobia.com/package/tailwind)
+- **[Silk](#)** (`@sylphx/silk`) v1.0.0 • 9.46 KB gzip - [📦 npm](https://www.npmjs.com/package/silk) • [📊 bundle size](https://bundlephobia.com/package/silk)
 
 ---
 
@@ -298,7 +298,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T11:36:08.359Z*
+*Generated on 2025-11-13T11:45:42.175Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

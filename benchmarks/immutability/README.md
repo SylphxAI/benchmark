@@ -485,7 +485,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd benchmarks/immutability
+cd /Users/kyle/benchmark-state/benchmarks/immutability
 
 # Install category dependencies
 npm install
@@ -515,13 +515,13 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 
 ## 🚀 Libraries Tested
 
-- **[Native Spread](#)** (`native`) - [📦 npm](https://www.npmjs.com/package/native-spread) • [📊 bundle size](https://bundlephobia.com/package/native-spread)
-- **[Craft](#)** (`@sylphx/craft`) (2.76 KB gzip) - [📦 npm](https://www.npmjs.com/package/craft) • [📊 bundle size](https://bundlephobia.com/package/craft)
-- **[Immutability Helper](#)** (`immutability-helper`) (1.65 KB gzip) - [📦 npm](https://www.npmjs.com/package/immutability-helper) • [📊 bundle size](https://bundlephobia.com/package/immutability-helper)
-- **[Immer](#)** (`immer`) (4.70 KB gzip) - [📦 npm](https://www.npmjs.com/package/immer) • [📊 bundle size](https://bundlephobia.com/package/immer)
-- **[Mutative](#)** (`mutative`) (7.16 KB gzip) - [📦 npm](https://www.npmjs.com/package/mutative) • [📊 bundle size](https://bundlephobia.com/package/mutative)
-- **[Immutable.js](#)** (`immutable`) (17.74 KB gzip) - [📦 npm](https://www.npmjs.com/package/immutable) • [📊 bundle size](https://bundlephobia.com/package/immutable)
-- **[Seamless Immutable](#)** (`seamless-immutable`) (2.71 KB gzip) - [📦 npm](https://www.npmjs.com/package/seamless-immutable) • [📊 bundle size](https://bundlephobia.com/package/seamless-immutable)
+- **[Native Spread](#)** (`native`)  - [📦 npm](https://www.npmjs.com/package/native-spread) • [📊 bundle size](https://bundlephobia.com/package/native-spread)
+- **[Craft](#)** (`@sylphx/craft`) v1.2.1 • 2.76 KB gzip - [📦 npm](https://www.npmjs.com/package/craft) • [📊 bundle size](https://bundlephobia.com/package/craft)
+- **[Immutability Helper](#)** (`immutability-helper`) v3.1.1 • 1.65 KB gzip - [📦 npm](https://www.npmjs.com/package/immutability-helper) • [📊 bundle size](https://bundlephobia.com/package/immutability-helper)
+- **[Immer](#)** (`immer`) v10.2.0 • 4.70 KB gzip - [📦 npm](https://www.npmjs.com/package/immer) • [📊 bundle size](https://bundlephobia.com/package/immer)
+- **[Mutative](#)** (`mutative`) v1.3.0 • 7.16 KB gzip - [📦 npm](https://www.npmjs.com/package/mutative) • [📊 bundle size](https://bundlephobia.com/package/mutative)
+- **[Immutable.js](#)** (`immutable`) v5.1.4 • 17.74 KB gzip - [📦 npm](https://www.npmjs.com/package/immutable) • [📊 bundle size](https://bundlephobia.com/package/immutable)
+- **[Seamless Immutable](#)** (`seamless-immutable`) v7.1.4 • 2.71 KB gzip - [📦 npm](https://www.npmjs.com/package/seamless-immutable) • [📊 bundle size](https://bundlephobia.com/package/seamless-immutable)
 
 ---
 
@@ -551,7 +551,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T11:36:09.243Z*
+*Generated on 2025-11-13T11:45:41.491Z*
 
 [⬆️ Back to Top](#immutability-benchmarks) • [⬅️ Main README](../../README.md)
 

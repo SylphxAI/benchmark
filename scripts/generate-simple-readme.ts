@@ -473,10 +473,11 @@ ${sortedLibs.map(lib => {
   const meta = metadata.libraries[lib.version] || metadata.libraries[lib.libraryId];
   const versionKey = lib.version || lib.libraryId;
   const versionData = versions.libraries[versionKey];
+  const versionInfo = versionData?.current ? `v${versionData.current}` : '';
   const sizeInfo = versionData?.size
-    ? ` (${(versionData.size.gzip / 1024).toFixed(2)} KB gzip)`
+    ? ` • ${(versionData.size.gzip / 1024).toFixed(2)} KB gzip`
     : '';
-  return `- **[${lib.library}](${meta?.url || '#'})** (\`${lib.version}\`)${sizeInfo} - [📦 npm](https://www.npmjs.com/package/${meta?.npm || lib.libraryId}) • [📊 bundle size](https://bundlephobia.com/package/${meta?.npm || lib.libraryId})`;
+  return `- **[${lib.library}](${meta?.url || '#'})** (\`${lib.version}\`) ${versionInfo}${sizeInfo} - [📦 npm](https://www.npmjs.com/package/${meta?.npm || lib.libraryId}) • [📊 bundle size](https://bundlephobia.com/package/${meta?.npm || lib.libraryId})`;
 }).join('\n')}
 
 ---
