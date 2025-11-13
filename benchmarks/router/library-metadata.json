@@ -10,7 +10,7 @@
       "bundleSize": {
         "minified": 56722,
         "gzipped": 15154,
-        "measuredAt": "2025-11-13T13:04:35.209Z"
+        "measuredAt": "2025-11-13T13:10:49.640Z"
       }
     },
     "@tanstack/react-router": {
@@ -31,7 +31,7 @@
       "bundleSize": {
         "minified": 12242,
         "gzipped": 4545,
-        "measuredAt": "2025-11-13T13:04:35.210Z"
+        "measuredAt": "2025-11-13T13:10:49.640Z"
       }
     },
     "@sylphx/zen-router": {
@@ -44,7 +44,7 @@
       "bundleSize": {
         "minified": 1826,
         "gzipped": 975,
-        "measuredAt": "2025-11-13T13:04:35.210Z"
+        "measuredAt": "2025-11-13T13:10:49.640Z"
       }
     },
     "@solidjs/router": {
@@ -57,7 +57,7 @@
       "bundleSize": {
         "minified": 56857,
         "gzipped": 16056,
-        "measuredAt": "2025-11-13T13:04:35.211Z"
+        "measuredAt": "2025-11-13T13:10:49.642Z"
       }
     }
   }

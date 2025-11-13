@@ -3,6 +3,8 @@
  * Supports both legacy BenchmarkResult and new multi-metric TestResult
  */
 
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 import type {
   BenchmarkResult,
   RunOptions,
@@ -18,11 +20,54 @@ import type {
 import type { Category } from './category';
 import { measurePerformance as measurePerformanceMetric } from './metrics';
 
+interface LibraryMetadata {
+  bundleSize?: {
+    gzipped: number;
+    minified: number;
+    measuredAt: string;
+  };
+  [key: string]: any;
+}
+
 export class BenchmarkRunner {
   private category: Category;
+  private libraryMetadata: Map<string, LibraryMetadata> = new Map();
 
   constructor(category: Category) {
     this.category = category;
+    this.loadLibraryMetadata();
+  }
+
+  /**
+   * Load library metadata including bundle sizes
+   */
+  private loadLibraryMetadata(): void {
+    try {
+      const metadataPath = join(process.cwd(), 'library-metadata.json');
+      if (existsSync(metadataPath)) {
+        const data = JSON.parse(readFileSync(metadataPath, 'utf-8'));
+        if (data.libraries) {
+          for (const [key, value] of Object.entries(data.libraries)) {
+            this.libraryMetadata.set(key, value as LibraryMetadata);
+          }
+        }
+      }
+    } catch (error) {
+      // Silent fail - metadata is optional
+    }
+  }
+
+  /**
+   * Format bundle size for display
+   */
+  private formatBundleSize(libraryId: string, packageName: string): string {
+    // Try libraryId first, then packageName
+    const metadata = this.libraryMetadata.get(packageName) || this.libraryMetadata.get(libraryId);
+    if (metadata?.bundleSize) {
+      const sizeKB = (metadata.bundleSize.gzipped / 1024).toFixed(2);
+      return ` [${sizeKB} KB]`;
+    }
+    return '';
   }
 
   /**
@@ -64,9 +109,11 @@ export class BenchmarkRunner {
 
         // Run test for each library
         for (const library of librariesToRun) {
+          const bundleSize = this.formatBundleSize(library.id, library.packageName);
+
           // Skip if library doesn't implement this test
           if (!library.hasImplementation(test)) {
-            console.log(`    ${library.displayName}: [not implemented]`);
+            console.log(`    ${library.displayName}${bundleSize}: [not implemented]`);
             continue;
           }
 
@@ -75,7 +122,7 @@ export class BenchmarkRunner {
             const implementation = library.getTestImplementation(test);
 
             if (!implementation) {
-              console.log(`    ${library.displayName}: [not implemented]`);
+              console.log(`    ${library.displayName}${bundleSize}: [not implemented]`);
               continue;
             }
 
@@ -101,7 +148,7 @@ export class BenchmarkRunner {
               // Display appropriate metrics based on test type
               if (implementation.type === 'build' && testResult.metrics.primary.type === 'speed') {
                 console.log(
-                  `    ${library.displayName}: ${testResult.metrics.primary.value.toFixed(0)}ms build time`
+                  `    ${library.displayName}${bundleSize}: ${testResult.metrics.primary.value.toFixed(0)}ms build time`
                 );
                 if (testResult.metrics.secondary && testResult.metrics.secondary[0]) {
                   const sizeMetric = testResult.metrics.secondary[0];
@@ -112,7 +159,7 @@ export class BenchmarkRunner {
                   }
                 }
               } else {
-                console.log(`    ${library.displayName}: ${testResult.metrics.primary.value} ${testResult.metrics.primary.unit}`);
+                console.log(`    ${library.displayName}${bundleSize}: ${testResult.metrics.primary.value} ${testResult.metrics.primary.unit}`);
               }
             } else {
               // Use old runner for backward compatibility (performance tests)
@@ -132,12 +179,12 @@ export class BenchmarkRunner {
               });
 
               console.log(
-                `    ${library.displayName}: ${result.opsPerSecond.toLocaleString()} ops/sec` +
+                `    ${library.displayName}${bundleSize}: ${result.opsPerSecond.toLocaleString()} ops/sec` +
                 ` (${result.meanTime.toFixed(3)}ms avg)`
               );
             }
           } catch (error) {
-            console.error(`    ❌ ${library.displayName} failed:`, error);
+            console.error(`    ❌ ${library.displayName}${bundleSize} failed:`, error);
           }
         }
       }
