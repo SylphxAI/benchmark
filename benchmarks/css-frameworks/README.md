@@ -235,7 +235,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd benchmarks/css-frameworks
+cd /Users/kyle/benchmark-state/benchmarks/css-frameworks
 
 # Install category dependencies
 npm install
@@ -298,7 +298,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T13:16:11.402Z*
+*Generated on 2025-11-13T14:00:31.300Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

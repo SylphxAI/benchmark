@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Generate root README with automatic library counts and group results
+ * Generate root README with automatic category discovery
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
 interface CategoryInfo {
@@ -13,6 +13,13 @@ interface CategoryInfo {
   description: string;
   status: 'Active' | 'WIP';
   libraryCount: number;
+}
+
+interface CategoryMetadata {
+  id: string;
+  name: string;
+  emoji: string;
+  description: string;
 }
 
 function getLibraryCount(categoryPath: string): number {
@@ -34,41 +41,93 @@ function getLibraryCount(categoryPath: string): number {
   return Object.keys(metadata).filter(key => !key.startsWith('_')).length;
 }
 
-function generateRootReadme(): string {
-  const categories: CategoryInfo[] = [
-    {
-      name: 'state-management',
-      displayName: 'State Management',
-      emoji: '🗃️',
-      description: 'React state management libraries',
-      status: 'Active',
-      libraryCount: getLibraryCount('benchmarks/state-management')
-    },
-    {
-      name: 'immutability',
-      displayName: 'Immutability',
-      emoji: '🔄',
-      description: 'Immutability helper libraries',
-      status: 'Active',
-      libraryCount: getLibraryCount('benchmarks/immutability')
-    },
-    {
-      name: 'router',
-      displayName: 'Router',
-      emoji: '🧭',
-      description: 'React routing libraries',
-      status: 'Active',
-      libraryCount: getLibraryCount('benchmarks/router')
-    },
-    {
-      name: 'css-frameworks',
-      displayName: 'CSS Frameworks',
-      emoji: '🎨',
-      description: 'CSS-in-JS and utility-first CSS frameworks',
-      status: 'Active',
-      libraryCount: getLibraryCount('benchmarks/css-frameworks')
+/**
+ * Parse category metadata from index.ts file
+ */
+function parseCategoryMetadata(indexTsPath: string): CategoryMetadata | null {
+  if (!existsSync(indexTsPath)) {
+    return null;
+  }
+
+  const content = readFileSync(indexTsPath, 'utf-8');
+
+  // Extract createCategory() call
+  const categoryMatch = content.match(/createCategory\s*\(\s*\{([^}]+)\}/s);
+  if (!categoryMatch) {
+    return null;
+  }
+
+  const categoryBlock = categoryMatch[1];
+
+  // Extract fields using regex
+  const idMatch = categoryBlock.match(/id:\s*['"]([^'"]+)['"]/);
+  const nameMatch = categoryBlock.match(/name:\s*['"]([^'"]+)['"]/);
+  const descMatch = categoryBlock.match(/description:\s*['"]([^'"]+)['"]/);
+  const emojiMatch = categoryBlock.match(/emoji:\s*['"]([^'"]+)['"]/);
+
+  if (!idMatch || !nameMatch) {
+    return null;
+  }
+
+  return {
+    id: idMatch[1],
+    name: nameMatch[1],
+    description: descMatch ? descMatch[1] : '',
+    emoji: emojiMatch ? emojiMatch[1] : '📦',
+  };
+}
+
+/**
+ * Automatically discover all benchmark categories
+ */
+function discoverCategories(): CategoryInfo[] {
+  const benchmarksDir = 'benchmarks';
+  const categories: CategoryInfo[] = [];
+
+  if (!existsSync(benchmarksDir)) {
+    console.error('❌ benchmarks/ directory not found');
+    return categories;
+  }
+
+  const entries = readdirSync(benchmarksDir);
+
+  for (const entry of entries) {
+    const categoryPath = join(benchmarksDir, entry);
+
+    // Skip if not a directory
+    if (!statSync(categoryPath).isDirectory()) {
+      continue;
     }
-  ];
+
+    // Parse category metadata from index.ts
+    const indexTsPath = join(categoryPath, 'index.ts');
+    const metadata = parseCategoryMetadata(indexTsPath);
+
+    if (!metadata) {
+      console.warn(`⚠️  Skipping ${entry}: Could not parse category metadata`);
+      continue;
+    }
+
+    categories.push({
+      name: metadata.id,
+      displayName: metadata.name,
+      emoji: metadata.emoji,
+      description: metadata.description,
+      status: 'Active',
+      libraryCount: getLibraryCount(categoryPath),
+    });
+
+    console.log(`✓ Discovered: ${metadata.emoji} ${metadata.name} (${getLibraryCount(categoryPath)} libraries)`);
+  }
+
+  // Sort by name for consistent ordering
+  categories.sort((a, b) => a.name.localeCompare(b.name));
+
+  return categories;
+}
+
+function generateRootReadme(): string {
+  const categories = discoverCategories();
 
   const readme = `<div align="center">
 

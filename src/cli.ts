@@ -12,6 +12,8 @@
  */
 
 import { parseArgs } from 'util';
+import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
 
 const commands = {
   run: 'Run benchmarks for a category',
@@ -22,6 +24,34 @@ const commands = {
   'update-all': 'Measure sizes and regenerate all READMEs',
   help: 'Show this help message',
 };
+
+/**
+ * Auto-discover all benchmark categories
+ */
+function discoverCategories(): string[] {
+  const benchmarksDir = join(process.cwd(), 'benchmarks');
+  const categories: string[] = [];
+
+  try {
+    const entries = readdirSync(benchmarksDir);
+
+    for (const entry of entries) {
+      const categoryPath = join(benchmarksDir, entry);
+
+      // Check if it's a directory and has index.ts
+      if (statSync(categoryPath).isDirectory()) {
+        const { existsSync } = require('fs');
+        if (existsSync(join(categoryPath, 'index.ts'))) {
+          categories.push(entry);
+        }
+      }
+    }
+  } catch (error) {
+    // Return empty if benchmarks dir doesn't exist
+  }
+
+  return categories.sort();
+}
 
 function showHelp() {
   console.log(`
@@ -216,7 +246,6 @@ async function measureSizes(args: string[]) {
 
   const { measureBundleSize, updateCategoryBundleSizes } = await import('./core/bundle-sizes.js');
   const { existsSync } = await import('fs');
-  const { join } = await import('path');
 
   const category = args[0];
   const rootDir = process.cwd();
@@ -231,16 +260,13 @@ async function measureSizes(args: string[]) {
 
     updateCategoryBundleSizes(category, categoryPath);
   } else {
-    // Measure all categories
-    const categories = [
-      { name: 'State Management', path: join(rootDir, 'benchmarks/state-management') },
-      { name: 'Immutability', path: join(rootDir, 'benchmarks/immutability') },
-      { name: 'Router', path: join(rootDir, 'benchmarks/router') },
-    ];
+    // Measure all categories (auto-discovered)
+    const categories = discoverCategories();
 
     for (const cat of categories) {
-      if (existsSync(cat.path)) {
-        updateCategoryBundleSizes(cat.name, cat.path);
+      const categoryPath = join(rootDir, 'benchmarks', cat);
+      if (existsSync(categoryPath)) {
+        updateCategoryBundleSizes(cat, categoryPath);
       }
     }
   }
@@ -253,7 +279,7 @@ async function generateReadme(args: string[]) {
 
   const { generateCategoryReadme } = await import('./core/readme-generator.js');
   const { existsSync } = await import('fs');
-  const { join } = await import('path');
+  const { execSync } = await import('child_process');
 
   const category = args[0];
   const rootDir = process.cwd();
@@ -268,8 +294,8 @@ async function generateReadme(args: string[]) {
 
     await generateCategoryReadme(categoryPath);
   } else {
-    // Generate all category READMEs
-    const categories = ['state-management', 'immutability', 'router'];
+    // Generate all category READMEs (auto-discovered)
+    const categories = discoverCategories();
 
     for (const cat of categories) {
       const categoryPath = join(rootDir, 'benchmarks', cat);
@@ -277,6 +303,14 @@ async function generateReadme(args: string[]) {
         await generateCategoryReadme(categoryPath);
       }
     }
+
+    // Also generate root README
+    console.log('\n📝 Generating root README...');
+    const scriptPath = join(rootDir, 'scripts/generate-root-readme.ts');
+    execSync(`npx tsx ${scriptPath}`, {
+      stdio: 'inherit',
+      cwd: rootDir,
+    });
   }
 
   console.log('\n✅ README generation complete');
