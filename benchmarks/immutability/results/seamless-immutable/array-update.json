@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T21:23:54.236Z",
+  "timestamp": "2025-11-13T21:40:07.020Z",
   "result": {
-    "opsPerSecond": 48657.17286426734,
-    "meanTime": 0.02080653900001562,
-    "variance": 0.00000942495485512196,
-    "p99": 0.03355649999930392,
+    "opsPerSecond": 48821.5164716154,
+    "meanTime": 0.020828802000021823,
+    "variance": 0.00001264972187063694,
+    "p99": 0.04029583000092315,
     "samples": 1000
   }
 }
