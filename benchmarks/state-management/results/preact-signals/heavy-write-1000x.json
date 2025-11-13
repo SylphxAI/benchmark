@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Heavy Write (1000x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T11:05:22.337Z",
+  "timestamp": "2025-11-13T11:29:47.621Z",
   "result": {
-    "opsPerSecond": 102093.1755408433,
-    "meanTime": 0.00979497400000004,
-    "variance": 0.00004363022875132356,
-    "p99": 0.03467400000000964,
+    "opsPerSecond": 141819.9929884218,
+    "meanTime": 0.007051191999999887,
+    "variance": 0.000025050424737135737,
+    "p99": 0.020829000000006204,
     "samples": 1000
   }
 }
