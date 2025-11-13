@@ -1,5 +1,5 @@
 {
-  "lastChecked": "2025-11-13T02:21:44.717Z",
+  "lastChecked": "2025-11-13T02:43:34.853Z",
   "lastBenchmarkRun": "2025-11-10T16:38:08Z",
   "testFilesHash": "8c14d64010e59e9bfc37fb46c355126ba8aa41a2819006706d28dcaf156a0764",
   "libraries": {
@@ -16,11 +16,11 @@
     "@preact/signals": {
       "current": "2.4.0",
       "latest": "2.5.0",
-      "lastUpdated": "2025-11-13T02:21:41.315Z",
+      "lastUpdated": "2025-11-13T02:43:28.404Z",
       "size": {
         "gzip": 3108,
         "minified": 9207,
-        "lastChecked": "2025-11-13T02:21:44.716Z"
+        "lastChecked": "2025-11-13T02:43:32.955Z"
       }
     },
     "solid-js": {
@@ -91,6 +91,26 @@
         "gzip": 24047,
         "minified": 81295,
         "lastChecked": "2025-11-06T17:48:14.221Z"
+      }
+    },
+    "react": {
+      "current": "18.3.1",
+      "latest": "19.2.0",
+      "lastUpdated": "2025-11-13T02:43:30.963Z",
+      "size": {
+        "gzip": 2576,
+        "minified": 6599,
+        "lastChecked": "2025-11-13T02:43:33.013Z"
+      }
+    },
+    "react-dom": {
+      "current": "18.3.1",
+      "latest": "19.2.0",
+      "lastUpdated": "2025-11-13T02:43:31.691Z",
+      "size": {
+        "gzip": 42942,
+        "minified": 133258,
+        "lastChecked": "2025-11-13T02:43:34.853Z"
       }
     }
   }
