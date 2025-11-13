@@ -6,6 +6,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { calculateTestWeights, weightedGeometricMean } from './calculate-test-weights';
 
 interface BenchmarkResult {
   test: string;
@@ -177,11 +178,16 @@ for (const lib of libraries) {
   }
 }
 
-// Calculate overall scores
+// Calculate test weights based on performance variance
+const testWeights = calculateTestWeights(libraries);
+
+// Calculate overall scores using weighted geometric mean
 const overallScores = new Map<string, number>();
+const overallScoresUnweighted = new Map<string, number>();
 
 for (const lib of libraries) {
   const scores: number[] = [];
+  const weights: number[] = [];
 
   for (const result of lib.results) {
     // Find max ops/sec for this test across all libraries
@@ -193,14 +199,21 @@ for (const lib of libraries) {
 
     const maxOps = Math.max(...testResults.map(r => r.opsPerSecond));
     const score = (result.opsPerSecond / maxOps) * 100;
+    const weight = testWeights.get(result.test) || (1 / lib.results.length);
+
     scores.push(score);
+    weights.push(weight);
   }
 
-  // Geometric mean
+  // Weighted geometric mean
   if (scores.length > 0) {
+    const weightedGM = weightedGeometricMean(scores, weights);
+    overallScores.set(lib.libraryId, weightedGM);
+
+    // Also calculate unweighted for comparison (legacy)
     const product = scores.reduce((acc, s) => acc * s, 1);
     const geometricMean = Math.pow(product, 1 / scores.length);
-    overallScores.set(lib.libraryId, geometricMean);
+    overallScoresUnweighted.set(lib.libraryId, geometricMean);
   }
 }
 
@@ -404,7 +417,9 @@ ${sortedLibs.slice(0, 5).map(lib => {
 
 ## 📊 Overall Performance Rankings
 
-Based on geometric mean of normalized scores across all ${libraries[0].results.length} tests.
+Based on **weighted geometric mean** of normalized scores across all ${libraries[0].results.length} tests.
+
+*Scores use variance-based weighting to prevent unstable tests from dominating results. See [Methodology](#-methodology) for details.*
 
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
@@ -534,10 +549,18 @@ readme += `
 - **Variance**: Consistency indicator
 
 ### Scoring System
-Overall scores use **geometric mean** of normalized performance across all tests:
+Overall scores use **weighted geometric mean** of normalized performance across all tests:
 - Each test result normalized to best performer (100%)
-- Geometric mean prevents single test from dominating
-- Score of 50 = half the speed of the fastest library on average
+- Test weights calculated based on 90th percentile of performance variance
+- Stable tests (low variance) receive higher weight
+- Unstable tests (high variance) receive lower weight
+- This prevents outlier tests from dominating the overall score
+
+**Example** (from current results):
+- High-Frequency Read (stable, factor 7.3): **weight 17.7%**
+- Complex Form (unstable, factor 600): **weight 0.2%**
+
+This methodology follows [krausest/js-framework-benchmark](https://github.com/krausest/js-framework-benchmark)'s weighted geometric mean approach.
 
 ### Reproducibility
 All tests are deterministic and reproducible:
