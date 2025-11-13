@@ -1,0 +1,823 @@
+@layer reset, base, tokens, recipes, utilities;
+
+@layer reset{
+  html,:host {
+    --font-fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: var(--global-font-body, var(--font-fallback));
+    -webkit-tap-highlight-color: transparent;
+}
+
+  *,::before,::after,::backdrop,::file-selector-button {
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: var(--global-color-border, currentcolor);
+    box-sizing: border-box;
+}
+
+  hr {
+    color: inherit;
+    height: 0px;
+    border-top-width: 1px;
+}
+
+  body {
+    line-height: inherit;
+    height: 100%;
+}
+
+  img {
+    border-style: none;
+}
+
+  img,svg,video,canvas,audio,iframe,embed,object {
+    display: block;
+    vertical-align: middle;
+}
+
+  img,video {
+    max-width: 100%;
+    height: auto;
+}
+
+  h1,h2,h3,h4,h5,h6 {
+    text-wrap: balance;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+  p,h1,h2,h3,h4,h5,h6 {
+    overflow-wrap: break-word;
+}
+
+  ol,ul,menu {
+    list-style: none;
+}
+
+  button,input:where([type='button'], [type='reset'], [type='submit']),::file-selector-button {
+    appearance: button;
+    -webkit-appearance: button;
+}
+
+  button,input,optgroup,select,textarea,::file-selector-button {
+    font: inherit;
+    background: var(--edNtiq);
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+  ::placeholder {
+    --placeholder-fallback: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    color: var(--global-color-placeholder, var(--placeholder-fallback));
+}
+
+  @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      --placeholder-fallback: color-mix(in oklab, currentcolor 50%, transparent);
+}
+}
+
+  ::selection {
+    background-color: var(--global-color-selection, rgba(0, 115, 255, 0.3));
+}
+
+  textarea {
+    resize: vertical;
+}
+
+  table {
+    border-color: inherit;
+    text-indent: 0px;
+    border-collapse: collapse;
+}
+
+  summary {
+    display: list-item;
+}
+
+  small {
+    font-size: 80%;
+}
+
+  sub,sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+  sub {
+    bottom: -0.25em;
+}
+
+  sup {
+    top: -0.5em;
+}
+
+  dialog {
+    padding: 0px;
+}
+
+  a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+  abbr:where([title]) {
+    text-decoration: underline dotted;
+}
+
+  b,strong {
+    font-weight: bolder;
+}
+
+  code,kbd,samp,pre {
+    --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New';
+    font-family: var(--global-font-mono, var(--font-mono-fallback));
+    font-size: 1em;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+}
+
+  progress {
+    vertical-align: baseline;
+}
+
+  ::-webkit-search-decoration,::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+  ::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+    height: auto;
+}
+
+  :-moz-ui-invalid {
+    box-shadow: none;
+}
+
+  :-moz-focusring {
+    outline: auto;
+}
+
+  [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+}
+}
+
+@layer base{
+  :root {
+    --made-with-panda: '🐼';
+}
+
+  *,::before,::after,::backdrop {
+    --blur: /*-*/ /*-*/;
+    --brightness: /*-*/ /*-*/;
+    --contrast: /*-*/ /*-*/;
+    --grayscale: /*-*/ /*-*/;
+    --hue-rotate: /*-*/ /*-*/;
+    --invert: /*-*/ /*-*/;
+    --saturate: /*-*/ /*-*/;
+    --sepia: /*-*/ /*-*/;
+    --drop-shadow: /*-*/ /*-*/;
+    --backdrop-blur: /*-*/ /*-*/;
+    --backdrop-brightness: /*-*/ /*-*/;
+    --backdrop-contrast: /*-*/ /*-*/;
+    --backdrop-grayscale: /*-*/ /*-*/;
+    --backdrop-hue-rotate: /*-*/ /*-*/;
+    --backdrop-invert: /*-*/ /*-*/;
+    --backdrop-opacity: /*-*/ /*-*/;
+    --backdrop-saturate: /*-*/ /*-*/;
+    --backdrop-sepia: /*-*/ /*-*/;
+    --gradient-from-position: /*-*/ /*-*/;
+    --gradient-to-position: /*-*/ /*-*/;
+    --gradient-via-position: /*-*/ /*-*/;
+    --scroll-snap-strictness: proximity;
+    --border-spacing-x: 0;
+    --border-spacing-y: 0;
+    --translate-x: 0;
+    --translate-y: 0;
+    --rotate: 0;
+    --rotate-x: 0;
+    --rotate-y: 0;
+    --skew-x: 0;
+    --skew-y: 0;
+    --scale-x: 1;
+    --scale-y: 1;
+}
+}
+
+@layer tokens{
+  :where(:root, :host) {
+    --cUJial: 1 / 1;
+    --joSgrv: 4 / 3;
+    --dXjFHz: 3 / 4;
+    --gqpqIn: 16 / 9;
+    --lixcAJ: 18 / 5;
+    --hSWVDT: 1.618 / 1;
+    --dzOvWn: none;
+    --drrWcF: cubic-bezier(0.4, 0, 0.2, 1);
+    --hgfxJf: linear;
+    --hCLxzh: cubic-bezier(0.4, 0, 1, 1);
+    --byCBno: cubic-bezier(0, 0, 0.2, 1);
+    --gSAVQW: cubic-bezier(0.4, 0, 0.2, 1);
+    --fuVfvZ: 50ms;
+    --fVBMec: 100ms;
+    --mUhz: 150ms;
+    --cWTXGg: 200ms;
+    --cifMdM: 300ms;
+    --goNNlj: 400ms;
+    --bPXfWW: 500ms;
+    --ixNmpi: 0.125rem;
+    --bewZvn: 0.25rem;
+    --kLOfAE: 0.375rem;
+    --dxfumK: 0.5rem;
+    --UXfgJ: 0.75rem;
+    --bphCwb: 1rem;
+    --eougbK: 1.5rem;
+    --holyYx: 2rem;
+    --kkkBVq: 9999px;
+    --dRPRGd: 100;
+    --dooANa: 200;
+    --fVSZDc: 300;
+    --llFanx: 400;
+    --leEsKL: 500;
+    --hmvyHR: 600;
+    --ghWdwL: 700;
+    --janwPd: 800;
+    --bvnjIx: 900;
+    --ekeMrS: 1;
+    --jyTpIu: 1.25;
+    --ipEwfb: 1.375;
+    --lomeBD: 1.5;
+    --kwMYUX: 1.625;
+    --dVGecO: 2;
+    --dywXPJ: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --guQdxN: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --gxQaAd: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --jrseCf: -0.05em;
+    --glKTKc: -0.025em;
+    --knaPyh: 0em;
+    --jwdARF: 0.025em;
+    --eUSVTv: 0.05em;
+    --lhSeXO: 0.1em;
+    --kWjDjq: 0.5rem;
+    --loLyxA: 0.75rem;
+    --eRgJXV: 0.875rem;
+    --daFrau: 1rem;
+    --gKFLFQ: 1.125rem;
+    --gFqSQX: 1.25rem;
+    --dllMvh: 1.5rem;
+    --jaXqkI: 1.875rem;
+    --cLogVb: 2.25rem;
+    --izMrAu: 3rem;
+    --hdlyfR: 3.75rem;
+    --bDBsww: 4.5rem;
+    --fwhTbD: 6rem;
+    --lkGdGW: 8rem;
+    --coIOli: 0 1px rgb(0 0 0 / 0.05);
+    --bUWovs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --cDhNnp: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --jMKUKK: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --kNVcRA: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --bnVgij: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --IghlV: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --crdVaC: inset 0 1px rgb(0 0 0 / 0.05);
+    --ImWHk: inset 0 1px 1px rgb(0 0 0 / 0.05);
+    --lombUd: inset 0 2px 4px rgb(0 0 0 / 0.05);
+    --bLinLB: currentColor;
+    --qLIrn: #000;
+    --RiClf: #fff;
+    --edNtiq: rgb(0 0 0 / 0);
+    --cQacUT: #fff1f2;
+    --fFtaKH: #ffe4e6;
+    --eUoFZM: #fecdd3;
+    --bPMUxN: #fda4af;
+    --bvZVli: #fb7185;
+    --jGTTif: #f43f5e;
+    --iVPyxk: #e11d48;
+    --fRnMVl: #be123c;
+    --hxzBoW: #9f1239;
+    --esXPMX: #881337;
+    --epiLsK: #4c0519;
+    --hPYfGc: #fdf2f8;
+    --ioAkJk: #fce7f3;
+    --eyVWNz: #fbcfe8;
+    --nXIqK: #f9a8d4;
+    --hGgStN: #f472b6;
+    --dviDWY: #ec4899;
+    --kUZZAj: #db2777;
+    --gKbLdu: #be185d;
+    --UhnuV: #9d174d;
+    --hYEIxc: #831843;
+    --dPgAHx: #500724;
+    --kpTESD: #fdf4ff;
+    --jfJgr: #fae8ff;
+    --gZeVto: #f5d0fe;
+    --gfHpEZ: #f0abfc;
+    --dSTUoK: #e879f9;
+    --cZwoAv: #d946ef;
+    --jPvANs: #c026d3;
+    --iVXUZd: #a21caf;
+    --hYKnEO: #86198f;
+    --hfmHQz: #701a75;
+    --cYPdae: #4a044e;
+    --ksTgfC: #faf5ff;
+    --iCdJRO: #f3e8ff;
+    --dWAXWh: #e9d5ff;
+    --jcWlLI: #d8b4fe;
+    --eLlnzT: #c084fc;
+    --jRGBpu: #a855f7;
+    --fmdPtN: #9333ea;
+    --kszdjo: #7e22ce;
+    --kMigIv: #6b21a8;
+    --eDhKZa: #581c87;
+    --eadxYH: #3b0764;
+    --elZfLV: #f5f3ff;
+    --jcWAkV: #ede9fe;
+    --gHfMHa: #ddd6fe;
+    --jSzuYT: #c4b5fd;
+    --jDVPUQ: #a78bfa;
+    --bzTONN: #8b5cf6;
+    --ktyKIO: #7c3aed;
+    --cpwJBL: #6d28d9;
+    --foWeJc: #5b21b6;
+    --iApNaV: #4c1d95;
+    --cfTfyk: #2e1065;
+    --kbclAu: #eef2ff;
+    --gAzkHe: #e0e7ff;
+    --gRHwoJ: #c7d2fe;
+    --iYtjYI: #a5b4fc;
+    --jCTsMf: #818cf8;
+    --ujwXi: #6366f1;
+    --LrIEN: #4f46e5;
+    --cSdwoM: #4338ca;
+    --irwviH: #3730a3;
+    --kyiiSG: #312e81;
+    --hgSANP: #1e1b4b;
+    --glmLoi: #eff6ff;
+    --bYrJpO: #dbeafe;
+    --hoTvPd: #bfdbfe;
+    --bMEoOM: #93c5fd;
+    --hIEEwj: #60a5fa;
+    --cgpxvS: #3b82f6;
+    --hwRjVh: #2563eb;
+    --bUCcUQ: #1d4ed8;
+    --golFsv: #1e40af;
+    --LWyse: #1e3a8a;
+    --eJQij: #172554;
+    --dosFxZ: #f0f9ff;
+    --bMxFwZ: #e0f2fe;
+    --vPNZS: #bae6fd;
+    --bdmqGz: #7dd3fc;
+    --bduzvQ: #38bdf8;
+    --bKRccx: #0ea5e9;
+    --ujkFq: #0284c7;
+    --bbFNlX: #0369a1;
+    --RWYCI: #075985;
+    --bztBjp: #0c4a6e;
+    --iNVpnc: #082f49;
+    --dyXAhp: #ecfeff;
+    --eeWoox: #cffafe;
+    --fnHbwe: #a5f3fc;
+    --cLmYYf: #67e8f9;
+    --bpLSHw: #22d3ee;
+    --kcNzIt: #06b6d4;
+    --llymQa: #0891b2;
+    --iJeksb: #0e7490;
+    --jTKpqw: #155e75;
+    --hrqmSx: #164e63;
+    --bcqAnE: #083344;
+    --jqQOis: #f0fdfa;
+    --hsCMHs: #ccfbf1;
+    --jcJhxj: #99f6e4;
+    --czjDVi: #5eead4;
+    --kfgCt: #2dd4bf;
+    --eWbmzo: #14b8a6;
+    --gGhHpf: #0d9488;
+    --cIdNe: #0f766e;
+    --catTvB: #115e59;
+    --gMpZsw: #134e4a;
+    --bnTNlF: #042f2e;
+    --jVPfey: #ecfdf5;
+    --gSyYHy: #d1fae5;
+    --dOyJRJ: #a7f3d0;
+    --jOMcLk: #6ee7b7;
+    --bLsBkr: #34d399;
+    --hLFUdS: #10b981;
+    --eHFFod: #059669;
+    --kHSYhE: #047857;
+    --iuBcgT: #065f46;
+    --dfsLBy: #064e3b;
+    --jJEloz: #022c22;
+    --hXozqf: #f0fdf4;
+    --iDDIAz: #dcfce7;
+    --khfuXU: #bbf7d0;
+    --hypAVx: #86efac;
+    --wGfza: #4ade80;
+    --jdlUVz: #22c55e;
+    --kGNHsU: #16a34a;
+    --hXXNqx: #15803d;
+    --bAQeLK: #166534;
+    --khvUij: #14532d;
+    --cbdKOS: #052e16;
+    --dhEleJ: #f7fee7;
+    --gFFbyh: #ecfccb;
+    --fjFsBy: #d9f99d;
+    --cfdGZz: #bef264;
+    --bxLPEk: #a3e635;
+    --jIFNBh: #84cc16;
+    --imGeEy: #65a30d;
+    --fietcz: #4d7c0f;
+    --crovfQ: #3f6212;
+    --kCitcN: #365314;
+    --gEQkrg: #1a2e05;
+    --cLFWMs: #fefce8;
+    --kxGpio: #fef9c3;
+    --cbZZGT: #fef08a;
+    --fwcFBW: #fde047;
+    --hUTJsd: #facc15;
+    --loWpng: #eab308;
+    --cTpZLL: #ca8a04;
+    --gnsFGO: #a16207;
+    --ByZWN: #854d0e;
+    --dVBFRQ: #713f12;
+    --iLqZUR: #422006;
+    --kVxzTd: #fffbeb;
+    --jZPQXp: #fef3c7;
+    --hCWpXC: #fde68a;
+    --bCKrrD: #fcd34d;
+    --wuHbc: #fbbf24;
+    --fLErTZ: #f59e0b;
+    --doKQUm: #d97706;
+    --iDUBNj: #b45309;
+    --iOnUJo: #92400e;
+    --cObWdp: #78350f;
+    --frxesg: #451a03;
+    --NQTLQ: #fff7ed;
+    --JsfmQ: #ffedd5;
+    --gBjjlD: #fed7aa;
+    --QMCLK: #fdba74;
+    --ijESlZ: #fb923c;
+    --czilMg: #f97316;
+    --iqZpKT: #ea580c;
+    --cGCJla: #c2410c;
+    --dUhLNN: #9a3412;
+    --jzgOMQ: #7c2d12;
+    --igBpVl: #431407;
+    --bINrJX: #fef2f2;
+    --fKgVwH: #fee2e2;
+    --bLdQLg: #fecaca;
+    --fMUQaR: #fca5a5;
+    --hwCQam: #f87171;
+    --iYfRb: #ef4444;
+    --hzqKEw: #dc2626;
+    --lMavl: #b91c1c;
+    --bLDcWa: #991b1b;
+    --fNuclL: #7f1d1d;
+    --jHDsLG: #450a0a;
+    --kltIHN: #fafafa;
+    --hzpwrB: #f5f5f5;
+    --lbfZji: #e5e5e5;
+    --fcfsVb: #d4d4d4;
+    --kPKNfw: #a3a3a3;
+    --eQKgRp: #737373;
+    --isAJIW: #525252;
+    --ctAduP: #404040;
+    --bqFRBA: #262626;
+    --gHaUMp: #171717;
+    --fhFoEQ: #0a0a0a;
+    --NNaBX: #fafaf9;
+    --juQpUX: #f5f5f4;
+    --jjsRgY: #e7e5e4;
+    --hxarzx: #d6d3d1;
+    --dmyqvy: #a8a29e;
+    --bAfQNX: #78716c;
+    --boIrZY: #57534e;
+    --kRLBRt: #44403c;
+    --iKBpmW: #292524;
+    --gYiPFv: #1c1917;
+    --kshUcS: #0c0a09;
+    --dhFdXS: #fafafa;
+    --dGhjba: #f4f4f5;
+    --efoVXJ: #e4e4e7;
+    --ljOqfc: #d4d4d8;
+    --cXLRGr: #a1a1aa;
+    --kcllNK: #71717a;
+    --kBsYKt: #52525b;
+    --gqwJsQ: #3f3f46;
+    --ylgyn: #27272a;
+    --hCKAFG: #18181b;
+    --dtmsQb: #09090b;
+    --dcmCJN: #f9fafb;
+    --ePJGsV: #f3f4f6;
+    --dnVpUm: #e5e7eb;
+    --bMJKSL: #d1d5db;
+    --jSiOQk: #9ca3af;
+    --iqXjOJ: #6b7280;
+    --gPiTqa: #4b5563;
+    --fnXooz: #374151;
+    --fKIyfA: #1f2937;
+    --ejwTdZ: #111827;
+    --jympbw: #030712;
+    --kcXOlL: #f8fafc;
+    --kbRDfH: #f1f5f9;
+    --ivwbEU: #e2e8f0;
+    --dpNMHJ: #cbd5e1;
+    --dtmoEy: #94a3b8;
+    --jCZJgj: #64748b;
+    --hWEhFw: #475569;
+    --cQVSIl: #334155;
+    --hVLXiS: #1e293b;
+    --cQdIlH: #0f172a;
+    --iFDdka: #020617;
+    --izqvSz: 4px;
+    --aZLOC: 8px;
+    --kMMDaR: 12px;
+    --dyIDQb: 16px;
+    --TtVDs: 24px;
+    --btncja: 40px;
+    --esAhmv: 64px;
+    --fcTUxn: 0rem;
+    --dacYEG: 0.25rem;
+    --ebuyxV: 0.5rem;
+    --bYDCFo: 0.75rem;
+    --hIimNX: 1rem;
+    --fFrqVq: 1.25rem;
+    --gGIQOF: 1.5rem;
+    --eDRUVY: 1.75rem;
+    --flZesP: 2rem;
+    --djiiAi: 2.25rem;
+    --ieMJEa: 2.5rem;
+    --cBFxYr: 2.75rem;
+    --uyqLg: 3rem;
+    --hXmVPi: 3.5rem;
+    --mYCWo: 4rem;
+    --jgejxp: 5rem;
+    --iYEvIx: 6rem;
+    --dzpWeZ: 7rem;
+    --fifqnK: 8rem;
+    --faFCyS: 9rem;
+    --bxwoov: 10rem;
+    --huPzrf: 11rem;
+    --hgdKvb: 12rem;
+    --cZMJbQ: 13rem;
+    --iXfUeA: 14rem;
+    --vWSpd: 15rem;
+    --gtqdrN: 16rem;
+    --hNtIEu: 18rem;
+    --kqIPsj: 20rem;
+    --wdMRQ: 24rem;
+    --gEfgCY: 0.125rem;
+    --jJIQbV: 0.375rem;
+    --cqwGG: 0.625rem;
+    --dhUgfD: 0.875rem;
+    --jjtyTI: 1.125rem;
+    --ZByTJ: 1.375rem;
+    --kTdGYg: 0rem;
+    --cCUBeV: 0.25rem;
+    --gsUKim: 0.5rem;
+    --jshnNX: 0.75rem;
+    --juMtMc: 1rem;
+    --beDnSR: 1.25rem;
+    --eUDwWi: 1.5rem;
+    --hTQaBT: 1.75rem;
+    --cAmzCM: 2rem;
+    --fzzdix: 2.25rem;
+    --dDnfaV: 2.5rem;
+    --cpjPHA: 2.75rem;
+    --ckODEv: 3rem;
+    --hTmzdp: 3.5rem;
+    --gANXGP: 4rem;
+    --htnoem: 5rem;
+    --tQYHK: 6rem;
+    --kcGldO: 7rem;
+    --gMkTEx: 8rem;
+    --lcknGR: 9rem;
+    --kveXIc: 10rem;
+    --gsriJI: 11rem;
+    --bPcliI: 12rem;
+    --Mxqsr: 13rem;
+    --hZfkST: 14rem;
+    --fUWaSi: 15rem;
+    --bSilTO: 16rem;
+    --fnTGst: 18rem;
+    --dAFdyM: 20rem;
+    --jxszKr: 24rem;
+    --hghuKL: 0.125rem;
+    --drtIxO: 0.375rem;
+    --siblR: 0.625rem;
+    --hSPYxQ: 0.875rem;
+    --fHQhyH: 1.125rem;
+    --bTcvlK: 1.375rem;
+    --izvCpj: 20rem;
+    --aTIGG: 24rem;
+    --kMQJUV: 28rem;
+    --dyNKmL: 32rem;
+    --ToPgI: 36rem;
+    --btoFLe: 42rem;
+    --esBjqP: 48rem;
+    --hrOPNc: 56rem;
+    --krbtsN: 64rem;
+    --cRFSXi: 72rem;
+    --fQSwCT: 80rem;
+    --iQceEA: 90rem;
+    --jAesVz: 65ch;
+    --khWApH: 100%;
+    --eOXrSu: min-content;
+    --jNBRbM: max-content;
+    --UhpHH: fit-content;
+    --eomHOU: 640px;
+    --iujnmj: 768px;
+    --gThSgZ: 1024px;
+    --cssArG: 1280px;
+    --jESPPc: 1536px;
+    --bJeTGz: spin 1s linear infinite;
+    --cxTetH: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    --jjLJjo: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --eUTuJH: bounce 1s infinite;
+    --ikokJA: 640px;
+    --kSvAmr: 768px;
+    --uwdhN: 1024px;
+    --eyfDzy: 1280px;
+    --dgHGKE: 1536px;
+}
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+}
+}
+
+  @keyframes ping {
+    75%,100% {
+      transform: scale(2);
+      opacity: 0;
+}
+}
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+}
+}
+
+  @keyframes bounce {
+    0%,100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8,0,1,1);
+}
+
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0,0,0.2,1);
+}
+}
+}
+
+@layer utilities{
+
+  .cIuCKj {
+    background: var(--dcmCJN);
+}
+
+  .AxhTk {
+    padding: var(--hIimNX);
+}
+
+  .bCShOO {
+    background: var(--RiClf);
+}
+
+  .Axhdq {
+    padding: var(--gGIQOF);
+}
+
+  .kLuqnw {
+    background: var(--cgpxvS);
+}
+
+  .dJhuAD {
+    border-radius: var(--dxfumK);
+}
+
+  .fzoNwz {
+    padding-block: var(--ebuyxV);
+}
+
+  .fzoqgU {
+    padding-inline: var(--hIimNX);
+}
+
+  .cYzMrZ {
+    border-radius: var(--kLOfAE);
+}
+
+  .eTaNYj {
+    transition-property: var(--transition-prop, color, background-color, border-color, outline-color, text-decoration-color, fill, stroke);
+    transition-timing-function: var(--transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+    transition-duration: var(--transition-duration, 150ms);
+}
+
+  .dTwGHw {
+    border-bottom: 1px;
+}
+
+  .llkmOJ {
+    border-color: var(--dnVpUm);
+}
+
+  .cMsOtS {
+    box-shadow: var(--cDhNnp);
+}
+
+  .dOmCsa {
+    font-size: var(--jaXqkI);
+}
+
+  .hGHvhs {
+    font-weight: var(--ghWdwL);
+}
+
+  .fkgrjF {
+    color: var(--ejwTdZ);
+}
+
+  .unbqo {
+    color: var(--RiClf);
+}
+
+  .hlqAVQ {
+    font-weight: var(--leEsKL);
+}
+
+  .eOzbBZ {
+    box-shadow: var(--jMKUKK);
+}
+
+  .xNKXN {
+    font-size: var(--gFqSQX);
+}
+
+  .gsjAMe {
+    font-weight: var(--hmvyHR);
+}
+
+  .bDVqaI {
+    color: var(--fKIyfA);
+}
+
+  .jkkeWS {
+    color: var(--gPiTqa);
+}
+
+  .fzoNwA > :not([hidden]) ~ :not([hidden]) {
+    margin-top: var(--ebuyxV);
+    margin-bottom: 0px;
+}
+
+  .bYPzoC {
+    text-align: center;
+}
+
+  .cPVybL {
+    min-height: 100vh;
+}
+
+  .fznPyZ {
+    margin-bottom: var(--gGIQOF);
+}
+
+  .fzopYj {
+    margin-bottom: var(--hIimNX);
+}
+
+  .fzoNvZ {
+    margin-bottom: var(--ebuyxV);
+}
+
+  .fzoNws {
+    padding-bottom: var(--ebuyxV);
+}
+
+  .fznPDb {
+    margin-top: var(--gGIQOF);
+}
+
+  .hvOeJT:last-child {
+    border-bottom: var(--dzOvWn);
+}
+
+  .flbccD:is(:hover, [data-hover]) {
+    background: var(--hwRjVh);
+}
+}

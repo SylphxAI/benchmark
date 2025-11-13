@@ -6,4 +6,7 @@ export default defineConfig({
   exclude: [],
   outdir: 'styled-system',
   jsxFramework: 'react',
+
+  // Hash classnames for smaller output
+  hash: true,
 });

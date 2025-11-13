@@ -64,8 +64,8 @@ const frameworks: FrameworkConfig[] = [
     name: 'Panda CSS',
     dir: 'build-tests/fixtures/panda',
     buildCommand: 'npx vite build',
-    cssPath: 'assets/*.css',
-    prepareBuild: 'npx panda codegen',
+    cssPath: 'styles.css', // Panda CSS generates CSS separately
+    prepareBuild: 'npx panda codegen && npx panda cssgen --outfile styles.css',
   },
   {
     name: 'UnoCSS',
@@ -75,8 +75,20 @@ const frameworks: FrameworkConfig[] = [
   },
 ];
 
-function findCSSFile(distDir: string, pattern: string): string | null {
-  const assetsDir = join(distDir, 'assets');
+function findCSSFile(baseDir: string, pattern: string): string | null {
+  // Check if pattern is a direct file path (e.g., styles.css for Panda)
+  if (!pattern.includes('*')) {
+    const directPath = join(baseDir, pattern);
+    try {
+      statSync(directPath);
+      return directPath;
+    } catch {
+      return null;
+    }
+  }
+
+  // Otherwise check in dist/assets directory for Vite builds
+  const assetsDir = join(baseDir, 'dist', 'assets');
   try {
     const files = readdirSync(assetsDir);
     const cssFile = files.find(f => f.endsWith('.css'));
@@ -116,8 +128,8 @@ async function measureBuild(config: FrameworkConfig, runs: number = 3): Promise<
 
     // Measure CSS size on last run
     if (i === runs - 1) {
-      const distDir = join(config.dir, 'dist');
-      const cssFile = findCSSFile(distDir, config.cssPath);
+      // For Panda CSS, CSS is in config.dir, for others it's in dist/assets
+      const cssFile = findCSSFile(config.dir, config.cssPath);
 
       if (cssFile) {
         const cssContent = readFileSync(cssFile);
@@ -127,11 +139,10 @@ async function measureBuild(config: FrameworkConfig, runs: number = 3): Promise<
         console.log(`  ✓ Build ${i + 1}/${runs}: ${buildTime.toFixed(0)}ms`);
         console.log(`  📊 CSS size: ${(cssSize / 1024).toFixed(2)} KB (gzipped)`);
       } else {
-        // Some frameworks (like Panda CSS) don't output separate CSS files
-        // They use runtime or atomic CSS embedded in JS
+        // Some frameworks don't output separate CSS files
         console.log(`  ✓ Build ${i + 1}/${runs}: ${buildTime.toFixed(0)}ms`);
-        console.log(`  ℹ️  No separate CSS file (zero-runtime or atomic CSS)`);
-        cssSize = 0; // Mark as zero to indicate no separate CSS file
+        console.log(`  ℹ️  No separate CSS file found`);
+        cssSize = 0;
       }
     } else {
       console.log(`  ✓ Build ${i + 1}/${runs}: ${buildTime.toFixed(0)}ms`);
