@@ -303,7 +303,7 @@ cd benchmark
 npm install
 
 # Navigate to this category
-cd /home/runner/work/benchmark/benchmark/benchmarks/router
+cd benchmarks/router
 
 # Install category dependencies
 npm install
@@ -366,7 +366,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-13T14:29:20.721Z*
+*Generated on 2025-11-13T14:33:11.250Z*
 
 [⬆️ Back to Top](#router-benchmarks) • [⬅️ Main README](../../README.md)
 
