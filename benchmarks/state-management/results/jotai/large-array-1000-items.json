@@ -4,12 +4,12 @@
   "packageName": "jotai",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 103609.42066589298,
-    "meanTime": 0.009651631999996198,
-    "variance": 0.0001931406801627169,
-    "p99": 0.014290999999957421,
+    "opsPerSecond": 91870.2795327992,
+    "meanTime": 0.010884912999997822,
+    "variance": 0.0006210529848462272,
+    "p99": 0.01704199999994671,
     "samples": 1000
   }
 }

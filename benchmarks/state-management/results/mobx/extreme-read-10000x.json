@@ -4,12 +4,12 @@
   "packageName": "mobx",
   "test": "Extreme Read (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 27026296.584147204,
-    "meanTime": 0.000037001000003328955,
-    "variance": 6.0807877873894895e-9,
-    "p99": 0.00016700000014679972,
+    "opsPerSecond": 18868636.55365759,
+    "meanTime": 0.000052997999996250656,
+    "variance": 8.982979779171834e-8,
+    "p99": 0.00020799999992959783,
     "samples": 1000
   }
 }

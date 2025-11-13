@@ -84,6 +84,14 @@ export const groups = {
     description: 'Extreme loads and large-scale operations',
     type: 'universal',
   }),
+
+  // REACTIVITY PATTERNS
+  reactivityPatterns: category.createGroup({
+    id: '07-reactivity-patterns',
+    title: 'Reactivity Patterns',
+    description: 'Advanced dependency graph patterns: diamonds, deep chains, wide fanouts',
+    type: 'universal',
+  }),
 };
 
 // ============================================================================
@@ -195,6 +203,47 @@ export const tests = {
   largeArray: groups.performanceStress.createTest({
     name: 'Large Array (1000 items)',
     description: 'Manage array with 1000 items',
+  }),
+
+  // ========== REACTIVITY PATTERNS ==========
+  diamondPattern: groups.reactivityPatterns.createTest({
+    name: 'Diamond Pattern (3 layers)',
+    description: 'Diamond dependency: A→B,C→D (test deduplication)',
+  }),
+
+  deepDiamondPattern: groups.reactivityPatterns.createTest({
+    name: 'Deep Diamond (5 layers)',
+    description: 'Multi-layer diamond dependencies',
+  }),
+
+  deepChain: groups.reactivityPatterns.createTest({
+    name: 'Deep Chain (10 layers)',
+    description: 'Linear dependency chain 10 layers deep',
+  }),
+
+  veryDeepChain: groups.reactivityPatterns.createTest({
+    name: 'Very Deep Chain (100 layers)',
+    description: 'Linear dependency chain 100 layers deep',
+  }),
+
+  wideFanout: groups.reactivityPatterns.createTest({
+    name: 'Wide Fanout (1→100)',
+    description: 'One signal triggers 100 computed values',
+  }),
+
+  massiveFanout: groups.reactivityPatterns.createTest({
+    name: 'Massive Fanout (1→1000)',
+    description: 'One signal triggers 1000 computed values',
+  }),
+
+  dynamicDependencies: groups.reactivityPatterns.createTest({
+    name: 'Dynamic Dependencies',
+    description: 'Conditional dependencies that change at runtime',
+  }),
+
+  repeatedDiamonds: groups.reactivityPatterns.createTest({
+    name: 'Repeated Diamonds (5x)',
+    description: 'Five nested diamond patterns in sequence',
   }),
 };
 

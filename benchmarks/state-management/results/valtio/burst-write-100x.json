@@ -4,12 +4,12 @@
   "packageName": "valtio",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 5064701.562465487,
-    "meanTime": 0.00019744499999980292,
-    "variance": 3.5430521418909413e-7,
-    "p99": 0.0010410000000007358,
+    "opsPerSecond": 3235492.05363166,
+    "meanTime": 0.00030907199999998626,
+    "variance": 9.643169050652319e-8,
+    "p99": 0.0016250000000042064,
     "samples": 1000
   }
 }

@@ -205,3 +205,54 @@ valtio.implement(tests.largeArray, (ctx) => {
   // Update one item
   ctx.store.largeArray[500] = 999;
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+valtio.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.counter++;
+  const result = ctx.store.counter;
+});
+
+valtio.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counter++;
+  }
+});
+
+valtio.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    ctx.store.counter *= 2;
+  }
+});
+
+valtio.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    ctx.store.counter *= 1.01;
+  }
+});
+
+valtio.implement(tests.wideFanout, (ctx) => {
+  ctx.store.counter++;
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+valtio.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.counter++;
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+valtio.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.counter % 2 === 0;
+  ctx.store.counter += toggle ? 1 : 2;
+});
+
+valtio.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counter++;
+    const v = ctx.store.counter;
+  }
+});

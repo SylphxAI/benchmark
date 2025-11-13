@@ -4,12 +4,12 @@
   "packageName": "zustand",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 6229947.356940276,
-    "meanTime": 0.00016051500000011744,
-    "variance": 1.9039965740663647e-8,
-    "p99": 0.0007090000000005148,
+    "opsPerSecond": 3884068.3285329784,
+    "meanTime": 0.0002574619999998049,
+    "variance": 5.710064870427784e-7,
+    "p99": 0.001458000000013726,
     "samples": 1000
   }
 }

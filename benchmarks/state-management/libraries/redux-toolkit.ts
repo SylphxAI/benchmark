@@ -340,3 +340,56 @@ reduxToolkit.implement(tests.largeArray, (ctx) => {
     ctx.store.actions.largeArray.updateItem({ index: 500, value: 999 })
   );
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+reduxToolkit.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.dispatch(ctx.store.actions.increment());
+  const result = ctx.store.getState().counter;
+});
+
+reduxToolkit.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.dispatch(ctx.store.actions.increment());
+  }
+});
+
+reduxToolkit.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    const prev = ctx.store.getState().counter;
+    ctx.store.dispatch(ctx.store.actions.setCounter(prev * 2));
+  }
+});
+
+reduxToolkit.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    const prev = ctx.store.getState().counter;
+    ctx.store.dispatch(ctx.store.actions.setCounter(prev * 1.01));
+  }
+});
+
+reduxToolkit.implement(tests.wideFanout, (ctx) => {
+  ctx.store.dispatch(ctx.store.actions.increment());
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.getState().counter;
+  }
+});
+
+reduxToolkit.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.dispatch(ctx.store.actions.increment());
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.getState().counter;
+  }
+});
+
+reduxToolkit.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.getState().counter % 2 === 0;
+  ctx.store.dispatch(ctx.store.actions.increment());
+});
+
+reduxToolkit.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.dispatch(ctx.store.actions.increment());
+    const v = ctx.store.getState().counter;
+  }
+});

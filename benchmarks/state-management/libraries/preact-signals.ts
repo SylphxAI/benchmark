@@ -251,3 +251,59 @@ preactSignals.implement(tests.largeArray, (ctx) => {
   newArray[500] = 999;
   ctx.store.largeArraySignal.value = newArray;
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+preactSignals.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.counter.value++;
+  const result = ctx.store.doubled.value;
+});
+
+preactSignals.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counter.value++;
+  }
+  const result = ctx.store.doubled.value;
+});
+
+preactSignals.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    ctx.store.counter.value *= 2;
+  }
+  const result = ctx.store.counter.value;
+});
+
+preactSignals.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    ctx.store.counter.value *= 1.01;
+  }
+  const result = ctx.store.counter.value;
+});
+
+preactSignals.implement(tests.wideFanout, (ctx) => {
+  ctx.store.counter.value++;
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.counter.value;
+  }
+});
+
+preactSignals.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.counter.value++;
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.counter.value;
+  }
+});
+
+preactSignals.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.counter.value % 2 === 0;
+  ctx.store.counter.value += toggle ? 1 : 2;
+  const result = ctx.store.counter.value;
+});
+
+preactSignals.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.counter.value++;
+    const a = ctx.store.counter.value;
+    const b = ctx.store.doubled.value;
+  }
+});

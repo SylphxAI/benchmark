@@ -4,12 +4,12 @@
   "packageName": "mobx",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 1657679.2821601392,
-    "meanTime": 0.0006032529999994267,
-    "variance": 5.957049479369625e-7,
-    "p99": 0.002374999999915417,
+    "opsPerSecond": 1632964.9908577409,
+    "meanTime": 0.0006123830000021826,
+    "variance": 4.4830591022406574e-7,
+    "p99": 0.0026670000000876826,
     "samples": 1000
   }
 }

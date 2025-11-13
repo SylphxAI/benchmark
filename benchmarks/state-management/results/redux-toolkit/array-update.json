@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 164140.84006296622,
-    "meanTime": 0.0060923290000001774,
-    "variance": 0.00022088696203881775,
-    "p99": 0.012042000000008102,
+    "opsPerSecond": 131909.31076594777,
+    "meanTime": 0.007580965999999364,
+    "variance": 0.0009602211382530814,
+    "p99": 0.018499999999960437,
     "samples": 1000
   }
 }

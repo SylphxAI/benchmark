@@ -220,3 +220,56 @@ mobx.implement(tests.largeArray, (ctx) => {
   // Update one item
   ctx.store.largeArray[500] = 999;
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+mobx.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.increment();
+  const result = ctx.store.doubled;
+});
+
+mobx.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.increment();
+  }
+  const result = ctx.store.doubled;
+});
+
+mobx.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    ctx.store.counter *= 2;
+  }
+});
+
+mobx.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    ctx.store.counter *= 1.01;
+  }
+});
+
+mobx.implement(tests.wideFanout, (ctx) => {
+  ctx.store.increment();
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+mobx.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.increment();
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+mobx.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.counter % 2 === 0;
+  ctx.store.counter += toggle ? 1 : 2;
+});
+
+mobx.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.increment();
+    const a = ctx.store.counter;
+    const b = ctx.store.doubled;
+  }
+});

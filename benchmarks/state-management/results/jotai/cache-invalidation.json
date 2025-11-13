@@ -4,12 +4,12 @@
   "packageName": "jotai",
   "test": "Cache Invalidation",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T20:03:55.310Z",
+  "timestamp": "2025-11-13T21:00:44.830Z",
   "result": {
-    "opsPerSecond": 441161.2245755678,
-    "meanTime": 0.0022667449999987637,
-    "variance": 0.0000013410597657466498,
-    "p99": 0.004916999999977634,
+    "opsPerSecond": 330227.54328845016,
+    "meanTime": 0.0030282150000023192,
+    "variance": 0.00021720646987882008,
+    "p99": 0.007417000000032203,
     "samples": 1000
   }
 }

@@ -254,3 +254,56 @@ zustand.implement(tests.largeArray, (ctx) => {
     return { largeArray: newArray };
   });
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+zustand.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.increment();
+  const result = ctx.store.counter;
+});
+
+zustand.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.increment();
+  }
+});
+
+zustand.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    const prev = ctx.store.counter;
+    ctx.store.setState({ counter: prev * 2 });
+  }
+});
+
+zustand.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    const prev = ctx.store.counter;
+    ctx.store.setState({ counter: prev * 1.01 });
+  }
+});
+
+zustand.implement(tests.wideFanout, (ctx) => {
+  ctx.store.increment();
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+zustand.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.increment();
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.counter;
+  }
+});
+
+zustand.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.counter % 2 === 0;
+  ctx.store.setState({ counter: ctx.store.counter + (toggle ? 1 : 2) });
+});
+
+zustand.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.increment();
+    const v = ctx.store.counter;
+  }
+});

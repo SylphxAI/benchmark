@@ -268,3 +268,56 @@ jotai.implement(tests.largeArray, (ctx) => {
     return newArray;
   });
 });
+
+// ========== REACTIVITY PATTERNS ==========
+
+jotai.implement(tests.diamondPattern, (ctx) => {
+  ctx.store.setCounter((prev) => prev + 1);
+  const result = ctx.store.getDoubled();
+});
+
+jotai.implement(tests.deepDiamondPattern, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.setCounter((prev) => prev + 1);
+  }
+  const result = ctx.store.getDoubled();
+});
+
+jotai.implement(tests.deepChain, (ctx) => {
+  for (let i = 0; i < 10; i++) {
+    ctx.store.setCounter((prev) => prev * 2);
+  }
+});
+
+jotai.implement(tests.veryDeepChain, (ctx) => {
+  for (let i = 0; i < 100; i++) {
+    ctx.store.setCounter((prev) => prev * 1.01);
+  }
+});
+
+jotai.implement(tests.wideFanout, (ctx) => {
+  ctx.store.setCounter((prev) => prev + 1);
+  for (let i = 0; i < 100; i++) {
+    const v = ctx.store.getCounter();
+  }
+});
+
+jotai.implement(tests.massiveFanout, (ctx) => {
+  ctx.store.setCounter((prev) => prev + 1);
+  for (let i = 0; i < 1000; i++) {
+    const v = ctx.store.getCounter();
+  }
+});
+
+jotai.implement(tests.dynamicDependencies, (ctx) => {
+  const toggle = ctx.store.getCounter() % 2 === 0;
+  ctx.store.setCounter((prev) => prev + (toggle ? 1 : 2));
+});
+
+jotai.implement(tests.repeatedDiamonds, (ctx) => {
+  for (let i = 0; i < 5; i++) {
+    ctx.store.setCounter((prev) => prev + 1);
+    const a = ctx.store.getCounter();
+    const b = ctx.store.getDoubled();
+  }
+});
