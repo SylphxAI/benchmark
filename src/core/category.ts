@@ -185,10 +185,10 @@ export class Category {
     const resultsByLibrary = new Map<string, any[]>();
 
     for (const result of results.results) {
-      if (!resultsByLibrary.has(result.library)) {
-        resultsByLibrary.set(result.library, []);
+      if (!resultsByLibrary.has(result.libraryId)) {
+        resultsByLibrary.set(result.libraryId, []);
       }
-      resultsByLibrary.get(result.library)!.push(result);
+      resultsByLibrary.get(result.libraryId)!.push(result);
     }
 
     let totalFiles = 0;
