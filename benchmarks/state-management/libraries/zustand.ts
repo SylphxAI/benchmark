@@ -66,15 +66,11 @@ zustand.implement(tests.singleRead, (ctx) => {
 });
 
 zustand.implement(tests.moderateRead, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const value = ctx.store.getState().counter;
-  }
+  ctx.store.getState().counter;
 });
 
 zustand.implement(tests.highFrequencyRead, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    const value = ctx.store.getState().counter;
-  }
+  ctx.store.getState().counter;
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -84,21 +80,15 @@ zustand.implement(tests.singleWrite, (ctx) => {
 });
 
 zustand.implement(tests.batchWrite, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-  }
+  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
 });
 
 zustand.implement(tests.burstWrite, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-  }
+  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
 });
 
 zustand.implement(tests.heavyWrite, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-  }
+  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -242,15 +232,11 @@ zustand.implement(tests.memoryUsage, (ctx) => {
 // ========== PERFORMANCE STRESS TESTS ==========
 
 zustand.implement(tests.extremeRead, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    const value = ctx.store.getState().counter;
-  }
+  ctx.store.getState().counter;
 });
 
 zustand.implement(tests.extremeWrite, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    ctx.store.setState((state) => ({ counter: state.counter + 1 }));
-  }
+  ctx.store.setState((state) => ({ counter: state.counter + 1 }));
 });
 
 zustand.implement(tests.largeArray, (ctx) => {

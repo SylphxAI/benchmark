@@ -2,12 +2,13 @@
  * Metric measurement utilities
  *
  * Provides functions to measure different types of metrics:
- * - Speed (performance benchmarks)
+ * - Speed (performance benchmarks) - Using tinybench for accurate measurements
  * - Size (bundle, memory, CSS output)
  * - Quality (efficiency percentages)
  * - Build (build time + output size)
  */
 
+import { Bench } from 'tinybench';
 import type {
   SpeedMetric,
   SizeMetric,
@@ -36,7 +37,10 @@ export interface BuildOptions {
 // ============================================================================
 
 /**
- * Measure performance (ops/sec) of a function
+ * Measure performance (ops/sec) of a function using tinybench
+ *
+ * Uses the same professional benchmark engine as Vitest bench for accurate measurements.
+ * Handles warmup, JIT optimization, GC timing, and statistical analysis automatically.
  *
  * @param fn - Test function to benchmark
  * @param ctx - Test context with store instance
@@ -48,46 +52,44 @@ export async function measurePerformance<TStore>(
   ctx: TestContext<TStore>,
   options?: PerformanceOptions
 ): Promise<SpeedMetric> {
-  const warmup = options?.warmupIterations ?? 100;
+  const warmupIterations = options?.warmupIterations ?? 100;
   const iterations = options?.benchmarkIterations ?? 1000;
 
-  // Warmup phase - let JIT optimize
-  for (let i = 0; i < warmup; i++) {
+  // Create bench instance
+  const bench = new Bench({
+    warmupIterations,
+    iterations,
+    time: 0, // Run exact number of iterations
+  });
+
+  // Add benchmark task
+  bench.add('test', async () => {
     await fn(ctx);
-  }
+  });
 
-  // Measurement phase
-  const times: number[] = [];
-  const start = performance.now();
+  // Run benchmark
+  await bench.run();
 
-  for (let i = 0; i < iterations; i++) {
-    const iterStart = performance.now();
-    await fn(ctx);
-    const iterEnd = performance.now();
-    times.push(iterEnd - iterStart);
-  }
+  // Get results
+  const task = bench.tasks[0];
+  const result = task.result!;
 
-  const end = performance.now();
-  const totalTime = end - start;
-
-  // Calculate statistics
-  times.sort((a, b) => a - b);
-  const mean = times.reduce((a, b) => a + b, 0) / times.length;
-  const variance = times.reduce((sum, t) => sum + Math.pow(t - mean, 2), 0) / times.length;
-  const p99Index = Math.floor(times.length * 0.99);
-  const p99 = times[p99Index] || times[times.length - 1] || 0;
-
-  const opsPerSecond = (iterations / totalTime) * 1000;
+  // Convert tinybench results to our SpeedMetric format
+  const opsPerSecond = result.hz || 0;
+  const meanTime = result.mean || 0;
+  const variance = result.variance || 0;
+  const p99 = result.p99 || meanTime;
+  const samples = result.samples?.length || iterations;
 
   return {
     type: 'speed',
     value: opsPerSecond,
     unit: 'ops/sec',
     opsPerSecond,
-    meanTime: mean,
+    meanTime,
     variance,
     p99,
-    samples: iterations,
+    samples,
   };
 }
 

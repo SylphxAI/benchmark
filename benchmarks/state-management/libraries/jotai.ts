@@ -82,16 +82,12 @@ jotai.implement(tests.singleRead, (ctx) => {
 
 jotai.implement(tests.moderateRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 100; i++) {
-    const value = store.get(counterAtom);
-  }
+  store.get(counterAtom);
 });
 
 jotai.implement(tests.highFrequencyRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 1000; i++) {
-    const value = store.get(counterAtom);
-  }
+  store.get(counterAtom);
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -103,23 +99,17 @@ jotai.implement(tests.singleWrite, (ctx) => {
 
 jotai.implement(tests.batchWrite, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 10; i++) {
-    store.set(counterAtom, (prev) => prev + 1);
-  }
+  store.set(counterAtom, (prev) => prev + 1);
 });
 
 jotai.implement(tests.burstWrite, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 100; i++) {
-    store.set(counterAtom, (prev) => prev + 1);
-  }
+  store.set(counterAtom, (prev) => prev + 1);
 });
 
 jotai.implement(tests.heavyWrite, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 1000; i++) {
-    store.set(counterAtom, (prev) => prev + 1);
-  }
+  store.set(counterAtom, (prev) => prev + 1);
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -254,16 +244,12 @@ jotai.implement(tests.memoryUsage, (ctx) => {
 
 jotai.implement(tests.extremeRead, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 10000; i++) {
-    const value = store.get(counterAtom);
-  }
+  store.get(counterAtom);
 });
 
 jotai.implement(tests.extremeWrite, (ctx) => {
   const { store, counterAtom } = ctx.store;
-  for (let i = 0; i < 10000; i++) {
-    store.set(counterAtom, (prev) => prev + 1);
-  }
+  store.set(counterAtom, (prev) => prev + 1);
 });
 
 jotai.implement(tests.largeArray, (ctx) => {

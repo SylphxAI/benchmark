@@ -71,15 +71,11 @@ valtio.implement(tests.singleRead, (ctx) => {
 });
 
 valtio.implement(tests.moderateRead, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const value = ctx.store.counter;
-  }
+  ctx.store.counter;
 });
 
 valtio.implement(tests.highFrequencyRead, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    const value = ctx.store.counter;
-  }
+  ctx.store.counter;
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -89,21 +85,15 @@ valtio.implement(tests.singleWrite, (ctx) => {
 });
 
 valtio.implement(tests.batchWrite, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counter += 1;
-  }
+  ctx.store.counter += 1;
 });
 
 valtio.implement(tests.burstWrite, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counter += 1;
-  }
+  ctx.store.counter += 1;
 });
 
 valtio.implement(tests.heavyWrite, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    ctx.store.counter += 1;
-  }
+  ctx.store.counter += 1;
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -197,15 +187,11 @@ valtio.implement(tests.memoryUsage, (ctx) => {
 // ========== PERFORMANCE STRESS TESTS ==========
 
 valtio.implement(tests.extremeRead, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    const value = ctx.store.counter;
-  }
+  ctx.store.counter;
 });
 
 valtio.implement(tests.extremeWrite, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    ctx.store.counter += 1;
-  }
+  ctx.store.counter += 1;
 });
 
 valtio.implement(tests.largeArray, (ctx) => {

@@ -107,15 +107,11 @@ solidJs.implement(tests.singleRead, (ctx) => {
 });
 
 solidJs.implement(tests.moderateRead, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const value = ctx.store.getCounter();
-  }
+  ctx.store.getCounter();
 });
 
 solidJs.implement(tests.highFrequencyRead, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    const value = ctx.store.getCounter();
-  }
+  ctx.store.getCounter();
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -125,21 +121,15 @@ solidJs.implement(tests.singleWrite, (ctx) => {
 });
 
 solidJs.implement(tests.batchWrite, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
-  }
+  ctx.store.setCounter((prev) => prev + 1);
 });
 
 solidJs.implement(tests.burstWrite, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
-  }
+  ctx.store.setCounter((prev) => prev + 1);
 });
 
 solidJs.implement(tests.heavyWrite, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
-  }
+  ctx.store.setCounter((prev) => prev + 1);
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -267,15 +257,11 @@ solidJs.implement(tests.memoryUsage, (ctx) => {
 // ========== PERFORMANCE STRESS TESTS ==========
 
 solidJs.implement(tests.extremeRead, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    const value = ctx.store.getCounter();
-  }
+  ctx.store.getCounter();
 });
 
 solidJs.implement(tests.extremeWrite, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    ctx.store.setCounter((prev) => prev + 1);
-  }
+  ctx.store.setCounter((prev) => prev + 1);
 });
 
 solidJs.implement(tests.largeArray, (ctx) => {

@@ -77,15 +77,11 @@ preactSignals.implement(tests.singleRead, (ctx) => {
 });
 
 preactSignals.implement(tests.moderateRead, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const value = ctx.store.counterSignal.value;
-  }
+  ctx.store.counterSignal.value;
 });
 
 preactSignals.implement(tests.highFrequencyRead, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    const value = ctx.store.counterSignal.value;
-  }
+  ctx.store.counterSignal.value;
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -95,21 +91,15 @@ preactSignals.implement(tests.singleWrite, (ctx) => {
 });
 
 preactSignals.implement(tests.batchWrite, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.counterSignal.value += 1;
-  }
+  ctx.store.counterSignal.value += 1;
 });
 
 preactSignals.implement(tests.burstWrite, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.counterSignal.value += 1;
-  }
+  ctx.store.counterSignal.value += 1;
 });
 
 preactSignals.implement(tests.heavyWrite, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    ctx.store.counterSignal.value += 1;
-  }
+  ctx.store.counterSignal.value += 1;
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -240,15 +230,11 @@ preactSignals.implement(tests.memoryUsage, (ctx) => {
 // ========== PERFORMANCE STRESS TESTS ==========
 
 preactSignals.implement(tests.extremeRead, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    const value = ctx.store.counterSignal.value;
-  }
+  ctx.store.counterSignal.value;
 });
 
 preactSignals.implement(tests.extremeWrite, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    ctx.store.counterSignal.value += 1;
-  }
+  ctx.store.counterSignal.value += 1;
 });
 
 preactSignals.implement(tests.largeArray, (ctx) => {

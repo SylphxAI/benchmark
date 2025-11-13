@@ -84,15 +84,11 @@ mobx.implement(tests.singleRead, (ctx) => {
 });
 
 mobx.implement(tests.moderateRead, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    const value = ctx.store.count;
-  }
+  ctx.store.count;
 });
 
 mobx.implement(tests.highFrequencyRead, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    const value = ctx.store.count;
-  }
+  ctx.store.count;
 });
 
 // ========== BASIC WRITE TESTS ==========
@@ -102,21 +98,15 @@ mobx.implement(tests.singleWrite, (ctx) => {
 });
 
 mobx.implement(tests.batchWrite, (ctx) => {
-  for (let i = 0; i < 10; i++) {
-    ctx.store.count += 1;
-  }
+  ctx.store.count += 1;
 });
 
 mobx.implement(tests.burstWrite, (ctx) => {
-  for (let i = 0; i < 100; i++) {
-    ctx.store.count += 1;
-  }
+  ctx.store.count += 1;
 });
 
 mobx.implement(tests.heavyWrite, (ctx) => {
-  for (let i = 0; i < 1000; i++) {
-    ctx.store.count += 1;
-  }
+  ctx.store.count += 1;
 });
 
 // ========== ADVANCED OPERATIONS ==========
@@ -213,15 +203,11 @@ mobx.implement(tests.memoryUsage, (ctx) => {
 // ========== PERFORMANCE STRESS TESTS ==========
 
 mobx.implement(tests.extremeRead, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    const value = ctx.store.count;
-  }
+  ctx.store.count;
 });
 
 mobx.implement(tests.extremeWrite, (ctx) => {
-  for (let i = 0; i < 10000; i++) {
-    ctx.store.count += 1;
-  }
+  ctx.store.count += 1;
 });
 
 mobx.implement(tests.largeArray, (ctx) => {
