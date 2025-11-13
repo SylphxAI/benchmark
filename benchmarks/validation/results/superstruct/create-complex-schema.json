@@ -4,12 +4,12 @@
   "packageName": "superstruct",
   "test": "Create Complex Schema",
   "group": "01-schema-creation",
-  "timestamp": "2025-11-13T15:43:37.050Z",
+  "timestamp": "2025-11-13T16:06:58.426Z",
   "result": {
-    "opsPerSecond": 266439.1631465621,
-    "meanTime": 0.003632039999998824,
-    "variance": 0.000007044011372401258,
-    "p99": 0.012784000000010565,
+    "opsPerSecond": 246579.81468047545,
+    "meanTime": 0.003929899999999066,
+    "variance": 0.00000829024134799728,
+    "p99": 0.016200000000026193,
     "samples": 1000
   }
 }

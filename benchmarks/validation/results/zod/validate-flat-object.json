@@ -4,12 +4,12 @@
   "packageName": "zod",
   "test": "Validate Flat Object",
   "group": "03-object-validation",
-  "timestamp": "2025-11-13T15:43:37.050Z",
+  "timestamp": "2025-11-13T16:06:58.426Z",
   "result": {
-    "opsPerSecond": 8142.08498473815,
-    "meanTime": 0.12269458699999848,
-    "variance": 0.0049904100426142505,
-    "p99": 0.2573300000000245,
+    "opsPerSecond": 8209.357935772055,
+    "meanTime": 0.12172655200000213,
+    "variance": 0.004956287260289352,
+    "p99": 0.2599640000000818,
     "samples": 1000
   }
 }
