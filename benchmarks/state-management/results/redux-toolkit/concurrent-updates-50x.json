@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 2233.5308466983884,
-    "meanTime": 0.45599567400004887,
-    "variance": 0.00893957054267806,
-    "p99": 1.132511619997531,
+    "opsPerSecond": 6618.890675378948,
+    "meanTime": 0.15108271900000034,
+    "variance": 0.0014447573978719063,
+    "p99": 0.4475830000000087,
     "samples": 1000
   }
 }

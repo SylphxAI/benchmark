@@ -4,12 +4,12 @@
   "packageName": "zustand",
   "test": "High-Frequency Read (1000x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 17846658.04095012,
-    "meanTime": 0.00006681500000922824,
-    "variance": 1.783031806975132e-9,
-    "p99": 0.00017099999968195334,
+    "opsPerSecond": 14909128.859592702,
+    "meanTime": 0.00006707300000003613,
+    "variance": 1.4923603274339682e-8,
+    "p99": 0.0001660000000001105,
     "samples": 1000
   }
 }

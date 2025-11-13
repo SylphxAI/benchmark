@@ -4,12 +4,12 @@
   "packageName": "solid-js",
   "test": "Single Read",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 19397583.7515703,
-    "meanTime": 0.00005387999999584281,
-    "variance": 2.359175173639282e-10,
-    "p99": 0.00011703000004217753,
+    "opsPerSecond": 22533687.863351192,
+    "meanTime": 0.00004437800000000891,
+    "variance": 1.4924013129131542e-8,
+    "p99": 0.0005000000000023874,
     "samples": 1000
   }
 }

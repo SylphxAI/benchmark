@@ -4,12 +4,12 @@
   "packageName": "jotai",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 20544.92228863965,
-    "meanTime": 0.05482624500044039,
-    "variance": 0.0026200135171475384,
-    "p99": 0.14581021000180044,
+    "opsPerSecond": 227846.27849557254,
+    "meanTime": 0.004388924000000429,
+    "variance": 0.0003095394169712945,
+    "p99": 0.0060839999999871,
     "samples": 1000
   }
 }

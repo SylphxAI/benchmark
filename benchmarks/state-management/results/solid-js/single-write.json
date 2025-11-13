@@ -4,12 +4,12 @@
   "packageName": "solid-js",
   "test": "Single Write",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 18406971.944502834,
-    "meanTime": 0.00006163200001174119,
-    "variance": 1.9418364123064702e-9,
-    "p99": 0.0002830300011919462,
+    "opsPerSecond": 17743080.198716428,
+    "meanTime": 0.00005636000000001928,
+    "variance": 3.2401676076087266e-8,
+    "p99": 0.0004580000000018458,
     "samples": 1000
   }
 }

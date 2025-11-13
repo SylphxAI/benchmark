@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 445.37234405395856,
-    "meanTime": 2.6277130889998515,
-    "variance": 0.9363577479517252,
-    "p99": 4.450584540004928,
+    "opsPerSecond": 2733.119202189833,
+    "meanTime": 0.3658823219999987,
+    "variance": 0.05431080257516771,
+    "p99": 0.836667000000034,
     "samples": 1000
   }
 }

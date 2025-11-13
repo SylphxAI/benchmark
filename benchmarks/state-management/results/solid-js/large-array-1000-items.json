@@ -4,12 +4,12 @@
   "packageName": "solid-js",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 179464.1430220127,
-    "meanTime": 0.006225005000262172,
-    "variance": 0.00030643692297014236,
-    "p99": 0.009334949998155923,
+    "opsPerSecond": 145134.59492070595,
+    "meanTime": 0.006890155999996751,
+    "variance": 0.00014437152872048806,
+    "p99": 0.01079200000003766,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 390.56465935159304,
-    "meanTime": 2.5865254849999184,
-    "variance": 0.45277447236402324,
-    "p99": 3.4336743999992905,
+    "opsPerSecond": 1261.9716132584917,
+    "meanTime": 0.7924108509999966,
+    "variance": 0.004830733094218959,
+    "p99": 1.1879579999999805,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "zustand",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 3783056.634467983,
-    "meanTime": 0.00029250599999068073,
-    "variance": 1.9488032419595868e-7,
-    "p99": 0.0009593099972698835,
+    "opsPerSecond": 5283932.090910896,
+    "meanTime": 0.00018925299999978052,
+    "variance": 3.661287586649458e-8,
+    "p99": 0.0005409999999983484,
     "samples": 1000
   }
 }

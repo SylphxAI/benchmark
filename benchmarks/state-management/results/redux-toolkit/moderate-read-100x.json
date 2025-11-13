@@ -4,12 +4,12 @@
   "packageName": "@reduxjs/toolkit",
   "test": "Moderate Read (100x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T18:18:13.240Z",
+  "timestamp": "2025-11-13T20:03:55.310Z",
   "result": {
-    "opsPerSecond": 15125348.711924799,
-    "meanTime": 0.00006790299999192939,
-    "variance": 1.6452011224829584e-10,
-    "p99": 0.00009001999776955926,
+    "opsPerSecond": 7704278.9565349305,
+    "meanTime": 0.00012979799999995835,
+    "variance": 1.3915917113079225e-8,
+    "p99": 0.0002920000000017353,
     "samples": 1000
   }
 }
