@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen-router",
   "test": "Wildcard Route Matching",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-13T21:08:46.936Z",
+  "timestamp": "2025-11-13T21:15:32.908Z",
   "result": {
-    "opsPerSecond": 2667107.4044046192,
-    "meanTime": 0.00041106800000306976,
-    "variance": 5.414920714258432e-7,
-    "p99": 0.0009125900004255522,
+    "opsPerSecond": 2569547.807973062,
+    "meanTime": 0.00041488899999603745,
+    "variance": 4.3919588455214035e-7,
+    "p99": 0.0007611000002361833,
     "samples": 1000
   }
 }

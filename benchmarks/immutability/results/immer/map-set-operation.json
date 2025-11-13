@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Map - Set Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-13T21:08:52.692Z",
+  "timestamp": "2025-11-13T21:15:30.569Z",
   "result": {
-    "opsPerSecond": 204818.90556788692,
-    "meanTime": 0.005071110000055341,
-    "variance": 0.000003807138570583577,
-    "p99": 0.009387419998492979,
+    "opsPerSecond": 206766.43782290447,
+    "meanTime": 0.004934871000037674,
+    "variance": 0.0000012388291913840469,
+    "p99": 0.007895100002424443,
     "samples": 1000
   }
 }
