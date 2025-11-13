@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-13T21:15:30.569Z",
+  "timestamp": "2025-11-13T21:23:54.236Z",
   "result": {
-    "opsPerSecond": 77717.7952060947,
-    "meanTime": 0.014606718000024558,
-    "variance": 0.0009525198261553946,
-    "p99": 0.02988478000093888,
+    "opsPerSecond": 88010.47969549039,
+    "meanTime": 0.013394729999992706,
+    "variance": 0.0010252845935957457,
+    "p99": 0.03510301999926013,
     "samples": 1000
   }
 }
