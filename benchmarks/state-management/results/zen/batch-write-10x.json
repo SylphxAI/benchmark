@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Batch Write (10x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T23:05:26.022Z",
+  "timestamp": "2025-11-13T23:19:10.593Z",
   "result": {
-    "opsPerSecond": 21018350.449237466,
-    "meanTime": 0.00004817500002900488,
-    "variance": 3.574411859839412e-11,
-    "p99": 0.00005100000089441892,
+    "opsPerSecond": 20958275.411718544,
+    "meanTime": 0.00004823499994563463,
+    "variance": 3.096674164401642e-11,
+    "p99": 0.00005109000087031737,
     "samples": 1000
   }
 }

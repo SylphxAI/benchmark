@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T23:05:26.022Z",
+  "timestamp": "2025-11-13T23:19:10.593Z",
   "result": {
-    "opsPerSecond": 220644.7949287862,
-    "meanTime": 0.005678087000051164,
-    "variance": 0.00021556666596915752,
-    "p99": 0.014238810002643728,
+    "opsPerSecond": 218945.07276162744,
+    "meanTime": 0.00464653600006568,
+    "variance": 0.000001004589300500773,
+    "p99": 0.006813509999628876,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "wouter",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-13T23:05:25.254Z",
+  "timestamp": "2025-11-13T23:19:03.934Z",
   "result": {
-    "opsPerSecond": 224558.8770097428,
-    "meanTime": 0.004615357999974549,
-    "variance": 0.0000022380948807768053,
-    "p99": 0.008937800000503556,
+    "opsPerSecond": 230863.25450881207,
+    "meanTime": 0.0050730369999791945,
+    "variance": 0.0003771095260077328,
+    "p99": 0.008822310000350626,
     "samples": 1000
   }
 }

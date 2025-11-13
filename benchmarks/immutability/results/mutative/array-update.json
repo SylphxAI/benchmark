@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-13T23:05:27.700Z",
+  "timestamp": "2025-11-13T23:19:05.643Z",
   "result": {
-    "opsPerSecond": 293711.0937522012,
-    "meanTime": 0.0034700189999985016,
-    "variance": 4.815897423497138e-7,
-    "p99": 0.00652269999967757,
+    "opsPerSecond": 287893.334296315,
+    "meanTime": 0.003576346999994712,
+    "variance": 0.000001489400078633817,
+    "p99": 0.006829209999723383,
     "samples": 1000
   }
 }
