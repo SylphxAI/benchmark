@@ -1,0 +1,15 @@
+{
+  "name": "@benchmark/validation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Schema validation library performance benchmarks",
+  "scripts": {
+    "benchmark": "bun run index.ts"
+  },
+  "dependencies": {
+    "zod": "^4.1.12",
+    "yup": "^1.7.1",
+    "joi": "^18.0.1",
+    "superstruct": "^2.0.2"
+  }
+}

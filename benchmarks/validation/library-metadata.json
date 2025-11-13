@@ -1,0 +1,36 @@
+{
+  "libraries": {
+    "zod": {
+      "name": "Zod",
+      "displayName": "Zod",
+      "npm": "zod",
+      "url": "https://github.com/colinhacks/zod",
+      "description": "TypeScript-first schema declaration and validation library with static type inference",
+      "color": "#FF7979"
+    },
+    "yup": {
+      "name": "Yup",
+      "displayName": "Yup",
+      "npm": "yup",
+      "url": "https://github.com/jquense/yup",
+      "description": "Dead simple Object schema validation",
+      "color": "#BB8FCE"
+    },
+    "joi": {
+      "name": "Joi",
+      "displayName": "Joi",
+      "npm": "joi",
+      "url": "git://github.com/hapijs/joi",
+      "description": "Object schema validation",
+      "color": "#EA8685"
+    },
+    "superstruct": {
+      "name": "Superstruct",
+      "displayName": "Superstruct",
+      "npm": "superstruct",
+      "url": "git://github.com/ianstormtaylor/superstruct",
+      "description": "A simple and composable way to validate data in JavaScript (and TypeScript).",
+      "color": "#5A29E4"
+    }
+  }
+}
