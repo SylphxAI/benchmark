@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T06:12:31.146Z",
+  "timestamp": "2025-11-14T07:06:09.306Z",
   "result": {
-    "opsPerSecond": 2316684.6929946784,
-    "meanTime": 0.00046682700005112567,
-    "variance": 1.0912860964656572e-7,
-    "p99": 0.0012180399994394975,
+    "opsPerSecond": 1942588.4930991319,
+    "meanTime": 0.0005465219999841792,
+    "variance": 1.5009837386867692e-7,
+    "p99": 0.0011219999996683327,
     "samples": 1000
   }
 }

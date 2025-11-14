@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-14T06:12:31.146Z",
+  "timestamp": "2025-11-14T07:06:09.306Z",
   "result": {
-    "opsPerSecond": 7854527.458791297,
-    "meanTime": 0.0001430750000063199,
-    "variance": 1.9514283657292524e-8,
-    "p99": 0.0005334800003583947,
+    "opsPerSecond": 6889413.242263885,
+    "meanTime": 0.00014728999999806547,
+    "variance": 8.265824830687729e-10,
+    "p99": 0.0002803100001983691,
     "samples": 1000
   }
 }
