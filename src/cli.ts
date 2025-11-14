@@ -242,9 +242,7 @@ async function scaffold(args: string[]) {
 }
 
 async function measureSizes(args: string[]) {
-  console.log('📏 Measuring bundle sizes...\n');
-
-  const { measureBundleSize, updateCategoryBundleSizes } = await import('./core/bundle-sizes.js');
+  const { updateCategoryBundleSizes, updateAllBundleSizes } = await import('./core/bundle-sizes.js');
   const { existsSync } = await import('fs');
 
   const category = args[0];
@@ -258,20 +256,17 @@ async function measureSizes(args: string[]) {
       process.exit(1);
     }
 
-    updateCategoryBundleSizes(category, categoryPath);
+    // Convert kebab-case to Title Case for display
+    const displayName = category
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
+    await updateCategoryBundleSizes(displayName, categoryPath);
   } else {
-    // Measure all categories (auto-discovered)
-    const categories = discoverCategories();
-
-    for (const cat of categories) {
-      const categoryPath = join(rootDir, 'benchmarks', cat);
-      if (existsSync(categoryPath)) {
-        updateCategoryBundleSizes(cat, categoryPath);
-      }
-    }
+    // Measure all categories
+    await updateAllBundleSizes(rootDir);
   }
-
-  console.log('\n✅ Bundle size measurement complete');
 }
 
 async function generateReadme(args: string[]) {

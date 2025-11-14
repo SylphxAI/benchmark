@@ -1,26 +1,26 @@
 {
-  "lastChecked": "2025-11-13T18:20:56.385Z",
+  "lastChecked": "2025-11-14T13:14:02.595Z",
   "lastBenchmarkRun": "2025-11-10T16:38:08Z",
-  "testFilesHash": "e22eeee52ba9c1ceee88d4cbf5d351c0b8cce82a48e18fba4914229c619e46f0",
+  "testFilesHash": "b2d01c068f0b74e1889912126e241d9867e00eeb49f2225c5d7a07f713b572db",
   "libraries": {
     "@sylphx/zen": {
       "current": "3.1.1",
       "latest": "3.8.0",
-      "lastUpdated": "2025-11-14T06:01:00.000Z",
+      "lastUpdated": "2025-11-14T13:14:00.742Z",
       "size": {
         "gzip": 1697,
         "minified": 4924,
-        "lastChecked": "2025-11-14T06:01:00.000Z"
+        "lastChecked": "2025-11-14T13:14:02.543Z"
       }
     },
     "@preact/signals": {
       "current": "2.4.0",
       "latest": "2.5.0",
-      "lastUpdated": "2025-11-13T18:20:52.522Z",
+      "lastUpdated": "2025-11-14T13:13:59.057Z",
       "size": {
         "gzip": 3108,
         "minified": 9207,
-        "lastChecked": "2025-11-13T18:20:56.364Z"
+        "lastChecked": "2025-11-14T13:14:02.557Z"
       }
     },
     "solid-js": {
@@ -96,21 +96,21 @@
     "react": {
       "current": "18.3.1",
       "latest": "19.2.0",
-      "lastUpdated": "2025-11-13T18:20:54.866Z",
+      "lastUpdated": "2025-11-14T13:14:01.471Z",
       "size": {
         "gzip": 2576,
         "minified": 6599,
-        "lastChecked": "2025-11-13T18:20:56.374Z"
+        "lastChecked": "2025-11-14T13:14:02.575Z"
       }
     },
     "react-dom": {
       "current": "18.3.1",
       "latest": "19.2.0",
-      "lastUpdated": "2025-11-13T18:20:55.369Z",
+      "lastUpdated": "2025-11-14T13:14:01.757Z",
       "size": {
         "gzip": 42942,
         "minified": 133258,
-        "lastChecked": "2025-11-13T18:20:56.385Z"
+        "lastChecked": "2025-11-14T13:14:02.595Z"
       }
     }
   }
