@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T13:24:50.228Z",
+  "timestamp": "2025-11-14T13:49:50.822Z",
   "result": {
-    "opsPerSecond": 15250615.592136646,
-    "meanTime": 0.00006601300003239885,
-    "variance": 4.037120213496549e-11,
-    "p99": 0.00009301000231062061,
+    "opsPerSecond": 15446092.383635188,
+    "meanTime": 0.00006564900007651886,
+    "variance": 8.29207201105932e-11,
+    "p99": 0.00010000000474974513,
     "samples": 1000
   }
 }

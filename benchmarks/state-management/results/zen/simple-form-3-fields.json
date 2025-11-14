@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Simple Form (3 fields)",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T13:24:50.228Z",
+  "timestamp": "2025-11-14T13:49:50.822Z",
   "result": {
-    "opsPerSecond": 14690423.033148332,
-    "meanTime": 0.00006923300006019417,
-    "variance": 3.257844954018628e-10,
-    "p99": 0.00008802000069408676,
+    "opsPerSecond": 14651885.67623845,
+    "meanTime": 0.0000709319999696163,
+    "variance": 1.3360534231006463e-9,
+    "p99": 0.00009999999751016731,
     "samples": 1000
   }
 }
