@@ -4,12 +4,12 @@
   "packageName": "@sylphx/zen",
   "test": "Wide Fanout (1→100)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T13:13:42.546Z",
+  "timestamp": "2025-11-14T13:16:52.564Z",
   "result": {
-    "opsPerSecond": 593986.9396935775,
-    "meanTime": 0.0016980240001503262,
-    "variance": 1.4508463393839434e-7,
-    "p99": 0.0017530000041006133,
+    "opsPerSecond": 594928.4641722535,
+    "meanTime": 0.0016959009999918636,
+    "variance": 1.5362889199343963e-7,
+    "p99": 0.0017430000007152557,
     "samples": 1000
   }
 }
