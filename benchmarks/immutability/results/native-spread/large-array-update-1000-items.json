@@ -5,12 +5,12 @@
   "version": "unknown",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-14T18:07:14.304Z",
+  "timestamp": "2025-11-14T19:04:40.116Z",
   "result": {
-    "opsPerSecond": 328546.03491743584,
-    "meanTime": 0.0038357660000183386,
-    "variance": 0.00023466311999593262,
-    "p99": 0.006401809998751559,
+    "opsPerSecond": 335360.36098126386,
+    "meanTime": 0.0030604140000104964,
+    "variance": 7.753770256624174e-7,
+    "p99": 0.004849799997246009,
     "samples": 1000
   }
 }

@@ -5,11 +5,11 @@
   "version": "3.1.1",
   "test": "Cache Invalidation",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T18:07:14.328Z",
+  "timestamp": "2025-11-14T19:04:45.967Z",
   "result": {
-    "opsPerSecond": 20291836.47032238,
-    "meanTime": 0.00004997499998717103,
-    "variance": 8.565002355329218e-11,
+    "opsPerSecond": 20234670.718410116,
+    "meanTime": 0.00004996599992955453,
+    "variance": 3.464949302280149e-11,
     "p99": 0.00008000000161700882,
     "samples": 1000
   }
