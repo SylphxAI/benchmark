@@ -4,12 +4,12 @@
   "packageName": "immutable",
   "test": "Array Push",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T00:18:54.048Z",
+  "timestamp": "2025-11-14T00:26:15.292Z",
   "result": {
-    "opsPerSecond": 4117579.777652693,
-    "meanTime": 0.00026972300002853445,
-    "variance": 2.0282538803394546e-8,
-    "p99": 0.0009010100003342814,
+    "opsPerSecond": 4036695.362649731,
+    "meanTime": 0.0002657099999987622,
+    "variance": 1.1176848743651601e-8,
+    "p99": 0.0006920899996202933,
     "samples": 1000
   }
 }

@@ -4,12 +4,12 @@
   "packageName": "mutative",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T00:18:54.048Z",
+  "timestamp": "2025-11-14T00:26:15.292Z",
   "result": {
-    "opsPerSecond": 163376.70198263874,
-    "meanTime": 0.00628975699997136,
-    "variance": 0.0000027441131050189504,
-    "p99": 0.011712489999536045,
+    "opsPerSecond": 167489.99988972605,
+    "meanTime": 0.006049055999972552,
+    "variance": 9.455620548376399e-7,
+    "p99": 0.009077300000608374,
     "samples": 1000
   }
 }
