@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T02:34:57.136Z",
+  "timestamp": "2025-11-14T03:25:09.204Z",
   "result": {
-    "opsPerSecond": 77308.77639321987,
-    "meanTime": 0.013051829000023645,
-    "variance": 0.000002555406920805092,
-    "p99": 0.02314459000068382,
+    "opsPerSecond": 75784.68270342292,
+    "meanTime": 0.013326886000013473,
+    "variance": 0.0000027336524594238695,
+    "p99": 0.023063700000548124,
     "samples": 1000
   }
 }
