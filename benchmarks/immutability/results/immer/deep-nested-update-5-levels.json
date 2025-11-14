@@ -4,12 +4,12 @@
   "packageName": "immer",
   "test": "Deep Nested Update (5 levels)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-14T07:06:09.306Z",
+  "timestamp": "2025-11-14T08:07:06.239Z",
   "result": {
-    "opsPerSecond": 149776.67844031134,
-    "meanTime": 0.006831108999971548,
-    "variance": 0.0000031987902092727185,
-    "p99": 0.01206050000037066,
+    "opsPerSecond": 141586.32011590208,
+    "meanTime": 0.0072613799999599,
+    "variance": 0.000003997057613269268,
+    "p99": 0.01396312000068064,
     "samples": 1000
   }
 }
