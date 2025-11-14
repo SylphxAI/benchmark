@@ -4,12 +4,12 @@
   "packageName": "@solidjs/router",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-14T00:00:29.526Z",
+  "timestamp": "2025-11-14T00:18:54.894Z",
   "result": {
-    "opsPerSecond": 2256358.4249614305,
-    "meanTime": 0.00048757399998885376,
-    "variance": 3.1817618071884575e-7,
-    "p99": 0.0010320999992200085,
+    "opsPerSecond": 2297512.802868265,
+    "meanTime": 0.0004885740000163424,
+    "variance": 7.994219925155703e-7,
+    "p99": 0.0009422999996695577,
     "samples": 1000
   }
 }

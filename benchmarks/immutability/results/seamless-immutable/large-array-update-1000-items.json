@@ -4,12 +4,12 @@
   "packageName": "seamless-immutable",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-14T00:00:26.316Z",
+  "timestamp": "2025-11-14T00:18:54.048Z",
   "result": {
-    "opsPerSecond": 470.92166576270216,
-    "meanTime": 2.1465921670000316,
-    "variance": 0.07094551188390014,
-    "p99": 3.2107341699999594,
+    "opsPerSecond": 462.9433692512047,
+    "meanTime": 2.1870172060000406,
+    "variance": 0.08575385128598055,
+    "p99": 3.4702662199997576,
     "samples": 1000
   }
 }
