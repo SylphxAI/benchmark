@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T09:05:48.937Z",
+  "timestamp": "2025-11-14T10:05:52.079Z",
   "result": {
-    "opsPerSecond": 8844749.56302747,
-    "meanTime": 0.00012611399999150309,
-    "variance": 8.934901906520733e-9,
-    "p99": 0.0005613999998331561,
+    "opsPerSecond": 9573103.521403354,
+    "meanTime": 0.00012377999998989254,
+    "variance": 1.563021036813663e-7,
+    "p99": 0.0005012999995324205,
     "samples": 1000
   }
 }

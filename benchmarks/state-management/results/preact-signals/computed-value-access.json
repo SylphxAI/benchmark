@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-14T09:05:48.937Z",
+  "timestamp": "2025-11-14T10:05:52.079Z",
   "result": {
-    "opsPerSecond": 19006239.55720666,
-    "meanTime": 0.000053167000018220276,
-    "variance": 4.946057174198433e-11,
-    "p99": 0.00007999999979801942,
+    "opsPerSecond": 18137351.69175943,
+    "meanTime": 0.00005572500000562286,
+    "variance": 3.903841369400643e-11,
+    "p99": 0.00006109000063588602,
     "samples": 1000
   }
 }

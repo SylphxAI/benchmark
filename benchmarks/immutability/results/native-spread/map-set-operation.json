@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Map - Set Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-14T09:05:45.294Z",
+  "timestamp": "2025-11-14T10:05:48.658Z",
   "result": {
-    "opsPerSecond": 5092212.663570129,
-    "meanTime": 0.00022423700001309043,
-    "variance": 1.5367282111345586e-8,
-    "p99": 0.0005909999999857973,
+    "opsPerSecond": 4551907.947436118,
+    "meanTime": 0.00026492499999221765,
+    "variance": 1.3195169912323078e-7,
+    "p99": 0.0007223900006647451,
     "samples": 1000
   }
 }
