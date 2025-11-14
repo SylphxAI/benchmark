@@ -5,12 +5,12 @@
   "version": "2.4.0",
   "test": "Deep Diamond (5 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T14:35:48.708Z",
+  "timestamp": "2025-11-14T14:44:37.953Z",
   "result": {
-    "opsPerSecond": 4912143.575563483,
-    "meanTime": 0.0002133590000885306,
-    "variance": 9.366118324559724e-8,
-    "p99": 0.00023099999816622585,
+    "opsPerSecond": 4968559.139133819,
+    "meanTime": 0.0002015739999478683,
+    "variance": 9.113766243044298e-11,
+    "p99": 0.0002299999978276901,
     "samples": 1000
   }
 }

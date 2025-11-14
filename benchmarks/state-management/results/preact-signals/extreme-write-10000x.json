@@ -5,12 +5,12 @@
   "version": "2.4.0",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-14T14:35:48.708Z",
+  "timestamp": "2025-11-14T14:44:37.953Z",
   "result": {
-    "opsPerSecond": 8220.962103207687,
-    "meanTime": 0.12181780199994319,
-    "variance": 0.00003237407828804269,
-    "p99": 0.13641450999781227,
+    "opsPerSecond": 8444.600681032072,
+    "meanTime": 0.11853225300007034,
+    "variance": 0.000017394172972209188,
+    "p99": 0.13452169999967736,
     "samples": 1000
   }
 }
