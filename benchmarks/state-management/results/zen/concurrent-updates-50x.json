@@ -2,14 +2,15 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
+  "version": "3.1.1",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:31:26.119Z",
   "result": {
-    "opsPerSecond": 108526.17416221273,
-    "meanTime": 0.009349831999974413,
-    "variance": 0.0000024233369428041258,
-    "p99": 0.017521820002475572,
+    "opsPerSecond": 139402.15989716456,
+    "meanTime": 0.007173489999994899,
+    "variance": 0.0000068702850389157504,
+    "p99": 0.015916999999944892,
     "samples": 1000
   }
 }

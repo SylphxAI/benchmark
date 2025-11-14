@@ -159,6 +159,7 @@ export async function generateCategoryReadme(categoryPath: string): Promise<void
     const testResults: BenchmarkResult[] = [];
     let libraryName = '';
     let packageName = '';
+    let version = '';
     let timestamp = '';
 
     for (const testFile of testFiles) {
@@ -168,6 +169,8 @@ export async function generateCategoryReadme(categoryPath: string): Promise<void
       if (!libraryName) {
         libraryName = testData.library;
         packageName = testData.packageName;
+        // Use version from test file if available, fallback to packageName for backward compatibility
+        version = testData.version || testData.packageName;
         timestamp = testData.timestamp;
       }
 
@@ -185,7 +188,7 @@ export async function generateCategoryReadme(categoryPath: string): Promise<void
     libraries.push({
       library: libraryName,
       libraryId: libraryId,
-      version: packageName,
+      version: version,
       timestamp: timestamp,
       results: testResults,
     });

@@ -2,14 +2,15 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
+  "version": "3.1.1",
   "test": "Batch Write (10x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:31:26.119Z",
   "result": {
-    "opsPerSecond": 5846745.459432574,
-    "meanTime": 0.00019086099999549334,
-    "variance": 2.0812524212770497e-8,
-    "p99": 0.0006324900011350105,
+    "opsPerSecond": 2432208.274857763,
+    "meanTime": 0.0004111490000002078,
+    "variance": 2.9111398878775587e-7,
+    "p99": 0.0030000000000001137,
     "samples": 1000
   }
 }

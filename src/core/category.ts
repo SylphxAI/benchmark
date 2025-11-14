@@ -2,7 +2,7 @@
  * Category class - top-level container for benchmarks
  */
 
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import type { CategoryConfig, GroupConfig, LibraryConfig, RunOptions, CategoryResults } from './types';
 import { Group } from './group';
@@ -181,6 +181,21 @@ export class Category {
         .replace(/^-+|-+$/g, '');
     };
 
+    // Load versions.json to get actual library versions
+    const versionsPath = join(baseDir, 'versions.json');
+    let versions: Record<string, { current: string }> = {};
+
+    if (existsSync(versionsPath)) {
+      try {
+        const versionsData = JSON.parse(readFileSync(versionsPath, 'utf-8'));
+        if (versionsData.libraries) {
+          versions = versionsData.libraries;
+        }
+      } catch (error) {
+        console.warn('⚠️  Failed to load versions.json, version info may be incomplete');
+      }
+    }
+
     // Group results by library
     const resultsByLibrary = new Map<string, any[]>();
 
@@ -198,6 +213,10 @@ export class Category {
       const library = this.getLibrary(libraryId);
       if (!library) continue;
 
+      // Get version from versions.json (use packageName as key)
+      const versionInfo = versions[library.packageName];
+      const version = versionInfo?.current || 'unknown';
+
       // Create library directory
       const libraryDir = join(resultsDir, libraryId);
       mkdirSync(libraryDir, { recursive: true });
@@ -211,6 +230,7 @@ export class Category {
           library: library.displayName,
           libraryId: libraryId,
           packageName: library.packageName,
+          version: version,
           test: result.test,
           group: result.group,
           timestamp: results.timestamp,

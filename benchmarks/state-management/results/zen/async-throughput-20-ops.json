@@ -2,14 +2,15 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
+  "version": "3.1.1",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-14T14:05:34.884Z",
+  "timestamp": "2025-11-14T14:31:26.119Z",
   "result": {
-    "opsPerSecond": 922.8997480318626,
-    "meanTime": 1.093956760999965,
-    "variance": 0.015107300204245337,
-    "p99": 1.8851524599993352,
+    "opsPerSecond": 870.9412697598746,
+    "meanTime": 1.1481830459999995,
+    "variance": 0.0011218862511269585,
+    "p99": 1.3229169999999613,
     "samples": 1000
   }
 }
