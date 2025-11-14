@@ -4,11 +4,11 @@
   "packageName": "@preact/signals",
   "test": "Cache Invalidation",
   "group": "05-real-world",
-  "timestamp": "2025-11-14T06:07:34.202Z",
+  "timestamp": "2025-11-14T06:12:35.515Z",
   "result": {
-    "opsPerSecond": 10626025.969718598,
-    "meanTime": 0.00009488699998473748,
-    "variance": 9.84186489944894e-11,
+    "opsPerSecond": 11106533.77348238,
+    "meanTime": 0.00009087099999305793,
+    "variance": 8.996432305578426e-11,
     "p99": 0.00012099999912607018,
     "samples": 1000
   }

@@ -4,12 +4,12 @@
   "packageName": "native",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-14T06:07:27.843Z",
+  "timestamp": "2025-11-14T06:12:31.146Z",
   "result": {
-    "opsPerSecond": 8146038.4357405435,
-    "meanTime": 0.0001330990000242309,
-    "variance": 5.507997192745078e-9,
-    "p99": 0.0005017999986375791,
+    "opsPerSecond": 9115610.366303395,
+    "meanTime": 0.00012103199997727643,
+    "variance": 5.611054035814452e-9,
+    "p99": 0.000548189999990427,
     "samples": 1000
   }
 }

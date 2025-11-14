@@ -4,12 +4,12 @@
   "packageName": "@preact/signals",
   "test": "Wide Fanout (1→100)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-14T06:07:34.202Z",
+  "timestamp": "2025-11-14T06:12:35.515Z",
   "result": {
-    "opsPerSecond": 269829.5493070326,
-    "meanTime": 0.0037319160000006376,
-    "variance": 3.2527954252802016e-7,
-    "p99": 0.0037370000027294736,
+    "opsPerSecond": 198619.4249106755,
+    "meanTime": 0.005068228000076488,
+    "variance": 3.7366812201843297e-7,
+    "p99": 0.006331010000503738,
     "samples": 1000
   }
 }
