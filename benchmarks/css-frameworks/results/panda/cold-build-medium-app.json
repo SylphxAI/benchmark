@@ -1,0 +1,10 @@
+{
+  "library": "Panda CSS",
+  "libraryId": "panda",
+  "packageName": "@pandacss/dev",
+  "version": "1.4.3",
+  "test": "Cold Build - Medium App",
+  "group": "01-build-performance",
+  "timestamp": "2025-11-14T15:14:03.859Z",
+  "result": {}
+}

@@ -1,0 +1,10 @@
+{
+  "library": "Tailwind CSS",
+  "libraryId": "tailwind",
+  "packageName": "tailwindcss",
+  "version": "3.4.15",
+  "test": "Minimal CSS Generation",
+  "group": "02-bundle-optimization",
+  "timestamp": "2025-11-14T15:14:03.859Z",
+  "result": {}
+}

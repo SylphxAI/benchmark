@@ -7,7 +7,7 @@ Comprehensive performance benchmarks for React css-frameworks libraries.
 [![CI Status](https://img.shields.io/github/actions/workflow/status/SylphxAI/benchmark/benchmarks-per-library.yml?branch=main&label=Benchmarks&style=flat-square)](https://github.com/SylphxAI/benchmark/actions)
 [![Last Updated](https://img.shields.io/badge/Updated-Nov%2013,%202025-blue?style=flat-square)](https://github.com/SylphxAI/benchmark)
 [![Libraries](https://img.shields.io/badge/Libraries-4-green?style=flat-square)](#-libraries-tested)
-[![Tests](https://img.shields.io/badge/Tests-6-orange?style=flat-square)](#-test-coverage)
+[![Tests](https://img.shields.io/badge/Tests-18-orange?style=flat-square)](#-test-coverage)
 
 [⬅️ Back to Main](../../README.md) • [📊 All Categories](../../README.md#-benchmark-categories) • [🔬 Methodology](#-methodology) • [🚀 Run Locally](#-run-locally)
 
@@ -129,6 +129,62 @@ Pure data-driven weighting based on test stability across implementations.
 
 ### 01-build-performance
 
+#### Cold Build - Large App
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Cold Build - Medium App
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Cold Build - Small App
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Incremental Build
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
 #### Small App Build
 
 ```
@@ -195,6 +251,50 @@ Pure data-driven weighting based on test stability across implementations.
 | Silk | 572K | 0.002ms | 0.008ms | 1000 |
 | Tailwind CSS | 415K | 0.002ms | 0.012ms | 1000 |
 
+### 02-bundle-optimization
+
+#### Compression Ratio
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Minimal CSS Generation
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Tree-shaking Efficiency
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
 ### 02-dynamic-updates
 
 #### Responsive breakpoint matching
@@ -228,6 +328,80 @@ Pure data-driven weighting based on test stability across implementations.
 | Tailwind CSS | 526K | 0.002ms | 0.006ms | 1000 |
 | UnoCSS | 485K | 0.002ms | 0.007ms | 1000 |
 | Silk | 295K | 0.003ms | 0.006ms | 1000 |
+
+### 03-scalability
+
+#### Component Scaling
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Utility Class Growth
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+### 04-development-experience
+
+#### Config Change Rebuild
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Hot Reload Speed
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
+
+#### Watch Mode Startup
+
+```
+🥇 Panda CSS                                                     N/A ops/sec
+🥈 Silk                                                          N/A ops/sec
+🥉 Tailwind CSS                                                  N/A ops/sec
+```
+
+| Library | ops/sec | Mean Time | P99 | Samples |
+|---------|---------|-----------|-----|----------|
+| Panda CSS | N/A | N/Ams | N/Ams | N/A |
+| Silk | N/A | N/Ams | N/Ams | N/A |
+| Tailwind CSS | N/A | N/Ams | N/Ams | N/A |
 
 
 
@@ -316,7 +490,7 @@ npx tsx ../../scripts/generate-simple-readme.ts .
 - **Real-World Scenarios**: 0 tests
 - **Stress Tests**: 0 tests
 
-**Total**: 6 tests × 4 libraries = 24 benchmark runs
+**Total**: 18 tests × 4 libraries = 72 benchmark runs
 
 ---
 
@@ -355,7 +529,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-14T15:07:05.365Z*
+*Generated on 2025-11-14T15:17:08.662Z*
 
 [⬆️ Back to Top](#css-frameworks-benchmarks) • [⬅️ Main README](../../README.md)
 

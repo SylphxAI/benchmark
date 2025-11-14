@@ -1,0 +1,10 @@
+{
+  "library": "Tailwind CSS",
+  "libraryId": "tailwind",
+  "packageName": "tailwindcss",
+  "version": "3.4.15",
+  "test": "Cold Build - Small App",
+  "group": "01-build-performance",
+  "timestamp": "2025-11-14T15:14:03.859Z",
+  "result": {}
+}
