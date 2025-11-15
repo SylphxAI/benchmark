@@ -283,12 +283,50 @@ export interface BenchmarkOptions {
   };
 }
 
+// ============================================================================
+// Run Modes - Fairness Guarantee
+// ============================================================================
+
+/**
+ * Run mode determines fairness constraints
+ *
+ * - production: Enforces atomic runs (all libraries together) for fair rankings
+ * - development: Allows filtering for testing, but results cannot be used for rankings
+ */
+export type RunMode = 'production' | 'development';
+
+/**
+ * Metadata about a benchmark run - ensures result traceability
+ */
+export interface RunMetadata {
+  /** Unique identifier for this benchmark run */
+  runId: string;
+  /** Run mode - determines if results can be used for rankings */
+  mode: RunMode;
+  /** Timestamp when run started */
+  timestamp: string;
+  /** Libraries that were benchmarked in this run */
+  completedLibraries: string[];
+  /** Total number of libraries in the category */
+  totalLibraries: number;
+  /** Whether this was a complete run (all libraries) */
+  isComplete: boolean;
+  /** Environment information */
+  environment?: {
+    platform?: string;
+    arch?: string;
+    nodeVersion?: string;
+  };
+}
+
 export interface RunOptions {
+  /** Run mode - defaults to 'production' for fairness */
+  mode?: RunMode;
   outputPath?: string;
   filter?: {
     groups?: string[];
     tests?: string[];
-    libraries?: string[];
+    libraries?: string[];  // Only allowed in development mode
   };
 }
 
@@ -330,6 +368,12 @@ export interface LibraryTestResult {
 
   // NEW: Multi-metric support
   result: BenchmarkResult | TestResult;
+
+  /** NEW: Run metadata for fairness tracking */
+  runMetadata?: RunMetadata;
+
+  /** Library version at time of benchmark */
+  version?: string;
 
   // DEPRECATED (keep for backward compat)
   opsPerSecond?: number;

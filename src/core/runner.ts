@@ -8,6 +8,7 @@ import { join } from 'path';
 import type {
   BenchmarkResult,
   RunOptions,
+  RunMetadata,
   CategoryResults,
   LibraryTestResult,
   TestResult,
@@ -71,26 +72,83 @@ export class BenchmarkRunner {
   }
 
   /**
+   * Get library version from node_modules/package.json
+   */
+  private getLibraryVersion(packageName: string): string | undefined {
+    try {
+      const pkgPath = join(process.cwd(), 'node_modules', packageName, 'package.json');
+      if (existsSync(pkgPath)) {
+        const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+        return pkg.version;
+      }
+    } catch (error) {
+      // Silent fail - version is optional
+    }
+    return undefined;
+  }
+
+  /**
    * Run all benchmarks
    */
   async run(options?: RunOptions): Promise<CategoryResults> {
     const results: LibraryTestResult[] = [];
     const timestamp = new Date().toISOString();
+    const mode = options?.mode || 'production';
 
     const groups = this.category.getGroups();
     const libraries = this.category.getLibraries();
+
+    // ============================================================================
+    // FAIRNESS ENFORCEMENT: Production mode requires all libraries
+    // ============================================================================
+    if (mode === 'production' && options?.filter?.libraries) {
+      throw new Error(
+        '\n' +
+        '❌ FAIRNESS VIOLATION: Cannot filter libraries in production mode\n' +
+        '\n' +
+        '   Production benchmarks must run ALL libraries together to ensure\n' +
+        '   fair and meaningful comparisons. Results from different runs\n' +
+        '   cannot be compared due to machine state variations.\n' +
+        '\n' +
+        '   Solutions:\n' +
+        '   1. Remove --libraries filter for production runs\n' +
+        '   2. Use --mode=development for filtered testing (results marked as DEV)\n' +
+        '\n' +
+        '   Read more: docs/fairness-guarantee.md\n'
+      );
+    }
+
+    // Generate unique run ID for tracking
+    const runId = `run-${new Date().toISOString().replace(/[:.]/g, '-')}`;
 
     // Filter groups if specified
     const groupsToRun = options?.filter?.groups
       ? groups.filter((g) => options.filter!.groups!.includes(g.id))
       : groups;
 
-    // Filter libraries if specified
+    // Filter libraries (only allowed in development mode)
     const librariesToRun = options?.filter?.libraries
       ? libraries.filter((l) => options.filter!.libraries!.includes(l.id))
       : libraries;
 
-    console.log(`📊 Running ${groupsToRun.length} groups across ${librariesToRun.length} libraries\n`);
+    // Create run metadata
+    const runMetadata: RunMetadata = {
+      runId,
+      mode,
+      timestamp,
+      completedLibraries: [],  // Will be populated as we go
+      totalLibraries: libraries.length,
+      isComplete: librariesToRun.length === libraries.length,
+      environment: {
+        platform: process.platform,
+        arch: process.arch,
+        nodeVersion: process.version,
+      },
+    };
+
+    console.log(`📊 Running ${groupsToRun.length} groups across ${librariesToRun.length} libraries`);
+    console.log(`🏷️  Run ID: ${runId}`);
+    console.log(`🔒 Mode: ${mode.toUpperCase()}${mode === 'production' ? ' (fair rankings)' : ' (dev only)'}\n`);
 
     // Run tests for each group
     for (const group of groupsToRun) {
@@ -110,6 +168,12 @@ export class BenchmarkRunner {
         // Run test for each library
         for (const library of librariesToRun) {
           const bundleSize = this.formatBundleSize(library.id, library.packageName);
+          const version = this.getLibraryVersion(library.packageName);
+
+          // Track completed libraries for run metadata
+          if (!runMetadata.completedLibraries.includes(library.id)) {
+            runMetadata.completedLibraries.push(library.id);
+          }
 
           // Skip if library doesn't implement this test
           if (!library.hasImplementation(test)) {
@@ -143,6 +207,8 @@ export class BenchmarkRunner {
                 group: group.id,
                 timestamp,
                 result: testResult,
+                runMetadata,
+                version,
               });
 
               // Display appropriate metrics based on test type
@@ -173,6 +239,8 @@ export class BenchmarkRunner {
                 group: group.id,
                 timestamp,
                 result,
+                runMetadata,
+                version,
                 // Backward compat fields
                 opsPerSecond: result.opsPerSecond,
                 meanTime: result.meanTime,

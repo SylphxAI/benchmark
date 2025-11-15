@@ -75,18 +75,23 @@ jobs:
           echo "🚀 Running benchmarks for ${{ matrix.category }}..."
           cd benchmarks/${{ matrix.category }}
 
-          # Get updated libraries from check step
-          UPDATED_LIBS='${{ steps.check.outputs.updated_libs }}'
+          # ============================================================================
+          # FAIRNESS GUARANTEE: Always run ALL libraries together
+          # ============================================================================
+          # Production benchmarks must include all libraries for fair comparison.
+          # Results from different runs cannot be compared due to machine state
+          # variations (CPU load, throttling, temperature, etc.)
+          #
+          # This ensures:
+          # - All libraries benchmarked in same environment
+          # - Results are atomic and comparable
+          # - Rankings are meaningful and fair
+          #
+          # Framework enforces this at code level (will error if violated)
+          # ============================================================================
 
-          # If specific libraries were updated, only benchmark those
-          if [ -n "$UPDATED_LIBS" ] && [ "$UPDATED_LIBS" != "[]" ]; then
-            LIBS=$(echo "$UPDATED_LIBS" | jq -r 'join(",")')
-            echo "📦 Updated libraries: $LIBS"
-            npm run benchmark -- --libraries="$LIBS"
-          else
-            echo "📝 Test files changed, running all benchmarks"
-            npm run benchmark
-          fi
+          echo "🔒 Running in PRODUCTION mode (all libraries, fair rankings)"
+          npm run benchmark -- --mode=production
 
           echo "✓ Benchmarks complete"
 

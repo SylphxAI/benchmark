@@ -269,7 +269,10 @@ const ALL_LIBRARIES = Object.values(PACKAGE_TO_LIBRARY);
 // ============================================================================
 
 async function main() {
-  // Parse CLI arguments for selective library benchmarking
+  // Parse CLI arguments
+  const modeArg = process.argv.find((arg) => arg.startsWith('--mode='));
+  const mode = (modeArg?.split('=')[1] as 'production' | 'development') || 'production';
+
   const librariesArg = process.argv.find((arg) => arg.startsWith('--libraries='));
   const libraryFilter = librariesArg?.split('=')[1]?.split(',').filter(Boolean) || null;
 
@@ -311,8 +314,11 @@ async function main() {
 
   console.log('✅ Validation passed\n');
 
-  // Run benchmarks
-  const results = await category.run();
+  // Run benchmarks with mode and filter
+  const results = await category.run({
+    mode,
+    filter: libraryFilter ? { libraries: libraryFilter } : undefined,
+  });
 
   console.log('\n✅ Benchmarks completed\n');
   console.log('Results summary:');
