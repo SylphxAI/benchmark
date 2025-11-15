@@ -5,12 +5,12 @@
   "version": "2.4.0",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-15T03:21:35.116Z",
+  "timestamp": "2025-11-15T04:05:34.269Z",
   "result": {
-    "opsPerSecond": 106989.42499584255,
-    "meanTime": 0.00942591500002527,
-    "variance": 0.0000013726677594369087,
-    "p99": 0.01402748000175048,
+    "opsPerSecond": 109624.17849516211,
+    "meanTime": 0.009224756999981765,
+    "variance": 0.0000025596733934316876,
+    "p99": 0.012054399998560256,
     "samples": 1000
   }
 }

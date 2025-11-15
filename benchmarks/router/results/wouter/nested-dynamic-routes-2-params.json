@@ -5,12 +5,12 @@
   "version": "3.7.1",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-15T03:21:35.767Z",
+  "timestamp": "2025-11-15T04:05:31.780Z",
   "result": {
-    "opsPerSecond": 1796299.7636795086,
-    "meanTime": 0.0005745819999820014,
-    "variance": 1.1590524452371014e-7,
-    "p99": 0.0010619999993741658,
+    "opsPerSecond": 1751787.8487939613,
+    "meanTime": 0.000586539999998422,
+    "variance": 1.0935035075166148e-7,
+    "p99": 0.001091010000081951,
     "samples": 1000
   }
 }
