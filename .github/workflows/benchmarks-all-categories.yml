@@ -1,9 +1,9 @@
 name: Auto-Benchmark All Categories
 
 on:
-  schedule:
-    # Run every hour at minute 0
-    - cron: '0 * * * *'
+  # schedule:
+  #   # Run every hour at minute 0
+  #   - cron: '0 * * * *'
   workflow_dispatch:
   push:
     paths:
