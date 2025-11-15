@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Single Read",
   "group": "01-basic-read",
-  "timestamp": "2025-11-15T20:37:51.006Z",
+  "timestamp": "2025-11-15T21:43:36.136Z",
   "result": {
-    "opsPerSecond": 14556926.927147478,
-    "meanTime": 0.00006907000000046537,
-    "variance": 2.9230330157316946e-11,
-    "p99": 0.00008109000013064353,
+    "opsPerSecond": 17086427.099621963,
+    "meanTime": 0.00005915799999547744,
+    "variance": 5.774077694604075e-11,
+    "p99": 0.00009000000045489287,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T20-37-51-006Z",
+    "runId": "run-2025-11-15T21-43-36-136Z",
     "mode": "production",
-    "timestamp": "2025-11-15T20:37:51.006Z",
+    "timestamp": "2025-11-15T21:43:36.136Z",
     "completedLibraries": [
       "zen",
       "solid-js",

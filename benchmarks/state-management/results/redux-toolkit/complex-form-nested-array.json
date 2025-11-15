@@ -5,18 +5,18 @@
   "version": "2.10.1",
   "test": "Complex Form (nested + array)",
   "group": "05-real-world",
-  "timestamp": "2025-11-15T20:37:51.006Z",
+  "timestamp": "2025-11-15T21:43:36.136Z",
   "result": {
-    "opsPerSecond": 69737.06484534724,
-    "meanTime": 0.014689446999924258,
-    "variance": 0.000014468609847910533,
-    "p99": 0.029656910005724055,
+    "opsPerSecond": 69570.43389362274,
+    "meanTime": 0.015297477999949478,
+    "variance": 0.0005501655315072534,
+    "p99": 0.02746589999820571,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T20-37-51-006Z",
+    "runId": "run-2025-11-15T21-43-36-136Z",
     "mode": "production",
-    "timestamp": "2025-11-15T20:37:51.006Z",
+    "timestamp": "2025-11-15T21:43:36.136Z",
     "completedLibraries": [
       "zen",
       "solid-js",

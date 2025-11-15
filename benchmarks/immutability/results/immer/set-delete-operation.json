@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Set - Delete Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-15T20:37:48.827Z",
+  "timestamp": "2025-11-15T21:43:30.018Z",
   "result": {
-    "opsPerSecond": 266025.5143879586,
-    "meanTime": 0.0038343699999531964,
-    "variance": 7.540571922798336e-7,
-    "p99": 0.005731910000758942,
+    "opsPerSecond": 253657.7596217499,
+    "meanTime": 0.004676649999983056,
+    "variance": 0.0003767024092133436,
+    "p99": 0.006553999999268853,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T20-37-48-827Z",
+    "runId": "run-2025-11-15T21-43-30-018Z",
     "mode": "production",
-    "timestamp": "2025-11-15T20:37:48.827Z",
+    "timestamp": "2025-11-15T21:43:30.018Z",
     "completedLibraries": [
       "immer",
       "mutative",

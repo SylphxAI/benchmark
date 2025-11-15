@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Undo/Redo - Inverse Patches",
   "group": "06-patches",
-  "timestamp": "2025-11-15T20:37:48.827Z",
+  "timestamp": "2025-11-15T21:43:30.018Z",
   "result": {
-    "opsPerSecond": 201300.0561880513,
-    "meanTime": 0.005702420000030543,
-    "variance": 0.0003862369173468406,
-    "p99": 0.008452219999489892,
+    "opsPerSecond": 196399.186243394,
+    "meanTime": 0.005303306999969209,
+    "variance": 0.0000041009222470019786,
+    "p99": 0.009390000002167652,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T20-37-48-827Z",
+    "runId": "run-2025-11-15T21-43-30-018Z",
     "mode": "production",
-    "timestamp": "2025-11-15T20:37:48.827Z",
+    "timestamp": "2025-11-15T21:43:30.018Z",
     "completedLibraries": [
       "immer",
       "mutative",

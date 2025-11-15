@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-15T20:37:51.006Z",
+  "timestamp": "2025-11-15T21:43:36.136Z",
   "result": {
-    "opsPerSecond": 903.8909497560861,
-    "meanTime": 1.120465084999916,
-    "variance": 0.0255156422695687,
-    "p99": 2.1564458000050215,
+    "opsPerSecond": 912.1051352393397,
+    "meanTime": 1.1408146380001125,
+    "variance": 0.04868046891725036,
+    "p99": 2.170695809992758,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-15T20-37-51-006Z",
+    "runId": "run-2025-11-15T21-43-36-136Z",
     "mode": "production",
-    "timestamp": "2025-11-15T20:37:51.006Z",
+    "timestamp": "2025-11-15T21:43:36.136Z",
     "completedLibraries": [
       "zen",
       "solid-js",
