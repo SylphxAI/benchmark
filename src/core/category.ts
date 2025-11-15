@@ -241,6 +241,7 @@ export class Category {
             p99: result.result.p99,
             samples: result.result.samples,
           },
+          runMetadata: result.runMetadata,
         };
 
         writeFileSync(testFile, JSON.stringify(testData, null, 2));
