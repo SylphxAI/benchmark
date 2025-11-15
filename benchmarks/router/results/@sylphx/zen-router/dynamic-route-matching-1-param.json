@@ -5,12 +5,30 @@
   "version": "1.0.2",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-15T18:46:56.910Z",
+  "timestamp": "2025-11-15T19:07:07.567Z",
   "result": {
-    "opsPerSecond": 2340071.649157214,
-    "meanTime": 0.0004346239999977115,
-    "variance": 6.483980605548557e-9,
-    "p99": 0.0008922000000166007,
+    "opsPerSecond": 2584490.7877994515,
+    "meanTime": 0.0004223650000139969,
+    "variance": 3.168702079252489e-8,
+    "p99": 0.0010682299995823995,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-567Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.567Z",
+    "completedLibraries": [
+      "react-router-dom",
+      "wouter",
+      "@sylphx/zen-router",
+      "@solidjs/router"
+    ],
+    "totalLibraries": 4,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

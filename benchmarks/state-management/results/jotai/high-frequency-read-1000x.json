@@ -5,12 +5,34 @@
   "version": "2.15.1",
   "test": "High-Frequency Read (1000x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-15T18:46:52.745Z",
+  "timestamp": "2025-11-15T19:07:08.168Z",
   "result": {
-    "opsPerSecond": 2651.4935206838313,
-    "meanTime": 0.3804731970000339,
-    "variance": 0.0025559841396251507,
-    "p99": 0.7614916299999276,
+    "opsPerSecond": 3103.0244722481702,
+    "meanTime": 0.32634218200001125,
+    "variance": 0.00288883500979286,
+    "p99": 0.7175827800006117,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-08-168Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:08.168Z",
+    "completedLibraries": [
+      "zen",
+      "solid-js",
+      "jotai",
+      "preact-signals",
+      "zustand",
+      "valtio",
+      "mobx",
+      "redux-toolkit"
+    ],
+    "totalLibraries": 8,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

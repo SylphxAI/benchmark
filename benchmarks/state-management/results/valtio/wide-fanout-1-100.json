@@ -5,12 +5,34 @@
   "version": "2.2.0",
   "test": "Wide Fanout (1→100)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-15T18:46:52.745Z",
+  "timestamp": "2025-11-15T19:07:08.168Z",
   "result": {
-    "opsPerSecond": 92729.41554487929,
-    "meanTime": 0.01092320500034839,
-    "variance": 0.000002342791444394547,
-    "p99": 0.019315809925319626,
+    "opsPerSecond": 91219.77337904715,
+    "meanTime": 0.011103440002189017,
+    "variance": 0.0000022801036870706154,
+    "p99": 0.019667600044049324,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-08-168Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:08.168Z",
+    "completedLibraries": [
+      "zen",
+      "solid-js",
+      "jotai",
+      "preact-signals",
+      "zustand",
+      "valtio",
+      "mobx",
+      "redux-toolkit"
+    ],
+    "totalLibraries": 8,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

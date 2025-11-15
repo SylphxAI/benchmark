@@ -5,12 +5,34 @@
   "version": "6.15.0",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-15T18:46:52.745Z",
+  "timestamp": "2025-11-15T19:07:08.168Z",
   "result": {
-    "opsPerSecond": 60095.732525282154,
-    "meanTime": 0.016746639000026334,
-    "variance": 0.000003152744897839549,
-    "p99": 0.02602230000080453,
+    "opsPerSecond": 59745.50484486851,
+    "meanTime": 0.017321861000069477,
+    "variance": 0.00025131749265435886,
+    "p99": 0.026088110002347092,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-08-168Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:08.168Z",
+    "completedLibraries": [
+      "zen",
+      "solid-js",
+      "jotai",
+      "preact-signals",
+      "zustand",
+      "valtio",
+      "mobx",
+      "redux-toolkit"
+    ],
+    "totalLibraries": 8,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

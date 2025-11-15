@@ -2,15 +2,37 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "test": "Moderate Read (100x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-15T18:46:52.745Z",
+  "timestamp": "2025-11-15T19:07:08.168Z",
   "result": {
-    "opsPerSecond": 5450514.929806488,
-    "meanTime": 0.00021123300000726886,
-    "variance": 2.439800607481575e-7,
-    "p99": 0.0003309999992779922,
+    "opsPerSecond": 5902325.6369448835,
+    "meanTime": 0.00018409499997505918,
+    "variance": 2.1026303099066015e-7,
+    "p99": 0.00018108999944161034,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-08-168Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:08.168Z",
+    "completedLibraries": [
+      "zen",
+      "solid-js",
+      "jotai",
+      "preact-signals",
+      "zustand",
+      "valtio",
+      "mobx",
+      "redux-toolkit"
+    ],
+    "totalLibraries": 8,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

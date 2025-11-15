@@ -5,12 +5,33 @@
   "version": "7.1.4",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-15T18:46:57.468Z",
+  "timestamp": "2025-11-15T19:07:07.982Z",
   "result": {
-    "opsPerSecond": 123982.84948933334,
-    "meanTime": 0.00813897100000213,
-    "variance": 0.000001069664632823316,
-    "p99": 0.013768609999697215,
+    "opsPerSecond": 126823.35939635166,
+    "meanTime": 0.008008556999995562,
+    "variance": 0.000002043676000707928,
+    "p99": 0.015798059999960944,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-982Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.982Z",
+    "completedLibraries": [
+      "immer",
+      "mutative",
+      "craft",
+      "immutable",
+      "immutability-helper",
+      "seamless-immutable",
+      "native-spread"
+    ],
+    "totalLibraries": 7,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

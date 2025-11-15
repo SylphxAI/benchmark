@@ -5,12 +5,33 @@
   "version": "unknown",
   "test": "Set - Large (100 items)",
   "group": "07-map-set",
-  "timestamp": "2025-11-15T18:46:57.468Z",
+  "timestamp": "2025-11-15T19:07:07.982Z",
   "result": {
-    "opsPerSecond": 766208.9925236669,
-    "meanTime": 0.001359483999949589,
-    "variance": 2.257335533122157e-7,
-    "p99": 0.003156700002473371,
+    "opsPerSecond": 700284.3410544597,
+    "meanTime": 0.0022515019999846115,
+    "variance": 0.0005942918165662167,
+    "p99": 0.003156699998871772,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-982Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.982Z",
+    "completedLibraries": [
+      "immer",
+      "mutative",
+      "craft",
+      "immutable",
+      "immutability-helper",
+      "seamless-immutable",
+      "native-spread"
+    ],
+    "totalLibraries": 7,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

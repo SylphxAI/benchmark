@@ -5,12 +5,30 @@
   "version": "6.30.1",
   "test": "Wildcard Route Matching",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-15T18:46:56.910Z",
+  "timestamp": "2025-11-15T19:07:07.567Z",
   "result": {
-    "opsPerSecond": 10680.973022551023,
-    "meanTime": 0.09619991000000847,
-    "variance": 0.0011371457684546575,
-    "p99": 0.13831865000020113,
+    "opsPerSecond": 11870.561115006032,
+    "meanTime": 0.08647721700000693,
+    "variance": 0.0007575974807519193,
+    "p99": 0.1268789899999683,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-567Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.567Z",
+    "completedLibraries": [
+      "react-router-dom",
+      "wouter",
+      "@sylphx/zen-router",
+      "@solidjs/router"
+    ],
+    "totalLibraries": 4,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

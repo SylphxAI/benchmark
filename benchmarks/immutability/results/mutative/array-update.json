@@ -5,12 +5,33 @@
   "version": "1.3.0",
   "test": "Array Update",
   "group": "03-array-operations",
-  "timestamp": "2025-11-15T18:46:57.468Z",
+  "timestamp": "2025-11-15T19:07:07.982Z",
   "result": {
-    "opsPerSecond": 301935.43281842367,
-    "meanTime": 0.003377158000019335,
-    "variance": 5.402594505124076e-7,
-    "p99": 0.006093809999292714,
+    "opsPerSecond": 285801.6529809671,
+    "meanTime": 0.0035878549999888492,
+    "variance": 7.495491211053397e-7,
+    "p99": 0.006875700000255162,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-982Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.982Z",
+    "completedLibraries": [
+      "immer",
+      "mutative",
+      "craft",
+      "immutable",
+      "immutability-helper",
+      "seamless-immutable",
+      "native-spread"
+    ],
+    "totalLibraries": 7,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

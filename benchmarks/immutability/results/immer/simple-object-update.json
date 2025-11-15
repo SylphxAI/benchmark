@@ -5,12 +5,33 @@
   "version": "10.2.0",
   "test": "Simple Object Update",
   "group": "01-simple-updates",
-  "timestamp": "2025-11-15T18:46:57.468Z",
+  "timestamp": "2025-11-15T19:07:07.982Z",
   "result": {
-    "opsPerSecond": 723596.9542121968,
-    "meanTime": 0.0015635959999991656,
-    "variance": 0.0000011333161849687743,
-    "p99": 0.0029964999999958757,
+    "opsPerSecond": 1188377.3697262113,
+    "meanTime": 0.000880603999999721,
+    "variance": 9.521798316658256e-8,
+    "p99": 0.001743099999976607,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-982Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.982Z",
+    "completedLibraries": [
+      "immer",
+      "mutative",
+      "craft",
+      "immutable",
+      "immutability-helper",
+      "seamless-immutable",
+      "native-spread"
+    ],
+    "totalLibraries": 7,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

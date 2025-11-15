@@ -5,12 +5,30 @@
   "version": "0.15.4",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-15T18:46:56.910Z",
+  "timestamp": "2025-11-15T19:07:07.567Z",
   "result": {
-    "opsPerSecond": 1767060.9705055265,
-    "meanTime": 0.0005853330000154529,
-    "variance": 1.2305297307962e-7,
-    "p99": 0.0012219999998706044,
+    "opsPerSecond": 2188376.283336395,
+    "meanTime": 0.0004890189999960057,
+    "variance": 2.7138707355459654e-8,
+    "p99": 0.0010611199999311792,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-567Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.567Z",
+    "completedLibraries": [
+      "react-router-dom",
+      "wouter",
+      "@sylphx/zen-router",
+      "@solidjs/router"
+    ],
+    "totalLibraries": 4,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

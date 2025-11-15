@@ -5,12 +5,33 @@
   "version": "unknown",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-15T18:46:57.468Z",
+  "timestamp": "2025-11-15T19:07:07.982Z",
   "result": {
-    "opsPerSecond": 6616418.288855898,
-    "meanTime": 0.00017279399995459243,
-    "variance": 1.5537537091765728e-8,
-    "p99": 0.0005410000012489036,
+    "opsPerSecond": 6564873.587161968,
+    "meanTime": 0.00017300600001544808,
+    "variance": 1.3931483467806183e-8,
+    "p99": 0.0005611000007411347,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-982Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.982Z",
+    "completedLibraries": [
+      "immer",
+      "mutative",
+      "craft",
+      "immutable",
+      "immutability-helper",
+      "seamless-immutable",
+      "native-spread"
+    ],
+    "totalLibraries": 7,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

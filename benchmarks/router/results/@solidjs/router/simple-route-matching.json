@@ -5,12 +5,30 @@
   "version": "0.15.4",
   "test": "Simple Route Matching",
   "group": "01-basic-routes",
-  "timestamp": "2025-11-15T18:46:56.910Z",
+  "timestamp": "2025-11-15T19:07:07.567Z",
   "result": {
-    "opsPerSecond": 7513445.094599969,
-    "meanTime": 0.00014478399999279644,
-    "variance": 1.893295429779809e-8,
-    "p99": 0.0005311999996865778,
+    "opsPerSecond": 7101765.323523512,
+    "meanTime": 0.00015105300000959688,
+    "variance": 1.014541560486629e-8,
+    "p99": 0.0005329999994592072,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-567Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.567Z",
+    "completedLibraries": [
+      "react-router-dom",
+      "wouter",
+      "@sylphx/zen-router",
+      "@solidjs/router"
+    ],
+    "totalLibraries": 4,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

@@ -5,12 +5,30 @@
   "version": "0.15.4",
   "test": "Sequential Route Matching (worst case)",
   "group": "04-real-world",
-  "timestamp": "2025-11-15T18:46:56.910Z",
+  "timestamp": "2025-11-15T19:07:07.567Z",
   "result": {
-    "opsPerSecond": 916091.4816735656,
-    "meanTime": 0.0011159460000380933,
-    "variance": 2.247713464364318e-7,
-    "p99": 0.0017530100004660197,
+    "opsPerSecond": 1308188.8821772065,
+    "meanTime": 0.0007820670000110113,
+    "variance": 1.001245950967684e-7,
+    "p99": 0.001358099999524711,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-07-567Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:07.567Z",
+    "completedLibraries": [
+      "react-router-dom",
+      "wouter",
+      "@sylphx/zen-router",
+      "@solidjs/router"
+    ],
+    "totalLibraries": 4,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }

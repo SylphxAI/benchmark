@@ -5,12 +5,34 @@
   "version": "2.15.1",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-15T18:46:52.745Z",
+  "timestamp": "2025-11-15T19:07:08.168Z",
   "result": {
-    "opsPerSecond": 19355.255701299127,
-    "meanTime": 0.05222633299969311,
-    "variance": 0.000049223462636171186,
-    "p99": 0.07121461000977433,
+    "opsPerSecond": 17693.59956177634,
+    "meanTime": 0.059547572999756083,
+    "variance": 0.002642610699088344,
+    "p99": 0.09049970999811194,
     "samples": 1000
+  },
+  "runMetadata": {
+    "runId": "run-2025-11-15T19-07-08-168Z",
+    "mode": "production",
+    "timestamp": "2025-11-15T19:07:08.168Z",
+    "completedLibraries": [
+      "zen",
+      "solid-js",
+      "jotai",
+      "preact-signals",
+      "zustand",
+      "valtio",
+      "mobx",
+      "redux-toolkit"
+    ],
+    "totalLibraries": 8,
+    "isComplete": true,
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v24.3.0"
+    }
   }
 }
