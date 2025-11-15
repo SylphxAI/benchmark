@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 6847157.7447955515,
-    "meanTime": 0.00014604600000052415,
-    "variance": 3.6788404288197284e-8,
-    "p99": 0.0004999999999881766,
+    "opsPerSecond": 22074774.25283909,
+    "meanTime": 0.00004623399977572262,
+    "variance": 1.1404529030286345e-10,
+    "p99": 0.000051000009989365935,
     "samples": 1000
   }
 }

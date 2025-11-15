@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 13400.78322753635,
-    "meanTime": 0.07462250400000267,
-    "variance": 0.03754556023832227,
-    "p99": 0.7602090000000317,
+    "opsPerSecond": 10948.355270659336,
+    "meanTime": 0.11072965600012685,
+    "variance": 0.022133726684612616,
+    "p99": 0.23037473999502248,
     "samples": 1000
   }
 }

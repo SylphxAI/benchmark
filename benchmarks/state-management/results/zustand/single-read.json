@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Single Read",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 23548250.364975654,
-    "meanTime": 0.000042466000000040085,
-    "variance": 1.0966052896888867e-8,
-    "p99": 0.00020900000000523278,
+    "opsPerSecond": 22237259.06161625,
+    "meanTime": 0.0000456599999934042,
+    "variance": 3.570210206909087e-11,
+    "p99": 0.00006000000030326191,
     "samples": 1000
   }
 }

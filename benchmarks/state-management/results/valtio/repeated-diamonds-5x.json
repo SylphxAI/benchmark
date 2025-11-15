@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Repeated Diamonds (5x)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 1493375.3867799174,
-    "meanTime": 0.0006696240000019316,
-    "variance": 7.585875138140527e-8,
-    "p99": 0.0014999999998508429,
+    "opsPerSecond": 1555345.1468552442,
+    "meanTime": 0.0006550350000616163,
+    "variance": 9.090737724262851e-8,
+    "p99": 0.0010620900534559041,
     "samples": 1000
   }
 }

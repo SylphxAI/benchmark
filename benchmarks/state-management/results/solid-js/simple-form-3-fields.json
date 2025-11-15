@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Simple Form (3 fields)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 6861110.539281222,
-    "meanTime": 0.00014574900000150138,
-    "variance": 5.6723463461462587e-8,
-    "p99": 0.0009579999999687061,
+    "opsPerSecond": 2508865.823520339,
+    "meanTime": 0.00042248500026471447,
+    "variance": 1.2942815792364663e-7,
+    "p99": 0.0009012100067047866,
     "samples": 1000
   }
 }

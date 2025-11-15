@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 108239.77448022792,
-    "meanTime": 0.00923874800000317,
-    "variance": 0.00011982441334386364,
-    "p99": 0.01483399999995072,
+    "opsPerSecond": 36570.493211603076,
+    "meanTime": 0.028168329000051017,
+    "variance": 0.0004282657084626271,
+    "p99": 0.03827389999758452,
     "samples": 1000
   }
 }

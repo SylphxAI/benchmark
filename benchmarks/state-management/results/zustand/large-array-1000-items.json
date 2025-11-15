@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 141796.74627521107,
-    "meanTime": 0.007052347999996528,
-    "variance": 0.00008626184871359996,
-    "p99": 0.009833999999955267,
+    "opsPerSecond": 128645.73507561839,
+    "meanTime": 0.007876471999828936,
+    "variance": 0.0000016847627717206875,
+    "p99": 0.013588609979196914,
     "samples": 1000
   }
 }

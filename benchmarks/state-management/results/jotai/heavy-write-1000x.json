@@ -2,14 +2,15 @@
   "library": "Jotai",
   "libraryId": "jotai",
   "packageName": "jotai",
+  "version": "2.15.1",
   "test": "Heavy Write (1000x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 724734.8376413411,
-    "meanTime": 0.0013798149999998798,
-    "variance": 3.6410379256812096e-7,
-    "p99": 0.0037499999999965894,
+    "opsPerSecond": 341.79235456663275,
+    "meanTime": 2.9799171879999338,
+    "variance": 0.250828994949744,
+    "p99": 5.419371910003174,
     "samples": 1000
   }
 }

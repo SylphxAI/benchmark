@@ -2,14 +2,15 @@
   "library": "Redux Toolkit",
   "libraryId": "redux-toolkit",
   "packageName": "@reduxjs/toolkit",
+  "version": "2.10.1",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 1242.9868707510518,
-    "meanTime": 0.8045137270000032,
-    "variance": 0.003956625693271684,
-    "p99": 1.1462499999997817,
+    "opsPerSecond": 827.8666032402608,
+    "meanTime": 1.217099386001937,
+    "variance": 0.030650912476793076,
+    "p99": 1.3554281499073841,
     "samples": 1000
   }
 }

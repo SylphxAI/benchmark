@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Nested Object Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 4165902.9177991874,
-    "meanTime": 0.00024004399999995484,
-    "variance": 2.164458522519823e-9,
-    "p99": 0.0003750000000053433,
+    "opsPerSecond": 2588866.5189619586,
+    "meanTime": 0.0004007530001545092,
+    "variance": 1.2681791769454095e-8,
+    "p99": 0.000972100001599756,
     "samples": 1000
   }
 }

@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 2577585.3180633145,
-    "meanTime": 0.00038796000000161255,
-    "variance": 2.646102026015623e-7,
-    "p99": 0.002208999999993466,
+    "opsPerSecond": 4790121.816470374,
+    "meanTime": 0.00023060099991562311,
+    "variance": 2.471887870256028e-8,
+    "p99": 0.0010020999900007153,
     "samples": 1000
   }
 }

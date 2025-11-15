@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 5716376.274749973,
-    "meanTime": 0.00017493600000005927,
-    "variance": 2.2291238028440964e-7,
-    "p99": 0.0011660000000119908,
+    "opsPerSecond": 2153996.7312323265,
+    "meanTime": 0.00050651999998081,
+    "variance": 4.559278394693663e-7,
+    "p99": 0.001092599998664809,
     "samples": 1000
   }
 }

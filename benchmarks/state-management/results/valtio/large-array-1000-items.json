@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 6381.564650144679,
-    "meanTime": 0.15670138199999722,
-    "variance": 0.0008394684830529738,
-    "p99": 0.380916999999954,
+    "opsPerSecond": 950361.5376484884,
+    "meanTime": 0.0011419489996042102,
+    "variance": 4.780145241290799e-7,
+    "p99": 0.002775209934916346,
     "samples": 1000
   }
 }

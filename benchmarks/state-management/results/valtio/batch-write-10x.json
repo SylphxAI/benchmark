@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Batch Write (10x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 3379828.507501364,
-    "meanTime": 0.00029587300000001447,
-    "variance": 1.1873119406497702e-7,
-    "p99": 0.001333000000002471,
+    "opsPerSecond": 409485.52212212735,
+    "meanTime": 0.0024882110000435205,
+    "variance": 3.485283188288944e-7,
+    "p99": 0.0033363000015742723,
     "samples": 1000
   }
 }

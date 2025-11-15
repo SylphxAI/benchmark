@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 331570.3736565792,
-    "meanTime": 0.0030159510000002,
-    "variance": 0.0000026309433439433993,
-    "p99": 0.010167000000009807,
+    "opsPerSecond": 215648.55862105085,
+    "meanTime": 0.004791779000093812,
+    "variance": 0.0000022969371211057883,
+    "p99": 0.010883000001631442,
     "samples": 1000
   }
 }

@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Massive Fanout (1→1000)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 1162982.7250481017,
-    "meanTime": 0.000859858000004806,
-    "variance": 5.151757756091431e-7,
-    "p99": 0.0037080000001878943,
+    "opsPerSecond": 433671.56322819315,
+    "meanTime": 0.0023426059992052613,
+    "variance": 5.930796038148767e-7,
+    "p99": 0.002655199960572645,
     "samples": 1000
   }
 }

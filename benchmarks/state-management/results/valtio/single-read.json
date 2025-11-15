@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Single Read",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 9021932.317463124,
-    "meanTime": 0.00011084100000000774,
-    "variance": 3.6809282053957494e-7,
-    "p99": 0.0008750000000006253,
+    "opsPerSecond": 14797683.952685036,
+    "meanTime": 0.00006987299999946117,
+    "variance": 7.292721435837767e-10,
+    "p99": 0.00010010000019974532,
     "samples": 1000
   }
 }

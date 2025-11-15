@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 1116424.0491137386,
-    "meanTime": 0.0008957169999999905,
-    "variance": 1.4518150841936614e-7,
-    "p99": 0.002125000000006594,
+    "opsPerSecond": 3043842.5714482935,
+    "meanTime": 0.0003412950000492856,
+    "variance": 1.8443175184067692e-8,
+    "p99": 0.000872189996880479,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 331276.98665152583,
-    "meanTime": 0.0030186219999999934,
-    "variance": 8.635071662823888e-7,
-    "p99": 0.006874999999979536,
+    "opsPerSecond": 500.576656252462,
+    "meanTime": 1.9979090329996543,
+    "variance": 0.00042275774041236304,
+    "p99": 2.050666310008819,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Zustand",
   "libraryId": "zustand",
   "packageName": "zustand",
+  "version": "5.0.8",
   "test": "Heavy Write (1000x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 3104317.484758932,
-    "meanTime": 0.0003221319999998826,
-    "variance": 1.5313628204131034e-8,
-    "p99": 0.0008749999999935199,
+    "opsPerSecond": 7560.273902972755,
+    "meanTime": 0.13328781600002548,
+    "variance": 0.0004989041526200489,
+    "p99": 0.18768446999914884,
     "samples": 1000
   }
 }

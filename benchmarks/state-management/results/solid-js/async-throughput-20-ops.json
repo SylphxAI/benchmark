@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 658219.516208902,
-    "meanTime": 0.0015192499999994312,
-    "variance": 4.490466021019331e-7,
-    "p99": 0.0049999999999954525,
+    "opsPerSecond": 500.52869020560996,
+    "meanTime": 1.9980134650000982,
+    "variance": 0.00025084864568122205,
+    "p99": 2.044874349988386,
     "samples": 1000
   }
 }

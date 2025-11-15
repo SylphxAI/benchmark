@@ -2,14 +2,15 @@
   "library": "Jotai",
   "libraryId": "jotai",
   "packageName": "jotai",
+  "version": "2.15.1",
   "test": "Async Throughput (20 ops)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 49381.51626142955,
-    "meanTime": 0.020250492000001032,
-    "variance": 0.0015600591498618052,
-    "p99": 0.027792000000033568,
+    "opsPerSecond": 19355.255701299127,
+    "meanTime": 0.05222633299969311,
+    "variance": 0.000049223462636171186,
+    "p99": 0.07121461000977433,
     "samples": 1000
   }
 }

@@ -5,12 +5,12 @@
   "version": "3.9.0",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-15T18:23:49.858Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 289542.9475680676,
-    "meanTime": 0.003944818999996642,
-    "variance": 0.00015054998281976913,
-    "p99": 0.00579181000284734,
+    "opsPerSecond": 239076.5919621466,
+    "meanTime": 0.004273897000137367,
+    "variance": 6.884506228544112e-7,
+    "p99": 0.006582600001711398,
     "samples": 1000
   }
 }

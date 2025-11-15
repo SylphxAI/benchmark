@@ -2,14 +2,15 @@
   "library": "Jotai",
   "libraryId": "jotai",
   "packageName": "jotai",
+  "version": "2.15.1",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 893803.6170461687,
-    "meanTime": 0.001118813999997883,
-    "variance": 1.1667739880231881e-7,
-    "p99": 0.002624999999852662,
+    "opsPerSecond": 34.36715674958511,
+    "meanTime": 29.2106658100005,
+    "variance": 3.48079617702266,
+    "p99": 35.11524107001722,
     "samples": 1000
   }
 }

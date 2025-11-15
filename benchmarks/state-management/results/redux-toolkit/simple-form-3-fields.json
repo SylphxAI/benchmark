@@ -2,14 +2,15 @@
   "library": "Redux Toolkit",
   "libraryId": "redux-toolkit",
   "packageName": "@reduxjs/toolkit",
+  "version": "2.10.1",
   "test": "Simple Form (3 fields)",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 117408.67776931697,
-    "meanTime": 0.008517257999998832,
-    "variance": 0.0001884438738372284,
-    "p99": 0.011916999999925793,
+    "opsPerSecond": 118140.4874733783,
+    "meanTime": 0.008878890000312821,
+    "variance": 0.00004865670051523145,
+    "p99": 0.020706120007525888,
     "samples": 1000
   }
 }

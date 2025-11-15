@@ -2,14 +2,15 @@
   "library": "Jotai",
   "libraryId": "jotai",
   "packageName": "jotai",
+  "version": "2.15.1",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 666628.8910299574,
-    "meanTime": 0.0015000849999989895,
-    "variance": 1.3347151328895425e-7,
-    "p99": 0.003458000000023276,
+    "opsPerSecond": 314748.69075523136,
+    "meanTime": 0.0032720220000701373,
+    "variance": 8.358501355190494e-7,
+    "p99": 0.006166720004766825,
     "samples": 1000
   }
 }

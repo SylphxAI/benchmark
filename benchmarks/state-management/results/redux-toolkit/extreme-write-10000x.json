@@ -2,14 +2,15 @@
   "library": "Redux Toolkit",
   "libraryId": "redux-toolkit",
   "packageName": "@reduxjs/toolkit",
+  "version": "2.10.1",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 317742.65450534615,
-    "meanTime": 0.003147200999994084,
-    "variance": 3.0668610670449574e-7,
-    "p99": 0.00508399999989706,
+    "opsPerSecond": 15.225727137566768,
+    "meanTime": 65.68724426600032,
+    "variance": 0.6096518782675459,
+    "p99": 67.72545642999583,
     "samples": 1000
   }
 }

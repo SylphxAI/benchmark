@@ -2,14 +2,15 @@
   "library": "Redux Toolkit",
   "libraryId": "redux-toolkit",
   "packageName": "@reduxjs/toolkit",
+  "version": "2.10.1",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 6790.838691395565,
-    "meanTime": 0.14725721600000088,
-    "variance": 0.001393253552393571,
-    "p99": 0.4266249999999445,
+    "opsPerSecond": 2885.9334459843053,
+    "meanTime": 0.3542798680003034,
+    "variance": 0.007045168623309827,
+    "p99": 0.6861055799941823,
     "samples": 1000
   }
 }

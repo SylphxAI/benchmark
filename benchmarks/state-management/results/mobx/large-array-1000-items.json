@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "Large Array (1000 items)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 17615.587540178225,
-    "meanTime": 0.05676790499999879,
-    "variance": 0.00038446062268256495,
-    "p99": 0.07104200000003402,
+    "opsPerSecond": 253058.85722137982,
+    "meanTime": 0.0044457679992774505,
+    "variance": 0.000005609191747661823,
+    "p99": 0.014176939990138616,
     "samples": 1000
   }
 }

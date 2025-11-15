@@ -2,14 +2,15 @@
   "library": "Jotai",
   "libraryId": "jotai",
   "packageName": "jotai",
+  "version": "2.15.1",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 17036.389540659144,
-    "meanTime": 0.058697882999998,
-    "variance": 0.0036989432325136642,
-    "p99": 0.16745799999989686,
+    "opsPerSecond": 7386.095000486837,
+    "meanTime": 0.14440914200012048,
+    "variance": 0.012459407158072335,
+    "p99": 0.3316133100069419,
     "samples": 1000
   }
 }

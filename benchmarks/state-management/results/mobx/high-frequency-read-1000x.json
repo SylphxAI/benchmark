@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "High-Frequency Read (1000x)",
   "group": "01-basic-read",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 19498118.431570563,
-    "meanTime": 0.00005128700000000208,
-    "variance": 1.2704941572572818e-8,
-    "p99": 0.00016700000000469117,
+    "opsPerSecond": 84494.37960710292,
+    "meanTime": 0.011891828000012537,
+    "variance": 0.0000014633341785768823,
+    "p99": 0.018976189999393683,
     "samples": 1000
   }
 }

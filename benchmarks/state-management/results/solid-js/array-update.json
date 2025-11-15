@@ -1,15 +1,16 @@
 {
-  "library": "Solid Signals",
+  "library": "Solid.js",
   "libraryId": "solid-js",
   "packageName": "solid-js",
+  "version": "1.9.10",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 7207103.321068077,
-    "meanTime": 0.00013875199999932873,
-    "variance": 8.795530580166069e-8,
-    "p99": 0.0006660000000238142,
+    "opsPerSecond": 2636291.869331254,
+    "meanTime": 0.000389028000041435,
+    "variance": 7.91999521189141e-9,
+    "p99": 0.0008322999979282028,
     "samples": 1000
   }
 }

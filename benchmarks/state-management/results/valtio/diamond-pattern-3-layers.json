@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Diamond Pattern (3 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 5808280.2846016325,
-    "meanTime": 0.00017216799999323485,
-    "variance": 9.777199977408298e-8,
-    "p99": 0.0006250000001273293,
+    "opsPerSecond": 2578863.9361191215,
+    "meanTime": 0.0003934379983693361,
+    "variance": 5.4870752993678386e-9,
+    "p99": 0.0008621999283786861,
     "samples": 1000
   }
 }

@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Massive Fanout (1→1000)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 296475.0597771018,
-    "meanTime": 0.003372964999996384,
-    "variance": 0.000001202781451207877,
-    "p99": 0.005583000000115135,
+    "opsPerSecond": 8234.179008172061,
+    "meanTime": 0.1220773549998412,
+    "variance": 0.00010089838726865011,
+    "p99": 0.15516391999088228,
     "samples": 1000
   }
 }

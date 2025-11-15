@@ -2,14 +2,15 @@
   "library": "MobX",
   "libraryId": "mobx",
   "packageName": "mobx",
+  "version": "6.15.0",
   "test": "Deep Chain (10 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 9318882.852838214,
-    "meanTime": 0.00010730899999407483,
-    "variance": 5.247029981593112e-8,
-    "p99": 0.0006250000001273293,
+    "opsPerSecond": 266326.29527428874,
+    "meanTime": 0.005607489997055381,
+    "variance": 0.0013079755602188644,
+    "p99": 0.008508599926717576,
     "samples": 1000
   }
 }

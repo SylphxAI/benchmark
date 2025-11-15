@@ -2,14 +2,15 @@
   "library": "Redux Toolkit",
   "libraryId": "redux-toolkit",
   "packageName": "@reduxjs/toolkit",
+  "version": "2.10.1",
   "test": "Single Write",
   "group": "02-basic-write",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 134067.81042597382,
-    "meanTime": 0.007458911999999842,
-    "variance": 0.000025105662975227703,
-    "p99": 0.034874999999999545,
+    "opsPerSecond": 158410.89224324157,
+    "meanTime": 0.006472065000005386,
+    "variance": 0.0000028794912318004633,
+    "p99": 0.01041870999899401,
     "samples": 1000
   }
 }

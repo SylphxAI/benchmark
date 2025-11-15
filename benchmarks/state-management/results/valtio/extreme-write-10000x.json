@@ -2,14 +2,15 @@
   "library": "Valtio",
   "libraryId": "valtio",
   "packageName": "valtio",
+  "version": "2.2.0",
   "test": "Extreme Write (10000x)",
   "group": "06-performance-stress",
-  "timestamp": "2025-11-13T21:39:31.879Z",
+  "timestamp": "2025-11-15T18:46:52.745Z",
   "result": {
-    "opsPerSecond": 6083502.150524443,
-    "meanTime": 0.00016437899999982618,
-    "variance": 1.5718389747997922e-8,
-    "p99": 0.0005830000000059954,
+    "opsPerSecond": 413.9371587666407,
+    "meanTime": 2.422450187999726,
+    "variance": 0.018033736052226385,
+    "p99": 3.0248943200081704,
     "samples": 1000
   }
 }
