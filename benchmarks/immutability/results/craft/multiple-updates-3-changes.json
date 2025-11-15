@@ -5,12 +5,12 @@
   "version": "1.2.1",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-15T04:05:32.753Z",
+  "timestamp": "2025-11-15T05:05:13.681Z",
   "result": {
-    "opsPerSecond": 619395.1513854829,
-    "meanTime": 0.0016694850000312726,
-    "variance": 3.826703862254065e-7,
-    "p99": 0.00284549999909359,
+    "opsPerSecond": 647917.7099212343,
+    "meanTime": 0.001588610000013432,
+    "variance": 2.75107223119811e-7,
+    "p99": 0.0024565000016082182,
     "samples": 1000
   }
 }
