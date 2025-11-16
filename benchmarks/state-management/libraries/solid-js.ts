@@ -198,18 +198,11 @@ library.implement(tests.asyncThroughput, {
     setCounter(0);
   },
   fn: async () => {
-    const promises = [];
+    // Simulate rapid async operations
     for (let i = 0; i < 20; i++) {
-      promises.push(
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            setCounter((prev) => prev + 1);
-            resolve();
-          }, 0);
-        })
-      );
+      await Promise.resolve();
+      setCounter(i);
     }
-    await Promise.all(promises);
   },
 });
 

@@ -277,18 +277,11 @@ library.implement(tests.asyncThroughput, {
     useCounterStore.getState().setCounter(0);
   },
   fn: async () => {
-    const promises = [];
+    // Simulate rapid async operations
     for (let i = 0; i < 20; i++) {
-      promises.push(
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            useCounterStore.getState().increment();
-            resolve();
-          }, 0);
-        })
-      );
+      await Promise.resolve();
+      useCounterStore.getState().setCounter(i);
     }
-    await Promise.all(promises);
   },
 });
 

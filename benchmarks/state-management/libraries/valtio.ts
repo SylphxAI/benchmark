@@ -187,18 +187,11 @@ library.implement(tests.asyncThroughput, {
     counterState.value = 0;
   },
   fn: async () => {
-    const promises = [];
+    // Simulate rapid async operations
     for (let i = 0; i < 20; i++) {
-      promises.push(
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            counterState.value++;
-            resolve();
-          }, 0);
-        })
-      );
+      await Promise.resolve();
+      counterState.value = i;
     }
-    await Promise.all(promises);
   },
 });
 

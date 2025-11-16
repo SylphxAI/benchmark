@@ -269,18 +269,11 @@ library.implement(tests.asyncThroughput, {
     store.dispatch(counterSlice.actions.reset());
   },
   fn: async () => {
-    const promises = [];
+    // Simulate rapid async operations
     for (let i = 0; i < 20; i++) {
-      promises.push(
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            store.dispatch(counterSlice.actions.increment());
-            resolve();
-          }, 0);
-        })
-      );
+      await Promise.resolve();
+      store.dispatch(counterSlice.actions.setCounter(i));
     }
-    await Promise.all(promises);
   },
 });
 
