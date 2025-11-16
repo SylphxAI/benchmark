@@ -5,18 +5,18 @@
   "version": "2.10.1",
   "test": "Burst Write (100x)",
   "group": "02-basic-write",
-  "timestamp": "2025-11-16T22:02:28.116Z",
+  "timestamp": "2025-11-16T22:23:51.158Z",
   "result": {
-    "opsPerSecond": 1554.13195093034,
-    "meanTime": 0.6531216149999345,
-    "variance": 0.013302160301461056,
-    "p99": 1.4765012399985422,
+    "opsPerSecond": 1587.5495629393906,
+    "meanTime": 0.6366934250000086,
+    "variance": 0.009105538362715842,
+    "p99": 1.4416864599998005,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T22-02-28-116Z",
+    "runId": "run-2025-11-16T22-23-51-158Z",
     "mode": "production",
-    "timestamp": "2025-11-16T22:02:28.116Z",
+    "timestamp": "2025-11-16T22:23:51.158Z",
     "completedLibraries": [
       "zen",
       "solid-js",

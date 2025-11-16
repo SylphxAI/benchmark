@@ -5,18 +5,18 @@
   "version": "1.0.2",
   "test": "Dynamic Route Matching (1 param)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-16T22:02:27.361Z",
+  "timestamp": "2025-11-16T22:23:45.011Z",
   "result": {
-    "opsPerSecond": 2367759.587824227,
-    "meanTime": 0.0004312050000162344,
-    "variance": 8.669956935817032e-9,
-    "p99": 0.0009620900000754772,
+    "opsPerSecond": 2595002.902998911,
+    "meanTime": 0.0004322459999993953,
+    "variance": 2.0439165715278047e-7,
+    "p99": 0.0008972999998968586,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T22-02-27-361Z",
+    "runId": "run-2025-11-16T22-23-45-011Z",
     "mode": "production",
-    "timestamp": "2025-11-16T22:02:27.361Z",
+    "timestamp": "2025-11-16T22:23:45.011Z",
     "completedLibraries": [
       "react-router-dom",
       "wouter",
