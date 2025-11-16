@@ -5,18 +5,18 @@
   "version": "6.30.1",
   "test": "Wildcard Route Matching",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-16T05:46:39.864Z",
+  "timestamp": "2025-11-16T06:23:10.965Z",
   "result": {
-    "opsPerSecond": 10812.011396255131,
-    "meanTime": 0.09422856500001944,
-    "variance": 0.0006665376963504674,
-    "p99": 0.1209210199995141,
+    "opsPerSecond": 11030.049479493857,
+    "meanTime": 0.0927748889999948,
+    "variance": 0.0009283102076592386,
+    "p99": 0.12539400999938152,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T05-46-39-864Z",
+    "runId": "run-2025-11-16T06-23-10-965Z",
     "mode": "production",
-    "timestamp": "2025-11-16T05:46:39.864Z",
+    "timestamp": "2025-11-16T06:23:10.965Z",
     "completedLibraries": [
       "react-router-dom",
       "wouter",
