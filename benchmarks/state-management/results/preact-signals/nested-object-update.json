@@ -5,18 +5,18 @@
   "version": "2.4.0",
   "test": "Nested Object Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-16T05:46:45.647Z",
+  "timestamp": "2025-11-16T06:26:16.262Z",
   "result": {
-    "opsPerSecond": 6637364.11995127,
-    "meanTime": 0.0001601199999349774,
-    "variance": 6.928794395539949e-9,
-    "p99": 0.000592099996356409,
+    "opsPerSecond": 5977590.847010924,
+    "meanTime": 0.0001711440000726725,
+    "variance": 2.002321587626167e-9,
+    "p99": 0.0003407099987089162,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T05-46-45-647Z",
+    "runId": "run-2025-11-16T06-26-16-262Z",
     "mode": "production",
-    "timestamp": "2025-11-16T05:46:45.647Z",
+    "timestamp": "2025-11-16T06:26:16.262Z",
     "completedLibraries": [
       "zen",
       "solid-js",
