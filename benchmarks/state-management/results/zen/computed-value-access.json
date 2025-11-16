@@ -2,21 +2,21 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
-  "version": "3.18.0",
+  "version": "3.19.0",
   "test": "Computed Value Access",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-16T03:50:12.983Z",
+  "timestamp": "2025-11-16T04:22:35.822Z",
   "result": {
-    "opsPerSecond": 16518137.636093937,
-    "meanTime": 0.00006194200021855068,
-    "variance": 1.0614677559343126e-10,
+    "opsPerSecond": 12679186.616512148,
+    "meanTime": 0.00009155499991902616,
+    "variance": 1.5339955833303599e-7,
     "p99": 0.00009109000879107035,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T03-50-12-983Z",
+    "runId": "run-2025-11-16T04-22-35-822Z",
     "mode": "production",
-    "timestamp": "2025-11-16T03:50:12.983Z",
+    "timestamp": "2025-11-16T04:22:35.822Z",
     "completedLibraries": [
       "zen",
       "solid-js",
