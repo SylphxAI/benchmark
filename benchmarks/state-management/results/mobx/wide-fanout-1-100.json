@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Wide Fanout (1→100)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-17T04:30:36.887Z",
+  "timestamp": "2025-11-17T05:17:27.370Z",
   "result": {
-    "opsPerSecond": 78868.1941137305,
-    "meanTime": 0.012772085001925006,
-    "variance": 0.0000024416389943581842,
-    "p99": 0.01834364995942451,
+    "opsPerSecond": 77904.03836312552,
+    "meanTime": 0.013006205998244695,
+    "variance": 0.000006117003315195341,
+    "p99": 0.019718269967706873,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T04-30-36-887Z",
+    "runId": "run-2025-11-17T05-17-27-370Z",
     "mode": "production",
-    "timestamp": "2025-11-17T04:30:36.887Z",
+    "timestamp": "2025-11-17T05:17:27.370Z",
     "completedLibraries": [
       "zen",
       "solid-js",
