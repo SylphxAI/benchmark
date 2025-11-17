@@ -5,18 +5,18 @@
   "version": "unknown",
   "test": "Large Array Update (1000 items)",
   "group": "05-large-scale",
-  "timestamp": "2025-11-17T02:13:51.564Z",
+  "timestamp": "2025-11-17T02:44:54.232Z",
   "result": {
-    "opsPerSecond": 398426.6445784963,
-    "meanTime": 0.0027012880000875155,
-    "variance": 7.340241752308472e-7,
-    "p99": 0.005142029998169164,
+    "opsPerSecond": 397018.68028931995,
+    "meanTime": 0.0026978479999852424,
+    "variance": 0.0000011114588976775969,
+    "p99": 0.0050596000027871915,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T02-13-51-564Z",
+    "runId": "run-2025-11-17T02-44-54-232Z",
     "mode": "production",
-    "timestamp": "2025-11-17T02:13:51.564Z",
+    "timestamp": "2025-11-17T02:44:54.232Z",
     "completedLibraries": [
       "immer",
       "mutative",

@@ -5,18 +5,18 @@
   "version": "7.1.4",
   "test": "Array Remove",
   "group": "03-array-operations",
-  "timestamp": "2025-11-17T02:13:51.564Z",
+  "timestamp": "2025-11-17T02:44:54.232Z",
   "result": {
-    "opsPerSecond": 119295.99333766871,
-    "meanTime": 0.008453002999980527,
-    "variance": 9.856394224566856e-7,
-    "p99": 0.014779979999984786,
+    "opsPerSecond": 127089.56382470227,
+    "meanTime": 0.00794562899999437,
+    "variance": 0.000001144189378785978,
+    "p99": 0.011088960000724884,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T02-13-51-564Z",
+    "runId": "run-2025-11-17T02-44-54-232Z",
     "mode": "production",
-    "timestamp": "2025-11-17T02:13:51.564Z",
+    "timestamp": "2025-11-17T02:44:54.232Z",
     "completedLibraries": [
       "immer",
       "mutative",

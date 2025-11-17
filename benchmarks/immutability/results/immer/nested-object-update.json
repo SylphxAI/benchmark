@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Nested Object Update",
   "group": "02-nested-updates",
-  "timestamp": "2025-11-17T02:13:51.564Z",
+  "timestamp": "2025-11-17T02:44:54.232Z",
   "result": {
-    "opsPerSecond": 267348.26665930345,
-    "meanTime": 0.0038116149999946176,
-    "variance": 6.720831299054572e-7,
-    "p99": 0.006152520000159709,
+    "opsPerSecond": 277700.65292114374,
+    "meanTime": 0.003748451000003115,
+    "variance": 0.0000017163339075051559,
+    "p99": 0.008185200000139047,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T02-13-51-564Z",
+    "runId": "run-2025-11-17T02-44-54-232Z",
     "mode": "production",
-    "timestamp": "2025-11-17T02:13:51.564Z",
+    "timestamp": "2025-11-17T02:44:54.232Z",
     "completedLibraries": [
       "immer",
       "mutative",

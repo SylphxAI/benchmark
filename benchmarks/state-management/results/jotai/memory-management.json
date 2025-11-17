@@ -5,18 +5,18 @@
   "version": "2.15.1",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-17T02:13:51.437Z",
+  "timestamp": "2025-11-17T02:44:56.203Z",
   "result": {
-    "opsPerSecond": 7583.9935115353255,
-    "meanTime": 0.1440508890002093,
-    "variance": 0.01660525021003851,
-    "p99": 0.30602836000106937,
+    "opsPerSecond": 7003.113997811024,
+    "meanTime": 0.16031034099964017,
+    "variance": 0.020099162719507558,
+    "p99": 0.7969508500098891,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T02-13-51-437Z",
+    "runId": "run-2025-11-17T02-44-56-203Z",
     "mode": "production",
-    "timestamp": "2025-11-17T02:13:51.437Z",
+    "timestamp": "2025-11-17T02:44:56.203Z",
     "completedLibraries": [
       "zen",
       "solid-js",
