@@ -5,18 +5,18 @@
   "version": "3.1.1",
   "test": "Multiple Updates (3 changes)",
   "group": "04-deep-operations",
-  "timestamp": "2025-11-16T23:54:00.455Z",
+  "timestamp": "2025-11-17T00:32:14.958Z",
   "result": {
-    "opsPerSecond": 914010.1859698027,
-    "meanTime": 0.0011333979999944858,
-    "variance": 1.5014242007998356e-7,
-    "p99": 0.0020898199978182665,
+    "opsPerSecond": 923237.5443228645,
+    "meanTime": 0.001115776000009646,
+    "variance": 2.0683705492229648e-7,
+    "p99": 0.0018043999995643386,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T23-54-00-455Z",
+    "runId": "run-2025-11-17T00-32-14-958Z",
     "mode": "production",
-    "timestamp": "2025-11-16T23:54:00.455Z",
+    "timestamp": "2025-11-17T00:32:14.958Z",
     "completedLibraries": [
       "immer",
       "mutative",

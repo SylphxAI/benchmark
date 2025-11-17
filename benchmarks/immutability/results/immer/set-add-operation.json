@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Set - Add Operation",
   "group": "07-map-set",
-  "timestamp": "2025-11-16T23:54:00.455Z",
+  "timestamp": "2025-11-17T00:32:14.958Z",
   "result": {
-    "opsPerSecond": 255294.2239579881,
-    "meanTime": 0.004665165999962482,
-    "variance": 0.0003980905798622491,
-    "p99": 0.007288080000362241,
+    "opsPerSecond": 252123.4446396254,
+    "meanTime": 0.004027339999967808,
+    "variance": 5.831237361350972e-7,
+    "p99": 0.006123499998866463,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T23-54-00-455Z",
+    "runId": "run-2025-11-17T00-32-14-958Z",
     "mode": "production",
-    "timestamp": "2025-11-16T23:54:00.455Z",
+    "timestamp": "2025-11-17T00:32:14.958Z",
     "completedLibraries": [
       "immer",
       "mutative",
