@@ -5,18 +5,18 @@
   "version": "6.15.0",
   "test": "Concurrent Updates (50x)",
   "group": "04-async-operations",
-  "timestamp": "2025-11-17T02:44:56.203Z",
+  "timestamp": "2025-11-17T03:12:18.153Z",
   "result": {
-    "opsPerSecond": 34641.63358687008,
-    "meanTime": 0.030102122999567656,
-    "variance": 0.0006081916791039099,
-    "p99": 0.04135930999473203,
+    "opsPerSecond": 29967.06881649774,
+    "meanTime": 0.03425676200017915,
+    "variance": 0.00004732006411347538,
+    "p99": 0.06460450000609853,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-17T02-44-56-203Z",
+    "runId": "run-2025-11-17T03-12-18-154Z",
     "mode": "production",
-    "timestamp": "2025-11-17T02:44:56.203Z",
+    "timestamp": "2025-11-17T03:12:18.153Z",
     "completedLibraries": [
       "zen",
       "solid-js",
