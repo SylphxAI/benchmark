@@ -5,18 +5,18 @@
   "version": "1.3.0",
   "test": "JSON Patches - Apply",
   "group": "06-patches",
-  "timestamp": "2025-11-16T23:21:14.536Z",
+  "timestamp": "2025-11-16T23:54:00.455Z",
   "result": {
-    "opsPerSecond": 116624.8434414195,
-    "meanTime": 0.00872653799991167,
-    "variance": 0.00000253000005252249,
-    "p99": 0.016475069999760276,
+    "opsPerSecond": 147325.04080326983,
+    "meanTime": 0.006897136999970826,
+    "variance": 0.0000013054684548095466,
+    "p99": 0.012031030000907763,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T23-21-14-536Z",
+    "runId": "run-2025-11-16T23-54-00-455Z",
     "mode": "production",
-    "timestamp": "2025-11-16T23:21:14.536Z",
+    "timestamp": "2025-11-16T23:54:00.455Z",
     "completedLibraries": [
       "immer",
       "mutative",

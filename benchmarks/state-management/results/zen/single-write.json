@@ -2,21 +2,21 @@
   "library": "Zen",
   "libraryId": "zen",
   "packageName": "@sylphx/zen",
-  "version": "3.38.0",
+  "version": "3.40.0",
   "test": "Single Write",
   "group": "02-basic-write",
-  "timestamp": "2025-11-16T23:21:20.756Z",
+  "timestamp": "2025-11-16T23:54:01.676Z",
   "result": {
-    "opsPerSecond": 20169306.379890732,
-    "meanTime": 0.00005085600002348656,
-    "variance": 8.017069748347057e-10,
+    "opsPerSecond": 20261276.278436247,
+    "meanTime": 0.000049671999888232676,
+    "variance": 2.5271687907254835e-11,
     "p99": 0.00006000000212225132,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-16T23-21-20-756Z",
+    "runId": "run-2025-11-16T23-54-01-676Z",
     "mode": "production",
-    "timestamp": "2025-11-16T23:21:20.756Z",
+    "timestamp": "2025-11-16T23:54:01.676Z",
     "completedLibraries": [
       "zen",
       "solid-js",
