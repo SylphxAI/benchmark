@@ -40,7 +40,6 @@ jobs:
     strategy:
       matrix:
         version: ${{ fromJson(needs.prepare.outputs.version-matrix) }}
-        iteration: [1, 2, 3]
       max-parallel: 1  # Run sequentially for fairness
     steps:
       - name: Checkout repository
@@ -74,7 +73,7 @@ jobs:
             exit 1
           fi
 
-      - name: Run benchmarks (iteration ${{ matrix.iteration }})
+      - name: Run benchmarks
         working-directory: benchmarks/state-management
         run: bun run benchmark
         timeout-minutes: 15
@@ -82,7 +81,7 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: results-${{ matrix.version }}-iter${{ matrix.iteration }}
+          name: results-${{ matrix.version }}
           path: benchmarks/state-management/results/zen/*.json
           retention-days: 30
 
@@ -126,14 +125,15 @@ jobs:
 
           // Read all result files
           const artifacts = readdirSync(resultsDir);
+          const resultsByTest: Map<string, Map<string, number>> = new Map();
+
           for (const artifact of artifacts) {
-            const match = artifact.match(/results-(.+)-iter(\d+)/);
+            const match = artifact.match(/results-(.+)$/);
             if (!match) continue;
 
             const version = match[1];
-            const iteration = match[2];
-
             const files = readdirSync(join(resultsDir, artifact));
+
             for (const file of files) {
               if (!file.endsWith('.json')) continue;
 
@@ -141,45 +141,24 @@ jobs:
                 readFileSync(join(resultsDir, artifact, file), 'utf-8')
               );
 
-              const key = `${version}:${data.test}`;
-              if (!results.has(key)) results.set(key, []);
+              const testName = data.test;
+              if (!resultsByTest.has(testName)) {
+                resultsByTest.set(testName, new Map());
+              }
 
-              results.get(key)!.push({
-                version,
-                test: data.test,
-                opsPerSecond: data.result.opsPerSecond,
-                meanTime: data.result.meanTime
-              });
+              resultsByTest.get(testName)!.set(version, data.result.opsPerSecond);
             }
           }
 
-          // Calculate averages
-          const averages: Map<string, { version: string; test: string; avgOps: number; stdDev: number }> = new Map();
+          // Convert to array format for reporting
+          const byTest: Map<string, Array<{ version: string; opsPerSecond: number }>> = new Map();
 
-          for (const [key, values] of results.entries()) {
-            const ops = values.map(v => v.opsPerSecond);
-            const avg = ops.reduce((a, b) => a + b, 0) / ops.length;
-            const variance = ops.reduce((sum, val) => sum + Math.pow(val - avg, 2), 0) / ops.length;
-            const stdDev = Math.sqrt(variance);
-
-            averages.set(key, {
-              version: values[0].version,
-              test: values[0].test,
-              avgOps: avg,
-              stdDev
-            });
-          }
-
-          // Group by test
-          const byTest: Map<string, Array<{ version: string; avgOps: number; stdDev: number }>> = new Map();
-
-          for (const [_, data] of averages.entries()) {
-            if (!byTest.has(data.test)) byTest.set(data.test, []);
-            byTest.get(data.test)!.push({
-              version: data.version,
-              avgOps: data.avgOps,
-              stdDev: data.stdDev
-            });
+          for (const [testName, versionResults] of resultsByTest.entries()) {
+            const testData: Array<{ version: string; opsPerSecond: number }> = [];
+            for (const [version, ops] of versionResults.entries()) {
+              testData.push({ version, opsPerSecond: ops });
+            }
+            byTest.set(testName, testData);
           }
 
           // Generate markdown report
@@ -202,25 +181,22 @@ jobs:
             const data = byTest.get(test);
             if (!data) continue;
 
-            // Sort by avgOps descending
-            data.sort((a, b) => b.avgOps - a.avgOps);
+            // Sort by opsPerSecond descending
+            data.sort((a, b) => b.opsPerSecond - a.opsPerSecond);
 
             markdown += `### ${test}\n\n`;
-            markdown += '| Rank | Version | Ops/sec | Std Dev | vs Best |\n';
-            markdown += '|------|---------|---------|---------|----------|\n';
+            markdown += '| Rank | Version | Ops/sec | vs Best |\n';
+            markdown += '|------|---------|---------|----------|\n';
 
-            const best = data[0].avgOps;
+            const best = data[0].opsPerSecond;
             data.slice(0, 10).forEach((item, idx) => {
-              const pct = ((item.avgOps / best) * 100).toFixed(1);
-              const ops = item.avgOps >= 1000000
-                ? `${(item.avgOps / 1000000).toFixed(2)}M`
-                : item.avgOps >= 1000
-                ? `${(item.avgOps / 1000).toFixed(0)}K`
-                : item.avgOps.toFixed(0);
-              const std = item.stdDev >= 1000
-                ? `${(item.stdDev / 1000).toFixed(1)}K`
-                : item.stdDev.toFixed(0);
-              markdown += `| ${idx + 1} | ${item.version} | ${ops} | ±${std} | ${pct}% |\n`;
+              const pct = ((item.opsPerSecond / best) * 100).toFixed(1);
+              const ops = item.opsPerSecond >= 1000000
+                ? `${(item.opsPerSecond / 1000000).toFixed(2)}M`
+                : item.opsPerSecond >= 1000
+                ? `${(item.opsPerSecond / 1000).toFixed(0)}K`
+                : item.opsPerSecond.toFixed(0);
+              markdown += `| ${idx + 1} | ${item.version} | ${ops} | ${pct}% |\n`;
             });
             markdown += '\n';
           }
@@ -233,12 +209,12 @@ jobs:
           for (const test of keyTests) {
             const data = byTest.get(test);
             if (!data) continue;
-            const best = data.sort((a, b) => b.avgOps - a.avgOps)[0];
-            const ops = best.avgOps >= 1000000
-              ? `${(best.avgOps / 1000000).toFixed(2)}M`
-              : best.avgOps >= 1000
-              ? `${(best.avgOps / 1000).toFixed(0)}K`
-              : best.avgOps.toFixed(0);
+            const best = data.sort((a, b) => b.opsPerSecond - a.opsPerSecond)[0];
+            const ops = best.opsPerSecond >= 1000000
+              ? `${(best.opsPerSecond / 1000000).toFixed(2)}M`
+              : best.opsPerSecond >= 1000
+              ? `${(best.opsPerSecond / 1000).toFixed(0)}K`
+              : best.opsPerSecond.toFixed(0);
             markdown += `| ${test} | **${best.version}** | ${ops} |\n`;
           }
 
