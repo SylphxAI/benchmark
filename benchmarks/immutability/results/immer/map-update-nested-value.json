@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "Map - Update Nested Value",
   "group": "07-map-set",
-  "timestamp": "2025-11-18T16:43:26.647Z",
+  "timestamp": "2025-11-18T16:46:26.440Z",
   "result": {
-    "opsPerSecond": 210097.92340993593,
-    "meanTime": 0.004828983000010339,
-    "variance": 7.406523029981172e-7,
-    "p99": 0.006874920001755524,
+    "opsPerSecond": 199119.81028275538,
+    "meanTime": 0.005719184000037785,
+    "variance": 0.00035303445065374377,
+    "p99": 0.008148020000044186,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T16-43-26-647Z",
+    "runId": "run-2025-11-18T16-46-26-440Z",
     "mode": "production",
-    "timestamp": "2025-11-18T16:43:26.647Z",
+    "timestamp": "2025-11-18T16:46:26.440Z",
     "completedLibraries": [
       "immer",
       "mutative",
