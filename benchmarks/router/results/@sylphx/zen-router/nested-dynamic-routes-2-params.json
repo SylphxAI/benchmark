@@ -5,18 +5,18 @@
   "version": "1.0.2",
   "test": "Nested Dynamic Routes (2 params)",
   "group": "02-dynamic-routes",
-  "timestamp": "2025-11-18T03:54:30.835Z",
+  "timestamp": "2025-11-18T05:05:26.825Z",
   "result": {
-    "opsPerSecond": 1786332.7019041774,
-    "meanTime": 0.0005766260000018519,
-    "variance": 1.3731686700220811e-7,
-    "p99": 0.0009810100001323007,
+    "opsPerSecond": 1802401.8426778924,
+    "meanTime": 0.0005727410000154122,
+    "variance": 1.5135419813277625e-7,
+    "p99": 0.0009220900001764675,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T03-54-30-835Z",
+    "runId": "run-2025-11-18T05-05-26-826Z",
     "mode": "production",
-    "timestamp": "2025-11-18T03:54:30.835Z",
+    "timestamp": "2025-11-18T05:05:26.825Z",
     "completedLibraries": [
       "react-router-dom",
       "wouter",

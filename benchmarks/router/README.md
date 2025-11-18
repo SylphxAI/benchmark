@@ -32,7 +32,7 @@ Comprehensive performance benchmarks for React router libraries.
 **TL;DR** - Choose based on your needs:
 
 - **⚡ Maximum Performance**: Zen Router - Fastest overall with 100.0/100 score
-- **⚖️ Best Balance**: Wouter - Great performance (69.1/100) with good ecosystem
+- **⚖️ Best Balance**: Wouter - Great performance (68.7/100) with good ecosystem
 - **🎯 Popular Choice**: React Router - Widely used, good performance, minimal API
 
 <details>
@@ -47,7 +47,7 @@ Comprehensive performance benchmarks for React router libraries.
 - [GitHub](https://github.com/SylphxAI/zen-router) • [npm](https://www.npmjs.com/package/@sylphx/zen-router)
 
 
-**Wouter** (Score: 69.1/100)
+**Wouter** (Score: 68.7/100)
 - Minimalist-friendly ~2.1KB routing for React and Preact
 - **Best for**: General purpose state management
 - [GitHub](https://github.com/molefrog/wouter) • [npm](https://www.npmjs.com/package/wouter)
@@ -88,8 +88,8 @@ Based on **two-tier weighted geometric mean** combining category importance with
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
 | 🥇 1 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 100.0/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen-router) [📊](https://bundlephobia.com/package/@sylphx/zen-router) |
-| 🥈 2 | **[Wouter](https://github.com/molefrog/wouter)** | 73.0/100 | 73% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
-| 🥉 3 | **[React Router](https://github.com/remix-run/react-router)** | 1.3/100 | 1% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
+| 🥈 2 | **[Wouter](https://github.com/molefrog/wouter)** | 72.2/100 | 72% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
+| 🥉 3 | **[React Router](https://github.com/remix-run/react-router)** | 1.4/100 | 1% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 |  4 | **[React Router](https://github.com/remix-run/react-router)** | 0.4/100 | 0% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 
 
@@ -102,7 +102,7 @@ Pure data-driven weighting based on test stability across implementations.
 | Rank | Library | Overall Score | Relative Performance | Links |
 |:----:|---------|--------------|---------------------|:-----:|
 | 🥇 1 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | 100.0/100 | 100% of fastest | [📦](https://www.npmjs.com/package/@sylphx/zen-router) [📊](https://bundlephobia.com/package/@sylphx/zen-router) |
-| 🥈 2 | **[Wouter](https://github.com/molefrog/wouter)** | 69.1/100 | 69% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
+| 🥈 2 | **[Wouter](https://github.com/molefrog/wouter)** | 68.7/100 | 69% of fastest | [📦](https://www.npmjs.com/package/wouter) [📊](https://bundlephobia.com/package/wouter) |
 | 🥉 3 | **[React Router](https://github.com/remix-run/react-router)** | 2.2/100 | 2% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 |  4 | **[React Router](https://github.com/remix-run/react-router)** | 0.7/100 | 1% of fastest | [📦](https://www.npmjs.com/package/react-router-dom) [📊](https://bundlephobia.com/package/react-router-dom) |
 
@@ -116,7 +116,7 @@ Pure data-driven weighting based on test stability across implementations.
 | Library | Score | Bundle Size (gzip) | Description | Best For |
 |---------|:-----:|:------------------:|-------------|----------|
 | **[Zen Router](https://github.com/SylphxAI/zen-router)** | **100.0** | **1.57 KB** | Tiny and fast router with regex-based matching... | General purpose... |
-| **[Wouter](https://github.com/molefrog/wouter)** | **69.1** | **2.49 KB** | Minimalist-friendly ~2.1KB routing for React and P... | General purpose... |
+| **[Wouter](https://github.com/molefrog/wouter)** | **68.7** | **2.49 KB** | Minimalist-friendly ~2.1KB routing for React and P... | General purpose... |
 | **[React Router](https://github.com/remix-run/react-router)** | **2.2** | **26.34 KB** | Declarative routing for React... | General purpose... |
 | **[React Router](https://github.com/remix-run/react-router)** | **0.7** | **26.34 KB** | Declarative routing for React... | General purpose... |
 
@@ -133,7 +133,7 @@ Pure data-driven weighting based on test stability across implementations.
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   8.0M ops/sec
-🥈 Wouter             ████████████████████████████████████       7.2M ops/sec
+🥈 Wouter             ███████████████████████████████████        7.1M ops/sec
 🥉 React Router                                                  51K ops/sec
  React Router                                                  18K ops/sec
 ```
@@ -141,15 +141,15 @@ Pure data-driven weighting based on test stability across implementations.
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Zen Router | 8.0M | 0.000ms | 0.000ms | 1000 |
-| Wouter | 7.2M | 0.000ms | 0.000ms | 1000 |
+| Wouter | 7.1M | 0.000ms | 0.000ms | 1000 |
 | React Router | 51K | 0.020ms | 0.036ms | 1000 |
-| React Router | 18K | 0.057ms | 0.079ms | 1000 |
+| React Router | 18K | 0.058ms | 0.085ms | 1000 |
 
 #### Static Route Matching
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   9.4M ops/sec
-🥈 Wouter             ██████████████████████████████████         8.0M ops/sec
+🥈 Wouter             ██████████████████████████████████         7.9M ops/sec
 🥉 React Router                                                  47K ops/sec
  React Router                                                  13K ops/sec
 ```
@@ -157,9 +157,9 @@ Pure data-driven weighting based on test stability across implementations.
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Zen Router | 9.4M | 0.000ms | 0.000ms | 1000 |
-| Wouter | 8.0M | 0.000ms | 0.001ms | 1000 |
+| Wouter | 7.9M | 0.000ms | 0.000ms | 1000 |
 | React Router | 47K | 0.022ms | 0.039ms | 1000 |
-| React Router | 13K | 0.079ms | 0.105ms | 1000 |
+| React Router | 13K | 0.081ms | 0.151ms | 1000 |
 
 ### 02-dynamic-routes
 
@@ -167,17 +167,17 @@ Pure data-driven weighting based on test stability across implementations.
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   3.7M ops/sec
-🥈 Wouter             ██████████████████████████                 2.4M ops/sec
+🥈 Wouter             ██████████████████████████                 2.3M ops/sec
 🥉 React Router       █                                          55K ops/sec
- React Router                                                  19K ops/sec
+ React Router                                                  17K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Zen Router | 3.7M | 0.000ms | 0.001ms | 1000 |
-| Wouter | 2.4M | 0.000ms | 0.001ms | 1000 |
+| Wouter | 2.3M | 0.000ms | 0.001ms | 1000 |
 | React Router | 55K | 0.019ms | 0.034ms | 1000 |
-| React Router | 19K | 0.055ms | 0.081ms | 1000 |
+| React Router | 17K | 0.062ms | 0.108ms | 1000 |
 
 #### Nested Dynamic Routes (2 params)
 
@@ -193,7 +193,7 @@ Pure data-driven weighting based on test stability across implementations.
 | Zen Router | 2.3M | 0.000ms | 0.001ms | 1000 |
 | Wouter | 1.7M | 0.001ms | 0.001ms | 1000 |
 | React Router | 75K | 0.014ms | 0.027ms | 1000 |
-| React Router | 20K | 0.051ms | 0.081ms | 1000 |
+| React Router | 20K | 0.051ms | 0.094ms | 1000 |
 
 ### 03-advanced-routes
 
@@ -201,7 +201,7 @@ Pure data-driven weighting based on test stability across implementations.
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   1.7M ops/sec
-🥈 Wouter             ██████████████████████████████████         1.5M ops/sec
+🥈 Wouter             █████████████████████████████████          1.4M ops/sec
 🥉 React Router       █                                          56K ops/sec
  React Router                                                  19K ops/sec
 ```
@@ -209,17 +209,17 @@ Pure data-driven weighting based on test stability across implementations.
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Zen Router | 1.7M | 0.001ms | 0.001ms | 1000 |
-| Wouter | 1.5M | 0.001ms | 0.001ms | 1000 |
+| Wouter | 1.4M | 0.001ms | 0.001ms | 1000 |
 | React Router | 56K | 0.019ms | 0.036ms | 1000 |
-| React Router | 19K | 0.055ms | 0.078ms | 1000 |
+| React Router | 19K | 0.054ms | 0.087ms | 1000 |
 
 #### Optional Parameter Route (without param)
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   2.1M ops/sec
-🥈 Wouter             ████████████████████████████               1.5M ops/sec
+🥈 Wouter             █████████████████████████████              1.5M ops/sec
 🥉 React Router       █                                          50K ops/sec
- React Router                                                  17K ops/sec
+ React Router                                                  18K ops/sec
 ```
 
 | Library | ops/sec | Mean Time | P99 | Samples |
@@ -227,7 +227,7 @@ Pure data-driven weighting based on test stability across implementations.
 | Zen Router | 2.1M | 0.000ms | 0.001ms | 1000 |
 | Wouter | 1.5M | 0.001ms | 0.001ms | 1000 |
 | React Router | 50K | 0.020ms | 0.035ms | 1000 |
-| React Router | 17K | 0.058ms | 0.080ms | 1000 |
+| React Router | 18K | 0.057ms | 0.078ms | 1000 |
 
 #### Wildcard Route Matching
 
@@ -243,7 +243,7 @@ Pure data-driven weighting based on test stability across implementations.
 | Zen Router | 2.7M | 0.000ms | 0.001ms | 1000 |
 | Wouter | 1.7M | 0.001ms | 0.001ms | 1000 |
 | React Router | 38K | 0.028ms | 0.049ms | 1000 |
-| React Router | 11K | 0.091ms | 0.127ms | 1000 |
+| React Router | 11K | 0.090ms | 0.125ms | 1000 |
 
 ### 04-real-world
 
@@ -261,13 +261,13 @@ Pure data-driven weighting based on test stability across implementations.
 | Zen Router | 552K | 0.002ms | 0.003ms | 1000 |
 | Wouter | 338K | 0.003ms | 0.004ms | 1000 |
 | React Router | 7K | 0.137ms | 0.173ms | 1000 |
-| React Router | 2K | 0.452ms | 0.955ms | 1000 |
+| React Router | 2K | 0.441ms | 0.950ms | 1000 |
 
 #### Sequential Route Matching (worst case)
 
 ```
 🥇 Zen Router         ████████████████████████████████████████   1.8M ops/sec
-🥈 Wouter             ████████████████████                       888K ops/sec
+🥈 Wouter             ███████████████████                        876K ops/sec
 🥉 React Router       █                                          56K ops/sec
  React Router                                                  13K ops/sec
 ```
@@ -275,9 +275,9 @@ Pure data-driven weighting based on test stability across implementations.
 | Library | ops/sec | Mean Time | P99 | Samples |
 |---------|---------|-----------|-----|----------|
 | Zen Router | 1.8M | 0.001ms | 0.001ms | 1000 |
-| Wouter | 888K | 0.001ms | 0.002ms | 1000 |
+| Wouter | 876K | 0.001ms | 0.002ms | 1000 |
 | React Router | 56K | 0.019ms | 0.033ms | 1000 |
-| React Router | 13K | 0.080ms | 0.114ms | 1000 |
+| React Router | 13K | 0.079ms | 0.100ms | 1000 |
 
 
 
@@ -405,7 +405,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for detailed guidelines.
 
 **Found this useful? Give it a ⭐️!**
 
-*Generated on 2025-11-18T04:09:06.718Z*
+*Generated on 2025-11-18T05:06:55.251Z*
 
 [⬆️ Back to Top](#router-benchmarks) • [⬅️ Main README](../../README.md)
 
