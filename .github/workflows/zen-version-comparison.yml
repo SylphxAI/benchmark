@@ -66,12 +66,14 @@ jobs:
       - name: Verify Zen version
         working-directory: benchmarks/state-management
         run: |
-          INSTALLED_VERSION=$(node -p "require('@sylphx/zen/package.json').version")
+          INSTALLED_VERSION=$(npm list @sylphx/zen --depth=0 --json | jq -r '.dependencies["@sylphx/zen"].version')
           echo "Installed version: $INSTALLED_VERSION"
+          echo "Expected version: ${{ matrix.version }}"
           if [ "$INSTALLED_VERSION" != "${{ matrix.version }}" ]; then
-            echo "Error: Version mismatch!"
+            echo "❌ Error: Version mismatch!"
             exit 1
           fi
+          echo "✅ Version verified"
 
       - name: Run benchmarks
         working-directory: benchmarks/state-management
