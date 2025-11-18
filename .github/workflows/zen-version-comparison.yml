@@ -64,12 +64,12 @@ jobs:
           mv package.json.tmp package.json
           cat package.json | jq '.dependencies["@sylphx/zen"]'
 
-      - name: Install dependencies
+      - name: Install dependencies with Bun
         working-directory: benchmarks/state-management
         run: |
           # Clean install to ensure correct version
-          rm -rf node_modules package-lock.json
-          npm install
+          rm -rf node_modules package-lock.json bun.lockb
+          bun install
           echo "Installation complete"
 
       - name: Verify Zen version
