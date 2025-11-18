@@ -5,21 +5,20 @@
   "version": "6.15.0",
   "test": "Repeated Diamonds (5x)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 114189.28420308995,
-    "meanTime": 0.008923126001027413,
-    "variance": 0.0000026076271386058537,
-    "p99": 0.018132920052157706,
+    "opsPerSecond": 109497.1820793138,
+    "meanTime": 0.010022707997821272,
+    "variance": 0.00036816296689476375,
+    "p99": 0.021141289967345073,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

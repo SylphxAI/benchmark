@@ -5,25 +5,24 @@
   "version": "6.30.1",
   "test": "Optional Parameter Route (without param)",
   "group": "03-advanced-routes",
-  "timestamp": "2025-11-18T02:12:54.254Z",
+  "timestamp": "2025-11-18T03:54:30.835Z",
   "result": {
-    "opsPerSecond": 16817.979697725972,
-    "meanTime": 0.06092513699999654,
-    "variance": 0.00041889321876232167,
-    "p99": 0.09130534000029,
+    "opsPerSecond": 17419.503690576203,
+    "meanTime": 0.05848219800003608,
+    "variance": 0.0003322009901295778,
+    "p99": 0.07951970000046459,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-54-254Z",
+    "runId": "run-2025-11-18T03-54-30-835Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:54.254Z",
+    "timestamp": "2025-11-18T03:54:30.835Z",
     "completedLibraries": [
       "react-router-dom",
       "wouter",
-      "@sylphx/zen-router",
-      "@solidjs/router"
+      "@sylphx/zen-router"
     ],
-    "totalLibraries": 4,
+    "totalLibraries": 3,
     "isComplete": true,
     "environment": {
       "platform": "linux",

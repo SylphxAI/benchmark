@@ -19,8 +19,8 @@
 |----------|-------------|-----------|--------|--------------|
 | **[🎨 CSS Frameworks](./benchmarks/css-frameworks/)** | Comprehensive CSS framework build performance and optimization benchmarks | 4 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/css-frameworks/)** |
 | **[🔒 Immutability](./benchmarks/immutability/)** | Performance benchmarks for immutable data structure libraries | 6 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/immutability/)** |
-| **[🧭 Router](./benchmarks/router/)** | Performance benchmarks for React routing libraries | 5 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/router/)** |
-| **[🗃️ State Management](./benchmarks/state-management/)** | React state management libraries performance benchmarks | 8 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/state-management/)** |
+| **[🧭 Router](./benchmarks/router/)** | Performance benchmarks for React routing libraries | 4 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/router/)** |
+| **[🗃️ State Management](./benchmarks/state-management/)** | React state management libraries performance benchmarks | 7 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/state-management/)** |
 | **[✅ Validation](./benchmarks/validation/)** | Schema validation library performance benchmarks | 4 | ![Active](https://img.shields.io/badge/Active-success) | **[View →](./benchmarks/validation/)** |
 
 Each category has its own detailed README with benchmark results, methodology, and insights.

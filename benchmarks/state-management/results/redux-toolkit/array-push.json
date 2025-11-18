@@ -5,21 +5,20 @@
   "version": "2.10.1",
   "test": "Array Push",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 60774.52377618293,
-    "meanTime": 0.016922449999932723,
-    "variance": 0.000018034118054232745,
-    "p99": 0.039883409995018146,
+    "opsPerSecond": 57690.908146717295,
+    "meanTime": 0.018859710000018824,
+    "variance": 0.001049706621836115,
+    "p99": 0.039734099998167946,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

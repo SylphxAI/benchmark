@@ -5,21 +5,20 @@
   "version": "2.15.1",
   "test": "Memory Management",
   "group": "05-real-world",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 7271.027128094396,
-    "meanTime": 0.15237661700001626,
-    "variance": 0.014691870636348175,
-    "p99": 0.8147174200002334,
+    "opsPerSecond": 7361.863350732545,
+    "meanTime": 0.15360424099984812,
+    "variance": 0.021142831356509705,
+    "p99": 0.8476801700030046,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

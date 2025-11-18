@@ -5,21 +5,20 @@
   "version": "6.15.0",
   "test": "Nested Object Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 926905.626080437,
-    "meanTime": 0.0011117539998958819,
-    "variance": 1.8323171527631865e-7,
-    "p99": 0.0021941000005608656,
+    "opsPerSecond": 1344950.064805621,
+    "meanTime": 0.0007755400000023655,
+    "variance": 1.7220142581420346e-7,
+    "p99": 0.0019537099990702693,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

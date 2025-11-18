@@ -5,18 +5,18 @@
   "version": "10.2.0",
   "test": "JSON Patches - Roundtrip",
   "group": "06-patches",
-  "timestamp": "2025-11-18T02:12:52.190Z",
+  "timestamp": "2025-11-18T03:54:35.997Z",
   "result": {
-    "opsPerSecond": 65730.64952029749,
-    "meanTime": 0.015412240000048769,
-    "variance": 0.000005343489571852382,
-    "p99": 0.02948680000306922,
+    "opsPerSecond": 65912.90453377763,
+    "meanTime": 0.015493584999949234,
+    "variance": 0.00001081975881329948,
+    "p99": 0.031351610000419895,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-52-190Z",
+    "runId": "run-2025-11-18T03-54-35-997Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:52.190Z",
+    "timestamp": "2025-11-18T03:54:35.997Z",
     "completedLibraries": [
       "immer",
       "mutative",

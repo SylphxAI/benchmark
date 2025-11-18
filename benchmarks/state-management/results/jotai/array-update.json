@@ -5,21 +5,20 @@
   "version": "2.15.1",
   "test": "Array Update",
   "group": "03-advanced-operations",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 310275.95396726235,
-    "meanTime": 0.003333575000244309,
-    "variance": 8.587952974086465e-7,
-    "p99": 0.0070039999987784535,
+    "opsPerSecond": 296093.1891766359,
+    "meanTime": 0.005449731000022439,
+    "variance": 0.0022028246907341235,
+    "p99": 0.006533809999455114,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

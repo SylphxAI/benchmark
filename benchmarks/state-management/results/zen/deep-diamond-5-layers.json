@@ -5,21 +5,20 @@
   "version": "3.45.2",
   "test": "Deep Diamond (5 layers)",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 2984854.4020601376,
-    "meanTime": 0.0003456990009872243,
-    "variance": 1.0954289282362226e-7,
-    "p99": 0.0003809999907389283,
+    "opsPerSecond": 3079071.5336760636,
+    "meanTime": 0.0003253759996732697,
+    "variance": 2.1343804592572656e-10,
+    "p99": 0.00036100007127970457,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

@@ -5,21 +5,20 @@
   "version": "2.15.1",
   "test": "Single Write",
   "group": "02-basic-write",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 358028.74331235536,
-    "meanTime": 0.002881260000034672,
-    "variance": 7.515809452019942e-7,
-    "p99": 0.005274929998122375,
+    "opsPerSecond": 370653.1668966402,
+    "meanTime": 0.002773156999999628,
+    "variance": 5.428711995165721e-7,
+    "p99": 0.005621300000257179,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",

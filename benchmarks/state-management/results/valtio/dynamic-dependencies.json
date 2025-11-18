@@ -5,21 +5,20 @@
   "version": "2.2.0",
   "test": "Dynamic Dependencies",
   "group": "07-reactivity-patterns",
-  "timestamp": "2025-11-18T02:12:56.187Z",
+  "timestamp": "2025-11-18T03:54:29.973Z",
   "result": {
-    "opsPerSecond": 1054693.4487256422,
-    "meanTime": 0.000984269999084063,
-    "variance": 1.9134161780878166e-7,
-    "p99": 0.0021650900703389197,
+    "opsPerSecond": 1108970.6809565658,
+    "meanTime": 0.0009239219988230616,
+    "variance": 1.1464123932581592e-7,
+    "p99": 0.0015230999561026692,
     "samples": 1000
   },
   "runMetadata": {
-    "runId": "run-2025-11-18T02-12-56-187Z",
+    "runId": "run-2025-11-18T03-54-29-974Z",
     "mode": "production",
-    "timestamp": "2025-11-18T02:12:56.187Z",
+    "timestamp": "2025-11-18T03:54:29.973Z",
     "completedLibraries": [
       "zen",
-      "solid-js",
       "jotai",
       "preact-signals",
       "zustand",
@@ -27,7 +26,7 @@
       "mobx",
       "redux-toolkit"
     ],
-    "totalLibraries": 8,
+    "totalLibraries": 7,
     "isComplete": true,
     "environment": {
       "platform": "linux",
