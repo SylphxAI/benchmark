@@ -16,7 +16,7 @@ jobs:
   # Discover all benchmark categories dynamically
   discover-categories:
     name: Discover Categories
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     outputs:
       categories: ${{ steps.find.outputs.categories }}
     steps:
@@ -35,7 +35,7 @@ jobs:
   benchmark-category:
     name: Benchmark (${{ matrix.category }})
     needs: discover-categories
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     strategy:
       matrix:
         category: ${{ fromJson(needs.discover-categories.outputs.categories) }}
@@ -112,7 +112,7 @@ jobs:
   commit-results:
     name: Commit & Push Results
     needs: benchmark-category
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     if: always()
 
     steps:
