@@ -11,7 +11,7 @@ on:
 jobs:
   full-rebuild:
     name: Full Rebuild All Benchmarks
-    runs-on: sylphx-linux-standard
+    runs-on: [self-hosted, sylphx, linux, standard]
 
     steps:
       - name: Checkout repository
