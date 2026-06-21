@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "repo": "SylphxAI/benchmark",
+    "name": "SylphxAI Benchmark",
+    "lifecycle": "production",
+    "layer": "research",
+    "summary": "Benchmark hub for JavaScript and TypeScript library performance research, result snapshots, scoring methodology, and supporting benchmark automation.",
+    "goals": [
+      "Maintain reproducible benchmark categories for JavaScript and TypeScript libraries.",
+      "Store benchmark result snapshots, methodology notes, and generated ranking documentation.",
+      "Provide CLI and workflow surfaces for running, rebuilding, and publishing benchmark evidence."
+    ],
+    "nonGoals": [
+      "Own the libraries being benchmarked or their release decisions.",
+      "Own product runtime behavior in repositories that consume benchmark findings.",
+      "Own enterprise engineering doctrine, standards, or project manifest schema."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "name": "benchmark-framework",
+        "description": "CLI, core scoring, result generation, and category scaffolding code for benchmark execution."
+      },
+      {
+        "name": "benchmark-evidence",
+        "description": "Committed benchmark result snapshots, generated READMEs, methodology notes, and comparison reports."
+      }
+    ],
+    "doesNotOwn": [
+      "The upstream libraries, frameworks, or package versions being measured.",
+      "Product dependency decisions or runtime changes in repositories that consume benchmark findings.",
+      "Enterprise doctrine and manifest schema owned by SylphxAI/doctrine."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "documentation",
+        "name": "Benchmark hub README",
+        "location": "README.md"
+      },
+      {
+        "type": "cli",
+        "name": "Benchmark framework CLI",
+        "location": "src/cli.ts"
+      },
+      {
+        "type": "documentation",
+        "name": "Benchmark categories and result snapshots",
+        "location": "benchmarks/"
+      },
+      {
+        "type": "documentation",
+        "name": "Benchmark methodology and architecture",
+        "location": "ARCHITECTURE.md and BENCHMARK_STANDARD.md"
+      },
+      {
+        "type": "workflow",
+        "name": "Benchmark automation workflows",
+        "location": ".github/workflows/"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "repo": "SylphxAI/doctrine",
+        "surface": "project manifest schema and engineering doctrine",
+        "direction": "peer-public"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Do not encode product-specific runtime choices as benchmark framework behavior.",
+      "Do not treat benchmark ranking docs as authority for product changes without a product-owned PR or ADR.",
+      "Do not fork doctrine standards into this repository."
+    ]
+  },
+  "documentation": {
+    "adr": {
+      "path": "docs/adr/",
+      "status": "planned"
+    },
+    "specs": {
+      "path": "docs/specs/",
+      "status": "planned"
+    },
+    "catalog": {
+      "path": ".doctrine/project.json",
+      "status": "present"
+    },
+    "runbooks": {
+      "path": "scripts/README.md",
+      "status": "present"
+    },
+    "generatedReferences": {
+      "path": "benchmarks/*/README.md",
+      "status": "generated"
+    }
+  },
+  "delivery": {
+    "ciModel": "none",
+    "requiredContexts": [],
+    "deployPath": "not-applicable: benchmark evidence is committed to Git and served through GitHub; workflows update or rebuild result artifacts.",
+    "productionProof": "Successful benchmark workflow or local CLI run plus committed result/readme snapshots and doctrine project-control audit.",
+    "recoveryClass": "source-revertable"
+  },
+  "adoption": {
+    "status": "baseline",
+    "gaps": [
+      {
+        "id": "benchmark-ci-not-required",
+        "description": "Benchmark workflows exist but no required PR admission or postsubmit proof context protects benchmark framework changes.",
+        "owner": "SylphxAI/benchmark",
+        "target": "central ADR-29 required-context rollout or repo-local benchmark validation gate"
+      },
+      {
+        "id": "generated-doc-freshness",
+        "description": "Benchmark result READMEs and ranking docs are generated/current-state surfaces; add freshness checks before relying on them as no-human governance evidence.",
+        "owner": "SylphxAI/benchmark",
+        "target": "next benchmark framework or scoring-methodology change"
+      }
+    ]
+  }
+}
