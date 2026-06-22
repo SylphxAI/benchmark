@@ -5,6 +5,7 @@
     "name": "SylphxAI Benchmark",
     "lifecycle": "production",
     "layer": "research",
+    "policyPool": "research",
     "summary": "Benchmark hub for JavaScript and TypeScript library performance research, result snapshots, scoring methodology, and supporting benchmark automation.",
     "goals": [
       "Maintain reproducible benchmark categories for JavaScript and TypeScript libraries.",
@@ -97,6 +98,7 @@
   },
   "delivery": {
     "ciModel": "none",
+    "deployable": false,
     "requiredContexts": [],
     "deployPath": "not-applicable: benchmark evidence is committed to Git and served through GitHub; workflows update or rebuild result artifacts.",
     "productionProof": "Successful benchmark workflow or local CLI run plus committed result/readme snapshots and doctrine project-control audit.",
